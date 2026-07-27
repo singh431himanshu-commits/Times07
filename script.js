@@ -1,11 +1,11 @@
- // ==========================================================================
+// ==========================================================================
 // ABP TIMES07 ENTERPRISE MEDIA NETWORK - UNIFIED SCRIPT ENGINE
 // Firebase Realtime DB, Live Weather API, Market Tickers & Category Router
 // ==========================================================================
 
 // 1. Firebase SDK Module Imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 // Verified Firebase Project Configuration
 const firebaseConfig = {
@@ -25,7 +25,7 @@ const db = getDatabase(app);
 const newsRef = ref(db, 'articles');
 
 // Global Application State
-let sampleNews = [];
+window.sampleNews = [];
 let currentSlideIndex = 0;
 let featuredArticles = [];
 let autoSlideInterval = null;
@@ -62,14 +62,16 @@ initTheme();
 // 3. Realtime Database Synchronization Listener
 onValue(newsRef, (snapshot) => {
     const data = snapshot.val();
-    sampleNews = [];
+    let firebaseArticles = [];
     if (data) {
         Object.keys(data).forEach(key => {
-            sampleNews.push({ id: key, ...data[key] });
+            firebaseArticles.push({ id: key, ...data[key] });
         });
     }
+    // Firebase और AutoNews दोनों को सुरक्षित मिलाकर जोड़ना
+    window.sampleNews = [...firebaseArticles, ...(window.sampleNews || [])];
     renderNews();
-    localStorage.setItem('times07_news', JSON.stringify(sampleNews));
+    localStorage.setItem('times07_news', JSON.stringify(window.sampleNews));
     populateArticlePage();
 });
 
@@ -80,9 +82,9 @@ function renderNews(filterCat = null) {
 
     featuredArticles = [];
 
-    let filteredList = sampleNews;
+    let filteredList = window.sampleNews || [];
     if (filterCat) {
-        filteredList = sampleNews.filter(item => (item.category || '').includes(filterCat) || (item.title || '').includes(filterCat));
+        filteredList = filteredList.filter(item => (item.category || '').includes(filterCat) || (item.title || '').includes(filterCat));
     }
 
     filteredList.forEach((news, index) => {
@@ -93,39 +95,10 @@ function renderNews(filterCat = null) {
         if (newsContainer) {
             const card = document.createElement('article');
             card.className = 'news-card';
-             card.innerHTML = `
-    <div class="card-img">
-        <a href="article.html?id=${index}">
-            <img src="${news.img1 || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800'}" loading="lazy">
-        </a>
-        <span class="cat-badge">${news.category || 'मुख्य समाचार'}</span>
-    </div>
-    <div class="card-content">
-        <a href="article.html?id=${index}">
-            <h3>${news.title}</h3>
-        </a>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-            <span style="font-size:12px; color:var(--muted-text);"><i class="fa-solid fa-eye" style="color:var(--abp-red);"></i> ${news.views || 1200} व्यूज</span>
-        </div>
-    </div>
-`;
-             function renderNews(filterCat = null) {
-    const newsContainer = document.getElementById('news-container');
-    if (newsContainer) newsContainer.innerHTML = "";
-
-    let filteredList = sampleNews;
-    if (filterCat) {
-        filteredList = sampleNews.filter(item => (item.category || '').includes(filterCat) || (item.title || '').includes(filterCat));
-    }
-
-    filteredList.forEach((news, index) => {
-        if (newsContainer) {
-            const card = document.createElement('article');
-            card.className = 'news-card';
             card.innerHTML = `
                 <div class="card-img">
                     <a href="article.html?id=${index}">
-                        <img src="${news.img1 || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800'}" loading="lazy">
+                        <img src="${news.img1 || news.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800'}" loading="lazy">
                     </a>
                     <span class="cat-badge">${news.category || 'मुख्य समाचार'}</span>
                 </div>
@@ -133,20 +106,13 @@ function renderNews(filterCat = null) {
                     <a href="article.html?id=${index}" style="text-decoration:none;">
                         <h3>${news.title}</h3>
                     </a>
-                    <p class="news-excerpt" style="font-size:12px; color:var(--muted-text); margin-top:4px;">${(news.desc || '').replace(/<[^>]*>?/gm, '').substring(0, 70)}...</p>
+                    <p class="news-excerpt" style="font-size:12px; color:var(--muted-text); margin-top:4px;">${(news.desc || news.description || '').replace(/<[^>]*>?/gm, '').substring(0, 70)}...</p>
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
                         <span style="font-size:11px; color:var(--muted-text);"><i class="fa-solid fa-eye" style="color:var(--abp-red);"></i> ${news.views || 1200} व्यूज</span>
                     </div>
                 </div>
             `;
             newsContainer.appendChild(card);
-        }
-    });
-
-    updateHeroSlider();
-    renderEditorsChoice();
-    renderMostReadWidget();
-}
         }
     });
 
@@ -170,14 +136,14 @@ function updateHeroSlider() {
     const current = featuredArticles[currentSlideIndex];
     const heroBox = document.getElementById('hero-slider-box');
     if (heroBox && current) {
-        heroBox.style.backgroundImage = `url('${current.data.img1}')`;
+        heroBox.style.backgroundImage = `url('${current.data.img1 || current.data.image}')`;
         if (document.getElementById('slide-cat')) document.getElementById('slide-cat').innerText = current.data.category || "ABP एक्सक्लूसिव";
         if (document.getElementById('slide-title')) document.getElementById('slide-title').innerText = current.data.title;
-         const imgLink = document.getElementById('hero-img-link');
-const titleLink = document.getElementById('hero-title-link');
+        const imgLink = document.getElementById('hero-img-link');
+        const titleLink = document.getElementById('hero-title-link');
 
-if (imgLink) imgLink.href = `article.html?id=${currentHeroIndex}`;
-if (titleLink) titleLink.href = `article.html?id=${currentHeroIndex}`;
+        if (imgLink) imgLink.href = `article.html?id=${currentSlideIndex}`;
+        if (titleLink) titleLink.href = `article.html?id=${currentSlideIndex}`;
     }
 }
 function nextSlide() { if (featuredArticles.length > 0) { currentSlideIndex = (currentSlideIndex + 1) % featuredArticles.length; updateHeroSlider(); } }
@@ -187,10 +153,10 @@ function renderMostReadWidget() {
     const box = document.getElementById('most-read-box');
     if (!box) return;
     box.innerHTML = "";
-    [...sampleNews].sort((a, b) => (b.views || 0) - (a.views || 0)).slice(0, 5).forEach((news, idx) => {
+    [...(window.sampleNews || [])].sort((a, b) => (b.views || 0) - (a.views || 0)).slice(0, 5).forEach((news, idx) => {
         const item = document.createElement('div');
         item.style.cssText = "border-bottom:1px solid var(--border-color); padding-bottom:8px; margin-bottom:8px;";
-        item.innerHTML = `<a href="article.html?id=${idx}" style="font-size:13px; font-weight:700; color:var(--heading-color); text-decoration:none;">• ${news.title.substring(0, 50)}...</a>`;
+        item.innerHTML = `<a href="article.html?id=${idx}" style="font-size:13px; font-weight:700; color:var(--heading-color); text-decoration:none;">• ${(news.title || '').substring(0, 50)}...</a>`;
         box.appendChild(item);
     });
 }
@@ -199,15 +165,15 @@ function renderEditorsChoice() {
     const box = document.getElementById('editors-choice-box');
     if (!box) return;
     box.innerHTML = "";
-    sampleNews.slice(0, 3).forEach((news, idx) => {
+    (window.sampleNews || []).slice(0, 3).forEach((news, idx) => {
         const item = document.createElement('div');
         item.className = 'news-card';
         item.innerHTML = `
             <div class="card-img" style="height:120px;">
-                <img src="${news.img1}">
+                <img src="${news.img1 || news.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800'}">
             </div>
             <div class="card-content" style="padding:10px;">
-                <h4 style="font-size:13px; font-weight:700; line-height:1.3;">${news.title.substring(0, 45)}...</h4>
+                <h4 style="font-size:13px; font-weight:700; line-height:1.3;">${(news.title || '').substring(0, 45)}...</h4>
                 <a href="article.html?id=${idx}" style="font-size:11px; color:var(--abp-red); font-weight:800; text-decoration:none; margin-top:6px; display:inline-block;">विशेष कवरेज &rarr;</a>
             </div>
         `;
@@ -242,7 +208,7 @@ function fetchAccurateWeather() {
 }
 fetchAccurateWeather();
 
-// 8. Live Clock Engine (1-1 Second)
+// 8. Live Clock Engine
 function updateLiveClock() {
     const now = new Date();
     const options = { 
@@ -257,7 +223,7 @@ function updateLiveClock() {
 setInterval(updateLiveClock, 1000);
 updateLiveClock();
 
- // Google Translate Engine Fix
+// 9. Google Translate Engine Fix
 (function() {
     if (!document.getElementById('google-translate-script')) {
         var gtScript = document.createElement('script');
@@ -268,7 +234,6 @@ updateLiveClock();
     }
 })();
 
-  // GOOGLE TRANSLATE & ACTIVE STATE ENGINE
 window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
         pageLanguage: 'hi',
@@ -277,28 +242,6 @@ window.googleTranslateElementInit = function() {
     }, 'google_translate_element');
 };
 
-window.translatePage = function(langCode, element) {
-    // 1. तुरंत पीला रंग बदलें
-    document.querySelectorAll('.lang-switcher a').forEach(a => a.classList.remove('active'));
-    if (element) {
-        element.classList.add('active');
-    }
-
-    // 2. गूगल ट्रांसलेट को ट्रिगर करें
-    var select = document.querySelector('.goog-te-combo');
-    if (select) {
-        select.value = langCode;
-        select.dispatchEvent(new Event('change'));
-    } else {
-        setTimeout(function() {
-            var retrySelect = document.querySelector('.goog-te-combo');
-            if (retrySelect) {
-                retrySelect.value = langCode;
-                retrySelect.dispatchEvent(new Event('change'));
-            }
-        }, 500);
-    }
-};
 function applyLanguage(langCode) {
     var select = document.querySelector('.goog-te-combo');
     if (select) {
@@ -308,33 +251,17 @@ function applyLanguage(langCode) {
 }
 
 window.translatePage = function(langCode, element) {
-    // 1. तुरंत पीला रंग (Active Highlight) बदलना
     document.querySelectorAll('.lang-switcher a').forEach(a => a.classList.remove('active'));
     if (element) {
         element.classList.add('active');
     }
-
-    // 2. LocalStorage में लैंग्वेज सेव करना
     localStorage.setItem('selectedLang', langCode);
-
-    // 3. भाषा बदलना
     applyLanguage(langCode);
-    
-    // अगर तुरंत न बदले तो 400ms बाद दोबारा प्रयास
     setTimeout(function() {
         applyLanguage(langCode);
     }, 400);
 };
 
-// पेज लोड पर एक्टिव बटन सेट करना
-document.addEventListener('DOMContentLoaded', function() {
-    var savedLang = localStorage.getItem('selectedLang') || 'hi';
-    var activeBtn = document.querySelector(`.lang-switcher a[onclick*="'${savedLang}'"]`);
-    if (activeBtn) {
-        document.querySelectorAll('.lang-switcher a').forEach(a => a.classList.remove('active'));
-        activeBtn.classList.add('active');
-    }
-});
 // 10. Navigation & Auth Controls
 function showHome() {
     if(document.getElementById('main-content')) document.getElementById('main-content').classList.remove('hidden');
@@ -364,56 +291,20 @@ window.triggerAISearch = function() {
 function populateArticlePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const newsIndex = urlParams.get('id');
-    const savedNews = JSON.parse(localStorage.getItem('times07_news')) || sampleNews;
+    const savedNews = JSON.parse(localStorage.getItem('times07_news')) || window.sampleNews;
 
     if (newsIndex !== null && savedNews[newsIndex]) {
         const news = savedNews[newsIndex];
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
         if(document.getElementById('page-cat')) document.getElementById('page-cat').innerText = news.category || "मुख्य समाचार";
-        if(document.getElementById('page-img')) document.getElementById('page-img').src = news.img1 || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200';
-        if(document.getElementById('page-content')) document.getElementById('page-content').innerHTML = news.desc || "खबर की विस्तृत जानकारी यहाँ उपलब्ध है।";
+        if(document.getElementById('page-img')) document.getElementById('page-img').src = news.img1 || news.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200';
+        if(document.getElementById('page-content')) document.getElementById('page-content').innerHTML = news.desc || news.description || "खबर की विस्तृत जानकारी यहाँ उपलब्ध है।";
         if(document.getElementById('views-count')) document.getElementById('views-count').innerText = news.views || 1840;
     }
 }
-populateArticlePage();
 
-// 12. DOM Event Listeners (Auth Modal & Tab Switching)
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById('auth-modal');
-    const closeBtn = document.getElementById('modal-close-btn');
-    const loginTab = document.getElementById('tab-login-btn');
-    const signupTab = document.getElementById('tab-signup-btn');
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
-
-    if(closeBtn) closeBtn.onclick = window.closeAuthModal;
-
-    if(loginTab && signupTab) {
-        loginTab.onclick = () => {
-            if(loginForm) loginForm.style.display = 'block';
-            if(signupForm) signupForm.style.display = 'none';
-            loginTab.classList.add('active');
-            signupTab.classList.remove('active');
-        };
-
-        signupTab.onclick = () => {
-            if(loginForm) loginForm.style.display = 'none';
-            if(signupForm) signupForm.style.display = 'block';
-            signupTab.classList.add('active');
-            loginTab.classList.remove('active');
-        };
-    }
-});
-// ==========================================================================
-// AUTOMATIC NEWS PUBLISHING ENGINE (FETCH TRENDING NEWS)
-// ==========================================================================
-
-const RSS_SOURCES = [
-    'https://api.rss2json.com/v1/api.json?rss_url=https://zeenews.india.com/rss/india-national-news.xml',
-    'https://api.rss2json.com/v1/api.json?rss_url=https://www.amarujala.com/rss/breaking-news.xml'
-];
-
- async function fetchAutoNews() {
+// 12. AUTOMATIC NEWS PUBLISHING ENGINE
+async function fetchAutoNews() {
     try {
         const response = await fetch('news.json?v=' + new Date().getTime());
         if (!response.ok) return;
@@ -421,28 +312,25 @@ const RSS_SOURCES = [
         const autoFetchedNews = await response.json();
         
         if (autoFetchedNews && autoFetchedNews.length > 0) {
-            // json के डेटा को वेबसाइट के फॉर्मेट में सेट करना
             const formattedNews = autoFetchedNews.map(item => ({
                 title: item.title,
                 desc: item.desc || item.description,
-                image: item.img1 || item.image,
+                img1: item.img1 || item.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800',
                 category: item.category || 'ब्रेकिंग न्यूज़',
                 views: item.views || 1500,
                 date: item.date || 'अभी-अभी'
             }));
 
+            // AutoFetchedNews को प्राथमिकता देकर आगे जोड़ना
             window.sampleNews = [...formattedNews, ...(window.sampleNews || [])];
-            if (typeof renderNews === 'function') {
-                renderNews();
-            }
+            renderNews();
         }
     } catch (error) {
         console.log("Feed Fetch Error:", error);
     }
 }
 
-// पेज लोड होते ही और हर 10 मिनट में अपने आप नई खबर पब्लिश होगी
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     fetchAutoNews();
     setInterval(fetchAutoNews, 600000);
 });
