@@ -1,0 +1,1616 @@
+ /* ==========================================================================
+   TIMES07 ENTERPRISE MEDIA NETWORK - MASTER STYLESHEET
+   Brand Colors: Times07 Crimson Red (#c00000), Dark Red (#8b0000)
+   Typography: Mukta (Hindi), Plus Jakarta Sans (English), Merriweather
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Mukta:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL CSS VARIABLES & THEME ENGINE
+   -------------------------------------------------------------------------- */
+:root {
+    /* Brand Palette */
+    --abp-red: #c00000;
+    --abp-red-hover: #a00000;
+    --abp-dark-red: #8b0000;
+    --abp-black: #000000;
+    --abp-yellow: #fde047;
+
+    /* Light Theme Palette */
+    --bg-color: #f4f5f7;
+    --card-bg: #ffffff;
+    --text-color: #111827;
+    --heading-color: #030712;
+    --border-color: #e5e7eb;
+    --muted-text: #6b7280;
+    --header-bg: #ffffff;
+    --input-bg: #f9fafb;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+
+    /* Typography */
+    --font-hindi: 'Mukta', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Merriweather', serif;
+}
+
+body.dark-theme {
+    /* Dark Theme Palette */
+    --bg-color: #0b0f19;
+    --card-bg: #151c2c;
+    --text-color: #f9fafb;
+    --heading-color: #ffffff;
+    --border-color: #1f2937;
+    --muted-text: #9ca3af;
+    --header-bg: #0f172a;
+    --input-bg: #1e293b;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE LAYOUT RULES
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-hindi);
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select, textarea {
+    outline: none;
+    font-family: inherit;
+}
+
+/* Scroll Reading Progress Bar */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--abp-red), var(--abp-yellow));
+    z-index: 10000;
+    width: 0%;
+    box-shadow: 0 0 10px rgba(192, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   3. LEVEL 1: GLOBAL TOP HEADER BAR
+   -------------------------------------------------------------------------- */
+.top-global-bar {
+    background: var(--abp-dark-red);
+    color: #ffffff;
+    padding: 6px 3%;
+    font-size: 12px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.global-bar-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-left-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.divider {
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 4px;
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lang-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+}
+
+.lang-switcher a {
+    color: #f3f4f6;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.lang-switcher a:hover, .lang-switcher a.active {
+    color: var(--abp-black);
+    background: var(--abp-yellow);
+}
+
+.top-right-social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+}
+
+.top-right-social a {
+    color: #ffffff;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.top-right-social a:hover {
+    background: var(--abp-red);
+    transform: translateY(-2px);
+}
+
+.contact-link {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. LEVEL 2 & 3: MAIN NAVIGATION & MEGA MENU
+   -------------------------------------------------------------------------- */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.main-header {
+    background: var(--header-bg);
+    border-bottom: 3px solid var(--abp-red);
+    box-shadow: var(--shadow-md);
+}
+
+.header-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 10px 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-box a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.abp-badge {
+    background: var(--abp-red);
+    color: #ffffff;
+    padding: 2px 8px;
+    font-weight: 800;
+    border-radius: 4px;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(192,0,0,0.3);
+}
+
+.times-brand {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--heading-color);
+    letter-spacing: -0.5px;
+}
+
+.times-brand span {
+    color: var(--abp-red);
+}
+
+.primary-nav {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--abp-red);
+    background: rgba(192, 0, 0, 0.08);
+}
+
+/* MEGA MENU SYSTEM */
+.mega-menu-wrapper {
+    position: relative;
+}
+
+.mega-trigger {
+    cursor: pointer;
+}
+
+.mega-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 720px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    border-radius: 10px;
+    padding: 24px;
+    z-index: 2000;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.mega-menu-wrapper:hover .mega-dropdown {
+    display: block;
+}
+
+.mega-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.mega-col h4 {
+    font-size: 15px;
+    color: var(--abp-red);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--abp-red);
+    padding-bottom: 4px;
+    font-weight: 800;
+}
+
+.mega-col a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.mega-col a:hover {
+    color: var(--abp-red);
+    transform: translateX(4px);
+}
+
+/* SEARCH & ACTIONS */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box-wrapper {
+    position: relative;
+}
+
+#ai-search-input {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    width: 170px;
+}
+
+#ai-search-input:focus {
+    width: 220px;
+    border-color: var(--abp-red);
+}
+
+.action-btn-icon {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn-icon:hover {
+    background: var(--abp-red);
+    color: #ffffff;
+    border-color: var(--abp-red);
+}
+
+.admin-btn {
+    background: var(--abp-red);
+    color: #ffffff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.admin-btn:hover {
+    background: var(--abp-red-hover);
+}
+
+/* --------------------------------------------------------------------------
+   5. LEVEL 4 & 5: TRENDING HASHTAGS & BREAKING TICKER
+   -------------------------------------------------------------------------- */
+.trending-hashtags-bar {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 3%;
+    font-size: 13px;
+}
+
+.trending-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.trending-label {
+    color: var(--abp-red);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.hashtags-wrapper {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.hashtags-wrapper a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.hashtags-wrapper a:hover {
+    color: var(--abp-red);
+}
+
+.breaking-ticker-bar {
+    background: var(--abp-red);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 6px 3%;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.ticker-badge {
+    background: #000000;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-right: 15px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+/* --------------------------------------------------------------------------
+   6. LEVEL 17 & 18: MARKET RATES & LIVE WEATHER STRIP
+   -------------------------------------------------------------------------- */
+.market-weather-strip {
+    background: #0b0f19;
+    color: #9ca3af;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 3%;
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    overflow-x: auto;
+}
+
+.mw-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   7. MAIN BODY GRID ARCHITECTURE & SIDEBARS (NO BLANK SPACES)
+   -------------------------------------------------------------------------- */
+.main-wrapper {
+    max-width: 1440px;
+    margin: 20px auto;
+    padding: 0 2%;
+}
+
+.abp-layout-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 300px;
+    gap: 18px;
+    align-items: start;
+}
+
+/* Left Explorer Menu */
+.left-explorer .explorer-menu {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.explorer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.explorer-item:last-child {
+    border-bottom: none;
+}
+
+.explorer-item:hover {
+    background: rgba(192, 0, 0, 0.08);
+    color: var(--abp-red);
+}
+
+/* Center Feed & Sections */
+.section-title-abp {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--heading-color);
+    border-left: 5px solid var(--abp-red);
+    padding-left: 10px;
+    margin: 15px 0;
+    letter-spacing: -0.5px;
+}
+
+/* --------------------------------------------------------------------------
+   8. LEVEL 6: HERO SECTION (BIG STORY)
+   -------------------------------------------------------------------------- */
+.hero-section-box {
+    position: relative;
+    height: 380px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-color: #000000;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.95) 25%, transparent 100%);
+    padding: 24px;
+    color: #ffffff;
+}
+
+.cat-badge {
+    background: var(--abp-red);
+    color: #ffffff;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.hero-overlay h1 {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 8px 0;
+    line-height: 1.3;
+    font-family: var(--font-heading);
+}
+
+.hero-read-btn {
+    background: var(--abp-red);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.hero-read-btn:hover {
+    background: var(--abp-red-hover);
+}
+
+/* --------------------------------------------------------------------------
+   9. LEVEL 7, 8, 10: NEWS CARDS & GRID SYSTEMS
+   -------------------------------------------------------------------------- */
+.top-stories-grid, .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.news-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--abp-red);
+}
+
+.card-img {
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-card:hover .card-img img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--heading-color);
+}
+
+/* --------------------------------------------------------------------------
+   10. LEVEL 12, 13, 14: MEDIA, SHORTS & LIVE TV
+   -------------------------------------------------------------------------- */
+.media-block-card {
+    background: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.live-player-box {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+.play-icon {
+    font-size: 45px;
+    color: var(--abp-red);
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   11. LEVEL 19: RIGHT SIDEBAR WIDGETS
+   -------------------------------------------------------------------------- */
+.sidebar-widget {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.widget-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+}
+
+.newsletter-box input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.sub-btn {
+    width: 100%;
+    background: var(--abp-red);
+    color: #ffffff;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ad-space {
+    background: rgba(0,0,0,0.03);
+    border: 1px dashed var(--border-color);
+    text-align: center;
+    padding: 25px 10px;
+    color: var(--muted-text);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   12. LEVEL 25: ADMIN DESK & LEVEL 24: MEGA FOOTER
+   -------------------------------------------------------------------------- */
+.admin-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.dispatch-btn {
+    background: #059669;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.mega-footer {
+    background: #0b0f19;
+    color: #9ca3af;
+    padding: 40px 3% 20px;
+    border-top: 4px solid var(--abp-red);
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 30px;
+    font-size: 13px;
+}
+
+.footer-logo {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: var(--abp-red);
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.footer-col a {
+    display: block;
+    color: #9ca3af;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #1f2937;
+    padding-top: 20px;
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE BREAKPOINTS (LAYOUT AUTO FIX)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .abp-layout-grid {
+        grid-template-columns: 1fr;
+    }
+    .left-explorer, .right-sidebar {
+        display: none;
+    }
+    .mega-dropdown {
+        width: 100%;
+        position: static;
+    }
+}
+/* 1. LEFT & RIGHT SIDEBAR STICKY FIX (साइट स्क्रॉल होने पर ये रुके रहेंगे) */
+.left-explorer, .right-sidebar {
+    position: sticky;
+    top: 130px; /* हेडर के ठीक नीचे फिक्स रहेगा */
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+/* 2. COMPACT HERO SECTION (बड़ा कार्ड छोटा किया गया) */
+.hero-section-box {
+    height: 300px; /* ऊँचाई 420px से घटाकर 300px कर दी गई */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.hero-overlay h1 {
+    font-size: 20px; /* हेडिंग का साइज छोटा */
+    margin: 6px 0;
+}
+
+/* 3. 4-COLUMN COMPACT NEWS CARDS (4-4 खबरें छोटे साइज में) */
+.top-stories-grid, .news-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* एक लाइन में 4-4 कार्ड्स */
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.news-card {
+    border-radius: 6px;
+}
+
+.card-img {
+    height: 110px; /* फोटो की ऊँचाई छोटी कर दी गई */
+}
+
+.card-content {
+    padding: 8px 10px;
+}
+
+.card-content h3 {
+    font-size: 12px; /* टेक्स्ट छोटा और कॉम्पैक्ट */
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+/* रिस्पॉन्सिव एडजस्टमेंट */
+@media (max-width: 1200px) {
+    .top-stories-grid, .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* ABP Style Dynamic Mixed Grid */
+.mixed-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+ /* ABP Style Hybrid News Grid System */
+.hybrid-news-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 बराबर कॉलम */
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+/* पहला (बड़ा) कार्ड पूरा 4 कॉलम चौड़ा होगा (Full Left to Right) */
+.hybrid-news-grid .news-card:first-child {
+    grid-column: 1 / -1; /* पूरी चौड़ाई कवर करेगा */
+    display: flex;
+    flex-direction: row; /* इमेज लेफ्ट, टेक्स्ट राइट */
+    height: 280px;
+    background: var(--card-bg);
+}
+
+/* बड़े कार्ड की इमेज स्टाइल */
+.hybrid-news-grid .news-card:first-child .card-img {
+    width: 60%;
+    height: 100%;
+}
+
+/* बड़े कार्ड का टेक्स्ट स्टाइल */
+.hybrid-news-grid .news-card:first-child .card-content {
+    width: 40%;
+    padding: 20px;
+    justify-content: center;
+}
+
+.hybrid-news-grid .news-card:first-child h3 {
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 800;
+}
+
+/* बाकी सब छोटे कार्ड्स 4-4 की लाइन में नीचे दिखेंगे */
+.hybrid-news-grid .news-card:nth-child(n+2) {
+    grid-column: span 1; /* 1-1 कॉलम लेंगे */
+}
+
+/* मोबाइल और टैबलेट के लिए रेस्पॉन्सिव */
+@media (max-width: 900px) {
+    .hybrid-news-grid .news-card:first-child {
+        flex-direction: column;
+        height: auto;
+    }
+    .hybrid-news-grid .news-card:first-child .card-img {
+        width: 100%;
+        height: 180px;
+    }
+    .hybrid-news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* Google Translate Top Banner and Tooltip Hide Fix */
+.goog-te-banner-frame, 
+.skiptranslate, 
+#goog-gt-tt, 
+.goog-te-balloon-frame {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+/* ==========================================================================
+   HEADER ACTIONS & SEARCH BAR RESPONSIVE FIX
+   ========================================================================== */
+
+/* 1. Google Translate का गंदा बैनर पूरी तरह से छिपाने के लिए */
+.goog-te-banner-frame, 
+.skiptranslate, 
+#goog-gt-tt, 
+.goog-te-balloon-frame {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+/* 2. हेडर और सर्च बार का साइज सही करने के लिए */
+.header-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 2% !important;
+}
+
+.header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important; /* कटने से रोकेगा */
+}
+
+/* सर्च इनपुट बॉक्स */
+#ai-search-input {
+    width: 110px !important; /* साइज छोटा किया ताकि एडमिन बटन न छुपे */
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+#ai-search-input:focus {
+    width: 140px !important;
+}
+
+/* एडमिन बटन */
+.admin-btn {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+/* हेडर का लेआउट लॉक करें */
+.top-global-bar, .main-header {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.global-bar-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+}
+
+.lang-switcher {
+    display: inline-flex !important;
+    gap: 5px !important;
+    flex-wrap: nowrap !important;
+}
+
+/* पीला बटन हाईलाइट स्टाइल */
+.lang-switcher a.active {
+    background-color: var(--abp-yellow) !important;
+    color: var(--abp-black) !important;
+    font-weight: 800 !important;
+    border-radius: 3px !important;
+    padding: 1px 6px !important;
+}
+/* ==========================================================================
+   HEADER NAVIGATION FIX (CRISP, BOLD & COMPACT LIKE ORIGINAL ABP)
+   ========================================================================== */
+
+.header-container {
+    padding: 10px 4% !important;
+}
+
+.primary-nav {
+    display: flex !important;
+    gap: 18px !important; /* लिंक्स के बीच की दूरी कम की */
+    align-items: center !important;
+    justify-content: center !important;
+    flex-grow: 1 !important; /* मेनू को बीच में सेट करने के लिए */
+}
+
+.nav-item {
+    font-weight: 800 !important; /* फॉन्ट को एकदम बोल्ड और क्लियर किया */
+    font-size: 15px !important; /* साइज छोटा लेकिन स्पष्ट */
+    padding: 2px 4px !important; /* एक्स्ट्रा स्पेस हटाया */
+    color: var(--text-color) !important;
+    letter-spacing: 0.3px !important;
+    background: transparent !important; /* बॉक्स वाला बैकग्राउंड हटाया */
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--abp-red) !important; /* होवर करने पर सिर्फ टेक्स्ट लाल होगा */
+    background: transparent !important;
+}
+/* ==========================================================================
+   ABP PERFECT HEADER & ICON FIX
+   ========================================================================== */
+
+/* Top Language Bar - Compact & Crisp */
+.top-global-bar {
+    background: #8b0000 !important;
+    padding: 3px 4% !important;
+}
+
+.top-time {
+    font-size: 11px !important;
+    color: #ffd7d7 !important;
+    font-weight: 600 !important;
+    margin-right: 15px !important;
+}
+
+.lang-switcher {
+    display: inline-flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+}
+
+.lang-switcher a {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 1px 5px !important;
+    border-radius: 2px !important;
+}
+
+/* पीला एक्टिव हाइलाइट बिल्कुल ABP स्टाइल */
+.lang-switcher a.active {
+    background: #fde047 !important;
+    color: #000000 !important;
+}
+
+/* Header Buttons Layout */
+.header-container {
+    padding: 6px 4% !important;
+}
+
+.primary-nav {
+    gap: 12px !important;
+}
+
+.nav-item {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #000000 !important;
+}
+
+/* 'अन्य' ड्रॉपडाउन डिज़ाइन */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 4px;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #c00000;
+}
+
+.nav-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* केवल आइकॉन स्टाइल (No Text / No Big Search Box) */
+.header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+}
+
+.icon-btn {
+    background: transparent !important;
+    border: none !important;
+    font-size: 19px !important;
+    color: #333333 !important;
+    cursor: pointer !important;
+    padding: 2px !important;
+}
+
+.icon-btn:hover {
+    color: #c00000 !important;
+}
+
+.user-logo-btn {
+    font-size: 22px !important; /* गोल कस्टमर/यूज़र का लोगो */
+    color: #555555 !important;
+}
+/* Single Clean Top Bar Layout Fix */
+.top-global-bar {
+    background: #8b0000 !important;
+    padding: 4px 3% !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.global-bar-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.top-left-info {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.top-time {
+    font-size: 11px !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+}
+
+.divider {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.contact-text {
+    font-size: 11px !important;
+    color: #ffffff !important;
+    margin-right: 5px !important;
+}
+/* Permanent Hide Google Translate Spinner & Frame */
+.goog-te-spinner-pos,
+.goog-te-spinner,
+.goog-te-spinner-animation,
+iframe[id*=":1.container"],
+iframe[id*=":2.container"],
+.goog-te-banner-frame {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+/* 3D Glassmorphism Icon Style */
+.header-actions {
+    display: flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+}
+
+.icon-btn {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6) !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 50% !important;
+    width: 38px !important;
+    height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 3px 3px 6px #c5c5c5, -3px -3px 6px #ffffff !important; /* 3D Shadow Effect */
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.icon-btn i {
+    font-size: 16px !important;
+    color: #c00000 !important; /* Bright Crimson Red */
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2)) !important;
+}
+
+.icon-btn:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 4px 4px 10px rgba(192, 0, 0, 0.3) !important;
+}
+/* Auth Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+}
+.auth-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+}
+.close-btn { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; }
+.tab-btn-group { display: flex; margin: 15px 0; border-bottom: 2px solid #eee; }
+.tab-btn { flex: 1; padding: 8px; border: none; background: none; font-weight: 700; cursor: pointer; }
+.tab-btn.active { color: #c00000; border-bottom: 2px solid #c00000; }
+.auth-form input { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 6px; }
+.auth-submit-btn { width: 100%; padding: 10px; background: #c00000; color: #fff; border: none; border-radius: 6px; font-weight: 800; margin-top: 10px; cursor: pointer; }
+/* Auth Modal Perfect Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 999999 !important;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.auth-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 360px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute; right: 12px; top: 10px;
+    font-size: 28px; border: none; background: transparent;
+    color: #333; cursor: pointer; z-index: 10;
+}
+.close-btn:hover { color: #c00000; }
+
+.google-btn {
+    width: 100%; padding: 10px; margin-top: 12px;
+    border: 1px solid #ccc; border-radius: 6px; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; font-weight: 700; cursor: pointer;
+}
+.google-btn img { width: 18px; }
+
+.auth-divider { margin: 15px 0; border-bottom: 1px solid #ddd; line-height: 0.1em; }
+.auth-divider span { background:#fff; padding:0 10px; color:#777; font-size: 12px; }
+
+.tab-btn-group { display: flex; margin-bottom: 15px; border-bottom: 2px solid #eee; }
+.tab-btn { flex: 1; padding: 8px; border: none; background: none; font-weight: 800; cursor: pointer; color: #555; }
+.tab-btn.active { color: #c00000; border-bottom: 2px solid #c00000; }
+
+.auth-form input { width: 100%; padding: 10px; margin: 6px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; }
+.auth-submit-btn { width: 100%; padding: 10px; background: #c00000; color: #fff; border: none; border-radius: 6px; font-weight: 800; margin-top: 10px; cursor: pointer; }
+/* FIXED DARK MODE - CLEAN & READABLE */
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .main-header {
+    background-color: #1e1e1e !important;
+    border-bottom: 1px solid #333 !important;
+}
+
+body.dark-mode .nav-item {
+    color: #ffffff !important;
+}
+
+body.dark-mode .card-content h3, 
+body.dark-mode .sidebar-widget h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .icon-btn {
+    background: #2a2a2a !important;
+    border-color: #444 !important;
+    color: #fff !important;
+}
+
+body.dark-mode .icon-btn i {
+    color: #ff4d4d !important;
+}
+/* Dark Mode Override Fix */
+body.dark-mode {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+}
+
+/* हेडर और नेविगेशन लिंक्स डार्क मोड में बिल्कुल साफ़ और सफ़ेद दिखेंगे */
+body.dark-mode .main-header,
+body.dark-mode .sticky-nav {
+    background-color: #1e293b !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+body.dark-mode .nav-item,
+body.dark-mode .primary-nav a,
+body.dark-mode .logo-box a,
+body.dark-mode .times-brand {
+    color: #ffffff !important;
+}
+
+/* एक्टिव / होम बटन डार्क मोड में भी साफ़ दिखेगा */
+body.dark-mode .nav-item.active {
+    color: #ff4d4d !important;
+}
+
+/* सभी कार्ड्स और साइडबार की हेडिंग सफ़ेद */
+body.dark-mode .news-card,
+body.dark-mode .sidebar-widget,
+body.dark-mode .auth-box {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .news-card h3,
+body.dark-mode .abp-list-view a,
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+    color: #f8fafc !important;
+}
+
+/* आइकॉन स्टाइल */
+body.dark-mode .icon-btn {
+    background: #334155 !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .icon-btn i {
+    color: #fde047 !important; /* पीला / सन आइकॉन */
+}
+/* ==========================================================================
+   MIXED TRENDING LAYOUT & ARTICLE PAGE FIX
+   ========================================================================== */
+
+/* गैलरी जैसा लुक हटाकर ABP हाइब्रिड लिस्ट बनाना */
+.hybrid-news-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+}
+
+/* पहला कार्ड बड़ा और प्रीमियम दिखेगा */
+.hybrid-news-grid .news-card:first-child {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    height: 200px !important;
+    background: var(--card-bg) !important;
+    border-left: 4px solid var(--abp-red) !important;
+}
+
+.hybrid-news-grid .news-card:first-child .card-img {
+    width: 45% !important;
+    height: 100% !important;
+}
+
+.hybrid-news-grid .news-card:first-child .card-content {
+    width: 55% !important;
+    padding: 15px !important;
+    justify-content: center !important;
+}
+
+.hybrid-news-grid .news-card:first-child h3 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+}
+
+/* बाकी सभी कार्ड्स 2-कॉलम साइड-बाय-साइड लिस्ट में दिखेंगे */
+.hybrid-news-grid .news-card:nth-child(n+2) {
+    display: flex !important;
+    flex-direction: row !important;
+    height: 100px !important;
+}
+
+.hybrid-news-grid .news-card:nth-child(n+2) .card-img {
+    width: 120px !important;
+    height: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+.hybrid-news-grid .news-card:nth-child(n+2) .card-content {
+    padding: 8px 12px !important;
+    justify-content: center !important;
+}
+
+.hybrid-news-grid .news-card:nth-child(n+2) h3 {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+}
+
+/* संबंधित खबरें हॉरिजॉन्टल लाइन में दिखेंगी */
+.related-horizontal-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15px !important;
+    margin-top: 20px !important;
+}
+/* ABP STYLE LIST VIEW FIX */
+.abp-list-view {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.abp-list-view .news-card {
+    display: flex !important;
+    flex-direction: row !important;
+    height: 95px !important;
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+}
+
+.abp-list-view .news-card .card-img {
+    width: 140px !important;
+    height: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+.abp-list-view .news-card .card-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.abp-list-view .news-card .card-content {
+    padding: 10px 14px !important;
+    justify-content: center !important;
+}
+
+.abp-list-view .news-card h3 {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    line-height: 1.35 !important;
+}
+/* ==========================================================================
+   ARTICLE PAGE OVERLAP FIX (3 DISTINCT COLUMNS)
+   ========================================================================== */
+
+/* 1. तीनों कॉलम को साफ़-साफ़ अलग दूरी देना */
+body:has(.main-article) .abp-layout-grid,
+.main-wrapper:has(.main-article) .abp-layout-grid {
+    display: grid !important;
+    grid-template-columns: 200px minmax(0, 1fr) 280px !important;
+    gap: 20px !important;
+    align-items: start !important;
+    width: 100% !important;
+}
+
+/* 2. बीच वाले मुख्य भाग को अपनी जगह पर सीमित रखना */
+body:has(.main-article) .center-feed {
+    min-width: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+body:has(.main-article) .main-article {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+/* 3. दाएँ और बाएँ साइडबार की स्थिति सही करना */
+body:has(.main-article) .left-explorer,
+body:has(.main-article) .right-sidebar {
+    display: block !important;
+    position: sticky !important;
+    top: 120px !important;
+}
+/* ARTICLE PAGE GRID FIX */
+.abp-layout-grid {
+    display: grid !important;
+    grid-template-columns: 200px 1fr 280px !important;
+    gap: 20px !important;
+    align-items: start !important;
+}
+
+.right-sidebar {
+    display: block !important;
+}
+/* GOOGLE TRANSLATE FLOATING ICON & OVERLAY HIDE */
+body { top: 0px !important; position: static !important; }
+.goog-te-banner-frame, .goog-te-balloon-frame, #goog-gt-tt, .goog-te-spinner-pos, .VIpgJd-yD32b-Lg26de, .goog-te-gadget-icon, .skiptranslate {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+/* FORCE HIDE GOOGLE TRANSLATE POPUPS & FLOATING ICON */
+body {
+    top: 0px !important;
+    position: static !important;
+}
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-te-spinner-pos,
+.VIpgJd-yD32b-Lg26de,
+.goog-te-gadget-icon,
+.skiptranslate,
+#google_translate_element {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+/* GOOGLE TRANSLATE ICON & TOOLBAR HARD HIDE */
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+iframe.skiptranslate,
+iframe[id*=":gt:"],
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-te-spinner-pos,
+.VIpgJd-yD32b-Lg26de,
+.goog-te-gadget-icon,
+.skiptranslate,
+#google_translate_element {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+/* SAFE GOOGLE TRANSLATE HIDE (WITHOUT BLOCKING CLICKS) */
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+/* केवल गूगल के एलिमेंट्स को छिपाएं, पूरी बॉडी को नहीं */
+iframe.skiptranslate,
+iframe[id*=":gt:"],
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-te-spinner-pos,
+.VIpgJd-yD32b-Lg26de,
+.goog-te-gadget-icon,
+#google_translate_element {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}

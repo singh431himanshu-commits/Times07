@@ -1,0 +1,160 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Times07 - Article Reader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- LEVEL 1: TOP GLOBAL BAR -->
+    <div class="top-global-bar">
+        <div class="global-bar-container">
+            <div class="top-left-info">
+                <span id="live-clock" class="top-time"></span>
+                <span class="divider">|</span>
+                <div class="lang-switcher">
+                    <a href="javascript:void(0)" onclick="translatePage('hi', this)" class="active">हिंदी</a>
+                    <a href="javascript:void(0)" onclick="translatePage('en', this)">English</a>
+                </div>
+            </div>
+            <div class="top-right-social">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEVEL 2: MAIN HEADER -->
+    <header class="main-header sticky-nav">
+        <div class="header-container">
+            <div class="logo-box">
+                <a href="index.html">
+                    <span class="abp-badge">Times</span><span class="times-brand">07</span>
+                </a>
+            </div>
+
+            <nav class="primary-nav">
+                <a href="index.html" class="nav-item"><i class="fa-solid fa-house" style="color:#c00000;"></i> होम</a>
+                <a href="index.html" class="nav-item">मुख्य समाचार</a>
+                <a href="index.html" class="nav-item">राजनीति</a>
+                <a href="index.html" class="nav-item">बिजनेस</a>
+                <a href="index.html" class="nav-item">टेक & AI</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleTheme()"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN ARTICLE WRAPPER (HOMEPAGE MATCHED LAYOUT) -->
+    <main class="main-wrapper" style="margin-top:20px;">
+        <div class="abp-layout-grid">
+            
+            <!-- LEFT EXPLORER SIDEBAR (SAME AS HOMEPAGE) -->
+            <aside class="left-explorer">
+                <div class="explorer-menu">
+                    <a href="index.html" class="explorer-item"><i class="fa-solid fa-house" style="color:#c00000;"></i><span>होम पेज</span></a>
+                    <a href="index.html#live-tv-section" class="explorer-item"><i class="fa-solid fa-tv" style="color:#c00000;"></i><span>लाइव टीवी</span></a>
+                    <a href="index.html#videos-section" class="explorer-item"><i class="fa-solid fa-circle-play"></i><span>वीडियो</span></a>
+                    <a href="index.html#shorts-section" class="explorer-item"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i><span>शॉर्ट्स</span></a>
+                </div>
+            </aside>
+
+            <!-- CENTER MAIN ARTICLE CONTENT -->
+            <section class="center-feed">
+                <article class="main-article" style="background:var(--card-bg); border:1px solid var(--border-color); padding:25px; border-radius:10px;">
+                    
+                    <span class="cat-badge" id="page-cat" style="background:#c00000; color:#fff; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:800;">मुख्य समाचार</span>
+
+                    <h1 id="page-title" style="font-size:26px; font-weight:800; margin:15px 0; line-height:1.35; color:var(--heading-color);">खबर लोड हो रही है...</h1>
+                    
+                    <div style="display:flex; gap:15px; font-size:12px; color:var(--muted-text); margin-bottom:15px; border-bottom:1px solid var(--border-color); padding-bottom:10px; font-weight:700;">
+                        <span><i class="fa-regular fa-clock"></i> <span id="page-time">July 26, 2026</span></span>
+                        <span><i class="fa-solid fa-eye" style="color:#c00000;"></i> <span id="views-count">1,840</span> व्यूज</span>
+                        <span>बाय <strong>Times07 ब्यूरो</strong></span>
+                    </div>
+
+                    <!-- Audio Reader -->
+                    <div style="background:var(--bg-color); border:1px solid var(--border-color); padding:10px 15px; border-radius:6px; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                        <button onclick="playAudioText()" class="btn btn-red" style="padding:5px 12px; font-size:12px; background:#c00000; color:#fff; border:none; border-radius:4px; cursor:pointer;"><i class="fa-solid fa-volume-high"></i> खबर सुनें</button>
+                        <button onclick="stopAudioText()" style="padding:5px 12px; font-size:12px; background:#64748b; color:#fff; border:none; border-radius:4px; cursor:pointer;"><i class="fa-solid fa-square"></i> रोकें</button>
+                    </div>
+
+                    <!-- Featured Image -->
+                    <div style="width:100%; height:350px; border-radius:8px; overflow:hidden; margin-bottom:20px;">
+                        <img id="page-img" src="" alt="News Image" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+
+                    <!-- Body Content -->
+                    <div id="page-content" style="font-size:16px; line-height:1.8; color:var(--text-color); margin-bottom:30px; font-weight:600;"></div>
+
+                    <a href="index.html" style="display:inline-block; padding:8px 16px; background:#c00000; color:#fff; text-decoration:none; border-radius:6px; font-weight:800; font-size:13px;"><i class="fa-solid fa-arrow-left"></i> मुख्य पृष्ठ पर वापस जाएँ</a>
+                </article>
+
+                <!-- HORIZONTAL RELATED NEWS SUGGESTIONS -->
+                <section style="margin-top:30px;">
+                    <h3 class="section-title-abp" style="font-size:18px; border-left:4px solid #c00000; padding-left:8px; margin-bottom:15px;">संबंधित एवं ट्रेंडिंग खबरें</h3>
+                    <div class="top-4-cards-grid" id="sidebar-list">
+                        <!-- Related News Loaded Dynamically -->
+                    </div>
+                </section>
+            </section>
+            <!-- HORIZONTAL RELATED NEWS SUGGESTIONS -->
+                <section style="margin-top:30px;">
+                    <h3 class="section-title-abp" style="font-size:18px; border-left:4px solid #c00000; padding-left:8px; margin-bottom:15px;">संबंधित एवं ट्रेंडिंग खबरें</h3>
+                    <div class="top-4-cards-grid" id="sidebar-list">
+                        <!-- Related News Loaded Dynamically -->
+                    </div>
+                    <!-- RIGHT SIDEBAR (दायाँ साइडबार) -->
+            <aside class="right-sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title"><i class="fa-solid fa-chart-line" style="color:#c00000;"></i> मोस्ट रीड स्टोरीज</h3>
+                    <div id="most-read-box"></div>
+                </div>
+            </aside>
+                </section>
+            </section>
+            <!-- RIGHT SIDEBAR FOR ARTICLE PAGE -->
+            <aside class="right-sidebar" style="display:block !important;">
+                 
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title"><i class="fa-solid fa-fire" style="color:#c00000;"></i> ट्रेंडिंग खबरें</h3>
+                    <div id="sidebar-list"></div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="mega-footer">
+        <div class="footer-bottom">
+            © 2026 Times07 Media Network. सर्वाधिकार सुरक्षित।
+        </div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+    <script>
+        let speechSynth = window.speechSynthesis;
+        function playAudioText() {
+            if (speechSynth.speaking) speechSynth.cancel();
+            const textToRead = document.getElementById('page-content').innerText;
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'hi-IN';
+            speechSynth.speak(utterance);
+        }
+        function stopAudioText() {
+            if (speechSynth.speaking) speechSynth.cancel();
+        }
+    </script>
+</body>
+</html>

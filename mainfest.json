@@ -1,0 +1,20 @@
+{
+  "name": "Times07 Global News",
+  "short_name": "Times07",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#e60000",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

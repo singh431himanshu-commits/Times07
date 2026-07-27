@@ -1,0 +1,252 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times07 - Admin Control Desk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --panel-dark: #1e293b;
+            --border-color: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-red: #c00000;
+            --accent-blue: #2563eb;
+            --accent-green: #16a34a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+
+        /* Security PIN Gate */
+        #security-gate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0b0f19; z-index: 99999; display: flex; align-items: center; justify-content: center;
+        }
+        .gate-card {
+            background: #1e293b; border: 1px solid #334155; padding: 30px; border-radius: 12px;
+            width: 320px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        .icon-3d {
+            width: 55px; height: 50px; margin: 0 auto 15px;
+            background: linear-gradient(145deg, #c00000, #8b0000);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 22px; color: #fff; box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Sidebar & Main */
+        .admin-sidebar { width: 260px; background: var(--panel-dark); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; }
+        .brand-header { padding: 20px; font-size: 18px; font-weight: 800; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 10px; color: var(--accent-red); }
+        .nav-menu { list-style: none; padding: 15px 10px; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px; font-size: 13px; font-weight: 700; color: var(--text-muted); border-radius: 6px; cursor: pointer; margin-bottom: 4px; transition: 0.2s; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-red); color: #fff; }
+
+        .admin-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .admin-header { height: 60px; background: var(--panel-dark); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 25px; }
+        .admin-body { flex: 1; padding: 25px; overflow-y: auto; }
+
+        .panel-card { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--text-muted); }
+        .form-control { width: 100%; padding: 10px; background: #0f172a; border: 1px solid var(--border-color); color: #fff; border-radius: 6px; outline: none; }
+        .btn { padding: 9px 18px; font-size: 13px; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-red { background: var(--accent-red); color: #fff; }
+        .btn-blue { background: var(--accent-blue); color: #fff; }
+
+        .table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .table th, .table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 13px; }
+        .table th { background: #0f172a; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <!-- PIN SECURITY GATE -->
+    <div id="security-gate">
+        <div class="gate-card">
+            <div class="icon-3d"><i class="fa-solid fa-lock"></i></div>
+            <h3 style="margin-bottom:15px; font-size:16px;">Admin Access Gate</h3>
+            <input type="password" id="admin-pin" class="form-control" placeholder="पासवर्ड दर्ज करें (Pin: 1234)" style="margin-bottom:12px; text-align:center;">
+            <button onclick="unlockDesk()" class="btn btn-red" style="width:100%; justify-content:center;">Unlock Dashboard</button>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+        <div class="brand-header">
+            <i class="fa-solid fa-user-shield"></i> Times07 Desk
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" onclick="showTab('add-news')"><i class="fa-solid fa-pen-to-square"></i> नई खबर जोड़ें</li>
+            <li class="nav-item" onclick="showTab('manage-news')"><i class="fa-solid fa-list-check"></i> खबर मैनेज करें</li>
+        </ul>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-header">
+            <h4>Times07 Enterprise Dashboard</h4>
+            <a href="index.html" class="btn btn-blue" style="text-decoration:none;"><i class="fa-solid fa-globe"></i> लाइव वेबसाइट देखें</a>
+        </header>
+
+        <div class="admin-body">
+            <!-- ADD/EDIT FORM -->
+            <div id="tab-add-news" class="panel-card">
+                <h3 id="form-title" style="margin-bottom:15px;">✍️ Publish New Article</h3>
+                <input type="hidden" id="edit-id">
+                
+                <div class="form-group">
+                    <label>खबर का शीर्षक (Title)</label>
+                    <input type="text" id="news-title" class="form-control" placeholder="यहाँ हेडिंग टाइप करें...">
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                    <div class="form-group">
+                        <label>कैटेगरी (Category)</label>
+                        <select id="news-cat" class="form-control">
+                            <option>मुख्य समाचार</option>
+                            <option>राजनीति</option>
+                            <option>बिजनेस</option>
+                            <option>खेल</option>
+                            <option>टेक & AI</option>
+                            <option>मनोरंजन</option>
+                            <option>राज्य</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>फोटो चुनिए (PC से अपलोड करें या Link डालें)</label>
+                        <input type="file" id="news-img-file" class="form-control" accept="image/*" onchange="uploadPCImage(this)">
+                        <input type="text" id="news-img" class="form-control" placeholder="या फोटो का URL डालें..." style="margin-top:6px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>पूरी खबर विवरण (Description)</label>
+                    <textarea id="news-desc" class="form-control" rows="6" placeholder="पूरी खबर यहाँ लिखें..."></textarea>
+                </div>
+
+                <button class="btn btn-red" onclick="publishNews()"><i class="fa-solid fa-paper-plane"></i> वेबसाइट पर पब्लिश करें</button>
+            </div>
+
+            <!-- MANAGE TABLE -->
+            <div id="tab-manage-news" class="panel-card" style="display:none;">
+                <h3>📰 पब्लिश की गई खबरें</h3>
+                <table class="table">
+                    <thead>
+                        <tr><th>शीर्षक</th><th>कैटेगरी</th><th>एक्शन</th></tr>
+                    </thead>
+                    <tbody id="articles-list-table"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function unlockDesk() {
+            const pin = document.getElementById('admin-pin').value;
+            if (pin === '1234' || pin === 'admin') {
+                document.getElementById('security-gate').style.display = 'none';
+            } else {
+                alert('गलत पिन! सही पिन 1234 है।');
+            }
+        }
+
+        function uploadPCImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('news-img').value = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA0c_Bz7HdU6YoL62L1cGfsA89Hg7609Ww",
+            authDomain: "times07news.firebaseapp.com",
+            projectId: "times07news",
+            storageBucket: "times07news.firebasestorage.app",
+            messagingSenderId: "527951679601",
+            appId: "1:527951679601:web:d33bfb58aaae9665c68bd0",
+            databaseURL: "https://times07news-default-rtdb.firebaseio.com"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const newsRef = ref(db, 'articles');
+
+        window.showTab = function(tabName) {
+            document.querySelectorAll('.panel-card').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById('tab-' + tabName).style.display = 'block';
+        };
+
+        window.publishNews = function() {
+            const title = document.getElementById('news-title').value;
+            const cat = document.getElementById('news-cat').value;
+            const img = document.getElementById('news-img').value || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800';
+            const desc = document.getElementById('news-desc').value;
+            const editId = document.getElementById('edit-id').value;
+
+            if(!title) return alert("कृपया हेडिंग दर्ज करें!");
+
+            if(editId) {
+                update(ref(db, 'articles/' + editId), { title, category: cat, img1: img, desc });
+                alert("खबर अपडेट हो गई!");
+                document.getElementById('edit-id').value = "";
+            } else {
+                push(newsRef, { title, category: cat, img1: img, desc, views: Math.floor(Math.random()*2000)+500, timestamp: Date.now() });
+                alert("खबर पब्लिश हो गई!");
+            }
+
+            document.getElementById('news-title').value = "";
+            document.getElementById('news-desc').value = "";
+            document.getElementById('news-img').value = "";
+            showTab('manage-news');
+        };
+
+        onValue(newsRef, (snapshot) => {
+            const data = snapshot.val();
+            const table = document.getElementById('articles-list-table');
+            table.innerHTML = "";
+            if(data) {
+                Object.keys(data).forEach(key => {
+                    const news = data[key];
+                    table.innerHTML += `
+                        <tr>
+                            <td><strong>${news.title}</strong></td>
+                            <td>${news.category || 'सामान्य'}</td>
+                            <td>
+                                <button class="btn btn-blue" onclick="editNews('${key}', '${encodeURIComponent(news.title)}', '${news.category}', '${news.img1}', '${encodeURIComponent(news.desc||'')}')"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-red" onclick="deleteNews('${key}')"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            }
+        });
+
+        window.editNews = function(id, title, cat, img, desc) {
+            showTab('add-news');
+            document.getElementById('edit-id').value = id;
+            document.getElementById('news-title').value = decodeURIComponent(title);
+            document.getElementById('news-cat').value = cat;
+            document.getElementById('news-img').value = img;
+            document.getElementById('news-desc').value = decodeURIComponent(desc);
+            document.getElementById('form-title').innerText = "✏️ Edit Article";
+        };
+
+        window.deleteNews = function(id) {
+            if(confirm("क्या आप इस खबर को हटाना चाहते हैं?")) {
+                remove(ref(db, 'articles/' + id));
+            }
+        };
+    </script>
+</body>
+</html>

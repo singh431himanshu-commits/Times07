@@ -1,0 +1,343 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times07 - भारत और दुनिया की ताज़ा ख़बरें, Live Updates, Breaking News</title>
+    <!-- Core CSS Engine -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Pro Icons Network -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Hierarchy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <!-- Web Manifest & PWA Theme -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#c00000">
+    <meta name="description" content="Times07 - भारत का निष्पक्ष एवं विश्वसनीय समाचार नेटवर्क। राजनीति, खेल, बॉलीवुड, व्यापार और तकनीक की हर खबर।">
+</head>
+<body>
+
+    <!-- Reading Progress Indicator Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- LEVEL 1: GLOBAL TOP HEADER BAR -->
+    <!-- SINGLE CLEAN ABP STYLE TOP BAR -->
+<div class="top-global-bar">
+    <div class="global-bar-container">
+        <div class="top-left-info">
+            <span id="live-clock" class="top-time"></span>
+            <span class="divider">|</span>
+            <div class="lang-switcher">
+                <a href="javascript:void(0)" onclick="translatePage('hi', this)" class="active">हिंदी</a>
+                <a href="javascript:void(0)" onclick="translatePage('en', this)">English</a>
+                <a href="javascript:void(0)" onclick="translatePage('mr', this)">मराठी</a>
+                <a href="javascript:void(0)" onclick="translatePage('bn', this)">বাংলা</a>
+                <a href="javascript:void(0)" onclick="translatePage('pa', this)">पंजाबी</a>
+                <a href="javascript:void(0)" onclick="translatePage('gu', this)">ગુજરાતી</a>
+                <a href="javascript:void(0)" onclick="translatePage('ta', this)">தமிழ்</a>
+                <a href="javascript:void(0)" onclick="translatePage('te', this)">తెలుగు</a>
+            </div>
+        </div>
+        <div class="top-right-social">
+            <span class="contact-text">संपर्क करें</span>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </div>
+</div> 
+    <!-- LEVEL 2 & 3: MAIN NAVBAR WITH EXTENSIVE MEGA MENU -->
+    <!-- TOP BAR: ABP STYLE COMPACT LANGUAGE BAR -->
+ 
+
+<!-- MAIN HEADER: CLEAN & COMPACT -->
+<header class="main-header sticky-nav">
+    <div class="header-container">
+        <div class="logo-box">
+            <a href="javascript:void(0)" onclick="location.reload()">
+                <span class="abp-badge">Times</span><span class="times-brand">07</span>
+            </a>
+        </div>
+
+        <!-- कॉम्पैक्ट मेनू (कुछ बटन 'अन्य' में डाल दिए गए) -->
+        <nav class="primary-nav">
+            <a href="javascript:void(0)" onclick="location.reload()" class="nav-item active"><i class="fa-solid fa-house" style="color:red;"></i> होम</a>
+            <a href="javascript:void(0)" onclick="filterNews('न्यूज़')" class="nav-item">न्यूज़</a>
+            <a href="javascript:void(0)" onclick="filterNews('राज्य')" class="nav-item">राज्य</a>
+            <a href="javascript:void(0)" onclick="filterNews('मनोरंजन')" class="nav-item">मनोरंजन</a>
+            <a href="javascript:void(0)" onclick="filterNews('खेल')" class="nav-item">खेल</a>
+            <a href="javascript:void(0)" onclick="filterNews('बिजनेस')" class="nav-item">बिजनेस</a>
+            <a href="javascript:void(0)" onclick="filterNews('टेक')" class="nav-item">टेक & AI</a>
+            <a href="javascript:void(0)" onclick="filterNews('लाइफस्टाइल')" class="nav-item">लाइफस्टाइल</a>
+            
+            <!-- 'अन्य' ड्रॉपडाउन जिसमें बाकी बटन चले गए -->
+            <div class="nav-dropdown">
+                <a href="javascript:void(0)" class="nav-item">अन्य <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="filterNews('GK')">GK & शिक्षा</a>
+                    <a href="javascript:void(0)" onclick="filterNews('ऑटो')">ऑटो</a>
+                    <a href="javascript:void(0)" onclick="filterNews('फोटो')">फोटो</a>
+                    <a href="javascript:void(0)" onclick="filterNews('वीडियो')">वीडियो</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- केवल लेंस आइकॉन और कस्टमर प्रोफाइल लोगो -->
+         <div class="header-actions">
+    <button class="icon-btn" title="डार्क/लाइट मोड" onclick="toggleTheme()"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+    <button class="icon-btn" title="सर्च"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button class="icon-btn user-logo-btn" title="यूज़र / एडमिन" onclick="openAuthModal()"><i class="fa-solid fa-circle-user"></i></button>
+</div>
+    </div>
+</header>
+
+    <!-- LEVEL 4: TRENDING HASHTAGS BAR -->
+    <div class="trending-hashtags-bar" id="trending-topics-bar">
+        <div class="trending-container">
+            <span class="trending-label"><i class="fa-solid fa-fire"></i> ट्रेंडिंग:</span>
+            <div class="hashtags-wrapper">
+                <a href="#" onclick="filterCategory('इलेक्शन')">#Election2026</a>
+                <a href="#" onclick="filterCategory('विज्ञान एवं तकनीक')">#AI_Summit</a>
+                <a href="#" onclick="filterCategory('बिजनेस')">#StockMarketRecord</a>
+                <a href="#" onclick="filterCategory('खेल')">#CricketWorldCup</a>
+                <a href="#" onclick="filterCategory('मौसम')">#MonsoonUpdate</a>
+                <a href="#" onclick="filterCategory('बॉलीवुड')">#BollywoodExclusive</a>
+                <a href="#" onclick="filterCategory('विज्ञान एवं तकनीक')">#ISROMission</a>
+                <a href="#" onclick="filterCategory('शेयर बाजार')">#Budget2026</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEVEL 5: BREAKING NEWS TICKER -->
+    <div class="breaking-ticker-bar" id="breaking-live-ticker">
+        <div class="ticker-badge">BREAKING LIVE</div>
+        <marquee behavior="scroll" direction="left" id="live-ticker-text">
+            Times07 लाइव अपडेट्स: देश-विदेश की बड़ी खबरें, शेयर बाजार का हाल, बजट अपडेट्स, और खेल की हर ताज़ा रिपोर्ट...
+        </marquee>
+    </div>
+
+    <!-- LEVEL 17 & 18: LIVE MARKET RATES & WEATHER STRIP -->
+    <div class="market-weather-strip" id="market-weather-bar">
+        <div class="mw-item"><i class="fa-solid fa-location-dot" style="color:var(--abp-red);"></i> <span id="user-location-city">नई दिल्ली</span>: <b id="top-weather-temp">28°C साफ़ मौसम</b></div>
+        <div class="mw-item"><i class="fa-solid fa-chart-line" style="color:#10b981;"></i> NIFTY 50: <span style="color:#10b981;" id="nifty-val">24,850 (+0.65%)</span></div>
+        <div class="mw-item"><i class="fa-solid fa-arrow-trend-up" style="color:#10b981;"></i> SENSEX: <span style="color:#10b981;" id="sensex-val">81,300 (+0.55%)</span></div>
+        <div class="mw-item"><i class="fa-brands fa-bitcoin" style="color:#f59e0b;"></i> BTC: <span style="color:#10b981;" id="btc-val">$68,450</span></div>
+        <div class="mw-item"><i class="fa-solid fa-coins" style="color:#eab308;"></i> सोना: <span id="gold-val">₹74,200/10g</span></div>
+        <div class="mw-item"><i class="fa-solid fa-gas-pump" style="color:#ef4444;"></i> पेट्रोल: <span>₹94.72/L</span></div>
+        <div class="mw-item"><i class="fa-solid fa-droplet" style="color:#3b82f6;"></i> डीजल: <span>₹87.62/L</span></div>
+    </div>
+
+    <!-- MAIN BODY CONTENT ARCHITECTURE -->
+    <main class="main-wrapper" id="main-content">
+        <div class="abp-layout-grid">
+            
+            <!-- LEVEL 19: LEFT EXPLORER SIDEBAR NAVIGATION -->
+            <aside class="left-explorer" id="left-side-explorer">
+                <div class="explorer-menu">
+                    <a href="#live-tv-section" class="explorer-item"><i class="fa-solid fa-tv" style="color:var(--abp-red);"></i><span>लाइव टीवी</span></a>
+                    <a href="#videos-section" class="explorer-item"><i class="fa-solid fa-circle-play"></i><span>वीडियो</span></a>
+                    <a href="#shorts-section" class="explorer-item"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i><span>शॉर्ट्स</span></a>
+                    <a href="#photos-section" class="explorer-item"><i class="fa-solid fa-images"></i><span>फोटो गैलरी</span></a>
+                    <a href="#podcasts-section" class="explorer-item"><i class="fa-solid fa-podcast"></i><span>पॉडकास्ट</span></a>
+                    <a href="#opinion-section" class="explorer-item"><i class="fa-solid fa-newspaper"></i><span>ओपिनियन</span></a>
+                </div>
+
+                <div class="explorer-widgets-stack" style="margin-top:20px;">
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title"><i class="fa-solid fa-poll" style="color:var(--abp-red);"></i> आज का पोल</h3>
+                        <p style="font-size:12px; margin:8px 0; font-weight:600;">क्या 2030 तक AI पारंपरिक नौकरियों को बड़े स्तर पर बदल देगा?</p>
+                        <button class="poll-btn" onclick="alert('आपका वोट दर्ज कर लिया गया है!')" style="width:100%; padding:6px; margin-bottom:5px; background:var(--card-bg); border:1px solid var(--border-color); border-radius:4px; font-size:12px; cursor:pointer;">हाँ, पूरी तरह (68%)</button>
+                        <button class="poll-btn" onclick="alert('आपका वोट दर्ज कर लिया गया है!')" style="width:100%; padding:6px; background:var(--card-bg); border:1px solid var(--border-color); border-radius:4px; font-size:12px; cursor:pointer;">नहीं, आंशिक बदलाव (32%)</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CENTER MAIN EDITORIAL STREAM -->
+            <section class="center-feed" id="center-main-feed">
+                
+                <!-- LEVEL 6: HERO SECTION (BIG STORY LEAD CARD) -->
+                 <div class="hero-section-box" id="hero-slider-box" style="cursor:pointer;">
+    <a href="article.html?id=0" id="slide-link" style="text-decoration:none; color:inherit; display:block; height:100%;">
+        <div class="hero-overlay">
+            <span class="cat-badge" id="slide-cat">बड़ी खबर</span>
+            <h1 id="slide-title">खबर लोड हो रही है...</h1>
+            <p id="slide-desc" style="font-size:14px; color:#e5e7eb; margin-top:8px;"></p>
+        </div>
+    </a>
+</div>
+
+                <!-- LEVEL 7: TOP STORIES GRID -->
+                <section class="top-stories-block" id="top-headlines-block">
+                    <h2 class="section-title-abp">टॉप हेडलाइंस</h2>
+                    <div id="editors-choice-box" class="top-stories-grid"></div>
+                </section>
+
+                <!-- LEVEL 8 & 9: LATEST NEWS STREAM & LIVE UPDATES -->
+                <section class="latest-feed-block" id="latest-news-block">
+                    <h2 class="section-title-abp">लेटेस्ट हिंदी न्यूज़</h2>
+                      <div class="abp-list-view" id="news-container"></div>
+                </section>
+
+                <!-- LEVEL 10: CATEGORY BLOCKS (POLITICS, TECH, SPORTS, ENTERTAINMENT) -->
+                <section class="category-block-wrapper" id="category-blocks-container">
+                    <!-- Dynamic JS Category Feed Populates Here -->
+                </section>
+
+                <!-- LEVEL 11 & 14: LIVE TV & VIDEO STREAM BLOCK -->
+                <section id="live-tv-section" class="media-block-card">
+                    <div class="media-header">
+                        <h3><i class="fa-solid fa-circle-dot" style="color:var(--abp-red);"></i> Times07 24x7 Live TV Stream</h3>
+                    </div>
+                    <div class="live-player-box">
+                        <i class="fa-solid fa-circle-play play-icon"></i>
+                        <span>LIVE BROADCAST FEED (HIGH DEFINITION 1080P)</span>
+                    </div>
+                </section>
+
+                <!-- LEVEL 12: INSTAGRAM REELS STYLE SHORTS -->
+                <section id="shorts-section" style="margin-top:30px;">
+                    <h2 class="section-title-abp"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> 60-सेकंड शॉर्ट्स</h2>
+                    <div class="shorts-grid" id="shorts-container">
+                        <!-- Vertical Reels Cards Populate Dynamically -->
+                    </div>
+                </section>
+
+                <!-- LEVEL 13: PHOTO GALLERY -->
+                <section id="photos-section" style="margin-top:30px;">
+                    <h2 class="section-title-abp"><i class="fa-solid fa-camera-retro"></i> फोटो गैलरी</h2>
+                    <div class="photo-gallery-grid" id="photo-gallery-container"></div>
+                </section>
+
+                <!-- LEVEL 15 & 16: OPINION & PODCASTS -->
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:30px;" id="opinion-section">
+                    <div class="widget-card">
+                        <h3 class="section-title-abp"><i class="fa-solid fa-pen-nib"></i> आज का ओपिनियन</h3>
+                        <div id="opinion-box"></div>
+                    </div>
+                    <div class="widget-card" id="podcasts-section">
+                        <h3 class="section-title-abp"><i class="fa-solid fa-podcast"></i> दैनिक पॉडकास्ट</h3>
+                        <div id="podcast-box"></div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- LEVEL 19: RIGHT SIDEBAR STACK -->
+            <aside class="right-sidebar" id="right-side-bar">
+                <!-- Most Read Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title"><i class="fa-solid fa-chart-line" style="color:var(--abp-red);"></i> मोस्ट रीड स्टोरीज</h3>
+                    <div id="most-read-box"></div>
+                </div>
+
+                <!-- Daily Newsletter Box -->
+                <div class="sidebar-widget newsletter-box">
+                    <h3><i class="fa-solid fa-envelope-open-text"></i> दैनिक बुलेटिन</h3>
+                    <p style="font-size:12px; margin:8px 0; color:var(--muted-text);">सुबह की सभी बड़ी खबरें सीधे अपने ईमेल पर पाएं।</p>
+                    <input type="email" placeholder="अपना ईमेल दर्ज करें" id="newsletter-email">
+                    <button class="sub-btn" onclick="alert('धन्यवाद! आपने बुलेटिन सब्सक्राइब कर लिया है।')">सब्सक्राइब करें</button>
+                </div>
+
+                <!-- Ad Unit Space -->
+                <div class="sidebar-widget ad-space">
+                    <span>📢 विज्ञापन (ADVERTISEMENT SPACE)</span>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- LEVEL 25: ADMIN CONTROL CENTER DASHBOARD -->
+    <section class="main-wrapper hidden" id="admin-panel">
+        <div class="admin-card">
+            <h2><i class="fa-solid fa-user-shield" style="color:var(--abp-red);"></i> Times07 Enterprise Control Desk</h2>
+            <p style="font-size:14px; color:var(--muted-text); margin:10px 0;">डेटाबेस में लाइव रिच रिपोर्ट पब्लिश या सिंक करने के लिए नीचे बटन दबाएं:</p>
+            <button type="button" onclick="fetchLiveRSSNews()" class="dispatch-btn"><i class="fa-solid fa-bolt"></i> Dispatch Rich Coverage to Database</button>
+            <button onclick="showHome()" class="sub-btn" style="margin-top:15px; background:#475569;">लाइव वेबसाइट देखें</button>
+        </div>
+    </section>
+
+    <!-- LEVEL 24: MEGA FOOTER -->
+    <footer class="mega-footer" id="contact-footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h2 class="footer-logo"> <span>Times07</span></h2>
+                <p>Times07 भारत का सबसे विश्वसनीय और निष्पक्ष डिजिटल समाचार नेटवर्क है जो राजनीति, व्यापार, खेल, तकनीक और मनोरंजन पर पल-पल की सटीक खबरें उपलब्ध कराता है।</p>
+            </div>
+            <div class="footer-col">
+                <h4>कैटेगरीज</h4>
+                <a href="#" onclick="showHome()">मुख्य समाचार</a>
+                <a href="#" onclick="filterCategory('राजनीति')">राजनीति</a>
+                <a href="#" onclick="filterCategory('बिजनेस')">बिजनेस</a>
+                <a href="#" onclick="filterCategory('विज्ञान एवं तकनीक')">टेक्नोलॉजी</a>
+                <a href="#" onclick="filterCategory('मनोरंजन')">मनोरंजन</a>
+            </div>
+            <div class="footer-col">
+                <h4>कंपनी & नीतियां</h4>
+                <a href="#">हमारे बारे में</a>
+                <a href="#">एडिटोरियल पॉलिसी</a>
+                <a href="#">फैक्ट चेक नीतियां</a>
+                <a href="#">करियर</a>
+                <a href="#">संपर्क करें</a>
+            </div>
+            <div class="footer-col">
+                <h4>लीगल & प्राइवेसी</h4>
+                <a href="#">प्राइवेसी पॉलिसी</a>
+                <a href="#">नियम एवं शर्तें</a>
+                <a href="#">साइटमैप</a>
+                <a href="#">RSS फीड्स</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Times07 Media Network. सर्वाधिकार सुरक्षित। Enterprise Live System.
+        </div>
+    </footer>
+
+    <!-- Master Unified Script -->
+    <script type="module" src="script.js"></script>
+    <!-- LOGIN / SIGNUP MODAL -->
+ <!-- COMPLETE AUTH MODAL -->
+<div id="auth-modal" class="modal-overlay" style="display:none;">
+    <div class="auth-box">
+        <button type="button" class="close-btn" id="modal-close-btn">&times;</button>
+        <h2>Times07 में आपका स्वागत है</h2>
+        
+        <!-- Google Direct Login Button -->
+        <button type="button" class="google-btn" onclick="alert('Google Auth Triggered!')">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google से जारी रखें
+        </button>
+
+        <div class="auth-divider"><span>या फिर</span></div>
+
+        <div class="tab-btn-group">
+            <button type="button" class="tab-btn active" id="tab-login-btn">लॉगिन</button>
+            <button type="button" class="tab-btn" id="tab-signup-btn">साइन अप</button>
+        </div>
+        
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form" onsubmit="event.preventDefault(); alert('लॉगिन सफल!');">
+            <input type="email" placeholder="ईमेल आईडी" required>
+            <input type="password" placeholder="पासवर्ड" required>
+            <button type="submit" class="auth-submit-btn">लॉगिन करें</button>
+        </form>
+
+        <!-- Full Detail Signup Form -->
+        <form id="signup-form" class="auth-form" style="display:none;" onsubmit="event.preventDefault(); alert('अकाउंट सफलतापूर्वक बन गया!');">
+            <input type="text" placeholder="पूरा नाम" required>
+            <input type="email" placeholder="ईमेल आईडी" required>
+            <input type="tel" placeholder="मोबाइल नंबर" required>
+            <input type="password" placeholder="पासवर्ड बनाएं" required>
+            <input type="password" placeholder="पासवर्ड कन्फर्म करें" required>
+            <button type="submit" class="auth-submit-btn">नया अकाउंट बनाएं</button>
+        </form>
+    </div>
+</div>
+<!-- FLOATING 3D ADMIN BUTTON (BOTTOM RIGHT) -->
+<a href="admin.html" title="एडमिन पैनल खोलें" style="position:fixed; bottom:22px; right:22px; width:48px; height:48px; background:linear-gradient(145deg, #c00000, #8b0000); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; z-index:99999; box-shadow: 3px 5px 12px rgba(0,0,0,0.5), inset 1px 1px 2px rgba(255,255,255,0.4); border:2px solid #fff; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
+    <i class="fa-solid fa-user-gear" style="font-size:20px; filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.5));"></i>
+</a>
+</body>
+</html>
