@@ -1,29 +1,11 @@
-name: Auto News Fetcher
+name: Auto News Bot
 
 on:
-  schedule:
-    - cron: '*/30 * * * *' # हर 30 मिनट में अपने आप चलेगा
-  workflow_dispatch: # तुरंत चलाने के लिए बटन
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Fetch Latest News
-        run: python scripts/fetch_news.py
-
-      - name: Commit and Push Changes
-        run: |
-          git config --global user.name "Times07 Bot"
-          git config --global user.email "bot@times07.com"
-          git add news.json
-          git commit -m "Auto fetch latest breaking news" || exit 0
-          git push
+    - uses: actions/checkout@v3
+    - run: python bot.py
