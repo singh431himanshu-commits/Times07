@@ -92,6 +92,9 @@
         <div class="admin-body">
             <!-- ADD/EDIT FORM -->
             <div id="tab-add-news" class="panel-card">
+                <button class="btn btn-blue" onclick="fetchInstantAutoNews()" style="margin-bottom:15px;">
+    <i class="fa-solid fa-bolt"></i> 1-Click ऑटो ट्रेंडिंग खबरें लाएं
+</button>
                 <h3 id="form-title" style="margin-bottom:15px;">✍️ Publish New Article</h3>
                 <input type="hidden" id="edit-id">
                 
@@ -186,6 +189,34 @@
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             document.getElementById('tab-' + tabName).style.display = 'block';
         };
+        window.fetchInstantAutoNews = async function() {
+    alert("ताज़ा ऑटो-न्यूज़ लोड हो रही है, कृपया 2 सेकंड रुकें...");
+    try {
+        const RSS_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://zeenews.india.com/rss/india-national-news.xml';
+        const res = await fetch(RSS_URL);
+        const data = await res.json();
+        
+        if (data.items && data.items.length > 0) {
+            let count = 0;
+            data.items.slice(0, 5).forEach(item => {
+                push(newsRef, {
+                    title: item.title,
+                    category: 'ब्रेकिंग न्यूज़',
+                    img1: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800',
+                    desc: item.description.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...',
+                    views: Math.floor(Math.random() * 2000) + 500,
+                    timestamp: Date.now()
+                });
+                count++;
+            });
+            alert(`${count} नई ताज़ा खबरें सीधे वेबसाइट पर पब्लिश हो गईं!`);
+        } else {
+            alert("न्यूज़ फेच करने में समस्या आई, कृपया दोबारा कोशिश करें।");
+        }
+    } catch (err) {
+        alert("त्रुटि: " + err.message);
+    }
+};
 
         window.publishNews = function() {
             const title = document.getElementById('news-title').value;
