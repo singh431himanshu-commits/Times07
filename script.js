@@ -413,46 +413,31 @@ const RSS_SOURCES = [
     'https://api.rss2json.com/v1/api.json?rss_url=https://www.amarujala.com/rss/breaking-news.xml'
 ];
 
-async function fetchAutoNews() {
-    console.log("Trending news fetching...");
-    let autoFetchedNews = [];
+ async function fetchAutoNews() {
+    try {
+        const response = await fetch('news.json?v=' + new Date().getTime());
+        if (!response.ok) return;
+        
+        const autoFetchedNews = await response.json();
+        
+        if (autoFetchedNews && autoFetchedNews.length > 0) {
+            // json के डेटा को वेबसाइट के फॉर्मेट में सेट करना
+            const formattedNews = autoFetchedNews.map(item => ({
+                title: item.title,
+                desc: item.desc || item.description,
+                image: item.img1 || item.image,
+                category: item.category || 'ब्रेकिंग न्यूज़',
+                views: item.views || 1500,
+                date: item.date || 'अभी-अभी'
+            }));
 
-    for (let url of RSS_SOURCES) {
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            
-            if (data.status === 'ok' && data.items) {
-                data.items.forEach(item => {
-                    // फोटो निकालने का लॉजिक
-                    let imgUrl = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800';
-                    if (item.enclosure && item.enclosure.link) {
-                        imgUrl = item.enclosure.link;
-                    } else if (item.thumbnail) {
-                        imgUrl = item.thumbnail;
-                    }
-
-                    autoFetchedNews.push({
-                        title: item.title,
-                        desc: item.description || item.content,
-                        img1: imgUrl,
-                        category: 'ट्रेंडिंग',
-                        views: Math.floor(Math.random() * 2000) + 500,
-                        date: item.pubDate
-                    });
-                });
+            window.sampleNews = [...formattedNews, ...(window.sampleNews || [])];
+            if (typeof renderNews === 'function') {
+                renderNews();
             }
-        } catch (error) {
-            console.log("Feed Fetch Error:", error);
         }
-    }
-
-    if (autoFetchedNews.length > 0) {
-        // पुरानी सैम्पल खबरों के ऊपर नई ऑटो-खबरों को जोड़ना
-        window.sampleNews = [...autoFetchedNews, ...(window.sampleNews || [])];
-        if (typeof renderNews === 'function') {
-            renderNews();
-        }
+    } catch (error) {
+        console.log("Feed Fetch Error:", error);
     }
 }
 
