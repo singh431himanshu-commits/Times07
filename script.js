@@ -457,7 +457,7 @@ async function fetchAutoNews() {
 }
 
 // पेज लोड होते ही और हर 10 मिनट में अपने आप नई खबर पब्लिश होगी
-document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
     fetchAutoNews();
-    setInterval(fetchAutoNews, 600000); // 10 Minutes Auto Refresh
-}); 
+    setInterval(fetchAutoNews, 600000);
+});
