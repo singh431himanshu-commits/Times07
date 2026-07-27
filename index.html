@@ -340,5 +340,15 @@
 <a href="admin.html" title="एडमिन पैनल खोलें" style="position:fixed; bottom:22px; right:22px; width:48px; height:48px; background:linear-gradient(145deg, #c00000, #8b0000); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; z-index:99999; box-shadow: 3px 5px 12px rgba(0,0,0,0.5), inset 1px 1px 2px rgba(255,255,255,0.4); border:2px solid #fff; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
     <i class="fa-solid fa-user-gear" style="font-size:20px; filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.5));"></i>
 </a>
+<script>
+  // AURA-07 Auto Fetcher for index.html
+  fetch('news.json')
+    .then(response => response.json())
+    .then(data => {
+      console.log("AURA-07 Live News Loaded:", data);
+      // यहाँ अपनी साइट के न्यूज़ कंटेनर को अपडेट करने का लॉजिक काम करेगा
+    })
+    .catch(err => console.error("Error loading news:", err));
+</script>
 </body>
 </html>
