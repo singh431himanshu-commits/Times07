@@ -460,4 +460,4 @@ async function fetchAutoNews() {
 document.addEventListener('DOMContentLoaded', () => {
     fetchAutoNews();
     setInterval(fetchAutoNews, 600000); // 10 Minutes Auto Refresh
-});
+}); 
