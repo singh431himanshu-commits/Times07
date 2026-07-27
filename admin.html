@@ -189,29 +189,47 @@
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             document.getElementById('tab-' + tabName).style.display = 'block';
         };
-        window.fetchInstantAutoNews = async function() {
+         window.fetchInstantAutoNews = async function() {
     alert("ताज़ा ऑटो-न्यूज़ लोड हो रही है, कृपया 2 सेकंड रुकें...");
     try {
-        const RSS_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https://zeenews.india.com/rss/india-national-news.xml';
-        const res = await fetch(RSS_URL);
+        // Direct Reliable RSS Fetch Service
+        const targetUrl = 'https://zeenews.india.com/rss/india-national-news.xml';
+        const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`);
         const data = await res.json();
         
-        if (data.items && data.items.length > 0) {
+        if (data.contents) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+            const items = xmlDoc.querySelectorAll("item");
+            
             let count = 0;
-            data.items.slice(0, 5).forEach(item => {
-                push(newsRef, {
-                    title: item.title,
-                    category: 'ब्रेकिंग न्यूज़',
-                    img1: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800',
-                    desc: item.description.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...',
-                    views: Math.floor(Math.random() * 2000) + 500,
-                    timestamp: Date.now()
-                });
-                count++;
+            items.forEach((item, index) => {
+                if (index < 5) { // 5 ताज़ा खबरें पब्लिश होंगी
+                    const title = item.querySelector("title")?.textContent || "";
+                    let desc = item.querySelector("description")?.textContent || title;
+                    desc = desc.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...';
+
+                    if (title) {
+                        push(newsRef, {
+                            title: title,
+                            category: 'ब्रेकिंग न्यूज़',
+                            img1: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800',
+                            desc: desc,
+                            views: Math.floor(Math.random() * 2000) + 500,
+                            timestamp: Date.now()
+                        });
+                        count++;
+                    }
+                }
             });
-            alert(`${count} नई ताज़ा खबरें सीधे वेबसाइट पर पब्लिश हो गईं!`);
+
+            if (count > 0) {
+                alert(`बधाई! ${count} नई ताज़ा खबरें सीधे वेबसाइट पर पब्लिश हो गईं!`);
+            } else {
+                alert("खबरें पढ़ने में समस्या आई, कृपया दोबारा क्लिक करें।");
+            }
         } else {
-            alert("न्यूज़ फेच करने में समस्या आई, कृपया दोबारा कोशिश करें।");
+            alert("न्यूज़ सर्वर से प्रतिक्रिया नहीं मिली।");
         }
     } catch (err) {
         alert("त्रुटि: " + err.message);
