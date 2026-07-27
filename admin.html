@@ -189,38 +189,55 @@
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             document.getElementById('tab-' + tabName).style.display = 'block';
         };
-          window.fetchInstantAutoNews = async function() {
+        window.fetchInstantAutoNews = async function() {
     alert("ताज़ा ऑटो-न्यूज़ लोड हो रही है, कृपया 2 सेकंड रुकें...");
     try {
-        // Direct RSS-to-JSON using a clean reliable endpoint
-        const rssUrl = "https://zeenews.india.com/rss/india-national-news.xml";
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`; 
+        // Direct Proxy RSS Fetch
+        const rssUrl = 'https://zeenews.india.com/rss/india-national-news.xml';
+        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(rssUrl)}`;
+        
+        const res = await fetch(proxyUrl);
+        const xmlText = await res.text();
+        
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+        const items = xmlDoc.querySelectorAll("item");
 
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-
-        if (data && data.items && data.items.length > 0) {
+        if (items && items.length > 0) {
             let count = 0;
-            data.items.slice(0, 5).forEach(item => {
-                const cleanDesc = (item.description || item.title).replace(/<[^>]*>?/gm, '').substring(0, 150) + '...';
-                push(newsRef, {
-                    title: item.title,
-                    category: 'ब्रेकिंग न्यूज़',
-                    img1: item.enclosure?.link || item.thumbnail || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800',
-                    desc: cleanDesc,
-                    views: Math.floor(Math.random() * 2000) + 500,
-                    timestamp: Date.now()
-                });
-                count++;
+            items.forEach((item, index) => {
+                if (index < 5) {
+                    const title = item.querySelector("title")?.textContent || "";
+                    let desc = item.querySelector("description")?.textContent || title;
+                    desc = desc.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...';
+
+                    if (title) {
+                        push(newsRef, {
+                            title: title,
+                            category: 'ब्रेकिंग न्यूज़',
+                            img1: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800',
+                            desc: desc,
+                            views: Math.floor(Math.random() * 2000) + 500,
+                            timestamp: Date.now()
+                        });
+                        count++;
+                    }
+                }
             });
-            alert(`सफलता! ${count} नई ऑटो खबरें सीधे Firebase डेटाबेस पर पब्लिश हो गईं!`);
+
+            if (count > 0) {
+                alert(`सफलता! ${count} नई ताज़ा खबरें सीधे Firebase डेटाबेस पर पब्लिश हो गईं!`);
+            } else {
+                alert("खबरें पढ़ने में समस्या आई।");
+            }
         } else {
-            alert("न्यूज़ फेच करने में समस्या आई, कृपया दोबारा क्लिक करें।");
+            alert("RSS सर्वर से प्रतिक्रिया नहीं मिली।");
         }
     } catch (err) {
-        alert("CORS या नेटवर्क त्रुटि: " + err.message);
+        alert("त्रुटि: " + err.message);
     }
 };
+ 
 
         window.publishNews = function() {
             const title = document.getElementById('news-title').value;
