@@ -62,16 +62,6 @@
 </head>
 <body>
 
-    <!-- PIN SECURITY GATE -->
-    <div id="security-gate">
-        <div class="gate-card">
-            <div class="icon-3d"><i class="fa-solid fa-lock"></i></div>
-            <h3 style="margin-bottom:15px; font-size:16px;">Admin Access Gate</h3>
-            <input type="password" id="admin-pin" class="form-control" placeholder="पासवर्ड दर्ज करें (Pin: 1234)" style="margin-bottom:12px; text-align:center;">
-            <button onclick="unlockDesk()" class="btn btn-red" style="width:100%; justify-content:center;">Unlock Dashboard</button>
-        </div>
-    </div>
-
     <!-- SIDEBAR -->
     <aside class="admin-sidebar">
         <div class="brand-header">
@@ -300,5 +290,107 @@
             }
         };
     </script>
+    <!-- Modern AURA-07 AI Control Panel -->
+<div id="aura-admin-chat" style="background: #18191c; border-left: 1px solid #2d2f36; height: 100vh; display: flex; flex-direction: column; color: #e1e3e6; font-family: sans-serif;">
+  
+  <!-- Header -->
+  <div style="padding: 15px; background: #202225; border-bottom: 1px solid #2d2f36; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 20px;">🤖</span>
+      <div>
+        <h4 style="margin: 0; font-size: 15px; color: #fff;">AURA-07 (Maxi)</h4>
+        <small style="color: #00ffcc; font-size: 11px;">● Online | AI Admin</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Log Area -->
+  <div id="chat-logs" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #121315;">
+    <!-- History will load here dynamically -->
+  </div>
+
+  <!-- Input Area -->
+  <div style="padding: 12px; background: #202225; border-top: 1px solid #2d2f36; display: flex; gap: 8px;">
+    <input type="text" id="admin-input" placeholder="यहाँ कमांड टाइप करें... (Enter दबाएं)" style="flex: 1; padding: 10px 14px; background: #2f3136; border: 1px solid #40444b; color: #fff; border-radius: 6px; outline: none; font-size: 14px;">
+     <button onclick="sendAuraCmd()" id="send-btn" type="button" style="padding: 10px 16px; background: #ff4757; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px;">Send</button>
+
+</div>
+<script>
+async function loadChatHistory() {
+  const chatLogs = document.getElementById('chat-logs');
+  if (!chatLogs) return;
+
+  try {
+    const res = await fetch('http://127.0.0.1:5000/api/chat_history');
+    const history = await res.json();
+    chatLogs.innerHTML = '';
+
+    if (history.length === 0) {
+      chatLogs.innerHTML = `<div style="background: #202225; padding: 10px 14px; border-radius: 8px; color: #00ffcc; max-width: 85%; font-size: 13px;"><b>Maxi:</b> जी बॉस! मैं तैयार हूँ। हुक्म कीजिए।</div>`;
+    } else {
+      history.forEach(item => {
+        appendUserMessage(item.user);
+        appendAiMessage(item.ai);
+      });
+    }
+    chatLogs.scrollTop = chatLogs.scrollHeight;
+  } catch (err) {
+    chatLogs.innerHTML = `<div style="color: #ff4757; font-size: 12px; background: #202225; padding: 8px; border-radius: 6px;">⚠️ Server Offline. Terminal में python aura.py चलाएं!</div>`;
+  }
+}
+
+function appendUserMessage(msg) {
+  const chatLogs = document.getElementById('chat-logs');
+  const div = document.createElement('div');
+  div.style.cssText = "align-self: flex-end; background: #2f3542; color: #fff; padding: 9px 13px; border-radius: 12px 12px 0px 12px; max-width: 80%; font-size: 13px; word-break: break-word;";
+  div.innerHTML = `<b>You:</b> ${msg}`;
+  chatLogs.appendChild(div);
+  chatLogs.scrollTop = chatLogs.scrollHeight;
+}
+
+function appendAiMessage(msg) {
+  const chatLogs = document.getElementById('chat-logs');
+  const div = document.createElement('div');
+  div.style.cssText = "align-self: flex-start; background: #1e272e; color: #00d2d3; padding: 9px 13px; border-radius: 12px 12px 12px 0px; max-width: 80%; font-size: 13px; border-left: 3px solid #00d2d3; word-break: break-word;";
+  div.innerHTML = `<b>Maxi:</b> ${msg}`;
+  chatLogs.appendChild(div);
+  chatLogs.scrollTop = chatLogs.scrollHeight;
+}
+
+async function sendAuraCmd() {
+  const adminInput = document.getElementById('admin-input');
+  const msg = adminInput.value.trim();
+  if (!msg) return;
+
+  appendUserMessage(msg);
+  adminInput.value = '';
+
+  try {
+    const res = await fetch('http://127.0.0.1:5000/api/admin_chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg })
+    });
+    const data = await res.json();
+    appendAiMessage(data.reply);
+  } catch (err) {
+    appendAiMessage("सर्वर से कनेक्शन नहीं हो पाया बॉस! क्या python aura.py चल रहा है?");
+  }
+}
+
+// Enter key binding with e.preventDefault() to stop page reload
+window.onload = function() {
+  loadChatHistory();
+  const input = document.getElementById('admin-input');
+  if (input) {
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        e.preventDefault(); // इससे पेज रीलोड/पासवर्ड मांगना बंद हो जाएगा
+        sendAuraCmd();
+      }
+    });
+  }
+};
+</script>
 </body>
 </html>
