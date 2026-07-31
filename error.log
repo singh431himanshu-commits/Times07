@@ -1,1 +1,2 @@
 2026-07-31 14:27:56,994 [ERROR] Main loop crash prevented: 'NoneType' object has no attribute 'replace'
+2026-07-31 23:10:06,901 [ERROR] Main loop crash prevented: 'dict' object has no attribute 'replace'

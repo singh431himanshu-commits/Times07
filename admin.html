@@ -480,15 +480,34 @@
         // ==============================
         // PUBLISH LOGIC
         // ==============================
+ // ==============================
+        // 🚀 BULLETPROOF PUBLISH LOGIC
+        // ==============================
         window.publishDraft = function(type, id) {
             const titleRadio = document.querySelector(`input[name="t_${type}_${id}"]:checked`);
             if(!titleRadio) return alert("कृपया टाइटल चुनें!");
+            
+            // 1. पहले चेक करें कि क्या PC से कोई फोटो अपलोड हुई है
             let img = document.getElementById(`local_img_${type}_${id}`).value;
-            if (!img) { const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`); if(imgRadio) img = imgRadio.value; }
+            
+            // 2. अगर PC से नहीं हुई, तो सेलेक्ट की गई फोटो को स्मार्ट तरीके से निकालें
+            if (!img) { 
+                const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`); 
+                if(imgRadio) {
+                    // लिंक कटने से बचाने के लिए डायरेक्ट इमेज टैग का Source (src) खींच लें
+                    const parentLabel = imgRadio.closest('.img-card');
+                    if(parentLabel) {
+                        const imgTag = parentLabel.querySelector('img');
+                        if(imgTag) img = imgTag.src; 
+                    } else {
+                        img = imgRadio.value; 
+                    }
+                } 
+            }
             
             push(articlesRef, { 
                 title: titleRadio.value, 
-                img1: img, 
+                img1: img || 'logo.png', // अगर कुछ न मिले तो ही लोगो लगाएगा
                 desc: document.getElementById(`desc_${type}_${id}`).value, 
                 placement: document.getElementById(`placement_${type}_${id}`).value, 
                 category: document.getElementById(`category_${type}_${id}`).value, 
@@ -500,7 +519,6 @@
                 if(window.loadAdminNewsTable) window.loadAdminNewsTable();
             }).catch(err => alert("Error: " + err));
         };
-
         document.getElementById('btn-publish-manual').addEventListener('click', () => {
             const title = document.getElementById('manual_title').value;
             let img = document.getElementById('manual_img_val').value || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800'; 

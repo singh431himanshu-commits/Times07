@@ -167,3 +167,21 @@
 2026-07-31 22:18:13 [INFO] response: https://www.bing.com/images/async?q=Kulgam+terrorist+attack+in+news+photo&async=1&first=1&count=35 200
 2026-07-31 22:18:23 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
 2026-07-31 22:18:27 [INFO] response: https://www.bing.com/images/async?q=UNSW+Bengaluru+Campus+Inauguration+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:09:19 [INFO] response: https://www.bing.com/images/async?q=Indian+Super+League+%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%80%E0%A4%AF+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:09:36 [INFO] response: https://www.bing.com/images/async?q=Indian+Super+League+%E0%A4%9C%E0%A4%AE%E0%A4%B6%E0%A5%87%E0%A4%A6%E0%A4%AA%E0%A5%81%E0%A4%B0+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:09:51 [INFO] response: https://www.bing.com/images/async?q=THE+UPRISING+Movie+THE+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:10:03 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 23:10:05 [INFO] response: https://duckduckgo.com/?q=amazing+spider+man+stiil+news+photo 202
+2026-07-31 23:10:06 [INFO] response: https://duckduckgo.com/i.js?o=json&q=amazing+spider+man+stiil+news+photo&l=us-en&vqd=4-336827870541516618193122665507870610762&p=1&ct=AT 200
+2026-07-31 23:10:06 [ERROR] Main loop crash prevented: 'dict' object has no attribute 'replace'
+2026-07-31 23:40:34 [INFO] response: https://duckduckgo.com/?q=Barcelona+vs+Birmingham+City+news+photo 202
+2026-07-31 23:40:34 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Barcelona+vs+Birmingham+City+news+photo&l=us-en&vqd=4-128596854384967032334381376721683516161&p=1&ct=AT 403
+2026-07-31 23:40:35 [INFO] response: https://www.bing.com/images/async?q=Barcelona+vs+Birmingham+City+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:40:54 [INFO] response: https://www.bing.com/images/async?q=birmingham+vs+barcelona+football+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:41:05 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 23:41:08 [INFO] response: https://duckduckgo.com/?q=kommewnvelth+gaems+2026+%E0%A4%95%E0%A5%89%E0%A4%AE%E0%A4%A8%E0%A4%B5%E0%A5%87%E0%A4%B2%E0%A5%8D%E0%A4%A5+news+photo 202
+2026-07-31 23:41:09 [INFO] response: https://duckduckgo.com/i.js?o=json&q=kommewnvelth+gaems+2026+%E0%A4%95%E0%A5%89%E0%A4%AE%E0%A4%A8%E0%A4%B5%E0%A5%87%E0%A4%B2%E0%A5%8D%E0%A4%A5+news+photo&l=us-en&vqd=4-160029223986417677065433821002502893712&p=1&ct=AT 403
+2026-07-31 23:41:10 [INFO] response: https://www.bing.com/images/async?q=kommewnvelth+gaems+2026+%E0%A4%95%E0%A5%89%E0%A4%AE%E0%A4%A8%E0%A4%B5%E0%A5%87%E0%A4%B2%E0%A5%8D%E0%A4%A5+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:41:22 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 23:41:26 [INFO] response: https://www.bing.com/images/async?q=Commonwealth+Games+2026%2C+%E0%A4%9C%E0%A5%82%E0%A4%A1%E0%A5%8B%2C+news+photo&async=1&first=1&count=35 200
+2026-07-31 23:41:51 [INFO] response: https://www.bing.com/images/async?q=The+Amazing+Spider-Man+%E0%A4%97%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BF%E0%A4%AF%E0%A5%8B%E0%A4%82+news+photo&async=1&first=1&count=35 200
