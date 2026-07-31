@@ -563,5 +563,17 @@
         setInterval(changeNews, 5000); 
     });
     </script>
+    <!-- 🔴 AUTOMATIC FALLBACK FOR BROKEN IMAGES -->
+<script>
+    document.addEventListener('error', function (event) {
+        // चेक करें कि गलती इमेज (img) में आई है या नहीं
+        if (event.target.tagName.toLowerCase() === 'img') {
+            event.target.onerror = null; // लूप रोकने के लिए
+            event.target.src = 'logo.png'; // डिफ़ॉल्ट लोगो फोटो
+            event.target.style.objectFit = 'contain'; // फोटो सही से सेट दिखे
+            event.target.style.padding = '10px'; // थोड़ा गैप देने के लिए
+        }
+    }, true);
+</script>
 </body>
 </html>
