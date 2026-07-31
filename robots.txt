@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://singh431himanshu-commits.github.io/Times07/sitemap.xml
+
+Sitemap: https://times07news.in/sitemap.xml
