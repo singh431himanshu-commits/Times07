@@ -5,14 +5,18 @@ import random
 import argparse
 from datetime import datetime
 from openai import OpenAI
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 import config
 
 # Groq Client Initialization
-client = OpenAI(
-    api_key=config.GROK_API_KEY,
-    base_url="https://api.groq.com/openai/v1"
-)
+import random
+import config
+
+def get_next_client():
+    key = random.choice(config.GROQ_KEYS)
+    return OpenAI(api_key=key, base_url="https://api.groq.com/openai/v1")
+
+client = get_next_client()
 
 def search_hd_images(query, count=5):
     """गूगल/DuckDuckGo से एक्टर या न्यूज़ से रिलेटेड 5 HD इमेजेस फेच करता है, एरर आने पर प्रीमियम बैकअप यूज करेगा"""

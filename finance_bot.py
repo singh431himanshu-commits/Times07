@@ -1,208 +1,202 @@
 import os
-import re
 import json
-import math
 import time
-import logging
-import subprocess
-import requests
+import random
+import argparse
 from datetime import datetime
 from openai import OpenAI
+from ddgs import DDGS
 import config
 
-# ==========================================
-# 1. LOGGING & GROQ CLIENT SETUP
-# ==========================================
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.FileHandler("bot.log"), logging.StreamHandler()]
-)
+# Groq Client Initialization (Bollywood bot की तरह)[cite: 7]
+import random
+import config
 
-# Groq Cloud Client Setup (For gsk_ API Keys)
-client = OpenAI(
-    api_key=config.GROK_API_KEY,
-    base_url="https://api.groq.com/openai/v1",
-)
+def get_next_client():
+    key = random.choice(config.GROQ_KEYS)
+    return OpenAI(api_key=key, base_url="https://api.groq.com/openai/v1")
 
-# ==========================================
-# 2. HELPER FUNCTIONS (SEO & SLUG)
-# ==========================================
-def generate_slug(text):
-    text = text.lower().strip()
-    text = re.sub(r'[^\w\s-]', '', text)
-    return re.sub(r'[\s_-]+', '-', text)
+client = get_next_client()
 
-def calculate_reading_time(text):
-    words = len(re.findall(r'\w+', text))
-    minutes = math.ceil(words / 200)
-    return f"{minutes} min read"
-
-def is_duplicate(title, db_file="news.json"):
-    if not os.path.exists(db_file):
-        return False
+def search_hd_finance_images(query, count=5):
+    """गूगल/DuckDuckGo से शेयर मार्केट/क्रिप्टो से रिलेटेड 5 HD इमेजेस फेच करता है"""
+    images = []
     try:
-        with open(db_file, "r", encoding="utf-8") as f:
-            existing_news = json.load(f)
-            for item in existing_news:
-                if item.get("title").lower() == title.lower():
-                    return True
+        time.sleep(2) # API Limit से बचने के लिए[cite: 7]
+        with DDGS() as ddgs:
+            # High resolution recent photo लगाकर सर्च करेगा[cite: 7]
+            results = list(ddgs.images(f"{query} stock market finance high resolution", max_results=count))
+            for res in results:
+                if 'image' in res:
+                    images.append(res['image'])
     except Exception as e:
-        logging.error(f"Error checking duplicates: {e}")
-    return False
-
-# ==========================================
-# 3. FREE HD IMAGE DOWNLOADER
-# ==========================================
-def fetch_and_save_hd_image(category, slug):
-    logging.info(f"Downloading HD image for category: {category}...")
-    image_url = f"https://source.unsplash.com/1200x800/?{category},finance,stock"
+        print(f"⚠️ Image Search API Limit Hit. Switching to Finance Premium Fallback Images...")
     
-    os.makedirs("images", exist_ok=True)
-    local_path = f"images/{slug}.jpg"
+    # शेयर मार्केट, ट्रेडिंग डेस्क और क्रिप्टो की विशाल HD Fallback लाइब्रेरी 
+    fallback_hd = [
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1000", # Crypto
+        "https://images.unsplash.com/photo-1590283603385-18ff38593524?w=1000", # Stock Market graph
+        "https://images.unsplash.com/photo-1642543492481-44e81e39148c?w=1000", # Trading
+        "https://images.unsplash.com/photo-1621961458348-f013d219b50c?w=1000", # Nifty/Sensex style
+        "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1000", # Finance abstract
+        "https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b?w=1000", # Bitcoin
+        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1000", # Money/Graph
+        "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1000"  # Banking/Finance
+    ]
     
-    try:
-        res = requests.get(image_url, timeout=15)
-        if res.status_code == 200:
-            with open(local_path, "wb") as f:
-                f.write(res.content)
-            logging.info(f"Image saved locally at {local_path}")
-            return local_path
-    except Exception as e:
-        logging.warning(f"Image download failed ({e}), using fallback image.")
+    # अगर 5 इमेजेज नहीं मिलीं, तो फॉलबैक से भर देगा[cite: 7]
+    if len(images) < count:
+        needed = count - len(images)
+        images.extend(random.sample(fallback_hd, needed))
         
-    return "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80"
+    return images[:count]
 
-# ==========================================
-# 4. GENERATE ARTICLE WITH GROQ AI (LLAMA-3.3)
-# ==========================================
-# ==========================================
-# 4. GENERATE ARTICLE WITH GROQ AI (STRICT JSON)
-# ==========================================
-def generate_news_with_groq():
-    logging.info("Fetching latest market news and writing article using Groq AI...")
+def fetch_live_finance_news():
+    """गूगल पर चल रही ताज़ा शेयर बाजार और क्रिप्टो की 5 ख़बरें फेच करता है"""
+    try:
+        time.sleep(1)
+        with DDGS() as ddgs:
+            # 5 news fetch करने का लॉजिक[cite: 7]
+            news_results = list(ddgs.news("share market cryptocurrency finance breaking news", max_results=5))
+            if news_results:
+                return [n['title'] + " " + n.get('body', '') for n in news_results]
+    except Exception as e:
+        print(f"⚠️ News Fetch Warning: {e}")
+    return []
+
+def generate_finance_draft(topic_context):
+    """बोट का मेन AI जनरेटर लॉजिक जो Deep Research करेगा[cite: 7]"""
     
-    prompt = """
-    You are a Wall Street Financial Analyst & Master SEO Editor.
-    Generate the absolute latest breaking financial/crypto news from verified sources (Reuters, Bloomberg, CNBC, CoinDesk) for today.
+    prompt = f"""
+    आप भारत के नंबर 1 फाइनेंशियल एनालिस्ट और Times07 News के एक्सपर्ट रिपोर्टर हैं।
+    विषय: '{topic_context}'.
     
-    Write an in-depth, 100% accurate, professional article in English.
-    
-    Return a strictly valid JSON object with the following fields:
-    {
-      "title": "SEO Catchy Headline",
-      "one_line_headline": "1-line quick summary",
-      "summary_50_words": "Brief summary around 50 words",
-      "summary_150_words": "Detailed summary around 150 words",
-      "content_html": "Full long article in clean HTML (<p>, <h3>, <ul>, <li>)",
-      "category": "Stocks",
-      "source_name": "Reuters",
-      "source_url": "https://reuters.com",
-      "meta_title": "Meta Title under 60 chars",
-      "meta_description": "Meta Description under 160 chars",
-      "keywords": ["Stocks", "Crypto", "Finance"]
-    }
+    सख्त निर्देश (CRITICAL COMMANDS):
+    1. भाषा: सब कुछ शुद्ध और प्रोफेशनल लेकिन आसान हिंदी में लिखें (PURE HINDI).
+    2. गहराई (Deep Research): खबर को पूरे विस्तार से समझाएं (कम से कम 500 से 700 शब्दों में).
+    3. संरचना: कम से कम 4-5 अलग-अलग हेडिंग्स (<h3>) शामिल करें, जैसे: 
+       - आज की बड़ी खबर क्या है?
+       - शेयर बाजार / क्रिप्टो पर इसका क्या असर होगा?
+       - निवेशकों (Investors) के लिए सलाह।
+       - भविष्य का अनुमान।
+    4. 5 कैंची (Catchy/Clickbait) टाइटल्स जनरेट करें जो लोगों को क्लिक करने पर मजबूर कर दें। हर टाइटल के अंत में ' | Times07 News' ज़रूर लगाएं[cite: 7]।
+    5. शानदार SEO फ्रेंडली Google Meta Tags और Hashtags (जिसमें #Times07News, #ShareMarket, #CryptoNews शामिल हों) जनरेट करें।
+
+    Return strictly a VALID JSON object (NO markdown formatting, just raw JSON)[cite: 7]:
+    {{
+      "title_options": [
+        "पहला कैंची टाइटल | Times07 News",
+        "दूसरा वायरल टाइटल | Times07 News",
+        "तीसरा सस्पेंस टाइटल | Times07 News",
+        "चौथा ब्रेकिंग टाइटल | Times07 News",
+        "पांचवा ट्रेंडिंग टाइटल | Times07 News"
+      ],
+      "meta_description": "गूगल सर्च के लिए 2 लाइन का शानदार SEO मेटा डिस्क्रिप्शन",
+      "hashtags": ["#Times07News", "#ShareMarket", "#Crypto", "#FinanceIndia", "न्यूज़ से जुड़े 5 और टैग्स"],
+      "content_html": "<h3>हेडिंग 1</h3><p>विस्तृत 500 शब्दों का रिसर्च पैराग्राफ...</p><h3>हेडिंग 2</h3><p>विस्तृत पैराग्राफ...</p><h3>हेडिंग 3</h3><p>विस्तृत पैराग्राफ...</p>",
+      "category": "बिजनेस",
+      "default_tags": ["शेयर बाजार", "क्रिप्टोकरेंसी", "फाइनेंस"]
+    }}
     """
 
-    for attempt in range(3):
-        try:
-            response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.2,
-                response_format={"type": "json_object"}  # 👈 इससे Groq सिर्फ शुद्ध JSON ही देगा
-            )
-            raw_text = response.choices[0].message.content.strip()
-            return json.loads(raw_text)
-        except json.JSONDecodeError as e:
-            logging.warning(f"JSON Parsing Error: {e} (Attempt {attempt+1}/3). Retrying...")
-            time.sleep(2)
-        except Exception as e:
-            logging.error(f"Groq API Error: {e}")
-            time.sleep(2)
-            
-    return None
-def auto_git_push(article_title):
-    logging.info("Pushing new article to GitHub...")
     try:
-        subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", f"Auto-news: {article_title}"], check=True)
-        subprocess.run(["git", "push", "origin", "main"], check=True)
-        logging.info("SUCCESS: Successfully pushed to GitHub!")
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=6000, 
+            response_format={"type": "json_object"}
+        )
+        data = json.loads(response.choices[0].message.content.strip())
+        
+        # 5 HD इमेजेज फेच करना
+        data["image_options"] = search_hd_finance_images(topic_context, count=5)
+        
+        data["created_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        data["bot_type"] = "finance_crypto"
+        data["id"] = int(datetime.now().timestamp() * 1000)
+        
+        return data
     except Exception as e:
-        logging.error(f"Git Push failed: {e}")
+        print(f"❌ Generation Error: {e}")
+        return None
 
-# ==========================================
-# 6. MAIN BOT EXECUTION
-# ==========================================
-def run_bot():
-    ai_data = generate_news_with_groq()
-    if not ai_data:
-        logging.error("Failed to generate article from Groq.")
-        return
-
-    if is_duplicate(ai_data["title"]):
-        logging.info(f"Skipping duplicate news: {ai_data['title']}")
-        return
-
-    slug = generate_slug(ai_data["title"])
-    local_image_path = fetch_and_save_hd_image(ai_data["category"], slug)
-    source_name = ai_data.get("source_name", "Reuters")
-    credibility_score = config.SOURCE_CREDIBILITY.get(source_name, 9)
-
-    schema_org = {
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "headline": ai_data["title"],
-        "image": [f"https://times07news.in/{local_image_path}"],
-        "datePublished": datetime.now().isoformat(),
-        "author": {"@type": "Organization", "name": "Times07 News"},
-        "publisher": {"@type": "Organization", "name": "Times07 News"}
-    }
-
-    entry = {
-        "id": int(datetime.now().timestamp()),
-        "slug": slug,
-        "title": ai_data["title"],
-        "one_line_headline": ai_data["one_line_headline"],
-        "summary_50": ai_data["summary_50_words"],
-        "summary_150": ai_data["summary_150_words"],
-        "content_html": ai_data["content_html"],
-        "category": ai_data["category"],
-        "image": local_image_path,
-        "reading_time": calculate_reading_time(ai_data["content_html"]),
-        "source": source_name,
-        "source_url": ai_data.get("source_url", "https://times07news.in"),
-        "credibility_score": f"{credibility_score}/10",
-        "seo": {
-            "meta_title": ai_data["meta_title"],
-            "meta_description": ai_data["meta_description"],
-            "keywords": ai_data["keywords"],
-            "canonical_url": f"https://times07news.in/article.html?slug={slug}",
-            "json_ld": schema_org
-        },
-        "published_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
-
-    # Save to news.json
-    db_file = "news.json"
-    news_list = []
-    if os.path.exists(db_file):
+def save_to_drafts(draft_data):
+    """डैशबोर्ड के लिए drafts_finance.json में सेव करता है[cite: 7]"""
+    drafts_file = "drafts_finance.json"
+    drafts = []
+    if os.path.exists(drafts_file):
         try:
-            with open(db_file, "r", encoding="utf-8") as f:
-                news_list = json.load(f)
-        except json.JSONDecodeError:
-            news_list = []
+            with open(drafts_file, "r", encoding="utf-8") as f:
+                drafts = json.load(f)
+        except Exception:
+            drafts = []
+            
+    drafts.insert(0, draft_data)
+    with open(drafts_file, "w", encoding="utf-8") as f:
+        json.dump(drafts, f, ensure_ascii=False, indent=4)
+        
+    print(f"✅ SUCCESS: Finance Draft saved to drafts_finance.json!")
 
-    news_list.insert(0, entry)
+def run_finance_bot_batch():
+    """एक बार में 5 न्यूज़ जनरेट करने का ऑटोमेशन लॉजिक"""
+    print("\n📈 Finance & Crypto Bot Running Batch Execution...")
+    
+    # इंटरनेट से 5 ताज़ा ख़बरें उठाएगा
+    live_news_list = fetch_live_finance_news()
+    
+    # अगर इंटरनेट से 5 न्यूज़ नहीं मिलीं, तो इन एवरग्रीन टॉपिक्स का इस्तेमाल करेगा
+    evergreen_finance_topics = [
+        "Nifty 50 and Sensex Today Market Prediction", 
+        "Bitcoin and Ethereum Price Analysis Today", 
+        "Best Penny Stocks to Buy in Indian Market", 
+        "Upcoming IPOs in India and GMP Updates", 
+        "Mutual Funds vs Direct Stocks: Where to invest?",
+        "Gold Prices Today and Future Prediction"
+    ]
+    random.shuffle(evergreen_finance_topics)
+    
+    generated_count = 0
+    
+    # पहले ताज़ा खबरों पर रिसर्च करेगा
+    for news in live_news_list:
+        if generated_count >= 5:
+            break
+        print(f"📰 Generating Deep Research for News: {news[:50]}...")
+        draft = generate_finance_draft(topic_context=news)
+        if draft:
+            save_to_drafts(draft)
+            generated_count += 1
 
-    with open(db_file, "w", encoding="utf-8") as f:
-        json.dump(news_list, f, ensure_ascii=False, indent=4)
+    # अगर ताज़ा खबरें 5 से कम रह गईं, तो एवरग्रीन टॉपिक्स पर लिखेगा
+    topic_index = 0
+    while generated_count < 5 and topic_index < len(evergreen_finance_topics):
+        topic = evergreen_finance_topics[topic_index]
+        print(f"📊 Generating Deep Research for Evergreen Topic: {topic}...")
+        draft = generate_finance_draft(topic_context=topic)
+        if draft:
+            save_to_drafts(draft)
+            generated_count += 1
+        topic_index += 1
 
-    logging.info(f"SUCCESS: Article '{ai_data['title']}' generated and saved to news.json!")
-
-    # Auto Push to GitHub
-    auto_git_push(ai_data["title"])
+    print(f"✨ BATCH COMPLETE: 5 Deep Finance Topics successfully sent to Dashboard!\n")
 
 if __name__ == "__main__":
-    run_bot()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--topic', type=str, help='Manual command to generate a specific finance topic')
+    args = parser.parse_args()
+
+    # मैन्युअल कमांड[cite: 7]
+    if args.topic:
+        print(f"⚡ Manual Command Received for: {args.topic}")
+        draft = generate_finance_draft(topic_context=args.topic)
+        if draft: 
+            save_to_drafts(draft)
+            print("✅ Manual Topic Generated Successfully!")
+    else:
+        # ऑटोमैटिक लूप[cite: 7]
+        print("🚀 PRO Finance Bot Service Started (Auto-runs every 1 hour)...")
+        while True:
+            run_finance_bot_batch()
+            print("⏰ Sleeping for 1 Hour (3600 Seconds)...")
+            time.sleep(3600)

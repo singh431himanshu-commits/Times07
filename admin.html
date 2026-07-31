@@ -74,6 +74,8 @@
     <aside class="sidebar">
         <div class="logo-area"><i class="fa-solid fa-cube"></i> Times07 Control</div>
         <div class="nav-item active" onclick="switchBotTab('bollywood', this)"><i class="fa-solid fa-film"></i> Bollywood Bot</div>
+        <div class="nav-item" onclick="switchBotTab('finance', this)"><i class="fa-solid fa-chart-line"></i> Finance Bot</div>
+        <div class="nav-item" onclick="switchBotTab('trending', this)"><i class="fa-solid fa-fire"></i> Trending Bot</div>
         <div class="nav-item" onclick="switchBotTab('manual', this)"><i class="fa-solid fa-pen"></i> Manual Publish</div>
         <div class="nav-item" onclick="switchBotTab('hashtags', this)"><i class="fa-solid fa-hashtag"></i> Trending Hashtags</div>
         <div class="nav-item" onclick="switchBotTab('manage', this); window.loadAdminNewsTable();"><i class="fa-solid fa-list-check"></i> Manage News</div>
@@ -86,29 +88,59 @@
         
         <!-- 1. BOLLYWOOD BOT TAB -->
         <div id="bot-bollywood" class="tab-content active">
-            
-            <!-- Manual Command Box -->
             <div class="card" style="background: rgba(0, 210, 211, 0.05); border-color: #00d2d3; margin-top: 0; padding: 20px;">
-                <h4 style="color: #00d2d3; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-terminal"></i> Bot Manual Command</h4>
+                <h4 style="color: #00d2d3; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-terminal"></i> Bollywood Bot Manual Command</h4>
                 <div style="display: flex; gap: 15px;">
-                    <input type="text" id="manual_bot_command" class="custom-input" placeholder="Actor Name or Topic (e.g., 'Kalki 2898 AD Review' or 'Shahrukh Khan')">
-                    <button class="btn" style="margin-top: 0; width: auto; background: #00d2d3; color: #000; white-space: nowrap;" onclick="triggerPythonBot()">Generate via Bot</button>
+                    <input type="text" id="manual_bot_command_bollywood" class="custom-input" placeholder="Actor Name or Topic (e.g., 'Shahrukh Khan')">
+                    <button class="btn" style="margin-top: 0; width: auto; background: #00d2d3; color: #000; white-space: nowrap;" onclick="triggerPythonBot('bollywood')">Generate via Bot</button>
                 </div>
-                <p style="font-size: 11px; color: #888; margin-top: 8px;">* Command will tell your local python bot to generate a 1500+ words draft for this topic.</p>
             </div>
-
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px;">
-                <h2>Pending AI Drafts</h2>
-                <button class="btn" style="width: auto; margin: 0; padding: 10px 15px; font-size: 13px;" onclick="loadDrafts()"><i class="fa-solid fa-rotate-right"></i> Refresh Drafts</button>
+                <h2>Bollywood AI Drafts</h2>
+                <button class="btn" style="width: auto; margin: 0; padding: 10px 15px; font-size: 13px;" onclick="loadDrafts('bollywood')"><i class="fa-solid fa-rotate-right"></i> Refresh Drafts</button>
             </div>
-            
-            <!-- Dynamic Drafts Container -->
-            <div id="dynamic-drafts-container">
+            <div id="dynamic-drafts-container-bollywood">
                 <div class="card"><p style="color: var(--text-muted);">🔄 drafts.json से खबरें लोड हो रही हैं...</p></div>
             </div>
         </div>
 
-        <!-- 2. MANUAL PUBLISH TAB -->
+        <!-- 2. FINANCE BOT TAB -->
+        <div id="bot-finance" class="tab-content">
+            <div class="card" style="background: rgba(0, 210, 211, 0.05); border-color: #00d2d3; margin-top: 0; padding: 20px;">
+                <h4 style="color: #00d2d3; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-terminal"></i> Finance Bot Manual Command</h4>
+                <div style="display: flex; gap: 15px;">
+                    <input type="text" id="manual_bot_command_finance" class="custom-input" placeholder="Topic (e.g., 'Sensex Record')">
+                    <button class="btn" style="margin-top: 0; width: auto; background: #00d2d3; color: #000; white-space: nowrap;" onclick="triggerPythonBot('finance')">Generate via Bot</button>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px;">
+                <h2>Finance AI Drafts</h2>
+                <button class="btn" style="width: auto; margin: 0; padding: 10px 15px; font-size: 13px;" onclick="loadDrafts('finance')"><i class="fa-solid fa-rotate-right"></i> Refresh Drafts</button>
+            </div>
+            <div id="dynamic-drafts-container-finance">
+                <div class="card"><p style="color: var(--text-muted);">🔄 drafts_finance.json से खबरें लोड हो रही हैं...</p></div>
+            </div>
+        </div>
+
+        <!-- 3. TRENDING BOT TAB -->
+        <div id="bot-trending" class="tab-content">
+            <div class="card" style="background: rgba(0, 210, 211, 0.05); border-color: #00d2d3; margin-top: 0; padding: 20px;">
+                <h4 style="color: #00d2d3; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-terminal"></i> Trending Bot Manual Command</h4>
+                <div style="display: flex; gap: 15px;">
+                    <input type="text" id="manual_bot_command_trending" class="custom-input" placeholder="Topic (e.g., 'Viral News')">
+                    <button class="btn" style="margin-top: 0; width: auto; background: #00d2d3; color: #000; white-space: nowrap;" onclick="triggerPythonBot('trending')">Generate via Bot</button>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px;">
+                <h2>Trending AI Drafts</h2>
+                <button class="btn" style="width: auto; margin: 0; padding: 10px 15px; font-size: 13px;" onclick="loadDrafts('trending')"><i class="fa-solid fa-rotate-right"></i> Refresh Drafts</button>
+            </div>
+            <div id="dynamic-drafts-container-trending">
+                <div class="card"><p style="color: var(--text-muted);">🔄 drafts_trending.json से खबरें लोड हो रही हैं...</p></div>
+            </div>
+        </div>
+
+        <!-- 4. MANUAL PUBLISH TAB -->
         <div id="bot-manual" class="tab-content">
             <h2>Manual Publish</h2>
             <div class="card">
@@ -154,7 +186,7 @@
             </div>
         </div>
 
-        <!-- 3. HASHTAGS MANAGER TAB -->
+        <!-- 5. HASHTAGS MANAGER TAB -->
         <div id="bot-hashtags" class="tab-content">
             <h2>Manage Trending Hashtags</h2>
             <div class="card">
@@ -164,13 +196,11 @@
                     <button class="btn" style="margin-top: 0; width: auto; padding: 14px 30px; white-space: nowrap;" onclick="addNewHashtag()">Add Tag</button>
                 </div>
                 <span class="section-title" style="margin-top: 35px;">Active Hashtags (Click '×' to Delete)</span>
-                <div class="hashtag-container" id="hashtag-list-container">
-                    <!-- JS fills this -->
-                </div>
+                <div class="hashtag-container" id="hashtag-list-container"></div>
             </div>
         </div>
 
-        <!-- 4. MANAGE NEWS TAB -->
+        <!-- 6. MANAGE NEWS TAB -->
         <div id="bot-manage" class="tab-content">
             <h2>Manage Live News</h2>
             <div class="card">
@@ -187,15 +217,16 @@
 
     <!-- JS LOGIC: DYNAMIC DRAFTS, HASHTAGS & UPLOAD -->
     <script>
-        // Tab Switcher
         function switchBotTab(botId, element) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
             document.getElementById('bot-' + botId).classList.add('active');
             element.classList.add('active');
+            if(botId === 'bollywood') loadDrafts('bollywood');
+            if(botId === 'finance') loadDrafts('finance');
+            if(botId === 'trending') loadDrafts('trending');
         }
 
-        // Generic PC Image Uploader
         function uploadLocalImage(input, targetHiddenId, previewImgId) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
@@ -207,24 +238,24 @@
             }
         }
 
-        // Manual Python Bot Trigger Alert
-        function triggerPythonBot() {
-            const cmd = document.getElementById('manual_bot_command').value;
-            if(!cmd) return alert('Please enter a topic first!');
-            alert(`✅ कमांड मिल गई!\n\nअपने PC के टर्मिनल में यह रन करें:\npython bot_bollywood.py --topic "${cmd}"\n\nऔर 2 मिनट बाद Refresh दबाएं।`);
-            document.getElementById('manual_bot_command').value = '';
+        function triggerPythonBot(type) {
+            const cmd = document.getElementById('manual_bot_command_' + type).value;
+            let scriptName = type === 'bollywood' ? 'bot_bollywood.py' : (type === 'finance' ? 'bot_finance.py' : 'bot_trending.py');
+            alert(`✅ कमांड मिल गई!\n\nअपने PC के टर्मिनल में यह रन करें:\npython ${scriptName} ${cmd ? '--topic "'+cmd+'"' : ''}\n\nऔर 2 मिनट बाद Refresh दबाएं।`);
+            if(cmd) document.getElementById('manual_bot_command_' + type).value = '';
         }
 
-        // Dynamic Hashtags Management
         let liveHashtags = ['#Election2026', '#AI_Summit', '#StockMarketRecord', '#CricketWorldCup', '#BollywoodExclusive'];
         
         function renderHashtags() {
             const container = document.getElementById('hashtag-list-container');
-            container.innerHTML = liveHashtags.map(tag => `<div class="hashtag-chip">${tag} <span class="remove" onclick="deleteHashtag('${tag}')" title="Delete">×</span></div>`).join('');
-            
-            const dropHTML = liveHashtags.map(tag => `<option value="${tag}">${tag}</option>`).join('');
-            document.getElementById('manual_hashtags_group').innerHTML = dropHTML;
-            document.querySelectorAll('.dynamic-hash-group').forEach(el => el.innerHTML = dropHTML);
+            if(container) {
+                container.innerHTML = liveHashtags.map(tag => `<div class="hashtag-chip">${tag} <span class="remove" onclick="deleteHashtag('${tag}')" title="Delete">×</span></div>`).join('');
+            }
+            const dropGroup = document.getElementById('manual_hashtags_group');
+            if(dropGroup) {
+                dropGroup.innerHTML = liveHashtags.map(tag => `<option value="${tag}">${tag}</option>`).join('');
+            }
         }
 
         function addNewHashtag() {
@@ -242,116 +273,103 @@
             renderHashtags();
         }
 
-        // LOAD DYNAMIC DRAFTS FROM JSON
-        let allDrafts = [];
-        async function loadDrafts() {
-            try {
-                const res = await fetch('drafts.json?t=' + new Date().getTime());
-                allDrafts = await res.json();
-                renderDraftsHTML();
-            } catch(e) {
-                document.getElementById('dynamic-drafts-container').innerHTML = '<div class="card"><p style="color:#ff5252;">⚠️ drafts.json फ़ाइल नहीं मिली। पहले Python बोट रन करें!</p></div>';
-            }
-        }
-
-        // Delete Draft Function (Removes from UI and filters array)
-        function removeDraftUI(id) {
-            const card = document.getElementById(`draft-card-${id}`);
+        function removeDraftUI(type, id) {
+            const card = document.getElementById(`draft-card-${type}-${id}`);
             if(card) {
                 card.remove();
                 alert('🗑️ ड्राफ्ट हटा दिया गया!');
             }
         }
 
-        function renderDraftsHTML() {
-            const container = document.getElementById('dynamic-drafts-container');
-            if(!allDrafts || allDrafts.length === 0) {
-                container.innerHTML = '<div class="card"><p>✨ कोई नया ड्राफ्ट पेंडिंग नहीं है।</p></div>';
-                return;
+        async function loadDrafts(type) {
+            let fileMap = { bollywood: 'drafts.json', finance: 'drafts_finance.json', trending: 'drafts_trending.json' };
+            let containerId = 'dynamic-drafts-container-' + type;
+            let container = document.getElementById(containerId);
+            
+            try {
+                const res = await fetch(fileMap[type] + '?t=' + new Date().getTime());
+                let drafts = await res.json();
+                
+                if(!drafts || drafts.length === 0) {
+                    container.innerHTML = `<div class="card"><p>✨ ${type} के लिए कोई नया ड्राफ्ट पेंडिंग नहीं है।</p></div>`;
+                    return;
+                }
+
+                let html = '';
+                drafts.forEach(draft => {
+                    const titlesHTML = (draft.title_options || []).map((t, i) => `
+                        <label class="radio-label">
+                            <input type="radio" name="t_${type}_${draft.id}" value="${t}" ${i===0?'checked':''}>
+                            <span class="tick">✔️</span><span class="text">${t}</span>
+                        </label>
+                    `).join('');
+
+                    const imgsHTML = (draft.image_options || []).map((img, i) => `
+                        <label class="img-card">
+                            <input type="radio" name="img_${type}_${draft.id}" value="${img}" ${i===0?'checked':''}>
+                            <img src="${img}" alt="Draft Image">
+                        </label>
+                    `).join('');
+
+                    html += `
+                    <div class="card" id="draft-card-${type}-${draft.id}">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">
+                            <span style="color:#00d2d3; font-weight:800; font-size:16px;">🤖 AI DRAFT: ${type.toUpperCase()} BOT</span>
+                            <span style="color:#9e9e9e; font-size:12px;">${draft.created_at || 'Just Now'}</span>
+                        </div>
+
+                        <span class="section-title">1. Select Title (5 Options)</span>
+                        <div class="radio-group">${titlesHTML}</div>
+
+                        <span class="section-title" style="margin-top:25px;">2. Select Cover Image OR Upload PC Image</span>
+                        <div class="img-grid">${imgsHTML}</div>
+                        
+                        <div style="margin-top:15px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px dashed #555;">
+                            <span style="font-size:13px; color:#00d2d3; display:block; margin-bottom:8px;">💻 PC से फोटो अपलोड करें:</span>
+                            <input type="file" class="custom-input" accept="image/*" onchange="uploadLocalImage(this, 'local_img_${type}_${draft.id}', 'prev_${type}_${draft.id}')" style="padding: 8px;">
+                            <input type="hidden" id="local_img_${type}_${draft.id}">
+                            <img id="prev_${type}_${draft.id}" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'">
+                        </div>
+
+                        <span class="section-title" style="margin-top:25px;">3. Edit Summary (Article)</span>
+                        <textarea id="desc_${type}_${draft.id}" rows="10">${draft.content_html || draft.one_line_teaser}</textarea>
+
+                        <div class="placement-row">
+                            <div class="placement-col">
+                                <span class="section-title" style="margin-top:0;">4. Target UI Placement</span>
+                                <select id="placement_${type}_${draft.id}" class="custom-input">
+                                    <option value="hero-main">Red Hero Banner</option>
+                                    <option value="center-feed" selected>Center Main Feed</option>
+                                    <option value="sidebar-sticky">Right Sticky Sidebar</option>
+                                </select>
+                            </div>
+                            <div class="placement-col">
+                                <span class="section-title" style="margin-top:0;">5. Tag Category</span>
+                                <select id="category_${type}_${draft.id}" class="custom-input">
+                                    <option value="${type}">${type}</option>
+                                    <option value="मुख्य समाचार">मुख्य समाचार</option>
+                                    <option value="बिजनेस">बिजनेस</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 15px; margin-top: 25px;">
+                            <button class="btn btn-danger" style="flex: 0.3; margin-top: 0;" onclick="removeDraftUI('${type}', '${draft.id}')"><i class="fa-solid fa-trash"></i> Delete Draft</button>
+                            <button class="btn" style="flex: 0.7; margin-top: 0;" onclick="window.publishDraft('${type}', '${draft.id}')"><i class="fa-solid fa-rocket"></i> Publish to Live Site</button>
+                        </div>
+                    </div>`;
+                });
+                container.innerHTML = html;
+            } catch(e) {
+                container.innerHTML = `<div class="card"><p style="color:#ff5252;">⚠️ ${fileMap[type]} फ़ाइल नहीं मिली। पहले Python बोट रन करें!</p></div>`;
             }
-
-            let html = '';
-            allDrafts.forEach(draft => {
-                // Generate 5 Titles HTML
-                const titlesHTML = (draft.title_options || []).map((t, i) => `
-                    <label class="radio-label">
-                        <input type="radio" name="bolly_t_${draft.id}" value="${t}" ${i===0?'checked':''}>
-                        <span class="tick">✔️</span><span class="text">${t}</span>
-                    </label>
-                `).join('');
-
-                // Generate 5 Images HTML
-                const imgsHTML = (draft.image_options || []).map((img, i) => `
-                    <label class="img-card">
-                        <input type="radio" name="bolly_img_${draft.id}" value="${img}" ${i===0?'checked':''}>
-                        <img src="${img}" alt="Draft Image">
-                    </label>
-                `).join('');
-
-                html += `
-                <div class="card" id="draft-card-${draft.id}">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">
-                        <span style="color:#00d2d3; font-weight:800; font-size:16px;">🤖 AI DRAFT: BOLLYWOOD BOT</span>
-                        <span style="color:#9e9e9e; font-size:12px;">${draft.created_at || 'Just Now'}</span>
-                    </div>
-
-                    <span class="section-title">1. Select Title (5 Options)</span>
-                    <div class="radio-group">${titlesHTML}</div>
-
-                    <span class="section-title" style="margin-top:25px;">2. Select Cover Image (5 Options) OR Upload PC Image</span>
-                    <div class="img-grid">${imgsHTML}</div>
-                    
-                    <!-- PC Image Upload for Drafts -->
-                    <div style="margin-top:15px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px dashed #555;">
-                        <span style="font-size:13px; color:#00d2d3; display:block; margin-bottom:8px;">💻 अगर ऊपर की फोटो पसंद नहीं, तो PC से अपलोड करें:</span>
-                        <input type="file" class="custom-input" accept="image/*" onchange="uploadLocalImage(this, 'draft_local_img_val_${draft.id}', 'preview_img_${draft.id}')" style="padding: 8px;">
-                        <input type="hidden" id="draft_local_img_val_${draft.id}">
-                        <img id="preview_img_${draft.id}" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'">
-                    </div>
-
-                    <span class="section-title" style="margin-top:25px;">3. Edit Summary (1500+ Words Article)</span>
-                    <textarea id="bolly_desc_${draft.id}" rows="10">${draft.content_html || draft.one_line_teaser}</textarea>
-
-                    <div class="placement-row">
-                        <div class="placement-col">
-                            <span class="section-title" style="margin-top:0;">4. Target UI Placement</span>
-                            <select id="bolly_placement_${draft.id}" class="custom-input">
-                                <option value="hero-main">Red Hero Banner</option>
-                                <option value="center-feed" selected>Center Main Feed</option>
-                                <option value="sidebar-sticky">Right Sticky Sidebar</option>
-                            </select>
-                        </div>
-                        <div class="placement-col">
-                            <span class="section-title" style="margin-top:0;">5. Tag Category / Keyword</span>
-                            <select id="bolly_category_${draft.id}" class="custom-input">
-                                <optgroup label="Main Categories">
-                                    <option value="मनोरंजन" selected>मनोरंजन / बॉलीवुड गॉसिप</option>
-                                </optgroup>
-                                <optgroup label="Trending Hashtags" class="dynamic-hash-group">
-                                    <!-- JS will inject options here -->
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons: Delete & Publish -->
-                    <div style="display: flex; gap: 15px; margin-top: 25px;">
-                        <button class="btn btn-danger" style="flex: 0.3; margin-top: 0;" onclick="removeDraftUI('${draft.id}')"><i class="fa-solid fa-trash"></i> Delete Draft</button>
-                        <button class="btn" style="flex: 0.7; margin-top: 0;" onclick="window.publishBotDraft('${draft.id}')"><i class="fa-solid fa-rocket"></i> Publish to Live Site</button>
-                    </div>
-                </div>
-                `;
-            });
-            container.innerHTML = html;
-            renderHashtags(); 
         }
 
-        // Initialize Everything
-        loadDrafts();
+        loadDrafts('bollywood');
         renderHashtags();
     </script>
 
-    <!-- FIREBASE PUSH (PUBLISH) SCRIPT -->
+    <!-- FIREBASE PUSH & PUBLISH SCRIPT -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
@@ -366,27 +384,23 @@
             databaseURL: "https://times07news-default-rtdb.firebaseio.com"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+        const db = getDatabase(initializeApp(firebaseConfig));
         const articlesRef = ref(db, 'articles');
 
-        // BOTS DYNAMIC PUBLISH LOGIC
-        window.publishBotDraft = function(id) {
-            // Get checked title
-            const titleRadio = document.querySelector(`input[name="bolly_t_${id}"]:checked`);
+        window.publishDraft = function(type, id) {
+            const titleRadio = document.querySelector(`input[name="t_${type}_${id}"]:checked`);
             if(!titleRadio) return alert("कृपया टाइटल चुनें!");
             const title = titleRadio.value;
             
-            // Priority Check: Local PC Image first, then Bot Image
-            let img = document.getElementById(`draft_local_img_val_${id}`).value;
+            let img = document.getElementById(`local_img_${type}_${id}`).value;
             if (!img) {
-                const imgRadio = document.querySelector(`input[name="bolly_img_${id}"]:checked`);
+                const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`);
                 if(imgRadio) img = imgRadio.value;
             }
 
-            const desc = document.getElementById(`bolly_desc_${id}`).value;
-            const placement = document.getElementById(`bolly_placement_${id}`).value;
-            const category = document.getElementById(`bolly_category_${id}`).value;
+            const desc = document.getElementById(`desc_${type}_${id}`).value;
+            const placement = document.getElementById(`placement_${type}_${id}`).value;
+            const category = document.getElementById(`category_${type}_${id}`).value;
 
             push(articlesRef, {
                 title: title, img1: img, desc: desc, 
@@ -395,12 +409,11 @@
                 timestamp: Date.now()
             }).then(() => {
                 alert('✅ खबर वेबसाइट पर लाइव हो गई है!');
-                document.getElementById(`draft-card-${id}`).remove(); 
+                document.getElementById(`draft-card-${type}-${id}`).remove(); 
                 if(window.loadAdminNewsTable) window.loadAdminNewsTable();
             }).catch(err => alert("Error: " + err));
         };
 
-        // MANUAL PUBLISH LOGIC
         document.getElementById('btn-publish-manual').addEventListener('click', () => {
             const title = document.getElementById('manual_title').value;
             let img = document.getElementById('manual_img_val').value;
