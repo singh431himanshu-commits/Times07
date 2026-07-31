@@ -471,8 +471,8 @@
     </footer>
 
     <!-- Master Unified Script -->
-    <script type="module" src="script.js?v=4.0"></script>
-    
+<script type="module" src="script.js?v=6.0"></script>
+
     <!-- COMPLETE AUTH MODAL -->
     <div id="auth-modal" class="modal-overlay" style="display:none;">
         <div class="auth-box">
@@ -518,51 +518,71 @@
         .catch(err => console.error("Error loading news:", err));
     </script>
     
-    <!-- Right Sidebar 6-News Auto-Rotating Engine -->
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const liveNewsData = [
-            { title: "NEET परीक्षा लीक मामला: CBI की बड़ी कार्रवाई, 13 आरोपियों के खिलाफ चार्जशीट", img: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=150" },
-            { title: "शेयर बाजार में भारी उछाल, सेंसेक्स ने तोड़े पुराने सभी रिकॉर्ड", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=150" },
-            { title: "मौसम अपडेट: दिल्ली-NCR में भारी बारिश का अलर्ट, कई उड़ानें रद्द", img: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=150" },
-            { title: "Paris Olympics 2026: भारतीय हॉकी टीम का शानदार प्रदर्शन, सेमीफाइनल में एंट्री", img: "https://images.unsplash.com/photo-1599839619722-39751411ea63?w=150" },
-            { title: "AI और तकनीक: भारत में लॉन्च हुआ नया स्वदेशी आर्टिफिशियल इंटेलिजेंस मॉडल", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=150" },
-            { title: "रेलवे का नया नियम: सीनियर सिटीजन के लिए बड़ी खुशखबरी, टिकट में छूट", img: "https://images.unsplash.com/photo-1471626294713-7d2d3a3d53b2?w=150" },
-            { title: "ISRO का नया मिशन: गगनयान को लेकर बड़ी अपडेट, जल्द होगी लॉन्चिंग", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=150" },
-            { title: "JPSC परीक्षा घोटाले की जांच में आया बड़ा मोड़, 9 घंटे की पूछताछ", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=150" }
-        ];
+  <!-- 🚀 Right Sidebar FIREBASE Auto-Rotating Engine -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-        const container = document.getElementById('dynamic-right-news-container');
-        let currentIndex = 0;
+    const firebaseConfig = {
+        apiKey: "AIzaSyA0c_Bz7HdU6YoL62L1cGfsA89Hg7609Ww",
+        authDomain: "times07news.firebaseapp.com",
+        projectId: "times07news",
+        storageBucket: "times07news.firebasestorage.app",
+        messagingSenderId: "527951679601",
+        appId: "1:527951679601:web:d33bfb58aaae9665c68bd0",
+        databaseURL: "https://times07news-default-rtdb.firebaseio.com"
+    };
 
-        function changeNews() {
-            if (!container) return;
-            
-            container.innerHTML = ""; 
-            let htmlContent = "";
+    const db = getDatabase(initializeApp(firebaseConfig));
+    const articlesRef = ref(db, 'articles');
+    const container = document.getElementById('dynamic-right-news-container');
+    
+    let liveSidebarNews = [];
+    let currentIndex = 0;
 
-            // एक साथ 6 खबरें जनरेट करें
-            for(let i = 0; i < 6; i++) {
-                const news = liveNewsData[(currentIndex + i) % liveNewsData.length];
-                htmlContent += `
-                    <div class="blinking-news-card">
-                        <img src="${news.img}" alt="news">
-                        <h4>${news.title}</h4>
-                    </div>
-                `;
+    onValue(articlesRef, (snapshot) => {
+        liveSidebarNews = [];
+        snapshot.forEach(child => {
+            let data = child.val();
+            // 🎯 सिर्फ Sidebar वाली खबरों को फिल्टर कर रहा है
+            if(data.placement === 'sidebar-sticky') {
+                liveSidebarNews.push({ title: data.title, img: data.img1 });
             }
+        });
 
-            setTimeout(() => {
-                container.innerHTML = htmlContent;
-                // हर 5 सेकंड में 2 खबरें ऊपर से खिसकेंगी
-                currentIndex = (currentIndex + 2) % liveNewsData.length; 
-            }, 100); 
+        // अगर डेटाबेस में साइडबार की खबर नहीं है, तो डिफॉल्ट दिखाएगा
+        if(liveSidebarNews.length === 0) {
+            liveSidebarNews = [{ title: "Times07 पर ताज़ा खबरें लोड हो रही हैं...", img: "logo.png" }];
+        } else {
+            liveSidebarNews.reverse(); // सबसे नई खबर सबसे ऊपर
         }
-
         changeNews();
-        setInterval(changeNews, 5000); 
     });
-    </script>
+
+    function changeNews() {
+        if (!container || liveSidebarNews.length === 0) return;
+        container.innerHTML = ""; 
+        let htmlContent = "";
+        let displayCount = Math.min(6, liveSidebarNews.length);
+
+        for(let i = 0; i < displayCount; i++) {
+            const news = liveSidebarNews[(currentIndex + i) % liveSidebarNews.length];
+            htmlContent += `
+                <div class="blinking-news-card">
+                    <img src="${news.img}" alt="news" onerror="this.src='logo.png'">
+                    <h4>${news.title}</h4>
+                </div>
+            `;
+        }
+        container.innerHTML = htmlContent;
+        
+        // अगर 6 से ज्यादा खबरें हैं, तभी रोटेट करेगा
+        if (liveSidebarNews.length > 6) {
+            currentIndex = (currentIndex + 2) % liveSidebarNews.length; 
+        }
+    }
+    setInterval(changeNews, 5000); 
+</script>
     <!-- 🔴 AUTOMATIC FALLBACK FOR BROKEN IMAGES -->
 <script>
     document.addEventListener('error', function (event) {
