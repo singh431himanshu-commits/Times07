@@ -100,6 +100,7 @@ def generate_finance_draft(topic_context):
     """
 
     try:
+        client = get_next_client() # हर बार नई API Key ले लेगा``
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
