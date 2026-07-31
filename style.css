@@ -1141,3 +1141,18 @@ html, body {
         max-height: 60px;
     }
 }
+/* ==========================================
+   SMART IMAGE PLACEHOLDER & FALLBACK (Global)
+   ========================================== */
+img {
+    background-color: #f1f5f9;
+    background-image: url('logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px auto; /* लोगो का साइज़ */
+}
+
+/* जैसे ही फोटो लोड हो जाए, बैकग्राउंड लोगो हट जाए */
+img[src]:not([src=""]) {
+    background-image: none;
+}

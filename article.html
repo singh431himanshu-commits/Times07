@@ -191,9 +191,15 @@
                         <button onclick="window.stopAudioText()" style="padding:6px 14px; font-size:12px; background:#64748b; color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-square"></i> रोकें</button>
                     </div>
 
-                    <!-- Featured Image -->
-                    <div style="width:100%; height:380px; max-height:45vh; border-radius:8px; overflow:hidden; margin-bottom:20px;">
-                        <img id="page-img" src="" alt="News Image" style="width:100%; height:100%; object-fit:cover;">
+                <!-- Featured Image with Smart Logo Loading -->
+                    <div style="width:100%; border-radius:8px; overflow:hidden; margin-bottom:20px; background:#f1f5f9; display:flex; justify-content:center; align-items:center; position:relative; min-height:280px;">
+                        
+                        <!-- जब तक फोटो लोड नहीं होगी, तब तक यह लोगो दिखेगा -->
+                        <img id="img-loader-logo" src="logo.png" alt="Loading..." style="width: 70px; height: auto; position: absolute; opacity: 0.5;">
+                        
+                        <!-- असली न्यूज़ इमेज (लोड होते ही लोगो छिप जाएगा) -->
+                        <img id="page-img" src="" alt="News Image" style="width:100%; height:auto; max-height:500px; object-fit:contain; position:relative; z-index:2;" onload="document.getElementById('img-loader-logo').style.display='none';" onerror="this.src='logo.png';">
+                    
                     </div>
 
                     <!-- Body Content -->
