@@ -1,0 +1,1 @@
+2026-07-31 14:27:56,994 [ERROR] Main loop crash prevented: 'NoneType' object has no attribute 'replace'
