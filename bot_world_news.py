@@ -225,7 +225,7 @@ def generate_worldnews_draft(topic_context=None):
         return None
 
 def save_to_drafts(draft_data):
-    drafts_file = "drafts.json"
+    drafts_file = "drafts_world.json"
     drafts = []
     if os.path.exists(drafts_file):
         try:
@@ -238,7 +238,7 @@ def save_to_drafts(draft_data):
     with open(drafts_file, "w", encoding="utf-8") as f:
         json.dump(drafts, f, ensure_ascii=False, indent=4)
         
-    print(f"✅ SUCCESS: HD Pro-Watermarked Draft saved to drafts.json!")
+    print(f"✅ SUCCESS: HD Pro-Watermarked Draft saved to drafts_world.json!")
 
 def run_world_bot_batch():
     print("\n🌍 Running PRO World News Bot (With HD Auto-Crop & Fixed Watermark)...")
