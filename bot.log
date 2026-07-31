@@ -92,3 +92,14 @@
 2026-07-31 09:21:09 [INFO] response: https://duckduckgo.com/?q=%E0%A4%A6%E0%A5%8B+%E0%A4%A6%E0%A5%8B%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%80+%E0%A4%B9%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%8F%E0%A4%82%2C+news+photo 202
 2026-07-31 09:21:10 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%A6%E0%A5%8B+%E0%A4%A6%E0%A5%8B%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%80+%E0%A4%B9%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%8F%E0%A4%82%2C+news+photo&l=us-en&vqd=4-148892297665226870595893234444466291320&p=1&ct=AT 403
 2026-07-31 09:21:12 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%A6%E0%A5%8B+%E0%A4%A6%E0%A5%8B%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%80+%E0%A4%B9%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%8F%E0%A4%82%2C+news+photo&async=1&first=1&count=35 200
+2026-07-31 12:15:11 [INFO] response: https://duckduckgo.com/?q=Red+Sea+security+%E0%A4%B0%E0%A5%87%E0%A4%A1+news+photo 202
+2026-07-31 12:15:12 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Red+Sea+security+%E0%A4%B0%E0%A5%87%E0%A4%A1+news+photo&l=us-en&vqd=4-243711555742390791279995060388009515532&p=1&ct=AT 403
+2026-07-31 12:15:12 [INFO] response: https://www.bing.com/images/async?q=Red+Sea+security+%E0%A4%B0%E0%A5%87%E0%A4%A1+news+photo&async=1&first=1&count=35 200
+2026-07-31 12:15:23 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 12:15:26 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%B9%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A5%81%E0%A4%9C+%E0%A4%B2%E0%A4%BE%E0%A4%B2+%E0%A4%B8%E0%A4%BE%E0%A4%97%E0%A4%B0+%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+news+photo&async=1&first=1&count=35 200
+2026-07-31 12:15:36 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 12:15:39 [INFO] response: https://duckduckgo.com/?q=PM+Kisan+Yojana+PM+news+photo 202
+2026-07-31 12:15:40 [INFO] response: https://duckduckgo.com/i.js?o=json&q=PM+Kisan+Yojana+PM+news+photo&l=us-en&vqd=4-225051813736128450869282228259570114693&p=1&ct=AT 403
+2026-07-31 12:15:41 [INFO] response: https://www.bing.com/images/async?q=PM+Kisan+Yojana+PM+news+photo&async=1&first=1&count=35 200
+2026-07-31 12:15:52 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 12:15:55 [INFO] response: https://www.bing.com/images/async?q=PM-KISAN%2C+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A7%E0%A4%BE%E0%A4%A8%E0%A4%AE%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A5%80+%E0%A4%95%E0%A4%BF%E0%A4%B8%E0%A4%BE%E0%A4%A8+%E0%A4%B8%E0%A4%B9%E0%A4%BE%E0%A4%AF%E0%A4%A4%E0%A4%BE+news+photo&async=1&first=1&count=35 200
