@@ -152,3 +152,18 @@
 2026-07-31 16:08:37 [INFO] response: https://duckduckgo.com/?q=%E0%A4%B5%E0%A4%82%E0%A4%A6%E0%A5%87+%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+%E0%A4%8F%E0%A4%95%E0%A5%8D%E0%A4%B8%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%2C+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%B5+news+photo 202
 2026-07-31 16:08:37 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%B5%E0%A4%82%E0%A4%A6%E0%A5%87+%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+%E0%A4%8F%E0%A4%95%E0%A5%8D%E0%A4%B8%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%2C+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%B5+news+photo&l=us-en&vqd=4-108741742408799045097662398151736242639&p=1&ct=AT 403
 2026-07-31 16:08:38 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%B5%E0%A4%82%E0%A4%A6%E0%A5%87+%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+%E0%A4%8F%E0%A4%95%E0%A5%8D%E0%A4%B8%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%2C+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%B5+news+photo&async=1&first=1&count=35 200
+2026-07-31 22:17:10 [INFO] response: https://duckduckgo.com/?q=Commonwealth+Games+2026+%E0%A4%95%E0%A5%89%E0%A4%AE%E0%A4%A8%E0%A4%B5%E0%A5%87%E0%A4%B2%E0%A5%8D%E0%A4%A5+news+photo 202
+2026-07-31 22:17:10 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Commonwealth+Games+2026+%E0%A4%95%E0%A5%89%E0%A4%AE%E0%A4%A8%E0%A4%B5%E0%A5%87%E0%A4%B2%E0%A5%8D%E0%A4%A5+news+photo&l=us-en&vqd=4-260877826659775740842051707209956797851&p=1&ct=AT 403
+2026-07-31 22:17:11 [INFO] response: https://www.bing.com/images/async?q=Commonwealth+Games+2026+%E0%A4%95%E0%A5%89%E0%A4%AE%E0%A4%A8%E0%A4%B5%E0%A5%87%E0%A4%B2%E0%A5%8D%E0%A4%A5+news+photo&async=1&first=1&count=35 200
+2026-07-31 22:17:25 [INFO] response: https://www.bing.com/images/async?q=CWG+2022+Medal+Tally+news+photo&async=1&first=1&count=35 200
+2026-07-31 22:17:35 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 22:17:39 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%B8%E0%A5%8B%E0%A4%A8%E0%A4%AE+%E0%A4%B5%E0%A4%BE%E0%A4%82%E0%A4%97%E0%A4%9A%E0%A5%81%E0%A4%95%2C+%E0%A4%B5%E0%A4%82%E0%A4%A6%E0%A5%87+%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+news+photo&async=1&first=1&count=35 200
+2026-07-31 22:17:52 [INFO] response: https://duckduckgo.com/?q=heart+transplant+%E0%A4%B5%E0%A4%82%E0%A4%A6%E0%A5%87%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+%E0%A4%8F%E0%A4%95%E0%A5%8D%E0%A4%B8%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8+news+photo 202
+2026-07-31 22:17:52 [INFO] response: https://duckduckgo.com/i.js?o=json&q=heart+transplant+%E0%A4%B5%E0%A4%82%E0%A4%A6%E0%A5%87%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+%E0%A4%8F%E0%A4%95%E0%A5%8D%E0%A4%B8%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8+news+photo&l=us-en&vqd=4-44497874084423647900561602059298315045&p=1&ct=AT 403
+2026-07-31 22:17:53 [INFO] response: https://www.bing.com/images/async?q=heart+transplant+%E0%A4%B5%E0%A4%82%E0%A4%A6%E0%A5%87%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4+%E0%A4%8F%E0%A4%95%E0%A5%8D%E0%A4%B8%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8+news+photo&async=1&first=1&count=35 200
+2026-07-31 22:18:09 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 22:18:12 [INFO] response: https://duckduckgo.com/?q=Kulgam+terrorist+attack+in+news+photo 202
+2026-07-31 22:18:12 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Kulgam+terrorist+attack+in+news+photo&l=us-en&vqd=4-152046249525456832692662624166953138030&p=1&ct=AT 403
+2026-07-31 22:18:13 [INFO] response: https://www.bing.com/images/async?q=Kulgam+terrorist+attack+in+news+photo&async=1&first=1&count=35 200
+2026-07-31 22:18:23 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 22:18:27 [INFO] response: https://www.bing.com/images/async?q=UNSW+Bengaluru+Campus+Inauguration+news+photo&async=1&first=1&count=35 200
