@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS memory (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_cmd TEXT,
+    ai_reply TEXT
+);
+CREATE TABLE IF NOT EXISTS sqlite_sequence(name,seq);

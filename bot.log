@@ -1,0 +1,94 @@
+2026-07-30 22:09:40,928 [INFO] Fetching latest market news and writing article using Groq AI...
+2026-07-30 22:09:45,969 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-30 22:09:45,992 [INFO] Skipping duplicate news: Bitcoin Surges Past $45,000 as Ethereum Hits All-Time High
+2026-07-30 22:16:55 [INFO] response: https://duckduckgo.com/?q=Modi+Controversy+PM+%E0%A4%AE%E0%A5%8B%E0%A4%A6%E0%A5%80+news+photo 202
+2026-07-30 22:16:55 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Modi+Controversy+PM+%E0%A4%AE%E0%A5%8B%E0%A4%A6%E0%A5%80+news+photo&l=us-en&vqd=4-89147248151271942755286713710418616571&p=1&ct=AT 403
+2026-07-30 22:16:56 [INFO] response: https://www.bing.com/images/async?q=Modi+Controversy+PM+%E0%A4%AE%E0%A5%8B%E0%A4%A6%E0%A5%80+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:17:10 [INFO] response: https://www.bing.com/images/async?q=jantar+mantar+protest+%E0%A4%9C%E0%A4%82%E0%A4%A4%E0%A4%B0-%E0%A4%AE%E0%A4%82%E0%A4%A4%E0%A4%B0+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:17:24 [INFO] response: https://www.bing.com/images/async?q=Vedanta+Demerger+%E0%A4%B5%E0%A5%87%E0%A4%A6%E0%A4%BE%E0%A4%82%E0%A4%A4%E0%A4%BE+%E0%A4%AE%E0%A5%87%E0%A4%82+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:17:37 [INFO] response: https://www.bing.com/images/async?q=Economic+Crisis+40+%E0%A4%A6%E0%A4%BF%E0%A4%A8+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:17:51 [INFO] response: https://www.bing.com/images/async?q=Spiderman+4+%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A4%BE%E0%A4%87%E0%A4%A1%E0%A4%B0%E0%A4%AE%E0%A5%88%E0%A4%A8+4+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:18:02 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:18:05 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%AA%E0%A5%8C%E0%A4%B0%E0%A4%BE%E0%A4%A3%E0%A4%BF%E0%A4%95+%E0%A4%AE%E0%A4%B9%E0%A4%BE%E0%A4%95%E0%A4%BE%E0%A4%B5%E0%A5%8D%E0%A4%AF%2C+%E0%A4%A6%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B6%E0%A4%A8%E0%A4%BF%E0%A4%95+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%B9%E0%A4%BE%E0%A4%B0%2C+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:18:16 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:18:19 [INFO] response: https://www.bing.com/images/async?q=The+Traitors+Season+%E0%A5%A8+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:18:30 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:18:34 [INFO] response: https://duckduckgo.com/?q=%E0%A4%A6+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%9F%E0%A4%B0%E0%A5%8D%E0%A4%B8+2+%E0%A4%B6%E0%A5%8B+news+photo 202
+2026-07-30 22:18:34 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%A6+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%9F%E0%A4%B0%E0%A5%8D%E0%A4%B8+2+%E0%A4%B6%E0%A5%8B+news+photo&l=us-en&vqd=4-94866523211542595994640124734114626697&p=1&ct=AT 403
+2026-07-30 22:18:35 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%A6+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%9F%E0%A4%B0%E0%A5%8D%E0%A4%B8+2+%E0%A4%B6%E0%A5%8B+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:18:52 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:18:56 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A7%E0%A4%BE%E0%A4%A8%E0%A4%AE%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A5%80+%E0%A4%A8%E0%A4%B0%E0%A5%87%E0%A4%82%E0%A4%A6%E0%A5%8D%E0%A4%B0+%E0%A4%AE%E0%A5%8B%E0%A4%A6%E0%A5%80+PM+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:19:07 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:19:09 [INFO] response: https://duckduckgo.com/?q=%E0%A4%AC%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A4%BF%E0%A4%9C+%E0%A4%AE%E0%A4%A4%E0%A4%B5%E0%A4%BE%E0%A4%A6%E0%A5%80+%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95+%E0%A4%AC%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A4%BF%E0%A4%9C+news+photo 202
+2026-07-30 22:19:10 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%AC%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A4%BF%E0%A4%9C+%E0%A4%AE%E0%A4%A4%E0%A4%B5%E0%A4%BE%E0%A4%A6%E0%A5%80+%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95+%E0%A4%AC%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A4%BF%E0%A4%9C+news+photo&l=us-en&vqd=4-52516641331076941112992305396951903301&p=1&ct=AT 200
+2026-07-30 22:19:20 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:19:23 [INFO] response: https://duckduckgo.com/?q=%E0%A4%88%E0%A4%B0%E0%A4%BE%E0%A4%A8+%E0%A4%AF%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%2C+%E0%A4%AE%E0%A4%BF%E0%A4%B8%E0%A5%8D%E0%A4%B0+%E0%A4%AA%E0%A4%B0+news+photo 202
+2026-07-30 22:19:23 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%88%E0%A4%B0%E0%A4%BE%E0%A4%A8+%E0%A4%AF%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%2C+%E0%A4%AE%E0%A4%BF%E0%A4%B8%E0%A5%8D%E0%A4%B0+%E0%A4%AA%E0%A4%B0+news+photo&l=us-en&vqd=4-18319194339104771179887984356802208113&p=1&ct=AT 403
+2026-07-30 22:19:24 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%88%E0%A4%B0%E0%A4%BE%E0%A4%A8+%E0%A4%AF%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%2C+%E0%A4%AE%E0%A4%BF%E0%A4%B8%E0%A5%8D%E0%A4%B0+%E0%A4%AA%E0%A4%B0+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:19:35 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:19:39 [INFO] response: https://www.bing.com/images/async?q=missile-attack-in-poland+%E0%A4%B0%E0%A5%82%E0%A4%B8%E0%A5%80+%E0%A4%AE%E0%A4%BF%E0%A4%B8%E0%A4%BE%E0%A4%87%E0%A4%B2+%E0%A4%A8%E0%A5%87+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:19:50 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:19:54 [INFO] response: https://www.bing.com/images/async?q=Anti-Paper+Leak+Bill%2C+%E0%A4%B0%E0%A4%BE%E0%A4%9C%E0%A5%8D%E0%A4%AF%E0%A4%B8%E0%A4%AD%E0%A4%BE%2C+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:20:06 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:20:10 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A7%E0%A4%BE%E0%A4%A8%E0%A4%AE%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A5%80+%E0%A4%85%E0%A4%AD%E0%A4%A6%E0%A5%8D%E0%A4%B0+%E0%A4%9F%E0%A4%BF%E0%A4%AA%E0%A5%8D%E0%A4%AA%E0%A4%A3%E0%A5%80+%E0%A4%B8%E0%A5%8B%E0%A4%B6%E0%A4%B2+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:21:59 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:22:10 [INFO] response: https://www.bing.com/images/async?q=mvd-bike-taxi-crackdown+%E0%A4%95%E0%A5%8B%E0%A4%9A%E0%A4%BF%E0%A4%A8+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%AC%E0%A4%BE%E0%A4%87%E0%A4%95+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:22:35 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:22:41 [INFO] response: https://www.bing.com/images/async?q=ganja+haul+case+15+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:24:49 [INFO] response: https://www.bing.com/images/async?q=Kerala+LIFE+Mission+%E0%A4%86%E0%A4%A8%E0%A4%BF%E0%A4%B2+news+photo&async=1&first=1&count=35 200
+2026-07-30 22:25:02 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-30 22:25:07 [INFO] response: https://duckduckgo.com/?q=%E0%A4%B9%E0%A5%88%E0%A4%A6%E0%A4%B0%E0%A4%BE%E0%A4%AC%E0%A4%BE%E0%A4%A6+%E0%A4%AF%E0%A4%BE%E0%A4%A4%E0%A4%BE%E0%A4%AF%E0%A4%BE%E0%A4%A4+%E0%A4%B8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%AF%E0%A4%BE+%E0%A4%B9%E0%A5%88%E0%A4%A6%E0%A4%B0%E0%A4%BE%E0%A4%AC%E0%A4%BE%E0%A4%A6+news+photo 202
+2026-07-30 22:25:08 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%B9%E0%A5%88%E0%A4%A6%E0%A4%B0%E0%A4%BE%E0%A4%AC%E0%A4%BE%E0%A4%A6+%E0%A4%AF%E0%A4%BE%E0%A4%A4%E0%A4%BE%E0%A4%AF%E0%A4%BE%E0%A4%A4+%E0%A4%B8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%AF%E0%A4%BE+%E0%A4%B9%E0%A5%88%E0%A4%A6%E0%A4%B0%E0%A4%BE%E0%A4%AC%E0%A4%BE%E0%A4%A6+news+photo&l=us-en&vqd=4-46261686641731415873328670016838953426&p=1&ct=AT 403
+2026-07-30 22:25:10 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%B9%E0%A5%88%E0%A4%A6%E0%A4%B0%E0%A4%BE%E0%A4%AC%E0%A4%BE%E0%A4%A6+%E0%A4%AF%E0%A4%BE%E0%A4%A4%E0%A4%BE%E0%A4%AF%E0%A4%BE%E0%A4%A4+%E0%A4%B8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%AF%E0%A4%BE+%E0%A4%B9%E0%A5%88%E0%A4%A6%E0%A4%B0%E0%A4%BE%E0%A4%AC%E0%A4%BE%E0%A4%A6+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:31:29 [INFO] response: https://www.bing.com/images/async?q=monsoon+rain+%E0%A4%9A%E0%A5%8B%E0%A4%AE%E0%A4%BE%E0%A4%B8%E0%A4%BE+2024+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:31:42 [INFO] response: https://www.bing.com/images/async?q=weather+forecast+%E0%A4%B5%E0%A4%BE%E0%A4%A1%E0%A4%BE+%E0%A4%AA%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B2%E0%A5%80%2C+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:31:54 [INFO] response: https://www.bing.com/images/async?q=Pune+Weather+%E0%A4%AA%E0%A5%81%E0%A4%A3%E0%A5%87+%E0%A4%AE%E0%A5%87%E0%A4%82+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:32:07 [INFO] response: https://www.bing.com/images/async?q=natural+disaster+%E0%A4%95%E0%A5%81%E0%A4%A6%E0%A4%B0%E0%A4%A4+%E0%A4%95%E0%A4%BE+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:32:20 [INFO] response: https://duckduckgo.com/?q=J-20+Stealth+Fighter+Jet+news+photo 202
+2026-07-31 07:32:21 [INFO] response: https://duckduckgo.com/i.js?o=json&q=J-20+Stealth+Fighter+Jet+news+photo&l=us-en&vqd=4-82294717661168495921657601566826517703&p=1&ct=AT 200
+2026-07-31 07:32:34 [INFO] response: https://www.bing.com/images/async?q=iran+missile+base+%E0%A4%88%E0%A4%B0%E0%A4%BE%E0%A4%A8+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:32:46 [INFO] response: https://duckduckgo.com/?q=students+with+parents+%E0%A4%9B%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%82+news+photo 202
+2026-07-31 07:32:47 [INFO] response: https://duckduckgo.com/i.js?o=json&q=students+with+parents+%E0%A4%9B%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%82+news+photo&l=us-en&vqd=4-32752911812795083829327392940356709552&p=1&ct=AT 200
+2026-07-31 07:32:58 [INFO] response: https://duckduckgo.com/?q=sexual+assault+in+delhi+news+photo 202
+2026-07-31 07:32:59 [INFO] response: https://duckduckgo.com/i.js?o=json&q=sexual+assault+in+delhi+news+photo&l=us-en&vqd=4-136419358197833521631049149564131343306&p=1&ct=AT 403
+2026-07-31 07:33:00 [INFO] response: https://www.bing.com/images/async?q=sexual+assault+in+delhi+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:33:13 [INFO] response: https://duckduckgo.com/?q=trump+peace+plan+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%82%E0%A4%AA+news+photo 202
+2026-07-31 07:33:13 [INFO] response: https://duckduckgo.com/i.js?o=json&q=trump+peace+plan+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%82%E0%A4%AA+news+photo&l=us-en&vqd=4-295145309842854363593138304685278670712&p=1&ct=AT 403
+2026-07-31 07:33:14 [INFO] response: https://www.bing.com/images/async?q=trump+peace+plan+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%82%E0%A4%AA+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:33:27 [INFO] response: https://www.bing.com/images/async?q=morocco+migrants+%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A5%87%E0%A4%A8+%E0%A4%95%E0%A5%87+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:33:43 [INFO] response: https://www.bing.com/images/async?q=Mekedatu+Dam+%E0%A4%AE%E0%A5%87%E0%A4%95%E0%A5%87%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A5%81+%E0%A4%AC%E0%A4%BE%E0%A4%82%E0%A4%A7+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:34:01 [INFO] response: https://www.bing.com/images/async?q=Pakistan+coal+mine+accident+news+photo&async=1&first=1&count=35 200
+2026-07-31 07:34:13 [INFO] response: https://www.bing.com/images/async?q=Ayodhya+Ram+Mandir+%E0%A4%B0%E0%A4%BE%E0%A4%AE+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:17:43 [INFO] response: https://www.bing.com/images/async?q=Rafale+Fighter+Jet+%E0%A4%B0%E0%A4%BE%E0%A4%AB%E0%A5%87%E0%A4%B2+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:17:57 [INFO] response: https://duckduckgo.com/?q=Rafale+Fighter+Jet+%E0%A4%B0%E0%A4%BE%E0%A4%AB%E0%A5%87%E0%A4%B2+news+photo 202
+2026-07-31 09:17:57 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Rafale+Fighter+Jet+%E0%A4%B0%E0%A4%BE%E0%A4%AB%E0%A5%87%E0%A4%B2+news+photo&l=us-en&vqd=4-300183623506933755633497993546539626430&p=1&ct=AT 403
+2026-07-31 09:17:58 [INFO] response: https://www.bing.com/images/async?q=Rafale+Fighter+Jet+%E0%A4%B0%E0%A4%BE%E0%A4%AB%E0%A5%87%E0%A4%B2+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:18:13 [INFO] response: https://duckduckgo.com/?q=Moon+Ice+Discovery+%E0%A4%9A%E0%A4%82%E0%A4%A6%E0%A5%8D%E0%A4%B0%E0%A4%AF%E0%A4%BE%E0%A4%A8+news+photo 202
+2026-07-31 09:18:14 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Moon+Ice+Discovery+%E0%A4%9A%E0%A4%82%E0%A4%A6%E0%A5%8D%E0%A4%B0%E0%A4%AF%E0%A4%BE%E0%A4%A8+news+photo&l=us-en&vqd=4-86743360630233305331137901252025368235&p=1&ct=AT 200
+2026-07-31 09:18:27 [INFO] response: https://duckduckgo.com/?q=Moon+Hotel+%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6+%E0%A4%AA%E0%A4%B0+news+photo 202
+2026-07-31 09:18:28 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Moon+Hotel+%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6+%E0%A4%AA%E0%A4%B0+news+photo&l=us-en&vqd=4-54219486910303008338634976341793984206&p=1&ct=AT 403
+2026-07-31 09:18:29 [INFO] response: https://www.bing.com/images/async?q=Moon+Hotel+%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6+%E0%A4%AA%E0%A4%B0+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:18:44 [INFO] response: https://duckduckgo.com/?q=Mount+Everest+%E0%A4%A6%E0%A5%81%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%95%E0%A5%80+news+photo 202
+2026-07-31 09:18:44 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Mount+Everest+%E0%A4%A6%E0%A5%81%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%95%E0%A5%80+news+photo&l=us-en&vqd=4-131200100310392308472466168327155274409&p=1&ct=AT 403
+2026-07-31 09:18:46 [INFO] response: https://www.bing.com/images/async?q=Mount+Everest+%E0%A4%A6%E0%A5%81%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%95%E0%A5%80+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:19:07 [INFO] response: https://duckduckgo.com/?q=Nirmal+Purja+%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B2+%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A4%9C%E0%A4%BE+news+photo 202
+2026-07-31 09:19:08 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Nirmal+Purja+%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B2+%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A4%9C%E0%A4%BE+news+photo&l=us-en&vqd=4-72295754633974895881396591964796774831&p=1&ct=AT 403
+2026-07-31 09:19:10 [INFO] response: https://www.bing.com/images/async?q=Nirmal+Purja+%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%B2+%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A4%9C%E0%A4%BE+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:19:25 [INFO] response: https://www.bing.com/images/async?q=Indian+Business+Summit+%E0%A4%B2%E0%A4%96%E0%A4%A8%E0%A4%8A+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:19:40 [INFO] response: https://www.bing.com/images/async?q=koshu+jain+prayer+meet+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:20:05 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 09:20:08 [INFO] response: https://duckduckgo.com/?q=%E0%A4%95%E0%A5%8B%E0%A4%B2%E0%A4%95%E0%A4%BE%E0%A4%A4%E0%A4%BE+%E0%A4%A7%E0%A4%BE%E0%A4%95%E0%A5%81%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%AE%E0%A4%B9%E0%A4%BF%E0%A4%B2%E0%A4%BE+%E0%A4%98%E0%A4%B0%E0%A5%87%E0%A4%B2%E0%A5%82+news+photo 202
+2026-07-31 09:20:08 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%95%E0%A5%8B%E0%A4%B2%E0%A4%95%E0%A4%BE%E0%A4%A4%E0%A4%BE+%E0%A4%A7%E0%A4%BE%E0%A4%95%E0%A5%81%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%AE%E0%A4%B9%E0%A4%BF%E0%A4%B2%E0%A4%BE+%E0%A4%98%E0%A4%B0%E0%A5%87%E0%A4%B2%E0%A5%82+news+photo&l=us-en&vqd=4-313739365996079729559825275514054958733&p=1&ct=AT 403
+2026-07-31 09:20:09 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%95%E0%A5%8B%E0%A4%B2%E0%A4%95%E0%A4%BE%E0%A4%A4%E0%A4%BE+%E0%A4%A7%E0%A4%BE%E0%A4%95%E0%A5%81%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%AE%E0%A4%B9%E0%A4%BF%E0%A4%B2%E0%A4%BE+%E0%A4%98%E0%A4%B0%E0%A5%87%E0%A4%B2%E0%A5%82+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:20:20 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 09:20:23 [INFO] response: https://duckduckgo.com/?q=TN+government+moves+SC+news+photo 202
+2026-07-31 09:20:23 [INFO] response: https://duckduckgo.com/i.js?o=json&q=TN+government+moves+SC+news+photo&l=us-en&vqd=4-295317895831470062061679262055952110702&p=1&ct=AT 403
+2026-07-31 09:20:24 [INFO] response: https://www.bing.com/images/async?q=TN+government+moves+SC+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:20:51 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 09:20:53 [INFO] response: https://duckduckgo.com/?q=%E0%A4%AA%E0%A5%80%E0%A4%93%E0%A4%95%E0%A5%87+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%AC%E0%A4%B5%E0%A4%BE%E0%A4%B2+%E0%A4%8F%E0%A4%B2%E0%A4%93%E0%A4%B8%E0%A5%80+news+photo 202
+2026-07-31 09:20:54 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%AA%E0%A5%80%E0%A4%93%E0%A4%95%E0%A5%87+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%AC%E0%A4%B5%E0%A4%BE%E0%A4%B2+%E0%A4%8F%E0%A4%B2%E0%A4%93%E0%A4%B8%E0%A5%80+news+photo&l=us-en&vqd=4-73281285058347998902587255891628946183&p=1&ct=AT 403
+2026-07-31 09:20:55 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%AA%E0%A5%80%E0%A4%93%E0%A4%95%E0%A5%87+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%AC%E0%A4%B5%E0%A4%BE%E0%A4%B2+%E0%A4%8F%E0%A4%B2%E0%A4%93%E0%A4%B8%E0%A5%80+news+photo&async=1&first=1&count=35 200
+2026-07-31 09:21:06 [WARNING] Model llama-3.3-70b-versatile failed. Trying fallback...
+2026-07-31 09:21:09 [INFO] response: https://duckduckgo.com/?q=%E0%A4%A6%E0%A5%8B+%E0%A4%A6%E0%A5%8B%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%80+%E0%A4%B9%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%8F%E0%A4%82%2C+news+photo 202
+2026-07-31 09:21:10 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%A6%E0%A5%8B+%E0%A4%A6%E0%A5%8B%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%80+%E0%A4%B9%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%8F%E0%A4%82%2C+news+photo&l=us-en&vqd=4-148892297665226870595893234444466291320&p=1&ct=AT 403
+2026-07-31 09:21:12 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%A6%E0%A5%8B+%E0%A4%A6%E0%A5%8B%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%80+%E0%A4%B9%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%8F%E0%A4%82%2C+news+photo&async=1&first=1&count=35 200

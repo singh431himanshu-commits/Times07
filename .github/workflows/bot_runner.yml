@@ -1,0 +1,33 @@
+name: 24/7 Times07 Auto Publisher Bot
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev
+
+      - name: Install Python Packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests feedparser beautifulsoup4 newspaper3k ddgs urllib3 lxml lxml_html_clean
+          python -m nltk.downloader punkt punkt_tab
+
+      - name: Run Publisher Bot Single Pass
+        run: |
+          python -c "import run; run.run_bot()"

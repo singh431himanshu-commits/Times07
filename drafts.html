@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Drafts Control</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 2rem; font-weight: 800; color: #38bdf8; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .card { background: #1e293b; border: 2px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+        .card-header { font-size: 1.3rem; font-weight: 800; color: #facc15; margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+        .section-title { font-weight: 700; color: #94a3b8; font-size: 0.9rem; margin: 10px 0 5px 0; text-transform: uppercase; }
+        .option-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+        .option-label { display: flex; align-items: center; gap: 10px; background: #0f172a; padding: 10px 12px; border-radius: 8px; border: 1px solid #334155; cursor: pointer; font-weight: 600; font-size: 0.95rem; line-height: 1.4; }
+        .option-label:hover { border-color: #38bdf8; }
+        .img-preview { width: 100px; height: 60px; object-fit: cover; border-radius: 6px; }
+        .btn-publish { width: 100%; background: #22c55e; color: #000; font-weight: 800; font-size: 1.1rem; border: none; padding: 12px; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-top: 10px; }
+        .btn-publish:hover { background: #4ade80; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Times07 Draft Manager</h1>
+        <div id="drafts-container">लॉन्च हो रहा है...</div>
+    </div>
+
+    <script>
+        let allDrafts = [];
+
+        async function loadDrafts() {
+            try {
+                const res = await fetch('drafts.json?t=' + new Date().getTime());
+                allDrafts = await res.json();
+                render();
+            } catch (err) {
+                document.getElementById('drafts-container').innerHTML = `<h3 style="color:#ef4444; text-align:center;">कोई ड्राफ्ट नहीं मिला या error है।</h3>`;
+            }
+        }
+
+        function render() {
+            const container = document.getElementById('drafts-container');
+            if (!allDrafts.length) {
+                container.innerHTML = '<h3 style="text-align:center; color:#94a3b8;">सब साफ़ है! कोई नया ड्राफ्ट पेंडिंग नहीं है।</h3>';
+                return;
+            }
+
+            container.innerHTML = allDrafts.map((draft) => `
+                <div class="card" id="card-${draft.id}">
+                    <div class="card-header">📂 श्रेणी: ${draft.category || 'बॉलीवुड'}</div>
+                    
+                    <div class="section-title">📌 शीर्षक चुनें (Select Best Title):</div>
+                    <div class="option-group">
+                        ${draft.titles.map((t, idx) => `
+                            <label class="option-label">
+                                <input type="radio" name="title_${draft.id}" value="${t.replace(/"/g, '&quot;')}" ${idx===0?'checked':''}>
+                                <span>${t}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+
+                    <div class="section-title">🖼️ फोटो चुनें (Select Image):</div>
+                    <div class="option-group" style="flex-direction: row; flex-wrap: wrap;">
+                        ${draft.images.map((img, idx) => `
+                            <label class="option-label" style="flex: 1; min-width: 200px;">
+                                <input type="radio" name="img_${draft.id}" value="${img}" ${idx===0?'checked':''}>
+                                <img src="${img}" class="img-preview">
+                            </label>
+                        `).join('')}
+                    </div>
+
+                    <button class="btn-publish" onclick="saveLocal('${draft.id}')">✅ Approve & Local Save</button>
+                </div>
+            `).join('');
+        }
+
+        async function saveLocal(id) {
+            const card = document.getElementById('card-' + id);
+            const selectedTitle = card.querySelector(`input[name="title_${id}"]:checked`).value;
+            const selectedImg = card.querySelector(`input[name="img_${id}"]:checked`).value;
+            const targetDraft = allDrafts.find(d => d.id === id);
+
+            const newArticle = {
+                id: id,
+                title: selectedTitle,
+                image: selectedImg,
+                category: targetDraft.category || "बॉलीवुड",
+                content_html: targetDraft.content_html,
+                published_at: new Date().toISOString()
+            };
+
+            // Local updates logic via browser storage/download prompt or direct news append
+            alert("✅ खबर स्वीकृत (Approve) हो गई है! अब डेस्कटॉप आइकॉन पर 1-Click करके लाइव पुश करें।");
+            card.remove();
+        }
+
+        loadDrafts();
+    </script>
+</body>
+</html>

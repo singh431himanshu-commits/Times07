@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "4a41901e-1f24-4b3d-97b6-bb6e81d69260",
+      safari_web_id: "web.onesignal.auto.14e17240-829a-4079-8f1d-24e0d0f74783",
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script>
+
+    <!-- Real News Site Meta Tags -->
+<title>Times07 News - भारत और दुनिया की ताज़ा ख़बरें</title>
+<meta name="description" content="Times07 News पर पढ़ें राजनीति, खेल, टेक्नोलॉजी, और दुनिया भर की ताज़ा ब्रेकिंग न्यूज़।">
+<meta name="author" content="Times07 News Network">
+
+<!-- Open Graph / Google Look -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Times07 News">
+<meta property="og:title" content="Times07 News - ताज़ा ख़बरें और लाइव अपडेट्स">
+<meta property="og:description" content="निष्पक्ष और सटीक समाचार। राजनीति, शेयर बाज़ार और दुनिया की बड़ी ख़बरें।">
+<!-- 🚀 GOOGLE BRAND & CANONICAL FIX -->
+<link rel="canonical" href="https://times07news.in/" />
+<meta property="og:url" content="https://times07news.in/" />
+<meta property="og:site_name" content="Times07 News" />
+<meta name="application-name" content="Times07 News" />
+
+<!-- 🚀 STRUCTURED DATA FOR GOOGLE (News Brand Indexing) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "Times07 News",
+  "url": "https://times07news.in/",
+  "logo": "https://times07news.in/images/logo.png",
+  "sameAs": [
+    "https://facebook.com",
+    "https://twitter.com"
+  ]
+}
+</script>
+    <!-- Google Discover & Large Image Tag -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<!-- Open Graph Meta Tags (Social Media Sharing) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Times07">
+<meta property="og:title" content="Times07 - भारत और दुनिया की ताज़ा ख़बरें">
+<meta property="og:description" content="Times07 - राजनीति, खेल, मनोरंजन और तकनीक की हर ताज़ा खबर।">
+<meta property="og:image" content="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800">
+<meta name="twitter:card" content="summary_large_image">
+    <meta name="google-adsense-account" content="ca-pub-7977941506677641">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VFC87XPD0V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VFC87XPD0V');
+</script>
+    <meta name="google-site-verification" content="UiY5jZFYLoQSr-co13DmSrHmqxpqwu6OxAOQzoWfMBk" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Times07 - भारत और दुनिया की ताज़ा ख़बरें, Live Updates, Breaking News</title>
+    <!-- Core CSS Engine -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Pro Icons Network -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Hierarchy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <!-- Web Manifest & PWA Theme -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#c00000">
+    <meta name="description" content="Times07 - भारत का निष्पक्ष एवं विश्वसनीय समाचार नेटवर्क। राजनीति, खेल, बॉलीवुड, व्यापार और तकनीक की हर खबर।">
+    
+    <!-- 🚀 ABP STYLE STICKY & HERO EXPANDED LAYOUT ENGINE -->
+    <style>
+        /* 1. Sticky Position Enable karne ke liye overflow clear karein */
+        html, body, .main-wrapper, #main-content {
+            overflow: visible !important;
+        }
+
+        /* 2. Strict 3-Column Desktop Grid Setup (Red Box spanning right across center + right) */
+        .portal-container.abp-layout-grid {
+            display: grid !important;
+            grid-template-columns: 220px 1fr 300px !important; 
+            grid-template-areas: 
+                "left hero hero"
+                "left center right" !important;
+            gap: 20px !important;
+            align-items: start !important;
+            max-width: 1350px !important;
+            margin: 15px auto !important;
+            padding: 0 10px !important;
+        }
+
+        /* 3. Grid Areas Assignment */
+        .left-sidebar {
+            grid-area: left;
+            position: -webkit-sticky !important;
+            position: sticky !important;
+            top: 80px !important;
+            max-height: calc(100vh - 90px) !important;
+            overflow-y: auto !important;
+            background: #ffffff !important;
+            padding-right: 10px !important;
+            border-right: 1px solid #e2e8f0 !important;
+        }
+
+        .hero-spanning-wrapper {
+            grid-area: hero;
+            margin-bottom: 20px;
+        }
+
+        .center-content {
+            grid-area: center;
+            min-width: 0 !important;
+            width: 100% !important;
+        }
+
+        .right-sidebar {
+            grid-area: right;
+            position: -webkit-sticky !important;
+            position: sticky !important;
+            top: 80px !important;
+            max-height: calc(100vh - 90px) !important;
+            overflow-y: auto !important;
+            background: #ffffff !important;
+            padding-left: 5px !important;
+        }
+
+        /* 4. RED BOX (Hero Banner) - Spread across Center & Right Area */
+        .abp-hero-container {
+            display: grid !important;
+            grid-template-columns: 1fr 260px 290px !important; /* [Main Photo] | [Main Title] | [5 Articles List] */
+            background: #da251d !important;
+            height: 380px !important;
+            gap: 0 !important;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .abp-hero-image-box { width: 100%; height: 100%; }
+        .abp-hero-image-box img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+
+        .abp-hero-title-box { padding: 20px; display: flex; align-items: center; }
+        .abp-hero-title-box h2 { color: #fff; font-size: 22px; line-height: 1.4; margin: 0; }
+
+        /* Red Box ke andar right side 5 articles list */
+        .abp-hero-list-box {
+            background: #b91d16; /* Thoda dark red tone */
+            padding: 12px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .abp-hero-list-box ul { list-style: none; padding: 0; margin: 0; }
+        .abp-hero-list-box li {
+            color: #fff; font-size: 12px; font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 7px 0; line-height: 1.3; cursor: pointer; transition: 0.2s;
+        }
+        .abp-hero-list-box li:hover { color: #facc15; }
+
+        /* 5. Live Halchal (6 Items Customization for Right Sidebar) */
+        .blinking-news-card {
+            display: flex; gap: 10px; padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            animation: fadeAndPop 0.8s ease-in-out;
+            align-items: center;
+        }
+        .blinking-news-card img { width: 70px; height: 50px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+        .blinking-news-card h4 { font-size: 12px; font-weight: 600; color: #1e293b; margin: 0; line-height: 1.3; }
+
+        @keyframes fadeAndPop {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 📱 Mobile Screens Auto Adjust */
+        @media screen and (max-width: 1024px) {
+            .portal-container.abp-layout-grid {
+                grid-template-columns: 1fr !important;
+                grid-template-areas: 
+                    "hero"
+                    "center"
+                    "right" !important;
+            }
+            .left-sidebar { display: none !important; }
+            .abp-hero-container { grid-template-columns: 1fr !important; height: auto !important; }
+            .right-sidebar { position: static !important; max-height: none !important; border-left: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Google Translate Hidden Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Reading Progress Indicator Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- LEVEL 1: GLOBAL TOP HEADER BAR (ABP STYLE) -->
+    <div class="top-global-bar">
+        <div class="global-bar-container">
+            <div class="top-left-info">
+                <span id="live-clock" class="top-time"></span>
+                <span class="divider">|</span>
+                <div class="lang-switcher">
+                    <a href="javascript:void(0)" onclick="window.translatePage('hi', this)" class="active">हिंदी</a>
+                    <a href="javascript:void(0)" onclick="window.translatePage('en', this)">English</a>
+                    <a href="javascript:void(0)" onclick="window.translatePage('mr', this)">मराठी</a>
+                    <a href="javascript:void(0)" onclick="window.translatePage('bn', this)">বাংলা</a>
+                    <a href="javascript:void(0)" onclick="window.translatePage('pa', this)">पंजाबी</a>
+                    <a href="javascript:void(0)" onclick="window.translatePage('gu', this)">ગુજરાતી</a>
+                    <a href="javascript:void(0)" onclick="window.translatePage('ta', this)">தமிழ்</a>
+                    <a href="javascript:void(0)" onclick="window.translatePage('te', this)">తెలుగు</a>
+                </div>
+            </div>
+            <div class="top-right-social">
+                <span class="contact-text">संपर्क करें</span>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div> 
+
+    <!-- LEVEL 2 & 3: MAIN HEADER -->
+    <header class="main-header sticky-nav">
+        <!-- Aesthetic Expandable Search Bar Overlay -->
+<div id="search-overlay" style="display: none; background: #0b0f19; padding: 15px 3%; border-bottom: 2px solid #c00000; box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative; z-index: 1000; transition: all 0.3s ease;">
+    <div style="max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 12px; background: #1e293b; padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15);">
+        <i class="fa-solid fa-magnifying-glass" style="color: #fde047; font-size: 16px;"></i>
+        <input type="text" id="aesthetic-search-input" placeholder="Search Markets, EV Tech, AI, World News..." onkeyup="if(event.key==='Enter') window.executeAestheticSearch()" style="width: 100%; background: transparent; border: none; outline: none; color: #fff; font-size: 14px; font-weight: 600;">
+        <button onclick="window.executeAestheticSearch()" style="background: #c00000; color: #fff; border: none; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 12px; cursor: pointer; text-transform: uppercase;">SEARCH</button>
+        <button onclick="window.toggleSearchOverlay()" style="background: transparent; color: #94a3b8; border: none; font-size: 18px; cursor: pointer; margin-left: 5px;">&times;</button>
+    </div>
+</div>
+        <div class="header-container">
+            <div class="logo-box">
+                <a href="javascript:void(0)" onclick="location.reload()">
+ <!-- वेबसाइट लोगो सेक्शन -->
+<div class="logo-container">
+    <a href="index.html">
+        <img src="images/logo.png" alt="Times 07 News - हर खबर सही वक्त पर" class="site-logo">
+    </a>
+</div>
+                </a>
+            </div>
+
+            <nav class="primary-nav">
+                <a href="javascript:void(0)" onclick="location.reload()" class="nav-item active"><i class="fa-solid fa-house" style="color:red;"></i> होम</a>
+                <a href="javascript:void(0)" onclick="window.filterCategory('न्यूज़')" class="nav-item">न्यूज़</a>
+                <a href="javascript:void(0)" onclick="window.filterCategory('राज्य')" class="nav-item">राज्य</a>
+                <a href="javascript:void(0)" onclick="window.filterCategory('मनोरंजन')" class="nav-item">मनोरंजन</a>
+                <a href="javascript:void(0)" onclick="window.filterCategory('खेल')" class="nav-item">खेल</a>
+                <a href="javascript:void(0)" onclick="window.filterCategory('बिजनेस')" class="nav-item">बिजनेस</a>
+                <a href="javascript:void(0)" onclick="window.filterCategory('टेक')" class="nav-item">टेक & AI</a>
+                <a href="javascript:void(0)" onclick="window.filterCategory('लाइफस्टाइल')" class="nav-item">लाइफस्टाइल</a>
+                
+                <div class="nav-dropdown">
+                    <a href="javascript:void(0)" class="nav-item">अन्य <i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="javascript:void(0)" onclick="window.filterCategory('GK')">GK & शिक्षा</a>
+                        <a href="javascript:void(0)" onclick="window.filterCategory('ऑटो')">ऑटो</a>
+                        <a href="javascript:void(0)" onclick="window.filterCategory('फोटो')">फोटो</a>
+                        <a href="javascript:void(0)" onclick="window.filterCategory('वीडियो')">वीडियो</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn" title="डार्क/लाइट मोड" onclick="window.toggleTheme()"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+                <button class="icon-btn" title="सर्च" onclick="window.triggerAISearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="icon-btn user-logo-btn" title="यूज़र / एडमिन" onclick="window.openAuthModal()"><i class="fa-solid fa-circle-user"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- LEVEL 4: TRENDING HASHTAGS BAR -->
+    <div class="trending-hashtags-bar" id="trending-topics-bar">
+        <div class="trending-container">
+            <span class="trending-label"><i class="fa-solid fa-fire"></i> ट्रेंडिंग:</span>
+            <div class="hashtags-wrapper">
+                <a href="#" onclick="window.filterCategory('इलेक्शन')">#Election2026</a>
+                <a href="#" onclick="window.filterCategory('विज्ञान एवं तकनीक')">#AI_Summit</a>
+                <a href="#" onclick="window.filterCategory('बिजनेस')">#StockMarketRecord</a>
+                <a href="#" onclick="window.filterCategory('खेल')">#CricketWorldCup</a>
+                <a href="#" onclick="window.filterCategory('मौसम')">#MonsoonUpdate</a>
+                <a href="#" onclick="window.filterCategory('बॉलीवुड')">#BollywoodExclusive</a>
+                <a href="#" onclick="window.filterCategory('विज्ञान एवं तकनीक')">#ISROMission</a>
+                <a href="#" onclick="window.filterCategory('शेयर बाजार')">#Budget2026</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEVEL 5: BREAKING NEWS TICKER -->
+    <div class="breaking-ticker-bar" id="breaking-live-ticker">
+        <div class="ticker-badge">BREAKING LIVE</div>
+        <marquee behavior="scroll" direction="left" id="live-ticker-text">
+            Times07 लाइव अपडेट्स: देश-विदेश की बड़ी खबरें, शेयर बाजार का हाल, बजट अपडेट्स, और खेल की हर ताज़ा रिपोर्ट...
+        </marquee>
+    </div>
+
+    <nav class="primary-nav" style="display: flex; gap: 8px; align-items: center;">
+    <a href="javascript:void(0)" onclick="location.reload()" class="nav-item-3d" style="color:#fde047 !important; font-weight:800; font-size:12px; padding:6px 12px; background:linear-gradient(145deg, #1e293b, #0f172a); border-radius:5px; border:1px solid rgba(255,255,255,0.1); text-decoration:none;"><i class="fa-solid fa-house" style="color:#fde047;"></i> HOME</a>
+    <a href="javascript:void(0)" onclick="window.filterCategory('Global Markets')" class="nav-item-3d" style="color:#fff; font-weight:800; font-size:12px; padding:6px 12px; background:linear-gradient(145deg, #1e293b, #0f172a); border-radius:5px; border:1px solid rgba(255,255,255,0.1); text-decoration:none;">GLOBAL MARKETS</a>
+    <a href="javascript:void(0)" onclick="window.filterCategory('Auto & EV Tech')" class="nav-item-3d" style="color:#fff; font-weight:800; font-size:12px; padding:6px 12px; background:linear-gradient(145deg, #1e293b, #0f172a); border-radius:5px; border:1px solid rgba(255,255,255,0.1); text-decoration:none;">AUTO & EV TECH</a>
+    <a href="javascript:void(0)" onclick="window.filterCategory('Tech & AI')" class="nav-item-3d" style="color:#fff; font-weight:800; font-size:12px; padding:6px 12px; background:linear-gradient(145deg, #1e293b, #0f172a); border-radius:5px; border:1px solid rgba(255,255,255,0.1); text-decoration:none;">TECH & AI</a>
+    <a href="javascript:void(0)" onclick="window.filterCategory('International Business')" class="nav-item-3d" style="color:#fff; font-weight:800; font-size:12px; padding:6px 12px; background:linear-gradient(145deg, #1e293b, #0f172a); border-radius:5px; border:1px solid rgba(255,255,255,0.1); text-decoration:none;">BUSINESS</a>
+    <a href="javascript:void(0)" onclick="window.filterCategory('Cryptocurrency')" class="nav-item-3d" style="color:#fff; font-weight:800; font-size:12px; padding:6px 12px; background:linear-gradient(145deg, #1e293b, #0f172a); border-radius:5px; border:1px solid rgba(255,255,255,0.1); text-decoration:none;">CRYPTO</a>
+    <a href="javascript:void(0)" onclick="window.filterCategory('World News')" class="nav-item-3d" style="color:#fff; font-weight:800; font-size:12px; padding:6px 12px; background:linear-gradient(145deg, #1e293b, #0f172a); border-radius:5px; border:1px solid rgba(255,255,255,0.1); text-decoration:none;">WORLD NEWS</a>
+</nav>
+
+    <!-- MAIN BODY CONTENT ARCHITECTURE -->
+    <main class="main-wrapper" id="main-content">
+        <div class="portal-container abp-layout-grid">
+            
+           <!-- 👈 1. LEFT STICKY SIDEBAR -->
+            <aside class="left-sidebar left-explorer" id="left-side-explorer">
+                <div class="explorer-menu">
+                    <a href="#live-tv-section" class="left-menu-item explorer-item"><i class="fa-solid fa-tv" style="color:#c00000;"></i><span>लाइव टीवी</span></a>
+                    <a href="#videos-section" class="left-menu-item explorer-item"><i class="fa-solid fa-circle-play"></i><span>वीडियो</span></a>
+                    <a href="#shorts-section" class="left-menu-item explorer-item"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i><span>शॉर्ट्स</span></a>
+                    <a href="javascript:void(0)" onclick="window.filterCategory('बॉलीवुड')" class="left-menu-item explorer-item"><i class="fa-solid fa-film" style="color:#e11d48;"></i><span>बॉलीवुड गॉसिप</span></a>
+                </div>
+
+                <!-- पोल -->
+                <div class="sidebar-widget" style="margin-top:20px;">
+                    <h3 class="widget-title"><i class="fa-solid fa-poll" style="color:#c00000;"></i> आज का पोल</h3>
+                    <p style="font-size:12px; margin:8px 0; font-weight:600;">क्या 2030 तक AI पारंपरिक नौकरियों को बदल देगा?</p>
+                    <button class="poll-btn" style="width:100%; padding:6px; margin-bottom:5px;">हाँ, पूरी तरह (68%)</button>
+                    <button class="poll-btn" style="width:100%; padding:6px;">नहीं (32%)</button>
+                </div>
+
+                <!-- यूटिलिटी टूल्स -->
+                <div class="sidebar-widget" style="margin-top:20px;">
+                    <h3 class="widget-title"><i class="fa-solid fa-toolbox" style="color:#c00000;"></i> यूटिलिटी टूल्स</h3>
+                    <a href="#" style="display:block; font-size:13px; padding:5px 0; color:#333; text-decoration:none;"><i class="fa-solid fa-calculator"></i> BMI कैलकुलेटर</a>
+                    <a href="#" style="display:block; font-size:13px; padding:5px 0; color:#333; text-decoration:none;"><i class="fa-solid fa-percent"></i> GST कैलकुलेटर</a>
+                </div>
+            </aside>
+
+            <!-- 🔴 2. NEW HERO BANNER (Spanning Across Center & Right Columns) -->
+            <div class="hero-spanning-wrapper">
+                <div class="abp-hero-container">
+                    <!-- Photo Box -->
+                    <div class="abp-hero-image-box">
+                        <img id="abp-main-img" src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800" alt="Top News">
+                    </div>
+                    <!-- Title Box -->
+                    <div class="abp-hero-title-box">
+                        <h2 id="abp-main-title">JPSC में एक ही परीक्षा केंद्र के सभी अभ्यर्थी मेरिट में कैसे? क्या JPSC परीक्षा होगी रद्द्?</h2>
+                    </div>
+                    <!-- 5 Slide Articles inside Red Box -->
+                    <div class="abp-hero-list-box">
+                        <ul id="abp-side-headlines">
+                            <li>WI vs PAK: बाबर आजम देखते रहे पाकिस्तान की हार का तमाशा, टेस्टजीतने में नाकाम, टेस्टडीज ने मारा मैदान</li>
+                            <li>12 साल का सचिन, जिसने कंप्यूटर को भी पीछे छोड़ दिया, 3 अहम साल एनसीसी में गुजार</li>
+                            <li>बंगाल के सरकारी कर्मचारियों को दुर्गा पूजा से पहले 20% DA का तोहफा</li>
+                            <li>शेयर बाजार में भारी उछाल, सेंसेक्स ने तोड़े पुराने सभी रिकॉर्ड</li>
+                            <li>मौसम अपडेट: दिल्ली-NCR में भारी बारिश का अलर्ट</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+           <!-- 📰 CENTER FEED: CATEGORY-WISE SECTIONS -->
+<section class="center-content center-feed" id="center-main-feed">
+
+    <!-- 1. ताज़ा ख़बरें (Latest News) -->
+    <div class="news-section" style="margin-bottom: 30px;">
+        <h2 class="section-title-abp"><i class="fa-solid fa-bolt" style="color:#c00000;"></i> ताज़ा ख़बरें</h2>
+        <div class="hybrid-news-grid" id="latest-news-grid"></div>
+    </div>
+
+    <!-- 2. अंतरराष्ट्रीय खबरें -->
+    <div class="news-section" style="margin-bottom: 30px;">
+        <h2 class="section-title-abp"><i class="fa-solid fa-globe" style="color:#c00000;"></i> अंतरराष्ट्रीय ख़बरें</h2>
+        <div class="hybrid-news-grid" id="intl-news-grid"></div>
+    </div>
+
+    <!-- 3. बॉलीवुड व मनोरंजन -->
+    <div class="news-section" style="margin-bottom: 30px;">
+        <h2 class="section-title-abp"><i class="fa-solid fa-film" style="color:#c00000;"></i> बॉलीवुड व मनोरंजन</h2>
+        <div class="hybrid-news-grid" id="entertainment-news-grid"></div>
+    </div>
+
+    <!-- 4. खेल समाचार -->
+    <div class="news-section" style="margin-bottom: 30px;">
+        <h2 class="section-title-abp"><i class="fa-solid fa-trophy" style="color:#c00000;"></i> खेल समाचार</h2>
+        <div class="hybrid-news-grid" id="sports-news-grid"></div>
+    </div>
+
+    <!-- 5. टेक और बिज़नेस -->
+    <div class="news-section" style="margin-bottom: 30px;">
+        <h2 class="section-title-abp"><i class="fa-solid fa-laptop-code" style="color:#c00000;"></i> टेक और बिज़नेस</h2>
+        <div class="hybrid-news-grid" id="tech-news-grid"></div>
+    </div>
+
+</section>
+            <!-- 👉 4. RIGHT STICKY SIDEBAR (Below Red Box, right side with 6 Live Halchal items) -->
+            <aside class="right-sidebar" id="right-side-bar">
+                <div class="sidebar-widget" style="background: #fff; padding: 10px; border-radius: 8px;">
+                    <h3 class="widget-title" style="border-bottom: 2px solid red; padding-bottom: 5px; color: red;">
+                        <i class="fa-solid fa-satellite-dish fa-fade"></i> LatestNews
+                    </h3>
+                    
+                    <!-- यहाँ 6 न्यूज़ ऑटोमैटिक आएंगी -->
+                    <div id="dynamic-right-news-container"></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- ADMIN CONTROL PANEL -->
+    <section class="main-wrapper hidden" id="admin-panel">
+        <div class="admin-card">
+            <h2><i class="fa-solid fa-user-shield" style="color:#c00000;"></i> Times07 Enterprise Control Desk</h2>
+            <p style="font-size:14px; color:var(--muted-text); margin:10px 0;">डेटाबेस में लाइव रिच रिपोर्ट पब्लिश या सिंक करने के लिए नीचे बटन दबाएं:</p>
+            <button type="button" onclick="window.fetchLiveRSSNews()" class="dispatch-btn"><i class="fa-solid fa-bolt"></i> Dispatch Rich Coverage to Database</button>
+            <button onclick="window.showHome()" class="sub-btn" style="margin-top:15px; background:#475569;">लाइव वेबसाइट देखें</button>
+        </div>
+    </section>
+
+    <!-- MEGA FOOTER -->
+    <footer class="mega-footer" id="contact-footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h2 class="footer-logo"> <span>Times07</span></h2>
+                <p>Times07 भारत का सबसे विश्वसनीय और निष्पक्ष डिजिटल समाचार नेटवर्क है जो राजनीति, व्यापार, खेल, तकनीक और मनोरंजन पर पल-पल की सटीक खबरें उपलब्ध कराता है।</p>
+            </div>
+            <div class="footer-col">
+                <h4>कैटेगरीज</h4>
+                <a href="#" onclick="window.showHome()">मुख्य समाचार</a>
+                <a href="#" onclick="window.filterCategory('राजनीति')">राजनीति</a>
+                <a href="#" onclick="window.filterCategory('बिजनेस')">बिजनेस</a>
+                <a href="#" onclick="window.filterCategory('विज्ञान एवं तकनीक')">टेक्नोलॉजी</a>
+                <a href="#" onclick="window.filterCategory('मनोरंजन')">मनोरंजन</a>
+            </div>
+                     
+          <div class="footer-col">
+                <h4>कंपनी & नीतियां</h4>
+                <a href="about.html">हमारे बारे में</a>
+                <a href="contact.html">संपर्क करें</a>
+                <a href="privacy.html">प्राइवेसी पॉलिसी</a>
+            </div>
+            <div class="footer-col">
+                <h4>लीगल & लिंक्स</h4>
+                <a href="#">नियम एवं शर्तें</a>
+                <a href="sitemap.xml">साइटमैप</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Times07 Media Network. सर्वाधिकार सुरक्षित। Enterprise Live System.
+        </div>
+    </footer>
+
+    <!-- Master Unified Script -->
+    <script type="module" src="script.js?v=4.0"></script>
+    
+    <!-- COMPLETE AUTH MODAL -->
+    <div id="auth-modal" class="modal-overlay" style="display:none;">
+        <div class="auth-box">
+            <button type="button" class="close-btn" id="modal-close-btn" onclick="window.closeAuthModal()">&times;</button>
+            <h2>Times07 में आपका स्वागत है</h2>
+            
+            <button type="button" class="google-btn" onclick="alert('Google Auth Triggered!')">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" height="20" alt="Google"> Google से जारी रखें
+            </button>
+
+            <div class="auth-divider"><span>या फिर</span></div>
+
+            <div class="tab-btn-group">
+                <button type="button" class="tab-btn active" id="tab-login-btn">लॉगिन</button>
+                <button type="button" class="tab-btn" id="tab-signup-btn">साइन अप</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form" onsubmit="event.preventDefault(); alert('लॉगिन सफल!'); window.closeAuthModal();">
+                <input type="email" placeholder="ईमेल आईडी" required>
+                <input type="password" placeholder="पासवर्ड" required>
+                <button type="submit" class="auth-submit-btn">लॉगिन करें</button>
+            </form>
+
+            <!-- Full Detail Signup Form -->
+            <form id="signup-form" class="auth-form" style="display:none;" onsubmit="event.preventDefault(); alert('अकाउंट सफलतापूर्वक बन गया!'); window.closeAuthModal();">
+                <input type="text" placeholder="पूरा नाम" required>
+                <input type="email" placeholder="ईमेल आईडी" required>
+                <input type="tel" placeholder="मोबाइल नंबर" required>
+                <input type="password" placeholder="पासवर्ड बनाएं" required>
+                <input type="password" placeholder="पासवर्ड कन्फर्म करें" required>
+                <button type="submit" class="auth-submit-btn">नया अकाउंट बनाएं</button>
+            </form>
+        </div>
+    </div>
+
+    
+    
+    <script>
+      fetch('news.json')
+        .then(response => response.json())
+        .then(data => console.log("AURA-07 Live News Loaded:", data))
+        .catch(err => console.error("Error loading news:", err));
+    </script>
+    
+    <!-- Right Sidebar 6-News Auto-Rotating Engine -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const liveNewsData = [
+            { title: "NEET परीक्षा लीक मामला: CBI की बड़ी कार्रवाई, 13 आरोपियों के खिलाफ चार्जशीट", img: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=150" },
+            { title: "शेयर बाजार में भारी उछाल, सेंसेक्स ने तोड़े पुराने सभी रिकॉर्ड", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=150" },
+            { title: "मौसम अपडेट: दिल्ली-NCR में भारी बारिश का अलर्ट, कई उड़ानें रद्द", img: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=150" },
+            { title: "Paris Olympics 2026: भारतीय हॉकी टीम का शानदार प्रदर्शन, सेमीफाइनल में एंट्री", img: "https://images.unsplash.com/photo-1599839619722-39751411ea63?w=150" },
+            { title: "AI और तकनीक: भारत में लॉन्च हुआ नया स्वदेशी आर्टिफिशियल इंटेलिजेंस मॉडल", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=150" },
+            { title: "रेलवे का नया नियम: सीनियर सिटीजन के लिए बड़ी खुशखबरी, टिकट में छूट", img: "https://images.unsplash.com/photo-1471626294713-7d2d3a3d53b2?w=150" },
+            { title: "ISRO का नया मिशन: गगनयान को लेकर बड़ी अपडेट, जल्द होगी लॉन्चिंग", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=150" },
+            { title: "JPSC परीक्षा घोटाले की जांच में आया बड़ा मोड़, 9 घंटे की पूछताछ", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=150" }
+        ];
+
+        const container = document.getElementById('dynamic-right-news-container');
+        let currentIndex = 0;
+
+        function changeNews() {
+            if (!container) return;
+            
+            container.innerHTML = ""; 
+            let htmlContent = "";
+
+            // एक साथ 6 खबरें जनरेट करें
+            for(let i = 0; i < 6; i++) {
+                const news = liveNewsData[(currentIndex + i) % liveNewsData.length];
+                htmlContent += `
+                    <div class="blinking-news-card">
+                        <img src="${news.img}" alt="news">
+                        <h4>${news.title}</h4>
+                    </div>
+                `;
+            }
+
+            setTimeout(() => {
+                container.innerHTML = htmlContent;
+                // हर 5 सेकंड में 2 खबरें ऊपर से खिसकेंगी
+                currentIndex = (currentIndex + 2) % liveNewsData.length; 
+            }, 100); 
+        }
+
+        changeNews();
+        setInterval(changeNews, 5000); 
+    });
+    </script>
+</body>
+</html>

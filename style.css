@@ -1,0 +1,1143 @@
+/* ==========================================================================
+   TIMES07 ENTERPRISE MEDIA NETWORK - MASTER STYLESHEET
+   Brand Colors: Times07 Crimson Red (#c00000), Dark Red (#8b0000)
+   Typography: Mukta (Hindi), Plus Jakarta Sans (English), Merriweather
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Mukta:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL CSS VARIABLES & THEME ENGINE
+   -------------------------------------------------------------------------- */
+:root {
+    --abp-red: #c00000;
+    --abp-red-hover: #a00000;
+    --abp-dark-red: #8b0000;
+    --abp-black: #000000;
+    --abp-yellow: #fde047;
+
+    --bg-color: #f4f5f7;
+    --card-bg: #ffffff;
+    --text-color: #111827;
+    --heading-color: #030712;
+    --border-color: #e5e7eb;
+    --muted-text: #6b7280;
+    --header-bg: #ffffff;
+    --input-bg: #f9fafb;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+
+    --font-hindi: 'Mukta', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Merriweather', serif;
+}
+
+body.dark-theme, body.dark-mode {
+    --bg-color: #0f172a !important;
+    --card-bg: #1e293b !important;
+    --text-color: #f8fafc !important;
+    --heading-color: #ffffff !important;
+    --border-color: #334155 !important;
+    --muted-text: #9ca3af !important;
+    --header-bg: #1e293b !important;
+    --input-bg: #1e293b !important;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE LAYOUT RULES
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-hindi);
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select, textarea {
+    outline: none;
+    font-family: inherit;
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--abp-red), var(--abp-yellow));
+    z-index: 10000;
+    width: 0%;
+    box-shadow: 0 0 10px rgba(192, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   3. LEVEL 1: GLOBAL TOP HEADER BAR
+   -------------------------------------------------------------------------- */
+.top-global-bar {
+    background: #8b0000 !important;
+    padding: 4px 3% !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.global-bar-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.top-left-info {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.top-time {
+    font-size: 11px !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+}
+
+.divider {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.lang-switcher {
+    display: inline-flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+}
+
+.lang-switcher a {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    padding: 1px 5px !important;
+    border-radius: 2px !important;
+}
+
+.lang-switcher a.active {
+    background: #fde047 !important;
+    color: #000000 !important;
+}
+
+.top-right-social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-text {
+    font-size: 11px !important;
+    color: #ffffff !important;
+    margin-right: 5px !important;
+}
+
+.top-right-social a {
+    color: #ffffff;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.top-right-social a:hover {
+    background: var(--abp-red);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   4. LEVEL 2 & 3: MAIN NAVIGATION & HEADER ACTIONS
+   -------------------------------------------------------------------------- */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.main-header {
+    background: var(--header-bg);
+    border-bottom: 3px solid var(--abp-red);
+    box-shadow: var(--shadow-md);
+    width: 100% !important;
+}
+
+.header-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 10px 4% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.logo-box a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.abp-badge {
+    background: var(--abp-red);
+    color: #ffffff;
+    padding: 2px 8px;
+    font-weight: 800;
+    border-radius: 4px;
+    font-size: 22px;
+}
+
+.times-brand {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--heading-color);
+}
+
+.times-brand span {
+    color: var(--abp-red);
+}
+
+.primary-nav {
+    display: flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-grow: 1 !important;
+}
+
+.nav-item {
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    padding: 2px 4px !important;
+    color: var(--heading-color) !important;
+    background: transparent !important;
+    letter-spacing: 0.3px !important;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--abp-red) !important;
+    background: transparent !important;
+}
+
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--card-bg);
+    min-width: 130px;
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    border-radius: 4px;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 8px 12px;
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(192, 0, 0, 0.08);
+    color: var(--abp-red);
+}
+
+.nav-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+}
+
+.icon-btn {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6) !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 50% !important;
+    width: 38px !important;
+    height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 3px 3px 6px #c5c5c5, -3px -3px 6px #ffffff !important;
+    cursor: pointer !important;
+}
+
+.icon-btn i {
+    font-size: 16px !important;
+    color: #c00000 !important;
+}
+
+.icon-btn:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 4px 4px 10px rgba(192, 0, 0, 0.3) !important;
+}
+
+.user-logo-btn {
+    font-size: 22px !important;
+    color: #555555 !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. LEVEL 4 & 5: TRENDING & TICKER
+   -------------------------------------------------------------------------- */
+.trending-hashtags-bar {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 3%;
+    font-size: 13px;
+}
+
+.trending-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.trending-label {
+    color: var(--abp-red);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.hashtags-wrapper {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.hashtags-wrapper a {
+    font-weight: 600;
+}
+
+.hashtags-wrapper a:hover {
+    color: var(--abp-red);
+}
+
+.breaking-ticker-bar {
+    background: var(--abp-red);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 6px 3%;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.ticker-badge {
+    background: #000000;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-right: 15px;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   6. LEVEL 17 & 18: MARKET & WEATHER STRIP
+   -------------------------------------------------------------------------- */
+.market-weather-strip {
+    background: #0b0f19;
+    color: #9ca3af;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 3%;
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    overflow-x: auto;
+}
+
+.mw-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   7. MAIN BODY GRID ARCHITECTURE & SIDEBARS
+   -------------------------------------------------------------------------- */
+.main-wrapper {
+    max-width: 1440px;
+    margin: 20px auto;
+    padding: 0 2%;
+}
+
+.abp-layout-grid {
+    display: grid !important;
+    grid-template-columns: 200px 1fr 280px !important;
+    gap: 20px !important;
+    align-items: start !important;
+}
+
+.left-explorer, .right-sidebar {
+    position: sticky;
+    top: 130px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    display: block !important;
+}
+
+.left-explorer .explorer-menu {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.explorer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.explorer-item:last-child {
+    border-bottom: none;
+}
+
+.explorer-item:hover {
+    background: rgba(192, 0, 0, 0.08);
+    color: var(--abp-red);
+}
+
+.section-title-abp {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--heading-color);
+    border-left: 5px solid var(--abp-red);
+    padding-left: 10px;
+    margin: 15px 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. HERO SECTION & ABP RED BANNER
+   -------------------------------------------------------------------------- */
+.abp-hero-container {
+    display: flex;
+    background-color: #cc0000;
+    color: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    height: 380px;
+    width: 100%;
+    box-shadow: var(--shadow-md);
+}
+
+.abp-hero-image-box {
+    flex: 2.5;
+    overflow: hidden;
+}
+
+.abp-hero-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.abp-hero-image-box img:hover {
+    transform: scale(1.03);
+}
+
+.abp-hero-title-box {
+    flex: 2.5;
+    padding: 30px 25px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.abp-hero-title-box h2 {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.abp-hero-list-box {
+    flex: 2;
+    padding: 20px 15px;
+    overflow: hidden;
+}
+
+.abp-hero-list-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.abp-hero-list-box li {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.abp-hero-list-box li.active-bullet {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 4px solid #ffeb3b;
+    transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   9. NEWS CARDS & HYBRID GRIDS
+   -------------------------------------------------------------------------- */
+.top-stories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.news-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--abp-red);
+}
+
+.card-img {
+    height: 110px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+}
+
+.news-card:hover .card-img img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--heading-color);
+}
+
+/* ABP Hybrid News Grid System */
+.hybrid-news-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    margin-bottom: 30px;
+}
+
+.hybrid-news-grid .news-card:first-child {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    height: 200px !important;
+    border-left: 4px solid var(--abp-red) !important;
+}
+
+.hybrid-news-grid .news-card:first-child .card-img {
+    width: 45% !important;
+    height: 100% !important;
+}
+
+.hybrid-news-grid .news-card:first-child .card-content {
+    width: 55% !important;
+    padding: 15px !important;
+    justify-content: center !important;
+}
+
+.hybrid-news-grid .news-card:first-child h3 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+}
+
+.hybrid-news-grid .news-card:nth-child(n+2) {
+    display: flex !important;
+    flex-direction: row !important;
+    height: 100px !important;
+}
+
+.hybrid-news-grid .news-card:nth-child(n+2) .card-img {
+    width: 120px !important;
+    height: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+.hybrid-news-grid .news-card:nth-child(n+2) .card-content {
+    padding: 8px 12px !important;
+    justify-content: center !important;
+}
+
+.hybrid-news-grid .news-card:nth-child(n+2) h3 {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. MEDIA & SIDEBAR WIDGETS
+   -------------------------------------------------------------------------- */
+.media-block-card {
+    background: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.live-player-box {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+.play-icon {
+    font-size: 45px;
+    color: var(--abp-red);
+    cursor: pointer;
+}
+
+.sidebar-widget {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.widget-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+}
+
+.newsletter-box input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.sub-btn {
+    width: 100%;
+    background: var(--abp-red);
+    color: #ffffff;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ad-space {
+    background: rgba(0,0,0,0.03);
+    border: 1px dashed var(--border-color);
+    text-align: center;
+    padding: 25px 10px;
+    color: var(--muted-text);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   11. ADMIN & MEGA FOOTER
+   -------------------------------------------------------------------------- */
+.admin-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.dispatch-btn {
+    background: #059669;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.mega-footer {
+    background: #0b0f19;
+    color: #9ca3af;
+    padding: 40px 3% 20px;
+    border-top: 4px solid var(--abp-red);
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 30px;
+    font-size: 13px;
+}
+
+.footer-logo {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: var(--abp-red);
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.footer-col a {
+    display: block;
+    color: #9ca3af;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #1f2937;
+    padding-top: 20px;
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   12. AUTH MODAL
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 999999 !important;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.auth-box {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    width: 360px;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    color: var(--text-color);
+}
+
+.close-btn {
+    position: absolute; right: 12px; top: 10px;
+    font-size: 28px; border: none; background: transparent;
+    color: var(--muted-text); cursor: pointer; z-index: 10;
+}
+
+.google-btn {
+    width: 100%; padding: 10px; margin-top: 12px;
+    border: 1px solid var(--border-color); border-radius: 6px; 
+    background: var(--input-bg); color: var(--text-color);
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; font-weight: 700; cursor: pointer;
+}
+
+.auth-divider {
+    margin: 15px 0; border-bottom: 1px solid var(--border-color); line-height: 0.1em;
+}
+.auth-divider span {
+    background: var(--card-bg); padding: 0 10px; color: var(--muted-text); font-size: 12px;
+}
+
+.tab-btn-group {
+    display: flex; margin-bottom: 15px; border-bottom: 2px solid var(--border-color);
+}
+.tab-btn {
+    flex: 1; padding: 8px; border: none; background: none; font-weight: 800; cursor: pointer; color: var(--muted-text);
+}
+.tab-btn.active {
+    color: var(--abp-red); border-bottom: 2px solid var(--abp-red);
+}
+
+.auth-form input {
+    width: 100%; padding: 10px; margin: 6px 0; border: 1px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-color); font-size: 13px;
+}
+.auth-submit-btn {
+    width: 100%; padding: 10px; background: var(--abp-red); color: #fff; border: none; border-radius: 6px; font-weight: 800; margin-top: 10px; cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   13. GOOGLE TRANSLATE FIX & DARK MODE OVERRIDES
+   -------------------------------------------------------------------------- */
+body { top: 0px !important; position: static !important; }
+iframe.skiptranslate, iframe[id*=":gt:"], .goog-te-banner-frame, .goog-te-balloon-frame, #goog-gt-tt, .goog-te-spinner-pos, .VIpgJd-yD32b-Lg26de, .goog-te-gadget-icon, .skiptranslate, #google_translate_element {
+    display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; width: 0 !important; height: 0 !important;
+}
+.goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
+body.dark-mode .nav-item, body.dark-mode .primary-nav a, body.dark-mode .logo-box a, body.dark-mode .times-brand { color: #ffffff !important; }
+body.dark-mode .nav-item.active { color: #ff4d4d !important; }
+body.dark-mode .news-card, body.dark-mode .sidebar-widget, body.dark-mode .auth-box, body.dark-mode .nav-dropdown .dropdown-content { background-color: #1e293b !important; border-color: #334155 !important; }
+body.dark-mode .card-content h3, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode .widget-title { color: #f8fafc !important; }
+body.dark-mode .icon-btn { background: #334155 !important; border-color: #475569 !important; box-shadow: none !important; }
+body.dark-mode .icon-btn i { color: #fde047 !important; }
+body.dark-mode .auth-divider span { background: #1e293b !important; }
+
+/* --------------------------------------------------------------------------
+   14. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .top-stories-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) {
+    .abp-layout-grid { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column !important; }
+    .left-explorer, .right-sidebar { position: static !important; width: 100% !important; max-height: none !important; margin-top: 20px; }
+    .abp-hero-container { flex-direction: column; height: auto; }
+}
+@media (max-width: 900px) {
+    .hybrid-news-grid .news-card:first-child { flex-direction: column !important; height: auto !important; }
+    .hybrid-news-grid .news-card:first-child .card-img { width: 100% !important; height: 180px !important; }
+    .hybrid-news-grid .news-card:first-child .card-content { width: 100% !important; }
+    .hybrid-news-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+    .top-stories-grid, .hybrid-news-grid { grid-template-columns: 1fr !important; }
+}
+/* ==========================================
+   MOBILE RESPONSIVE FIX (Times07 Mobile Engine)
+   ========================================== */
+
+/* 1. Prevent Horizontal Overflow */
+* {
+    box-sizing: border-box !important;
+}
+
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Mobile Specific Screen Styles (Under 768px) */
+@media screen and (max-width: 768px) {
+
+    /* Header & Navigation Fix */
+    header, .header, .top-bar, .navbar, .nav-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex-wrap: wrap !important;
+        padding: 5px 8px !important;
+        overflow: hidden;
+    }
+
+    /* Category Navigation Bar (Horizontal Scrollable Menu) */
+    nav, .nav-links, .menu-bar, .category-bar {
+        display: flex !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        width: 100% !important;
+        padding-bottom: 5px !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    nav a, .nav-links a {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+        display: inline-block !important;
+    }
+
+    /* All Containers & Images Fit to Screen */
+    .container, .main-content, #main-content, .grid-container, .news-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        grid-template-columns: 1fr !important; /* Force Single Column on Mobile */
+    }
+
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Sidebar / Widgets Adjustment */
+    .sidebar, #sidebar, .right-widgets {
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+
+    /* Search & Icons Wrap */
+    .top-icons, .header-right {
+        display: flex !important;
+        gap: 8px !important;
+        align-items: center;
+    }
+}
+/* ==========================================================
+   ABP LIVE STYLE 3-COLUMN FIX (Dono Side Locked Rahegi)
+   ========================================================== */
+
+/* Main Full Width Layout */
+.portal-container {
+    max-width: 1300px;
+    margin: 15px auto;
+    padding: 0 10px;
+    display: grid;
+    grid-template-columns: 200px 1fr 300px; /* Left | Center | Right */
+    gap: 15px;
+    align-items: start;
+}
+
+/* Sidebar Headings Style */
+.sidebar-head {
+    font-size: 15px;
+    font-weight: 800;
+    color: #d32f2f;
+    border-bottom: 2px solid #d32f2f;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+}
+
+/* 1. Left Sticky Bar */
+.left-sidebar {
+    position: sticky;
+    top: 70px; /* Header ke niche lock rahega */
+    background: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding-right: 10px;
+}
+
+.left-menu-item {
+    display: block;
+    padding: 8px 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px dashed #eee;
+}
+
+.left-menu-item:hover {
+    color: #d32f2f;
+}
+
+/* 2. Center Content */
+.center-content {
+    width: 100%;
+    min-width: 0;
+}
+
+/* 3. Right Sticky Bar */
+.right-sidebar {
+    position: sticky;
+    top: 70px; /* Header ke niche lock rahega */
+    background: #ffffff;
+    border-left: 1px solid #e0e0e0;
+    padding-left: 10px;
+}
+
+/* Mobile Screen Layout Adjust (Under 1024px) */
+@media screen and (max-width: 1024px) {
+    .portal-container {
+        grid-template-columns: 1fr; /* Mobile par single column ho jayega */
+    }
+    .left-sidebar {
+        display: none; /* Mobile par left bar auto hide ho jayega */
+    }
+    .right-sidebar {
+        position: static;
+        border-left: none;
+        padding-left: 0;
+    }
+}
+/* 1. Hero Slider Adjustment (Image Badi, Red Box Chota) */
+.abp-hero-container {
+    display: grid !important;
+    /* Image ko 65% space aur Red box ko 35% space de rahe hain */
+    grid-template-columns: 2fr 1fr !important; 
+    gap: 0 !important;
+}
+
+.abp-hero-image-box {
+    width: 100% !important;
+    height: 100% !important;
+}
+.abp-hero-image-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 2. Right Sidebar Auto-Blink Animation */
+.blinking-news-card {
+    padding: 10px 0;
+    border-bottom: 1px dashed #ccc;
+    animation: fadeAndPop 0.8s ease-in-out; /* Ye animation effect dega */
+}
+
+.blinking-news-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.blinking-news-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Animation Keyframes */
+@keyframes fadeAndPop {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+/* 3D Interactive & Glowing Button Hover Effect */
+.nav-item-3d {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 12px !important;
+    padding: 8px 14px !important;
+    text-transform: uppercase !important;
+    border-radius: 6px !important;
+    background: linear-gradient(145deg, #1e293b, #0f172a) !important;
+    box-shadow: 3px 3px 6px #070a12, -2px -2px 5px #1f2d42 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: inline-block !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+/* Hover/Blink Effect */
+.nav-item-3d:hover {
+    color: #000000 !important;
+    background: linear-gradient(145deg, #fde047, #eab308) !important;
+    box-shadow: 0 0 15px rgba(253, 224, 71, 0.8), 0 0 25px rgba(253, 224, 71, 0.4) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    border-color: #fde047 !important;
+}
+/* लोगो को स्टाइल करने के लिए */
+.logo-container {
+    padding: 10px; /* थोड़ा स्पेस देने के लिए */
+}
+
+.site-logo {
+    max-height: 80px; /* लोगो की ऊँचाई सेट करें (ज़रूरत अनुसार बदलें) */
+    width: auto; /* चौड़ाई अपने आप सेट होगी */
+    display: block;
+}
+
+/* मोबाइल के लिए लोगो छोटा करने के लिए */
+@media (max-width: 768px) {
+    .site-logo {
+        max-height: 60px;
+    }
+}

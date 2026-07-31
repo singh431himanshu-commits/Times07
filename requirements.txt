@@ -1,0 +1,7 @@
+requests
+feedparser
+beautifulsoup4
+newspaper3k
+flask
+flask-cors
+ollama
