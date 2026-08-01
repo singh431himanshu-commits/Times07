@@ -263,13 +263,49 @@ function populateArticlePage() {
 
     if (!isNaN(newsIndex) && savedNews[newsIndex]) {
         const news = savedNews[newsIndex];
+        // Open Graph
+document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
+document.querySelector('meta[property="og:description"]')?.setAttribute("content", (news.summary || news.desc || "").substring(0, 160));
+document.querySelector('meta[property="og:url"]')?.setAttribute("content", window.location.href);
+
+// Agar image field ka naam alag hai to mujhe bata dena
+document.querySelector('meta[property="og:image"]')?.setAttribute(
+  "content",
+  news.image || news.img || ""
+);
+document.getElementById("news-schema").textContent = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": news.title,
+  "image": [news.image],
+  "datePublished": news.date,
+  "author": {
+    "@type": "Organization",
+    "name": "Times07 News"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Times07 News"
+  }
+});
+
+// News Schema
+document.getElementById("news-schema").textContent = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": news.title,
+  "image": [news.image || news.img || ""],
+  "datePublished": news.date,
+  "author": {
+    "@type": "Organization",
+    "name": "Times07 News"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Times07 News"
+  }
+});
         document.title = news.title + " | Times07 News";
-
-document.querySelector('meta[name="description"]')
-?.setAttribute("content", (news.summary || news.desc || "").substring(0,160));
-
-document.querySelector("link[rel='canonical']")
-?.setAttribute("href", window.location.href);
         
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
         if(document.getElementById('page-cat')) document.getElementById('page-cat').innerText = news.category || "मुख्य समाचार";
