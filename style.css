@@ -1247,57 +1247,69 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
 /* =========================================
    📱 MOBILE VIEW (Clean, Fast & App-Like)
    ========================================= */
+/* =========================================
+   📱 PERFECT APP-LIKE MOBILE HEADER & VIEW
+   ========================================= */
 @media screen and (max-width: 768px) {
     
-    /* 1. मोबाइल पर फालतू की पट्टियाँ छुपाएं (Clean Look) */
+    /* 1. फालतू की पट्टियाँ छुपाएं */
     .top-global-bar,
     .trending-hashtags-bar {
         display: none !important;
     }
 
-    /* 2. Header में लोगो और बटन को आमने-सामने करें */
+    /* 2. Header को री-अरेंज करें: ऊपर लोगो और एक्शन बटन आमने-सामने */
     .header-container {
         display: flex;
-        flex-wrap: wrap; 
         justify-content: space-between;
         align-items: center;
-        padding: 10px 5px;
+        padding: 8px 10px;
+        flex-wrap: nowrap;
     }
 
-    /* 3. लोगो का परफेक्ट साइज (ना बहुत बड़ा, ना चींटी जैसा) */
+    /* 3. लोगो का सही साइज */
     .logo-box img {
-        height: 48px !important; 
-        max-width: 160px !important;
+        height: 40px !important; 
+        max-width: 140px !important;
         object-fit: contain;
     }
 
-    /* 4. बटन (सर्च, डार्क मोड) को सेट करें */
+    /* 4. सर्च, डार्क मोड और प्रोफाइल बटन ऊपर लोगो के सामने */
     .header-actions {
-        display: flex;
-        gap: 5px;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 6px !important;
+        align-items: center !important;
+        position: static !important;
+        margin: 0 !important;
     }
     .icon-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
-    /* 5. मेन्यू को Google News की तरह स्वाइप (Scrollable) बनाएं */
+    /* 5. कैटेगरी मेन्यू (होम, न्यूज़...) को ठीक उसके नीचे स्वाइप करने योग्य बनाएं */
     .primary-nav {
         width: 100%;
-        display: flex;
+        display: flex !important;
         justify-content: flex-start !important;
         overflow-x: auto !important; 
         white-space: nowrap;
-        margin-top: 10px;
-        padding-bottom: 5px;
+        padding: 6px 10px !important;
+        margin: 0 !important;
+        border-top: 1px solid #f0f0f0;
+        background: #ffffff;
         -webkit-overflow-scrolling: touch; 
     }
     .primary-nav::-webkit-scrollbar {
         display: none;
     }
 
-    /* 6. पूरा बैकग्राउंड ब्लैक & वाइट करें (ताकि साइट लाइटवेट रहे) */
+    /* 6. पूरा बैकग्राउंड ब्लैक & वाइट (लाइटवेट) */
     body, .main-wrapper, #main-content {
         background-color: #ffffff !important;
         color: #111111 !important;
@@ -1330,7 +1342,7 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
         font-weight: 800 !important;
     }
     
-    /* 9. लिस्ट और छोटे मेन्यू (Menu) को हल्का करें */
+    /* 9. लिस्ट और छोटे मेन्यू को हल्का करें */
     .abp-hero-list-box {
         background: #fafafa !important;
         border-top: 1px solid #eeeeee !important;
