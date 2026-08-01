@@ -233,7 +233,8 @@ if __name__ == "__main__":
     if args.topic:
         draft = generate_finance_draft(topic_context=args.topic)
         if draft: save_to_drafts(draft)
-    else:
+  else:
         while True:
             run_finance_bot_batch()
+            os.system('git add -A ; git commit -m "Auto Post Update" ; git push origin main')
             time.sleep(3600)

@@ -287,7 +287,8 @@ if __name__ == "__main__":
             save_to_drafts(draft)
             print("✅ Manual Topic Generated Successfully!")
     else:
-        print("🚀 ULTRA-PRO World News Bot Started...")
+      print("🚀 ULTRA-PRO World News Bot Started...")
         while True:
             run_world_bot_batch()
+            os.system('git add -A ; git commit -m "Auto Post Update" ; git push origin main')
             time.sleep(3600)
