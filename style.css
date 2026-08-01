@@ -1243,3 +1243,114 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
         font-size: 14px;
     }
 }
+
+/* =========================================
+   📱 MOBILE VIEW (Clean, Fast & App-Like)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. मोबाइल पर फालतू की पट्टियाँ छुपाएं (Clean Look) */
+    .top-global-bar,
+    .trending-hashtags-bar {
+        display: none !important;
+    }
+
+    /* 2. Header में लोगो और बटन को आमने-सामने करें */
+    .header-container {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5px;
+    }
+
+    /* 3. लोगो का परफेक्ट साइज (ना बहुत बड़ा, ना चींटी जैसा) */
+    .logo-box img {
+        height: 48px !important; 
+        max-width: 160px !important;
+        object-fit: contain;
+    }
+
+    /* 4. बटन (सर्च, डार्क मोड) को सेट करें */
+    .header-actions {
+        display: flex;
+        gap: 5px;
+    }
+    .icon-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    /* 5. मेन्यू को Google News की तरह स्वाइप (Scrollable) बनाएं */
+    .primary-nav {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start !important;
+        overflow-x: auto !important; 
+        white-space: nowrap;
+        margin-top: 10px;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch; 
+    }
+    .primary-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 6. पूरा बैकग्राउंड ब्लैक & वाइट करें (ताकि साइट लाइटवेट रहे) */
+    body, .main-wrapper, #main-content {
+        background-color: #ffffff !important;
+        color: #111111 !important;
+    }
+
+    /* 7. Breaking Ticker को सिंपल वाइट/ब्लैक करें */
+    .breaking-ticker-bar {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border-bottom: 1px solid #eeeeee !important;
+    }
+    .ticker-badge {
+        background: #000000 !important;
+        color: #ffffff !important;
+    }
+    #live-ticker-text {
+        color: #333333 !important;
+    }
+
+    /* 8. Red Hero Box (बड़ी खबर) को क्लीन वाइट करें */
+    .abp-hero-container {
+        background: #ffffff !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+        height: auto !important; 
+    }
+    .abp-hero-title-box h2 {
+        color: #000000 !important;
+        font-weight: 800 !important;
+    }
+    
+    /* 9. लिस्ट और छोटे मेन्यू (Menu) को हल्का करें */
+    .abp-hero-list-box {
+        background: #fafafa !important;
+        border-top: 1px solid #eeeeee !important;
+    }
+    .abp-hero-list-box li {
+        color: #333333 !important;
+        border-bottom: 1px solid #eaeaea !important;
+    }
+    .nav-item-3d {
+        background: #f5f5f5 !important;
+        color: #111111 !important;
+        border: 1px solid #dddddd !important;
+    }
+    
+    /* 10. कैटेगरी हेडिंग्स का रंग ब्लैक करें */
+    .section-title-abp {
+        color: #000000 !important;
+        border-bottom: 2px solid #000000 !important;
+    }
+    .section-title-abp i {
+        color: #000000 !important;
+    }
+}
