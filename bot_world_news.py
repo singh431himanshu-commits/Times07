@@ -280,6 +280,11 @@ if __name__ == "__main__":
     parser.add_argument('--topic', type=str, help='Manual command to generate a specific topic')
     args = parser.parse_args()
 
+    if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--topic', type=str, help='Manual command to generate a specific topic')
+    args = parser.parse_args()
+
     if args.topic:
         print(f"⚡ Manual Command Received for: {args.topic}")
         draft = generate_worldnews_draft(topic_context=args.topic)
@@ -287,7 +292,7 @@ if __name__ == "__main__":
             save_to_drafts(draft)
             print("✅ Manual Topic Generated Successfully!")
     else:
-      print("🚀 ULTRA-PRO World News Bot Started...")
+        print("🚀 ULTRA-PRO World News Bot Started...")
         while True:
             run_world_bot_batch()
             os.system('git add -A ; git commit -m "Auto Post Update" ; git push origin main')

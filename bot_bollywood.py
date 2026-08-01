@@ -249,7 +249,7 @@ if __name__ == "__main__":
     if args.topic:
         draft = generate_bollywood_draft(topic_context=args.topic, is_biography=True)
         if draft: save_to_drafts(draft)
-   else:
+    else:
         while True:
             run_bollywood_bot_batch()
             os.system('git add -A ; git commit -m "Auto Post Update" ; git push origin main')

@@ -312,6 +312,7 @@ if __name__ == "__main__":
             run_bot()
         except Exception as e:
             error_logger.error(f"Main loop crash prevented: {e}")
-       print(f"\n⏰ Waiting {CHECK_INTERVAL_MINUTES} minutes...")
+        
         os.system('git add -A ; git commit -m "Auto Post Update" ; git push origin main')
+        print(f"\n⏰ Waiting {CHECK_INTERVAL_MINUTES} minutes...")
         time.sleep(CHECK_INTERVAL_MINUTES * 60)
