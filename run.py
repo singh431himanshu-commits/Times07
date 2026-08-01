@@ -10,14 +10,23 @@ import time
 import re
 import random
 import urllib.parse
+from PIL import Image, ImageEnhance
+import io
+from io import BytesIO
+import base64
+from datetime import datetime
+from openai import OpenAI
 
 FIREBASE_URL = "https://times07news-default-rtdb.firebaseio.com/articles.json"
 STATS_URL = "https://times07news-default-rtdb.firebaseio.com/bot_stats.json"
-GROQ_API_KEY = "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"
+
+# 🔑 GROQ API Keys
+import config
+GROQ_KEYS = config.GROQ_KEYS
 
 CHECK_INTERVAL_MINUTES = 30
 
-# 📝 1. Logging System
+# 📝 Logging System
 logging.basicConfig(
     filename='bot.log', level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S'
@@ -27,7 +36,6 @@ error_handler = logging.FileHandler('error.log')
 error_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] %(message)s'))
 error_logger.addHandler(error_handler)
 
-# 📊 2. Trusted RSS Sources
 TRUSTED_RSS_SOURCES = [
     {"url": "https://feeds.bbci.co.uk/news/world/rss.xml", "source": "BBC News", "trust_score": 100},
     {"url": "https://pib.gov.in/RssMain.aspx?ModId=6&LangId=1", "source": "PIB India", "trust_score": 95},
@@ -38,243 +46,271 @@ TRUSTED_RSS_SOURCES = [
     {"url": "https://www.amarujala.com/rss/breaking-news.xml", "source": "Amar Ujala", "trust_score": 80}
 ]
 
-# 📈 3. Bot Stats Tracker
+def get_next_client():
+    key = random.choice(GROQ_KEYS)
+    return OpenAI(api_key=key, base_url="https://api.groq.com/openai/v1")
+
 def update_bot_stats(stat_type):
     stats = {"published": 0, "skipped": 0, "duplicate": 0, "failed": 0, "ai_errors": 0}
     try:
         res = requests.get(STATS_URL, timeout=5)
         if res.status_code == 200 and res.json():
             stats.update(res.json())
-    except:
-        pass
-    
+    except: pass
     stats[stat_type] = stats.get(stat_type, 0) + 1
-    
     try:
         requests.put(STATS_URL, json=stats, timeout=5)
-        with open("stats.json", "w") as f:
-            json.dump(stats, f, indent=4)
-    except Exception as e:
-        error_logger.error(f"Stats update error: {e}")
-
-def generate_clean_slug(text):
-    slug = text.lower().strip()
-    slug = re.sub(r'[^\w\s-]', '', slug)
-    slug = re.sub(r'[\s_-]+', '-', slug)
-    return slug[:80]
+    except: pass
 
 def normalize_text(text):
     return re.sub(r'\W+', '', text.lower())
 
 def get_db_data():
-    published_links, published_titles_normalized, published_slugs, existing_articles = set(), set(), set(), []
+    """डुप्लीकेट चेक करने के लिए Firebase से पुरानी खबरें लाना"""
+    pub_links, pub_titles = set(), set()
     try:
-        response = requests.get(FIREBASE_URL, timeout=10)
-        if response.status_code == 200:
-            data = response.json()
-            if data and isinstance(data, dict):
-                for key, val in data.items():
-                    if isinstance(val, dict):
-                        if "link" in val: published_links.add(val["link"])
-                        if "title" in val: published_titles_normalized.add(normalize_text(val["title"].replace(" | Times07News", "")))
-                        if "slug" in val:
-                            published_slugs.add(val["slug"])
-                            existing_articles.append({"title": val.get("title", ""), "slug": val.get("slug", ""), "category": val.get("category", "मुख्य समाचार")})
-    except Exception as e:
-        error_logger.error(f"Database Read Error: {e}")
-    return published_links, published_titles_normalized, published_slugs, existing_articles
+        res = requests.get(FIREBASE_URL, timeout=10)
+        if res.status_code == 200 and isinstance(res.json(), dict):
+            for val in res.json().values():
+                if isinstance(val, dict):
+                    if "link" in val: pub_links.add(val["link"])
+                    if "title" in val: pub_titles.add(normalize_text(val["title"].replace(" | Times07News", "")))
+    except: pass
+    return pub_links, pub_titles
 
-# 📈 4. Google Trends Scraper
 def fetch_google_trends():
-    print("🔥 Fetching India Google Trends...")
     trends = []
     try:
-        url = "https://trends.google.com/trending/rss?geo=IN"
-        feed = feedparser.parse(url)
-        for entry in feed.entries[:5]:
-            trends.append(entry.title)
-    except Exception as e:
-        error_logger.error(f"Google Trends Fetch Error: {e}")
+        feed = feedparser.parse("https://trends.google.com/trending/rss?geo=IN")
+        for entry in feed.entries[:5]: trends.append(entry.title)
+    except: pass
     return trends
 
-def fetch_safe_image(keyword, title):
-    safe_fallback = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200"
-    try:
-        clean_q = f"{keyword} {title}".replace(":", " ")
-        q_words = " ".join(clean_q.split()[:4]) + " news photo"
-        with DDGS() as ddgs:
-            results = list(ddgs.images(q_words, max_results=3))
-            if results:
-                for res in results:
-                    img_url = res.get('image', '')
-                    if img_url and img_url.startswith('https://') and not any(bad in img_url.lower() for bad in ['painting', 'illustration', 'vector']):
-                        return img_url
-    except:
-        pass
-    return safe_fallback
-
-# 🔄 5. Groq Fallback AI Generator + Social Captions
-def generate_article_via_groq(raw_title, raw_text=""):
-    url = "https://api.groq.com/openai/v1/chat/completions"
-    headers = {"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"}
+# ==========================================
+# 🌟 PRO IMAGE LOGIC (With Watermark)
+# ==========================================
+def make_pro_image(base_image):
+    target_ratio = 16 / 9
+    img_ratio = base_image.width / base_image.height
     
+    if img_ratio > target_ratio:
+        new_width = int(target_ratio * base_image.height)
+        offset = (base_image.width - new_width) // 2
+        base_image = base_image.crop((offset, 0, offset + new_width, base_image.height))
+    elif img_ratio < target_ratio:
+        new_height = int(base_image.width / target_ratio)
+        offset = (base_image.height - new_height) // 2
+        base_image = base_image.crop((0, offset, base_image.width, offset + new_height))
+        
+    enhancer = ImageEnhance.Color(base_image)
+    return enhancer.enhance(1.15)
+
+def apply_watermark_to_image(img_url, output_filename):
+    fallback_list = [
+        img_url,
+        "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=1000",
+        "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=1000"
+    ]
+    
+    for current_url in fallback_list:
+        try:
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            response = requests.get(current_url, headers=headers, timeout=8)
+            
+            if 'image' not in response.headers.get('content-type', ''): continue
+                
+            raw_image = Image.open(BytesIO(response.content)).convert("RGBA")
+            base_image = make_pro_image(raw_image)
+            
+            logo_path = "logo.png"
+            if os.path.exists(logo_path):
+                logo = Image.open(logo_path).convert("RGBA")
+                basewidth = int(base_image.width * 0.16)
+                wpercent = (basewidth / float(logo.size[0]))
+                hsize = int(float(logo.size[1]) * float(wpercent))
+                logo = logo.resize((basewidth, hsize), Image.Resampling.LANCZOS)
+                
+                margin_x = int(base_image.width * 0.02)
+                margin_y = int(base_image.height * 0.03)
+                position = (base_image.width - logo.width - margin_x, margin_y)
+                base_image.paste(logo, position, logo)
+            
+            os.makedirs("static/watermarked", exist_ok=True)
+            save_path = f"static/watermarked/{output_filename}"
+            
+            rgb_image = base_image.convert("RGB")
+            rgb_image.save(save_path, "JPEG", quality=90)
+            return f"/{save_path}"
+        except Exception as e:
+            continue
+    return "/logo.png"
+
+def search_hd_images(query, count=5):
+    images = []
+    try:
+        time.sleep(2)
+        with DDGS() as ddgs:
+            results = list(ddgs.images(f"{query} high resolution recent news photo", max_results=count))
+            for i, res in enumerate(results):
+                if 'image' in res:
+                    raw_url = res['image']
+                    unique_name = f"trend_{int(time.time())}_{i}.jpg"
+                    watermarked_url = apply_watermark_to_image(raw_url, unique_name)
+                    images.append(watermarked_url)
+    except: pass
+    
+    fallback_hd = [
+        "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=1000",
+        "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=1000"
+    ]
+    
+    if len(images) < count:
+        for i, fallback_url in enumerate(random.sample(fallback_hd, min(count - len(images), len(fallback_hd)))):
+            unique_name = f"trend_fb_{int(time.time())}_{i}.jpg"
+            images.append(apply_watermark_to_image(fallback_url, unique_name))
+        
+    return images[:count]
+
+# ==========================================
+# 🔄 AI DRAFT GENERATOR (For Admin Panel)
+# ==========================================
+def generate_trending_draft(raw_title, raw_text=""):
     prompt = f"""
-    Aap 'Times07 News' ke Chief Editor hain. Is topic par ek Detailed, SEO-Optimized News Article Hindi mein likhein:
-    Topic: {raw_title}
-    Context: {raw_text[:1000]}
+    आप Times07 News के सबसे बड़े जर्नलिस्ट हैं।
+    विषय: {raw_title}
+    संदर्भ/Context: {raw_text[:1200]}
 
-    Instructions:
-    1. Category: 'राजनीति', 'बिजनेस', 'खेल', 'टेक & AI', 'मनोरंजन', 'राज्य', 'विदेश' mein se hi chunein.
-    2. Social Captions (FB, Telegram, X) tayyar karein with emojis and hashtags.
+    सख्त निर्देश:
+    1. यह पूरी तरह से तथ्यात्मक (Factual) और न्यूज़ चैनल जैसी हिंदी होनी चाहिए।
+    2. 500-800 शब्दों में विस्तृत खबर लिखें (H3 हेडिंग्स और <p> टैग्स के साथ)।
+    3. 5 SEO फ्रेंडली टाइटल्स जनरेट करें। हर टाइटल के अंत में ' | Times07 News' ज़रूर लगाएं।
 
-    STRICT JSON Output:
+    Return strictly a VALID JSON object (NO markdown):
     {{
-        "seo_title": "Catchy Hindi Headline",
-        "meta_description": "150-160 characters description",
-        "tags": ["Tag1", "Tag2", "Tag3"],
-        "summary": "4-5 lines summary",
-        "content": "Full article with H3 headings and <p> tags",
-        "category": "Exact Category",
-        "image_keyword": "English keyword",
-        "social_captions": {{
-            "facebook": "Catchy Facebook caption with hashtags",
-            "telegram": "Formatted Telegram caption with link placeholder",
-            "x_twitter": "Short 280-char tweet caption"
-        }}
+      "title_options": [
+        "पहला टाइटल | Times07 News",
+        "दूसरा टाइटल | Times07 News",
+        "तीसरा टाइटल | Times07 News",
+        "चौथा टाइटल | Times07 News",
+        "पांचवा टाइटल | Times07 News"
+      ],
+      "one_line_teaser": "1-लाइन का ब्रेकिंग न्यूज़ टीज़र",
+      "visual_summary_points": ["पॉइंट 1", "पॉइंट 2", "पॉइंट 3"],
+      "content_html": "<h3>हेडिंग 1</h3><p>विस्तृत पैराग्राफ...</p><h3>हेडिंग 2</h3><p>विस्तृत पैराग्राफ...</p>",
+      "category": "मुख्य समाचार",
+      "default_tags": ["#TrendingNews", "#LatestUpdate", "#Times07"]
     }}
     """
+
+    available_keys = GROQ_KEYS.copy()
+    random.shuffle(available_keys)
     
-    models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"] # Fallback Strategy
+    models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "mixtral-8x7b-32768"]
     
-    for model in models:
-        try:
-            payload = {"model": model, "messages": [{"role": "user", "content": prompt}], "response_format": {"type": "json_object"}}
-            res = requests.post(url, headers=headers, json=payload, timeout=30)
-            if res.status_code == 200:
-                return json.loads(res.json()['choices'][0]['message']['content'])
-            else:
-                logging.warning(f"Model {model} failed. Trying fallback...")
-        except Exception as e:
-            error_logger.error(f"Groq API Error on model {model}: {e}")
-            update_bot_stats("ai_errors")
-            
+    for key in available_keys:
+        for model in models:
+            try:
+                temp_client = OpenAI(api_key=key, base_url="https://api.groq.com/openai/v1")
+                response = temp_client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.4,
+                    max_tokens=2000,
+                    response_format={"type": "json_object"}
+                )
+                data = json.loads(response.choices[0].message.content.strip())
+                
+                # Fetch Images
+                search_keyword = " ".join(raw_title.split()[:4])
+                data["image_options"] = search_hd_images(search_keyword, count=5)
+                
+                data["created_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                data["bot_type"] = "trending"
+                data["id"] = int(datetime.now().timestamp() * 1000)
+                return data
+            except Exception as e:
+                error_logger.error(f"Groq API Error on model {model}: {e}")
+                continue
     return None
 
-def calculate_trending_score(raw_title, source_name, category, occurrences_count):
-    score = 0
-    if any(k in raw_title.lower() for k in ["breaking", "ब्रेकिंग", "urgent", "ताज़ा"]): score += 30
-    if source_name in ["BBC News", "PIB India", "Google Trends"]: score += 20
-    if category == "राजनीति": score += 15
-    elif category == "टेक & AI": score += 10
-    if occurrences_count > 1: score += 25
-    return score
+def save_to_drafts(draft_data):
+    drafts_file = "drafts_trending.json"
+    drafts = []
+    if os.path.exists(drafts_file):
+        try:
+            with open(drafts_file, "r", encoding="utf-8") as f:
+                drafts = json.load(f)
+        except: pass
+        
+    drafts.insert(0, draft_data)
+    with open(drafts_file, "w", encoding="utf-8") as f:
+        json.dump(drafts, f, ensure_ascii=False, indent=4)
+        
+    print(f"✅ SUCCESS: Trending Draft saved to drafts_trending.json! Check your Dashboard.")
 
 def run_bot():
     print("\n🔍 Engine Active: Scanning Google Trends & RSS Feeds...")
-    pub_links, pub_titles, pub_slugs, existing_articles = get_db_data()
-    
+    pub_links, pub_titles = get_db_data()
     candidates = []
 
-    # Step A: Process Google Trends First
+    # Google Trends & News
     gt_topics = fetch_google_trends()
     for topic in gt_topics:
         encoded_q = urllib.parse.quote(topic)
         trend_rss = f"https://news.google.com/rss/search?q={encoded_q}&hl=hi&gl=IN&ceid=IN:hi"
         feed = feedparser.parse(trend_rss)
         for entry in feed.entries[:2]:
-            candidates.append({"entry": entry, "source_name": "Google Trends", "trust_score": 90})
+            candidates.append({"entry": entry, "source_name": "Google Trends"})
 
-    # Step B: Process Trusted RSS Feeds
     for src in TRUSTED_RSS_SOURCES:
         try:
             feed = feedparser.parse(src["url"])
             for entry in feed.entries[:2]:
-                candidates.append({"entry": entry, "source_name": src["source"], "trust_score": src["trust_score"]})
-        except:
-            pass
+                candidates.append({"entry": entry, "source_name": src["source"]})
+        except: pass
 
+    generated_count = 0
     for item in candidates:
+        if generated_count >= 4: # एक बार में सिर्फ 4 ड्राफ्ट्स बनाएगा
+            break
+            
         entry = item["entry"]
         source_name = item["source_name"]
         news_title = getattr(entry, 'title', '')
         news_url = getattr(entry, 'link', '')
 
         norm_t = normalize_text(news_title)
-        if news_url in pub_links or norm_t in pub_titles:
+        if news_url in pub_links or norm_t in pub_titles: 
             update_bot_stats("duplicate")
             continue
 
-        print(f"\n📰 [Processing Topic]: {news_title[:55]}...")
-
-        raw_text, pub_date, author_name = "", "", "Times07 News Bureau"
+        print(f"\n📰 [Processing & Reading Article]: {news_title[:55]}...")
+        raw_text = ""
         try:
+            # 🚀 Newspaper3k restored: पूरी खबर अंदर जाकर पढ़ेगा
             art = Article(news_url)
             art.download()
             art.parse()
             raw_text = art.text
-            if art.publish_date: pub_date = str(art.publish_date)
-            if art.authors: author_name = ", ".join(art.authors)
-        except:
-            pass
+        except: pass
 
-        ai_data = generate_article_via_groq(news_title, raw_text)
-
-        if not ai_data or "seo_title" not in ai_data:
-            update_bot_stats("skipped")
-            continue
-
-        seo_title = ai_data["seo_title"]
-        auto_slug = generate_clean_slug(seo_title)
-
-        if auto_slug in pub_slugs:
-            update_bot_stats("duplicate")
-            continue
-
-        category = ai_data.get("category", "मुख्य समाचार")
-        trending_score = calculate_trending_score(news_title, source_name, category, 1)
-
-        placement = "Hero Slider" if trending_score > 80 else ("Top News" if trending_score >= 60 else "Latest News")
-        image_url = fetch_safe_image(ai_data.get("image_keyword", ""), seo_title)
-
-        payload = {
-            "title": f"{seo_title} | Times07News",
-            "seo_title": seo_title,
-            "meta_description": ai_data.get("meta_description", ""),
-            "tags": ai_data.get("tags", []),
-            "slug": auto_slug,
-            "summary": f"{ai_data.get('summary', '')}\n\n📌 स्त्रोत: {source_name} | Trending Score: {trending_score}",
-            "content": ai_data.get("content", "").replace("\n\n", "<br><br>"),
-            "image": image_url,
-            "link": news_url,
-            "category": category,
-            "trending_score": trending_score,
-            "placement": placement,
-            "social_captions": ai_data.get("social_captions", {}),
-            "original_author": author_name,
-            "original_publish_date": pub_date if pub_date else "N/A",
-            "timestamp": int(time.time())
-        }
-
-        res = requests.post(FIREBASE_URL, json=payload, timeout=10)
-        if res.status_code == 200:
-            print(f"✅ Published: {seo_title[:45]} ({placement})")
-            pub_links.add(news_url)
-            pub_titles.add(norm_t)
-            pub_slugs.add(auto_slug)
+        draft = generate_trending_draft(news_title, raw_text)
+        
+        if draft and "title_options" in draft:
+            save_to_drafts(draft)
+            generated_count += 1
             update_bot_stats("published")
         else:
-            update_bot_stats("failed")
+            update_bot_stats("skipped")
 
         time.sleep(3)
 
 if __name__ == "__main__":
-    print("🚀 Times07 Master Bot Active (Short name: run.py)...")
+    print("🚀 Times07 Master Draft Bot Active...")
     while True:
         try:
             run_bot()
         except Exception as e:
             error_logger.error(f"Main loop crash prevented: {e}")
-            update_bot_stats("failed")
-        
         print(f"\n⏰ Waiting {CHECK_INTERVAL_MINUTES} minutes...")
         time.sleep(CHECK_INTERVAL_MINUTES * 60)

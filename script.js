@@ -104,7 +104,7 @@ function renderNews() {
         card.className = 'news-card';
         card.innerHTML = `
             <div class="card-img">
-                <a href="article.html?id=${index}"><img src="${news.img1 || news.image || 'logo.png'}" loading="lazy"></a>
+                <a href="article.html?id=${index}"><img src="${news.insta_watermarked_img || news.image || news.img1 || 'logo.png'}" loading="lazy"></a>
             </div>
             <div class="card-content">
                 <a href="article.html?id=${index}" style="text-decoration:none;"><h3>${news.title}</h3></a>
@@ -266,7 +266,7 @@ function populateArticlePage() {
         
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
         if(document.getElementById('page-cat')) document.getElementById('page-cat').innerText = news.category || "मुख्य समाचार";
-        if(document.getElementById('page-img')) document.getElementById('page-img').src = news.img1 || news.image || 'logo.png';
+        if(document.getElementById('page-img')) document.getElementById('page-img').src = news.image || news.insta_watermarked_img || news.img1 || 'logo.png';
         
         let rawContent = news.content || news.summary || news.desc || news.description || "खबर की विस्तृत जानकारी के लिए टाइम्स07 पर बने रहें।";
         if (rawContent) {
