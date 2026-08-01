@@ -481,20 +481,15 @@
         // PUBLISH LOGIC
         // ==============================
  // ==============================
-        // 🚀 BULLETPROOF PUBLISH LOGIC
-        // ==============================
-        window.publishDraft = function(type, id) {
+       window.publishDraft = function(type, id) {
             const titleRadio = document.querySelector(`input[name="t_${type}_${id}"]:checked`);
             if(!titleRadio) return alert("कृपया टाइटल चुनें!");
             
-            // 1. पहले चेक करें कि क्या PC से कोई फोटो अपलोड हुई है
             let img = document.getElementById(`local_img_${type}_${id}`).value;
             
-            // 2. अगर PC से नहीं हुई, तो सेलेक्ट की गई फोटो को स्मार्ट तरीके से निकालें
             if (!img) { 
                 const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`); 
                 if(imgRadio) {
-                    // लिंक कटने से बचाने के लिए डायरेक्ट इमेज टैग का Source (src) खींच लें
                     const parentLabel = imgRadio.closest('.img-card');
                     if(parentLabel) {
                         const imgTag = parentLabel.querySelector('img');
@@ -505,9 +500,12 @@
                 } 
             }
             
+            // 🚀 फिक्स: यहाँ 'logo.png' की जगह सुरक्षित फॉलबैक इमेज या खाली रखें
+            const finalImage = (img && !img.includes('logo.png')) ? img : 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800';
+            
             push(articlesRef, { 
                 title: titleRadio.value, 
-                img1: img || 'logo.png', // अगर कुछ न मिले तो ही लोगो लगाएगा
+                img1: finalImage, 
                 desc: document.getElementById(`desc_${type}_${id}`).value, 
                 placement: document.getElementById(`placement_${type}_${id}`).value, 
                 category: document.getElementById(`category_${type}_${id}`).value, 
