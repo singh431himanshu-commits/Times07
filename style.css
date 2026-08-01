@@ -1190,3 +1190,56 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
     animation: none !important;
     filter: none !important;
 }
+/* =========================================
+   📱 MOBILE VIEW FIXES (Responsive Design)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* 1. Top Bar को सेट करें */
+    .global-bar-container {
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px;
+    }
+
+    /* 2. Header में लोगो और बटन को आमने-सामने करें */
+    .header-container {
+        display: flex;
+        flex-wrap: wrap; /* मेन्यू को नीचे धकेलने के लिए */
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5px;
+    }
+
+    /* 3. लोगो को मोबाइल के हिसाब से छोटा करें */
+    .logo-box img {
+        height: 30px !important; 
+    }
+
+    /* 4. मेन्यू (Navigation) को स्वाइप करने वाला (Scrollable) बनाएं */
+    .primary-nav {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start !important;
+        overflow-x: auto !important; /* दाएँ-बाएँ स्वाइप ऑन */
+        white-space: nowrap;
+        margin-top: 10px;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch; /* स्मूथ मोबाइल स्क्रॉल */
+    }
+
+    /* स्क्रॉलबार की पट्टी को छुपा दें ताकि ऐप जैसा लगे */
+    .primary-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 5. डार्क मोड और सर्च बटन के साइज़ को एडजस्ट करें */
+    .header-actions {
+        display: flex;
+        gap: 5px;
+    }
+    .icon-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}
