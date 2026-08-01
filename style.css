@@ -1285,3 +1285,50 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
         color: #ffffff !important;
     }
 }
+/* =========================================
+   ARTICLE SHARE BUTTONS
+   ========================================= */
+.article-share-box {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 0 0 20px 0;
+    padding: 12px 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.btn-wa { background: #25D366; }
+.btn-fb { background: #1877F2; }
+.btn-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.btn-copy { background: #475569; }
+
+/* Dark Mode Fix */
+body.dark .article-share-box, body.dark-mode .article-share-box, [data-theme="dark"] .article-share-box {
+    background: #1e1e1e !important;
+    border-color: #333 !important;
+}
+body.dark .article-share-box span, body.dark-mode .article-share-box span, [data-theme="dark"] .article-share-box span {
+    color: #fff !important;
+}

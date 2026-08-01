@@ -173,11 +173,13 @@
 
             <!-- 📰 2. CENTER CONTENT (FULL ARTICLE READ WITH SKELETON) -->
             <section class="center-content center-feed">
+               <!-- 📰 2. CENTER CONTENT (FULL ARTICLE READ) -->
+            <section class="center-content center-feed">
                 <article class="main-article" style="background:var(--card-bg, #fff); border:1px solid var(--border-color, #e2e8f0); padding:25px; border-radius:10px;">
                     
                     <span class="cat-badge" id="page-cat" style="background:#c00000; color:#fff; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:800;">मुख्य समाचार</span>
 
-                    <!-- टाइटल स्केलेटन -->
+                    <!-- टाइटल -->
                     <h1 id="page-title" style="font-size:26px; font-weight:800; margin:15px 0; line-height:1.35; color:var(--heading-color, #1e293b);">
                         <div class="skeleton-box" style="height: 35px; width: 90%; margin-bottom: 8px;"></div>
                         <div class="skeleton-box" style="height: 35px; width: 50%;"></div>
@@ -190,24 +192,36 @@
                     </div>
 
                     <!-- Audio Reader -->
-                    <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:10px 15px; border-radius:6px; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:10px 15px; border-radius:6px; display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                         <button onclick="window.playAudioText()" class="btn btn-red" style="padding:6px 14px; font-size:12px; background:#c00000; color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-volume-high"></i> खबर सुनें</button>
                         <button onclick="window.stopAudioText()" style="padding:6px 14px; font-size:12px; background:#64748b; color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-square"></i> रोकें</button>
                     </div>
 
-                    <!-- Featured Image with Perfect ABP Skeleton Loader -->
+                    <!-- SHARE BUTTONS (सिर्फ एक बार, यहीं पर) -->
+                    <div class="article-share-box">
+                        <span style="font-size: 14px; font-weight: bold; color: #333;">शेयर करें:</span>
+                        <button onclick="shareWhatsApp()" class="share-btn btn-wa" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
+                        <button onclick="shareFacebook()" class="share-btn btn-fb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></button>
+                        <button onclick="shareNative()" class="share-btn btn-insta" title="Instagram / अन्य"><i class="fa-solid fa-share-nodes"></i></button>
+                        <button onclick="copyLink()" class="share-btn btn-copy" title="लिंक कॉपी करें"><i class="fa-solid fa-link"></i></button>
+                    </div>
+
+                    <!-- Featured Image -->
                     <div style="width:100%; border-radius:8px; overflow:hidden; margin-bottom:20px; background:#f1f5f9; display:flex; justify-content:center; align-items:center; position:relative; min-height:350px;">
                         <img id="page-img" src="" class="skeleton-img" style="width:100%; height:auto; max-height:500px; object-fit:contain; position:relative; z-index:2;">
                     </div>
 
-                    <!-- Body Content Skeleton -->
+                    <!-- Body Content -->
                     <div id="page-content" style="font-size:16px; line-height:1.8; color:#334155; margin-bottom:30px; font-weight:600;">
                         <div class="skeleton-box" style="height: 18px; width: 100%; margin-bottom: 12px;"></div>
                         <div class="skeleton-box" style="height: 18px; width: 100%; margin-bottom: 12px;"></div>
                         <div class="skeleton-box" style="height: 18px; width: 95%; margin-bottom: 12px;"></div>
                     </div>
 
-                    <a href="index.html" style="display:inline-block; padding:10px 18px; background:#c00000; color:#fff; text-decoration:none; border-radius:6px; font-weight:800; font-size:13px;"><i class="fa-solid fa-arrow-left"></i> मुख्य पृष्ठ पर वापस जाएँ</a>
+                    <!-- बैक बटन (लाल डिब्बे की समस्या ठीक की गई) -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="index.html" style="display:inline-block; padding:10px 18px; background:#c00000; color:#fff; text-decoration:none; border-radius:6px; font-weight:800; font-size:13px; clear:both;"><i class="fa-solid fa-arrow-left"></i> मुख्य पृष्ठ पर वापस जाएँ</a>
+                    </div>
                 </article>
 
                 <!-- DYNAMIC SUGGESTIONS -->
@@ -343,5 +357,45 @@
             container.innerHTML = html;
         });
     </script>
+    <!-- SHARE SCRIPT -->
+    <script>
+        function getArticleData() {
+            return {
+                title: document.getElementById('page-title') ? document.getElementById('page-title').innerText : document.title,
+                url: window.location.href
+            };
+        }
+
+        function shareWhatsApp() {
+            const data = getArticleData();
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(data.title + " - पूरी खबर यहाँ पढ़ें: " + data.url)}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const data = getArticleData();
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(data.url)}`, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('✅ खबर का लिंक कॉपी हो गया!');
+            });
+        }
+
+        function shareNative() {
+            const data = getArticleData();
+            if (navigator.share) {
+                navigator.share({
+                    title: data.title,
+                    text: "Times07 News पर यह खबर पढ़ें: ",
+                    url: data.url
+                }).catch(console.error);
+            } else {
+                alert("आपका ब्राउज़र डायरेक्ट शेयर सपोर्ट नहीं करता। कृपया लिंक कॉपी करें।");
+            }
+        }
+    </script>
+</body>
+</html>
 </body>
 </html>
