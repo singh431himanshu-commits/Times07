@@ -1144,15 +1144,49 @@ html, body {
 /* ==========================================
    SMART IMAGE PLACEHOLDER & FALLBACK (Global)
    ========================================== */
-img {
-    background-color: #f1f5f9;
-    background-image: url('logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 50px auto; /* लोगो का साइज़ */
+/* ==========================================
+   🚀 FINAL PERFECT SKELETON LOADER
+   ========================================== */
+@keyframes waveAnim {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
 }
 
-/* जैसे ही फोटो लोड हो जाए, बैकग्राउंड लोगो हट जाए */
-img[src]:not([src=""]) {
-    background-image: none;
+@keyframes waveImage {
+    0% { background-position: -200% 0, 0 0, center; }
+    100% { background-position: 200% 0, 0 0, center; }
+}
+
+/* 1. टेक्स्ट वाले बॉक्स के लिए (साफ-सुथरी तेज़ वेव) */
+.skeleton-box {
+    background-color: #cbd5e1 !important;
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.85), transparent) !important;
+    background-size: 200% 100% !important;
+    background-repeat: no-repeat !important;
+    animation: waveAnim 1.2s infinite linear !important;
+    border-radius: 4px;
+    display: block;
+}
+
+/* 2. बड़ी फोटो के लिए (कलरलेस फुल लोगो और वेव) */
+.skeleton-img {
+    background-color: #e2e8f0 !important;
+    background-image: 
+        linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent),
+        linear-gradient(rgba(226,232,240,0.75), rgba(226,232,240,0.75)),
+        url('logo.png') !important;
+    background-size: 200% 100%, 100% 100%, 55% auto !important;
+    background-position: -200% 0, 0 0, center !important;
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    animation: waveImage 1.2s infinite linear !important;
+    filter: grayscale(100%) !important;
+    border-radius: 4px;
+    display: block;
+}
+
+/* 3. असली फोटो आने पर सब साफ़ */
+img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
+    background: none !important;
+    animation: none !important;
+    filter: none !important;
 }

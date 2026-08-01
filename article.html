@@ -112,7 +112,7 @@
         <div class="header-container">
             <div class="logo-box">
                 <a href="index.html">
-                    <span class="abp-badge">Times</span><span class="times-brand">07</span>
+                    <img src="logo.png" alt="Times07 News" style="height: 40px;">
                 </a>
             </div>
 
@@ -145,7 +145,7 @@
     <main class="main-wrapper" id="main-content">
         <div class="portal-container abp-layout-grid">
             
-            <!-- 👈 1. LEFT STICKY SIDEBAR (Exact Home Page Like) -->
+            <!-- 👈 1. LEFT STICKY SIDEBAR -->
             <aside class="left-sidebar left-explorer">
                 <div class="explorer-menu">
                     <a href="index.html" class="left-menu-item explorer-item"><i class="fa-solid fa-house" style="color:#c00000;"></i><span>होम पेज</span></a>
@@ -171,13 +171,17 @@
                 </div>
             </aside>
 
-            <!-- 📰 2. CENTER CONTENT (FULL ARTICLE READ) -->
+            <!-- 📰 2. CENTER CONTENT (FULL ARTICLE READ WITH SKELETON) -->
             <section class="center-content center-feed">
                 <article class="main-article" style="background:var(--card-bg, #fff); border:1px solid var(--border-color, #e2e8f0); padding:25px; border-radius:10px;">
                     
                     <span class="cat-badge" id="page-cat" style="background:#c00000; color:#fff; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:800;">मुख्य समाचार</span>
 
-                    <h1 id="page-title" style="font-size:26px; font-weight:800; margin:15px 0; line-height:1.35; color:var(--heading-color, #1e293b);">खबर लोड हो रही है...</h1>
+                    <!-- टाइटल स्केलेटन -->
+                    <h1 id="page-title" style="font-size:26px; font-weight:800; margin:15px 0; line-height:1.35; color:var(--heading-color, #1e293b);">
+                        <div class="skeleton-box" style="height: 35px; width: 90%; margin-bottom: 8px;"></div>
+                        <div class="skeleton-box" style="height: 35px; width: 50%;"></div>
+                    </h1>
                     
                     <div style="display:flex; flex-wrap:wrap; gap:15px; font-size:12px; color:#64748b; margin-bottom:15px; border-bottom:1px solid #e2e8f0; padding-bottom:10px; font-weight:700;">
                         <span><i class="fa-regular fa-clock"></i> <span id="page-time">July 29, 2026</span></span>
@@ -191,34 +195,34 @@
                         <button onclick="window.stopAudioText()" style="padding:6px 14px; font-size:12px; background:#64748b; color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:bold;"><i class="fa-solid fa-square"></i> रोकें</button>
                     </div>
 
-                <!-- Featured Image with Smart Logo Loading -->
-                    <div style="width:100%; border-radius:8px; overflow:hidden; margin-bottom:20px; background:#f1f5f9; display:flex; justify-content:center; align-items:center; position:relative; min-height:280px;">
-                        
-                        <!-- जब तक फोटो लोड नहीं होगी, तब तक यह लोगो दिखेगा -->
-                        <img id="img-loader-logo" src="logo.png" alt="Loading..." style="width: 70px; height: auto; position: absolute; opacity: 0.5;">
-                        
-                        <!-- असली न्यूज़ इमेज (लोड होते ही लोगो छिप जाएगा) -->
-                        <img id="page-img" src="" alt="News Image" style="width:100%; height:auto; max-height:500px; object-fit:contain; position:relative; z-index:2;" onload="document.getElementById('img-loader-logo').style.display='none';" onerror="this.src='logo.png';">
-                    
+                    <!-- Featured Image with Perfect ABP Skeleton Loader -->
+                    <div style="width:100%; border-radius:8px; overflow:hidden; margin-bottom:20px; background:#f1f5f9; display:flex; justify-content:center; align-items:center; position:relative; min-height:350px;">
+                        <img id="page-img" src="" class="skeleton-img" style="width:100%; height:auto; max-height:500px; object-fit:contain; position:relative; z-index:2;">
                     </div>
 
-                    <!-- Body Content -->
-                    <div id="page-content" style="font-size:16px; line-height:1.8; color:#334155; margin-bottom:30px; font-weight:600;"></div>
+                    <!-- Body Content Skeleton -->
+                    <div id="page-content" style="font-size:16px; line-height:1.8; color:#334155; margin-bottom:30px; font-weight:600;">
+                        <div class="skeleton-box" style="height: 18px; width: 100%; margin-bottom: 12px;"></div>
+                        <div class="skeleton-box" style="height: 18px; width: 100%; margin-bottom: 12px;"></div>
+                        <div class="skeleton-box" style="height: 18px; width: 95%; margin-bottom: 12px;"></div>
+                    </div>
 
                     <a href="index.html" style="display:inline-block; padding:10px 18px; background:#c00000; color:#fff; text-decoration:none; border-radius:6px; font-weight:800; font-size:13px;"><i class="fa-solid fa-arrow-left"></i> मुख्य पृष्ठ पर वापस जाएँ</a>
                 </article>
 
-                <!-- DYNAMIC SUGGESTIONS (Auto Rendered by script.js) -->
+                <!-- DYNAMIC SUGGESTIONS -->
                 <div id="article-suggestions-container"></div>
             </section>
 
-            <!-- 👉 3. RIGHT STICKY SIDEBAR (Exact Home Page Like) -->
+            <!-- 👉 3. RIGHT STICKY SIDEBAR (Firebase Live Engine) -->
             <aside class="right-sidebar">
                 <div class="sidebar-widget" style="background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
                     <h3 class="widget-title" style="border-bottom: 2px solid red; padding-bottom: 5px; color: red; font-size: 15px; margin-bottom: 10px;">
                         <i class="fa-solid fa-satellite-dish fa-fade"></i> लाइव हलचल
                     </h3>
-                    <div id="dynamic-right-news-container"></div>
+                    <div id="dynamic-right-news-container">
+                        <div class="blinking-news-card"><div class="skeleton-box" style="width:70px; height:50px;"></div><div class="skeleton-box" style="width:150px; height:35px;"></div></div>
+                    </div>
                 </div>
 
                 <div class="sidebar-widget" style="margin-top:20px; background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
@@ -265,7 +269,7 @@
     <!-- Master Unified Script -->
     <script type="module" src="script.js?v=4.0"></script>
     
-    <!-- Speech Reader & Right Sidebar Logic -->
+    <!-- Speech Reader & Skeleton Auto-Remover Fixer -->
     <script>
         let speechSynth = window.speechSynthesis;
         window.playAudioText = function() {
@@ -279,24 +283,64 @@
             if (speechSynth.speaking) speechSynth.cancel();
         };
 
-        // Right Sidebar Live Halchal Auto Auto-Populate
-        document.addEventListener("DOMContentLoaded", () => {
-            const liveNewsData = [
-                { title: "NEET परीक्षा मामला: CBI की बड़ी कार्रवाई, 13 गिरफ्तार", img: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=150" },
-                { title: "शेयर बाजार में भारी उछाल, सेंसेक्स रिकॉर्ड स्तर पर", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=150" },
-                { title: "मौसम अपडेट: दिल्ली-NCR में भारी बारिश का अलर्ट", img: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=150" },
-                { title: "Paris Olympics 2026: भारतीय टीम का शानदार प्रदर्शन", img: "https://images.unsplash.com/photo-1599839619722-39751411ea63?w=150" }
-            ];
-
-            const container = document.getElementById('dynamic-right-news-container');
-            if (container) {
-                container.innerHTML = liveNewsData.map(news => `
-                    <div class="blinking-news-card">
-                        <img src="${news.img}" alt="news">
-                        <h4>${news.title}</h4>
-                    </div>
-                `).join('');
+        // 🚀 Auto Skeleton Remover (जैसे ही डेटा आएगा, स्केलेटन हट जाएगा)
+        const observer = new MutationObserver(() => {
+            const img = document.getElementById('page-img');
+            if (img && img.src && img.src !== window.location.href && !img.src.endsWith('undefined')) {
+                img.classList.remove('skeleton-img');
             }
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            const content = document.getElementById('page-content');
+            if (content) observer.observe(content, { childList: true, subtree: true });
+        });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA0c_Bz7HdU6YoL62L1cGfsA89Hg7609Ww",
+            authDomain: "times07news.firebaseapp.com",
+            projectId: "times07news",
+            storageBucket: "times07news.firebasestorage.app",
+            messagingSenderId: "527951679601",
+            appId: "1:527951679601:web:d33bfb58aaae9665c68bd0",
+            databaseURL: "https://times07news-default-rtdb.firebaseio.com"
+        };
+
+        const db = getDatabase(initializeApp(firebaseConfig));
+        const articlesRef = ref(db, 'articles');
+        const container = document.getElementById('dynamic-right-news-container');
+
+        onValue(articlesRef, (snapshot) => {
+            let sidebarNews = [];
+            snapshot.forEach(child => {
+                let data = child.val();
+                if(data.title) {
+                    sidebarNews.push({ title: data.title, img: data.img1 || data.image || 'logo.png' });
+                }
+            });
+
+            if(sidebarNews.length === 0) {
+                container.innerHTML = `<p style="padding:10px; font-size:12px; color:#888;">लाइव अपडेट्स लोड हो रहे हैं...</p>`;
+                return;
+            }
+
+            sidebarNews.reverse();
+            let html = '';
+            let count = Math.min(6, sidebarNews.length);
+            
+            for(let i = 0; i < count; i++) {
+                html += `
+                    <div class="blinking-news-card">
+                        <img src="${sidebarNews[i].img}" alt="news" style="width:70px; height:50px; object-fit:cover;" onerror="this.src='logo.png'">
+                        <h4>${sidebarNews[i].title}</h4>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
         });
     </script>
 </body>

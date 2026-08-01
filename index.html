@@ -354,31 +354,29 @@
                 </div>
             </aside>
 
-           <!-- 🔴 NEW HERO BANNER (FIXED) -->
+    <!-- 🔴 NEW HERO BANNER (WITH SKELETON LOADER) -->
 <div class="hero-spanning-wrapper">
     <div class="abp-hero-container">
-        <!-- 1. बड़ी फोटो -->
+        <!-- 1. बड़ी फोटो की जगह स्केलेटन -->
         <div class="abp-hero-image-box">
-            <img id="abp-main-img" 
-     src="https://picsum.photos/800/450" 
-     onerror="this.onerror=null; this.src='logo.png';" 
-     alt="Top News" 
-     style="width: 100%; height: 100%; object-fit: cover;">
+            <img id="abp-main-img" src="" alt="" class="skeleton-img" style="width: 100%; height: 100%;">
         </div>
 
-        <!-- 2. मुख्य हेडलाइन (लाल बैकग्राउंड वाला बॉक्स) -->
+        <!-- 2. मुख्य हेडलाइन की जगह स्केलेटन -->
         <div class="abp-hero-title-box">
-            <h2 id="abp-main-title">शेयर बाजार में भारी उछाल, सेंसेक्स ने तोड़े पुराने सभी रिकॉर्ड; निवेशकों में खुशी की लहर</h2>
+            <h2 id="abp-main-title" style="width: 100%;">
+                <div class="skeleton-box" style="height: 70px; width: 100%;"></div>
+            </h2>
         </div>
 
-        <!-- 3. दाहिने तरफ 5 खबरों की लिस्ट -->
+        <!-- 3. दाहिने तरफ 5 खबरों की लिस्ट की जगह स्केलेटन -->
         <div class="abp-hero-list-box">
             <ul id="abp-side-headlines">
-                <li>WI vs PAK: बाबर आजम देखते रहे पाकिस्तान की हार का तमाशा</li>
-                <li>12 साल का सचिन, जिसने कंप्यूटर को भी पीछे छोड़ दिया</li>
-                <li>बंगाल के सरकारी कर्मचारियों को 20% DA का तोहफा</li>
-                <li>मौसम अपडेट: दिल्ली-NCR में भारी बारिश का अलर्ट</li>
-                <li>NEET परीक्षा लीक मामला: CBI की बड़ी कार्रवाई</li>
+                <li><div class="skeleton-box" style="height: 18px; width: 90%;"></div></li>
+                <li><div class="skeleton-box" style="height: 18px; width: 75%;"></div></li>
+                <li><div class="skeleton-box" style="height: 18px; width: 95%;"></div></li>
+                <li><div class="skeleton-box" style="height: 18px; width: 80%;"></div></li>
+                <li><div class="skeleton-box" style="height: 18px; width: 85%;"></div></li>
             </ul>
         </div>
     </div>
