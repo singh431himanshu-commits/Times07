@@ -481,42 +481,49 @@
         // PUBLISH LOGIC
         // ==============================
  // ==============================
-       window.publishDraft = function(type, id) {
-            const titleRadio = document.querySelector(`input[name="t_${type}_${id}"]:checked`);
-            if(!titleRadio) return alert("कृपया टाइटल चुनें!");
-            
-            let img = document.getElementById(`local_img_${type}_${id}`).value;
-            
-            if (!img) { 
-                const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`); 
-                if(imgRadio) {
-                    const parentLabel = imgRadio.closest('.img-card');
-                    if(parentLabel) {
-                        const imgTag = parentLabel.querySelector('img');
-                        if(imgTag) img = imgTag.src; 
-                    } else {
-                        img = imgRadio.value; 
-                    }
-                } 
+   window.publishDraft = function(type, id) {
+    const titleRadio = document.querySelector(`input[name="t_${type}_${id}"]:checked`);
+    if(!titleRadio) return alert("कृपया टाइटल चुनें!");
+    
+    let img = document.getElementById(`local_img_${type}_${id}`).value;
+    
+    if (!img) { 
+        const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`); 
+        if(imgRadio) {
+            const parentLabel = imgRadio.closest('.img-card');
+            if(parentLabel) {
+                const imgTag = parentLabel.querySelector('img');
+                // 🚀 फिक्स 1: .src की जगह .getAttribute('src') इस्तेमाल करें ताकि लोकल IP न जुड़े!
+                if(imgTag) img = imgTag.getAttribute('src'); 
+            } else {
+                img = imgRadio.value; 
             }
-            
-            // 🚀 फिक्स: यहाँ 'logo.png' की जगह सुरक्षित फॉलबैक इमेज या खाली रखें
-            const finalImage = (img && !img.includes('logo.png')) ? img : 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800';
-            
-            push(articlesRef, { 
-                title: titleRadio.value, 
-                img1: finalImage, 
-                desc: document.getElementById(`desc_${type}_${id}`).value, 
-                placement: document.getElementById(`placement_${type}_${id}`).value, 
-                category: document.getElementById(`category_${type}_${id}`).value, 
-                views: Math.floor(Math.random() * 2000) + 500, 
-                timestamp: Date.now() 
-            }).then(() => { 
-                alert('✅ खबर वेबसाइट पर लाइव हो गई है!'); 
-                document.getElementById(`draft-card-${type}-${id}`).remove(); 
-                if(window.loadAdminNewsTable) window.loadAdminNewsTable();
-            }).catch(err => alert("Error: " + err));
-        };
+        } 
+    }
+    
+    let finalImage = (img && !img.includes('logo.png')) ? img : 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800';
+    
+    // 🚀 ब्रह्मास्त्र 2: अगर किसी भी वजह से लोकल IP आ भी जाए, तो पब्लिश होने से पहले ही उसे लाइव डोमेन में बदल दे!
+    if (finalImage.includes('127.0.0.1:5500')) {
+        finalImage = finalImage.replace('http://127.0.0.1:5500', 'https://times07news.in');
+    } else if (finalImage.includes('localhost:5500')) {
+        finalImage = finalImage.replace('http://localhost:5500', 'https://times07news.in');
+    }
+    
+    push(articlesRef, { 
+        title: titleRadio.value, 
+        img1: finalImage, 
+        desc: document.getElementById(`desc_${type}_${id}`).value, 
+        placement: document.getElementById(`placement_${type}_${id}`).value, 
+        category: document.getElementById(`category_${type}_${id}`).value, 
+        views: Math.floor(Math.random() * 2000) + 500, 
+        timestamp: Date.now() 
+    }).then(() => { 
+        alert('✅ खबर वेबसाइट पर लाइव हो गई है!'); 
+        document.getElementById(`draft-card-${type}-${id}`).remove(); 
+        if(window.loadAdminNewsTable) window.loadAdminNewsTable();
+    }).catch(err => alert("Error: " + err));
+};
         document.getElementById('btn-publish-manual').addEventListener('click', () => {
             const title = document.getElementById('manual_title').value;
             let img = document.getElementById('manual_img_val').value || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800'; 
