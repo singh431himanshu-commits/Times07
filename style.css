@@ -1245,36 +1245,20 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
 }
 
 /* =========================================
-   📱 MOBILE VIEW (Clean, Fast & App-Like)
-   ========================================= */
-/* =========================================
-   📱 PERFECT APP-LIKE MOBILE HEADER & VIEW
+   📱 FINAL CLEAN MOBILE VIEW (Light & Dark)
    ========================================= */
 @media screen and (max-width: 768px) {
+    .top-global-bar, .trending-hashtags-bar { display: none !important; }
     
-    /* 1. फालतू की पट्टियाँ छुपाएं */
-    .top-global-bar,
-    .trending-hashtags-bar {
-        display: none !important;
-    }
-
-    /* 2. Header को री-अरेंज करें: ऊपर लोगो और एक्शन बटन आमने-सामने */
     .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 10px;
-        flex-wrap: nowrap;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 8px 10px !important;
+        flex-wrap: nowrap !important;
     }
-
-    /* 3. लोगो का सही साइज */
-    .logo-box img {
-        height: 40px !important; 
-        max-width: 140px !important;
-        object-fit: contain;
-    }
-
-    /* 4. सर्च, डार्क मोड और प्रोफाइल बटन ऊपर लोगो के सामने */
+    .logo-box img { height: 40px !important; max-width: 140px !important; object-fit: contain !important; }
+    
     .header-actions {
         display: flex !important;
         flex-direction: row !important;
@@ -1284,85 +1268,20 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
         margin: 0 !important;
     }
     .icon-btn {
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 14px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        width: 32px !important; height: 32px !important; font-size: 14px !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
     }
-
-    /* 5. कैटेगरी मेन्यू (होम, न्यूज़...) को ठीक उसके नीचे स्वाइप करने योग्य बनाएं */
+    
     .primary-nav {
-        width: 100%;
-        display: flex !important;
-        justify-content: flex-start !important;
-        overflow-x: auto !important; 
-        white-space: nowrap;
-        padding: 6px 10px !important;
-        margin: 0 !important;
-        border-top: 1px solid #f0f0f0;
-        background: #ffffff;
-        -webkit-overflow-scrolling: touch; 
+        width: 100% !important; display: flex !important; justify-content: flex-start !important;
+        overflow-x: auto !important; white-space: nowrap !important; padding: 6px 10px !important; margin: 0 !important;
     }
-    .primary-nav::-webkit-scrollbar {
-        display: none;
-    }
+    .primary-nav::-webkit-scrollbar { display: none !important; }
 
-    /* 6. पूरा बैकग्राउंड ब्लैक & वाइट (लाइटवेट) */
-    body, .main-wrapper, #main-content {
-        background-color: #ffffff !important;
-        color: #111111 !important;
-    }
-
-    /* 7. Breaking Ticker को सिंपल वाइट/ब्लैक करें */
-    .breaking-ticker-bar {
-        background: #ffffff !important;
-        color: #000000 !important;
-        border-bottom: 1px solid #eeeeee !important;
-    }
-    .ticker-badge {
-        background: #000000 !important;
+    /* Dark Mode Absolute Fix */
+    body.dark .primary-nav, body.dark-mode .primary-nav, [data-theme="dark"] .primary-nav { background: #1e1e1e !important; }
+    
+    body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark p, body.dark span, body.dark a, body.dark li, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode p, body.dark-mode span, body.dark-mode a, body.dark-mode li, [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4, [data-theme="dark"] p, [data-theme="dark"] span, [data-theme="dark"] a, [data-theme="dark"] li {
         color: #ffffff !important;
-    }
-    #live-ticker-text {
-        color: #333333 !important;
-    }
-
-    /* 8. Red Hero Box (बड़ी खबर) को क्लीन वाइट करें */
-    .abp-hero-container {
-        background: #ffffff !important;
-        border: 1px solid #e0e0e0 !important;
-        border-radius: 8px !important;
-        box-shadow: none !important;
-        height: auto !important; 
-    }
-    .abp-hero-title-box h2 {
-        color: #000000 !important;
-        font-weight: 800 !important;
-    }
-    
-    /* 9. लिस्ट और छोटे मेन्यू को हल्का करें */
-    .abp-hero-list-box {
-        background: #fafafa !important;
-        border-top: 1px solid #eeeeee !important;
-    }
-    .abp-hero-list-box li {
-        color: #333333 !important;
-        border-bottom: 1px solid #eaeaea !important;
-    }
-    .nav-item-3d {
-        background: #f5f5f5 !important;
-        color: #111111 !important;
-        border: 1px solid #dddddd !important;
-    }
-    
-    /* 10. कैटेगरी हेडिंग्स का रंग ब्लैक करें */
-    .section-title-abp {
-        color: #000000 !important;
-        border-bottom: 2px solid #000000 !important;
-    }
-    .section-title-abp i {
-        color: #000000 !important;
     }
 }
