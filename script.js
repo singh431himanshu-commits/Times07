@@ -263,6 +263,13 @@ function populateArticlePage() {
 
     if (!isNaN(newsIndex) && savedNews[newsIndex]) {
         const news = savedNews[newsIndex];
+        document.title = news.title + " | Times07 News";
+
+document.querySelector('meta[name="description"]')
+?.setAttribute("content", (news.summary || news.desc || "").substring(0,160));
+
+document.querySelector("link[rel='canonical']")
+?.setAttribute("href", window.location.href);
         
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
         if(document.getElementById('page-cat')) document.getElementById('page-cat').innerText = news.category || "मुख्य समाचार";
