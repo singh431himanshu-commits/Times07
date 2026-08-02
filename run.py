@@ -111,64 +111,125 @@ def apply_watermark_to_image(img_url, output_filename):
         "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=1000",
         "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=1000"
     ]
-    
+
     for current_url in fallback_list:
-        try:
-            headers = {'User-Agent': 'Mozilla/5.0'}
-            response = requests.get(current_url, headers=headers, timeout=8)
-            
-            if 'image' not in response.headers.get('content-type', ''): continue
                 
+        try:
+            headers = {"User-Agent": "Mozilla/5.0"}
+
+            response = requests.get(
+                current_url,
+                headers=headers,
+                timeout=8
+            )
+
+            print("Downloading:", current_url)
+            print("Status:", response.status_code)
+            print("Type:", response.headers.get("content-type"))
+
+            if "image" not in response.headers.get("content-type", ""):
+                continue
+
             raw_image = Image.open(BytesIO(response.content)).convert("RGBA")
             base_image = make_pro_image(raw_image)
-            
+
+            # Logo
             logo_path = "logo.png"
             if os.path.exists(logo_path):
                 logo = Image.open(logo_path).convert("RGBA")
+
                 basewidth = int(base_image.width * 0.16)
-                wpercent = (basewidth / float(logo.size[0]))
-                hsize = int(float(logo.size[1]) * float(wpercent))
-                logo = logo.resize((basewidth, hsize), Image.Resampling.LANCZOS)
-                
+                wpercent = basewidth / float(logo.width)
+                hsize = int(float(logo.height) * wpercent)
+
+                logo = logo.resize(
+                    (basewidth, hsize),
+                    Image.Resampling.LANCZOS
+                )
+
                 margin_x = int(base_image.width * 0.02)
                 margin_y = int(base_image.height * 0.03)
-                position = (base_image.width - logo.width - margin_x, margin_y)
-                base_image.paste(logo, position, logo)
-            
-            os.makedirs("static/watermarked", exist_ok=True)
-            save_path = f"static/watermarked/{output_filename}"
-            
-            rgb_image = base_image.convert("RGB")
-            rgb_image.save(save_path, "JPEG", quality=90)
-            return f"/{save_path}"
-        except Exception as e:
-            continue
-    return "/logo.png"
 
+                position = (
+                    base_image.width - logo.width - margin_x,
+                    margin_y
+                )
+
+                base_image.paste(logo, position, logo)
+
+            # Resize Image
+            base_image = base_image.resize(
+                (1280, 720),
+                Image.Resampling.LANCZOS
+            )
+
+            # Save Folder
+            os.makedirs("static/watermarked", exist_ok=True)
+
+            save_path = f"static/watermarked/{output_filename}"
+
+            rgb_image = base_image.convert("RGB")
+
+            rgb_image.save(
+                save_path,
+                "JPEG",
+                quality=75,
+                optimize=True
+            )
+
+            return f"/{save_path}"
+
+        except Exception as e:
+            print(f"Image Error: {e}")
+            continue
+
+    return "/logo.png"
 def search_hd_images(query, count=5):
     images = []
+
     try:
         time.sleep(2)
+
         with DDGS() as ddgs:
-            results = list(ddgs.images(f"{query} high resolution recent news photo", max_results=count))
+    
+            results = list(ddgs.images(
+    query=f"{query} news event real photo",
+    region="in-en",
+    safesearch="on",
+    size="Large",
+    type_image="photo",
+    layout="Wide",
+    max_results=count * 10
+))
+            print("🔎 Total Images Found:", len(results))
+
             for i, res in enumerate(results):
-                if 'image' in res:
-                    raw_url = res['image']
-                    unique_name = f"trend_{int(time.time())}_{i}.jpg"
-                    watermarked_url = apply_watermark_to_image(raw_url, unique_name)
+
+                if "image" not in res:
+                    continue
+
+                raw_url = res["image"]
+                
+
+                print("IMG:", raw_url)
+
+                unique_name = f"trend_{int(time.time())}_{i}.jpg"
+
+                watermarked_url = apply_watermark_to_image(
+                    raw_url,
+                    unique_name
+                )
+
+                if watermarked_url != "/logo.png":
                     images.append(watermarked_url)
-    except: pass
-    
-    fallback_hd = [
-        "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=1000",
-        "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=1000"
-    ]
-    
-    if len(images) < count:
-        for i, fallback_url in enumerate(random.sample(fallback_hd, min(count - len(images), len(fallback_hd)))):
-            unique_name = f"trend_fb_{int(time.time())}_{i}.jpg"
-            images.append(apply_watermark_to_image(fallback_url, unique_name))
-        
+
+                if len(images) >= count:
+                    break
+
+    except Exception as e:
+        print("Search Error:", e)
+
+
     return images[:count]
 
 # ==========================================
@@ -219,10 +280,35 @@ def generate_trending_draft(raw_title, raw_text=""):
                     response_format={"type": "json_object"}
                 )
                 data = json.loads(response.choices[0].message.content.strip())
+
+                # Smart Image Search
+                search_keyword = raw_title
+
+                # Remove extra words
+                search_keyword = re.sub(r"\|.*", "", search_keyword)
+                search_keyword = re.sub(r"\b20\d{2}\b", "", search_keyword)
+
+                remove_words = [
+                    "जानें", "देखें", "Live", "Breaking",
+                    "ब्रेकिंग", "Today", "Latest",
+                    "News", "न्यूज", "अपडेट",
+                    "क्या", "कैसे", "कब",
+                    "क्यों", "और", "का", "की", "के"
+                ]
+
+                for word in remove_words:
+                    search_keyword = search_keyword.replace(word, "")
+
+                search_keyword = " ".join(search_keyword.split())
+
+                print("🔍 Image Search:", search_keyword)
+
+                data["image_options"] = search_hd_images(
+                    search_keyword,
+                    count=5
+                )
                 
-                # Fetch Images
-                search_keyword = " ".join(raw_title.split()[:4])
-                data["image_options"] = search_hd_images(search_keyword, count=5)
+                
                 
                 data["created_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 data["bot_type"] = "trending"
