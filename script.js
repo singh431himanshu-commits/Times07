@@ -46,7 +46,7 @@ function initTheme() {
 initTheme();
 
 // 🚀 FIREBASE LISTENER (अब यह Article Page को भी कॉल करेगा)
-         const newsQuery = query(newsRef, limitToLast(50));
+         const newsQuery = query(newsRef, limitToLast(20));
 
          get(newsQuery).then((snapshot) => {
     const data = snapshot.val();
