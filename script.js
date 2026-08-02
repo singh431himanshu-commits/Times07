@@ -549,3 +549,6 @@ window.translatePage = function(langCode, element) {
     if (select) { select.value = langCode; select.dispatchEvent(new Event('change')); }
     setTimeout(() => { if (select) { select.value = langCode; select.dispatchEvent(new Event('change')); } }, 400);
 };
+window.addEventListener("DOMContentLoaded", () => {
+    populateArticlePage();
+});
