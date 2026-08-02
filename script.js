@@ -279,6 +279,8 @@ document.getElementById("news-schema").textContent = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": news.title,
+  "url": window.location.href,
+"dateModified": new Date().toISOString(),
   "image": [news.image || news.img || ""],
   "description": news.summary,
 "mainEntityOfPage": window.location.href,
