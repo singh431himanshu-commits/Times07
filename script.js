@@ -375,7 +375,7 @@ window.history.replaceState(
     "",
     `${window.location.pathname}?id=${newsIndex}&slug=${articleSlug}`
 );
-        document.title = news.title + " | Times07 News";
+        document.title = `${news.title} - Times07 News | Breaking News`;
         
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
         if(document.getElementById('page-cat')) document.getElementById('page-cat').innerText = news.category || "मुख्य समाचार";
