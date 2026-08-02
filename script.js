@@ -65,6 +65,10 @@ initTheme();
     renderABPHeroBanner(window.sampleNews); // रेड बॉक्स के लिए
     renderRightSidebar(window.sampleNews); // 🚀 नए राइट साइडबार के लिए
     renderMostReadWidget();
+    const loader = document.getElementById("loader");
+if(loader){
+    loader.style.display = "none";
+}
     renderEditorsChoice();
     populateArticlePage(); // 🚀 यह लाइन छूट गई थी! इसी वजह से लोडिंग अटका था।
 });
