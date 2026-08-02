@@ -322,15 +322,15 @@ window.location.origin + "/logo.png"
     "@type": "Organization",
     "name": "Times07 News"
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Times07 News",
-    "logo": {
-      "@type": "ImageObject",
-      "url": window.location.origin + "/logo.png"
-    }
-    
+ "publisher": {
+  "@type": "Organization",
+  "name": "Times07 News",
+  "logo": {
+    "@type": "ImageObject",
+    "url": window.location.origin + "/logo.png"
   }
+},
+"inLanguage": "hi-IN"
 });
 
 
