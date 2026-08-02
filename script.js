@@ -275,23 +275,32 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
 );
 
 // News Schema
-document.getElementById("news-schema").textContent = JSON.stringify({
+    document.getElementById("news-schema").textContent = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": news.title,
+  "description": news.summary || news.description || "",
+  "image": [
+    news.image || news.img || news.img1 || window.location.origin + "/logo.png"
+  ],
   "url": window.location.href,
-"dateModified": new Date().toISOString(),
-  "image": [news.image || news.img || ""],
-  "description": news.summary,
-"mainEntityOfPage": window.location.href,
-
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": window.location.href
+  },
+  "datePublished": news.date || new Date().toISOString(),
+  "dateModified": new Date().toISOString(),
   "author": {
     "@type": "Organization",
     "name": "Times07 News"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Times07 News"
+    "name": "Times07 News",
+    "logo": {
+      "@type": "ImageObject",
+      "url": window.location.origin + "/logo.png"
+    }
   }
 });
         document.title = news.title + " | Times07 News";
