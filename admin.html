@@ -343,10 +343,7 @@
                 drafts.forEach(draft => {
                     const titlesHTML = (draft.title_options || []).map((t, i) => `<label class="radio-label"><input type="radio" name="t_${id}_${draft.id}" value="${t}" ${i===0?'checked':''}><span class="tick">✔️</span><span class="text">${t}</span></label>`).join('');
                   const imgsHTML = (draft.image_options || []).map((img, i) => {
-    let showImg = img;
-    if (img.startsWith('/')) {
-        showImg = 'https://times07news.in' + img;
-    }
+   let showImg = img.replace("https://times07news.in", "http://127.0.0.1:5500");
     return `<label class="img-card">
         <input type="radio" name="img_${id}_${draft.id}" value="${showImg}" ${i===0?'checked':''}>
         <img src="${showImg}">
