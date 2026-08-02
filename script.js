@@ -329,8 +329,10 @@ window.location.origin + "/logo.png"
       "@type": "ImageObject",
       "url": window.location.origin + "/logo.png"
     }
+    
   }
 });
+
 
 document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
 document.querySelector('meta[name="twitter:title"]')?.setAttribute(
@@ -381,7 +383,10 @@ document.querySelector('meta[name="keywords"]')?.setAttribute(
   "content",
   `${news.category || ""}, ${news.title || ""}, Times07 News, Breaking News`
 );
-
+document.querySelector('meta[property="article:section"]')?.setAttribute(
+  "content",
+  news.category || "News"
+);
 document.querySelector('link[rel="canonical"]')?.setAttribute(
   "href",
   window.location.href
