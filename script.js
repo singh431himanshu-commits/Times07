@@ -292,7 +292,7 @@ window.location.origin + "/logo.png"
     "@type": "WebPage",
     "@id": window.location.href
   },
-  "datePublished": news.datePublished || news.date || new Date().toISOString(),
+  "datePublished": news.datePublished || news.date || "2026-08-02T10:00:00+05:30",
   "dateModified": new Date().toISOString(),
   "author": {
     "@type": "Organization",
