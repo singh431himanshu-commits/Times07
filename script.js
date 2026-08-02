@@ -397,6 +397,11 @@ window.history.replaceState(
     "",
     `${window.location.pathname}?id=${newsIndex}&slug=${articleSlug}`
 );
+
+document.querySelector('link[rel="canonical"]')?.setAttribute(
+  "href",
+  window.location.href
+);
         document.title = `${news.title} - Times07 News | Breaking News`;
         
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
