@@ -739,3 +739,37 @@
 2026-08-02 20:34:54 [INFO] response: https://www.bing.com/images/async?q=%22Ration+Card+Online%22+India+news&async=1&first=1&count=35 200
 2026-08-02 20:34:55 [INFO] response: https://www.bing.com/images/async?q=%22Ration+Card+Online%22+latest+event&async=1&first=1&count=35 200
 2026-08-02 20:34:56 [INFO] response: https://www.bing.com/images/async?q=Ration+Card+Online&async=1&first=1&count=35 200
+2026-08-02 21:09:35 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:09:43 [INFO] Error in engine bing: TimeoutException(TimeoutError('error sending request for url (https://www.bing.com/images/async?q=%22Moon+Saturn+Conjunction%22+official+news+photo&async=1&first=1&count=35) > operation timed out'))
+2026-08-02 21:09:45 [INFO] response: https://duckduckgo.com/?q=%22Moon+Saturn+Conjunction%22+official+news+photo 202
+2026-08-02 21:09:46 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Moon+Saturn+Conjunction%22+official+news+photo&l=in-en&vqd=4-255242591635524309988996911897964667367&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:09:50 [INFO] response: https://www.bing.com/images/async?q=%22Moon+Saturn+Conjunction%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:09:51 [INFO] response: https://www.bing.com/images/async?q=%22Moon+Saturn+Conjunction%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:09:51 [INFO] response: https://www.bing.com/images/async?q=Moon+Saturn+Conjunction&async=1&first=1&count=35 200
+2026-08-02 21:11:04 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:11:07 [INFO] response: https://duckduckgo.com/?q=%22SpaceX+Rocket%22+official+news+photo 202
+2026-08-02 21:11:07 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22SpaceX+Rocket%22+official+news+photo&l=in-en&vqd=4-167113105790251290519216485821941484556&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:11:08 [INFO] response: https://www.bing.com/images/async?q=%22SpaceX+Rocket%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:11:08 [INFO] response: https://duckduckgo.com/?q=%22SpaceX+Rocket%22+India+news 202
+2026-08-02 21:11:08 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22SpaceX+Rocket%22+India+news&l=in-en&vqd=4-157761495760805538311524527087659129537&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:11:09 [INFO] response: https://www.bing.com/images/async?q=%22SpaceX+Rocket%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:11:09 [INFO] response: https://www.bing.com/images/async?q=%22SpaceX+Rocket%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:11:10 [INFO] response: https://duckduckgo.com/?q=SpaceX+Rocket 202
+2026-08-02 21:11:10 [INFO] response: https://duckduckgo.com/i.js?o=json&q=SpaceX+Rocket&l=in-en&vqd=4-88183165206694930178971480508421347604&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:11:11 [INFO] response: https://www.bing.com/images/async?q=SpaceX+Rocket&async=1&first=1&count=35 200
+2026-08-02 21:11:59 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:12:01 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%85%E0%A4%A8%E0%A4%BF%E0%A4%B2+%E0%A4%95%E0%A4%AA%E0%A5%82%E0%A4%B0+%E0%A4%AB%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%82%E0%A4%A1%E0%A4%B6%E0%A4%BF%E0%A4%AA+%E0%A4%A1%E0%A5%87%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:12:02 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%85%E0%A4%A8%E0%A4%BF%E0%A4%B2+%E0%A4%95%E0%A4%AA%E0%A5%82%E0%A4%B0+%E0%A4%AB%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%82%E0%A4%A1%E0%A4%B6%E0%A4%BF%E0%A4%AA+%E0%A4%A1%E0%A5%87%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:12:03 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%85%E0%A4%A8%E0%A4%BF%E0%A4%B2+%E0%A4%95%E0%A4%AA%E0%A5%82%E0%A4%B0+%E0%A4%AB%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%82%E0%A4%A1%E0%A4%B6%E0%A4%BF%E0%A4%AA+%E0%A4%A1%E0%A5%87%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:12:04 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%85%E0%A4%A8%E0%A4%BF%E0%A4%B2+%E0%A4%95%E0%A4%AA%E0%A5%82%E0%A4%B0+%E0%A4%AB%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%82%E0%A4%A1%E0%A4%B6%E0%A4%BF%E0%A4%AA+%E0%A4%A1%E0%A5%87&async=1&first=1&count=35 200
+2026-08-02 21:12:57 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:13:00 [INFO] response: https://www.bing.com/images/async?q=%22Anil+Kapoor+Satish+Kaushik%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:13:01 [INFO] response: https://duckduckgo.com/?q=%22Anil+Kapoor+Satish+Kaushik%22+India+news 202
+2026-08-02 21:13:01 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Anil+Kapoor+Satish+Kaushik%22+India+news&l=in-en&vqd=4-241213808317160534080832342397582564096&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:13:01 [INFO] response: https://www.bing.com/images/async?q=%22Anil+Kapoor+Satish+Kaushik%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:13:02 [INFO] response: https://duckduckgo.com/?q=%22Anil+Kapoor+Satish+Kaushik%22+latest+event 202
+2026-08-02 21:13:02 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Anil+Kapoor+Satish+Kaushik%22+latest+event&l=in-en&vqd=4-278622007630829278284365762905120156136&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:13:02 [INFO] response: https://www.bing.com/images/async?q=%22Anil+Kapoor+Satish+Kaushik%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:13:03 [INFO] response: https://duckduckgo.com/?q=Anil+Kapoor+Satish+Kaushik 202
+2026-08-02 21:13:03 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Anil+Kapoor+Satish+Kaushik&l=in-en&vqd=4-122099754002755095435523182939175119521&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:13:03 [INFO] response: https://www.bing.com/images/async?q=Anil+Kapoor+Satish+Kaushik&async=1&first=1&count=35 200
