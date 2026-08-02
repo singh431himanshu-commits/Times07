@@ -107,10 +107,8 @@ def make_pro_image(base_image):
 
 def apply_watermark_to_image(img_url, output_filename):
     fallback_list = [
-        img_url,
-        "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=1000",
-        "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=1000"
-    ]
+        img_url
+]
 
     for current_url in fallback_list:
                 
@@ -122,6 +120,9 @@ def apply_watermark_to_image(img_url, output_filename):
                 headers=headers,
                 timeout=8
             )
+            if len(response.content) < 150000:
+                continue
+
 
             print("Downloading:", current_url)
             print("Status:", response.status_code)
@@ -173,9 +174,9 @@ def apply_watermark_to_image(img_url, output_filename):
             rgb_image.save(
                 save_path,
                 "JPEG",
-                quality=75,
+                quality=92,
                 optimize=True
-            )
+)
 
             return f"/{save_path}"
 
@@ -190,17 +191,46 @@ def search_hd_images(query, count=5):
     try:
         time.sleep(2)
 
+        search_queries = [
+            f'"{query}" official news photo',
+            f'"{query}" India news',
+            f'"{query}" latest event',
+            query
+        ]
+
         with DDGS() as ddgs:
-    
-            results = list(ddgs.images(
-    query=f"{query} news event real photo",
-    region="in-en",
-    safesearch="on",
-    size="Large",
-    type_image="photo",
-    layout="Wide",
-    max_results=count * 10
-))
+
+            results = []
+
+            for q in search_queries:
+
+                print("🔍 Trying:", q)
+
+                try:
+                    temp = list(ddgs.images(
+                        query=q,
+                        region="in-en",
+                        safesearch="on",
+                        size="Large",
+                        type_image="photo",
+                        layout="Wide",
+                        max_results=25
+                    ))
+
+                    results.extend(temp)
+                    results = list({
+                        item.get("image"): item
+                        for item in results
+                        if item.get("image")
+                    }.values())
+
+                    if len(results) >= 80:
+                        break
+
+                except:
+                    pass
+
+            
             print("🔎 Total Images Found:", len(results))
 
             for i, res in enumerate(results):
@@ -209,9 +239,67 @@ def search_hd_images(query, count=5):
                     continue
 
                 raw_url = res["image"]
-                
 
+                title = str(res.get("title", "")).lower()
+                source = str(res.get("source", "")).lower()
+                query_words = query.lower().split()
+
+                matched = 0
+
+                for word in query_words:
+                    if len(word) >= 4 and word in title:
+                        matched += 1
+
+                if matched == 0 and len(query_words) > 1:
+                    continue                             
+
+                if any(x in source for x in [
+                    "pinterest",
+                    "shutterstock",
+                    "freepik",
+                    "istock",
+                    "alamy"
+                ]):
+                    continue
+
+                if any(x in title for x in [
+                    "youtube",
+                    "thumbnail",
+                    "logo",
+                    "poster",
+                    "wallpaper",
+                    "stock",
+                    "vector",
+                    "illustration",
+                    "clipart",
+                    "template",
+                    "mockup",
+                    "3d render"
+                ]):
+                    continue
+
+                if "ytimg.com" in raw_url:
+                    continue
+
+                if "ytimg.com" in raw_url:
+                    continue
+
+                if raw_url.lower().endswith(".gif"):
+                    continue
+
+                if raw_url.lower().endswith(".svg"):
+                    continue
+                width = int(res.get("width") or 0)
+                height = int(res.get("height") or 0)
+
+                if width < 1000:
+                     continue
+
+                if height < 600:
+                     continue     
+               
                 print("IMG:", raw_url)
+
 
                 unique_name = f"trend_{int(time.time())}_{i}.jpg"
 
@@ -245,6 +333,7 @@ def generate_trending_draft(raw_title, raw_text=""):
     1. यह पूरी तरह से तथ्यात्मक (Factual) और न्यूज़ चैनल जैसी हिंदी होनी चाहिए।
     2. 500-800 शब्दों में विस्तृत खबर लिखें (H3 हेडिंग्स और <p> टैग्स के साथ)।
     3. 5 SEO फ्रेंडली टाइटल्स जनरेट करें। हर टाइटल के अंत में ' | Times07 News' ज़रूर लगाएं।
+    4. खबर में जिस व्यक्ति, जगह, घटना या विषय की फोटो सबसे सही होगी, उसके लिए 2-5 शब्दों का image_keyword भी दो। उदाहरण: "Narendra Modi", "Virat Kohli", "ISRO Chandrayaan", "Delhi Rain".
 
     Return strictly a VALID JSON object (NO markdown):
     {{
@@ -260,6 +349,7 @@ def generate_trending_draft(raw_title, raw_text=""):
       "content_html": "<h3>हेडिंग 1</h3><p>विस्तृत पैराग्राफ...</p><h3>हेडिंग 2</h3><p>विस्तृत पैराग्राफ...</p>",
       "category": "मुख्य समाचार",
       "default_tags": ["#TrendingNews", "#LatestUpdate", "#Times07"]
+      "image_keyword": "2-5 words related to the main person, place or event"
     }}
     """
 
@@ -303,8 +393,12 @@ def generate_trending_draft(raw_title, raw_text=""):
 
                 print("🔍 Image Search:", search_keyword)
 
+                image_query = data.get("image_keyword", search_keyword)
+
+                print("🖼️ AI Image Keyword:", image_query)
+
                 data["image_options"] = search_hd_images(
-                    search_keyword,
+                    image_query,
                     count=5
                 )
                 
