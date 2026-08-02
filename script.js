@@ -333,12 +333,19 @@ window.location.origin + "/logo.png"
 });
 
 document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
+document.querySelector('meta[name="twitter:title"]')?.setAttribute(
+  "content",
+  news.title
+);
 
 document.querySelector('meta[property="og:description"]')?.setAttribute(
   "content",
   news.summary || news.description || ""
 );
-
+document.querySelector('meta[name="twitter:description"]')?.setAttribute(
+  "content",
+  (news.summary || news.description || "").substring(0, 160)
+);
 document.querySelector('meta[property="og:image"]')?.setAttribute(
   "content",
   news.image || news.img || news.img1 || ""
