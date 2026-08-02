@@ -773,3 +773,80 @@
 2026-08-02 21:13:03 [INFO] response: https://duckduckgo.com/?q=Anil+Kapoor+Satish+Kaushik 202
 2026-08-02 21:13:03 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Anil+Kapoor+Satish+Kaushik&l=in-en&vqd=4-122099754002755095435523182939175119521&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
 2026-08-02 21:13:03 [INFO] response: https://www.bing.com/images/async?q=Anil+Kapoor+Satish+Kaushik&async=1&first=1&count=35 200
+2026-08-02 21:44:02 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:44:04 [INFO] response: https://duckduckgo.com/?q=%22Thalapathy+Vijay+Son%22+official+news+photo 202
+2026-08-02 21:44:04 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Thalapathy+Vijay+Son%22+official+news+photo&l=in-en&vqd=4-102327831542931382912561790069793545261&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:44:05 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:44:06 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:44:07 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:44:07 [INFO] response: https://www.bing.com/images/async?q=Thalapathy+Vijay+Son&async=1&first=1&count=35 200
+2026-08-02 21:45:14 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-02 21:45:14 [ERROR] Groq API Error on model llama-3.3-70b-versatile: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kymhw5yqfn7afxgq4h7v3t1t` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99446, Requested 2624. Please try again in 29m48.48s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-08-02 21:45:16 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:45:19 [INFO] response: https://duckduckgo.com/?q=%22Thalapathi+Vijay+son+Jason%22+official+news+photo 202
+2026-08-02 21:45:19 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Thalapathi+Vijay+son+Jason%22+official+news+photo&l=in-en&vqd=4-25097649875954335189252818956171055848&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:45:20 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathi+Vijay+son+Jason%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:45:21 [INFO] response: https://duckduckgo.com/?q=%22Thalapathi+Vijay+son+Jason%22+India+news 202
+2026-08-02 21:45:21 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Thalapathi+Vijay+son+Jason%22+India+news&l=in-en&vqd=4-281785505020260944877117272044294920520&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:45:22 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathi+Vijay+son+Jason%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:45:22 [INFO] response: https://duckduckgo.com/?q=%22Thalapathi+Vijay+son+Jason%22+latest+event 202
+2026-08-02 21:45:22 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Thalapathi+Vijay+son+Jason%22+latest+event&l=in-en&vqd=4-232436417415106900541052869405733005843&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:45:22 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathi+Vijay+son+Jason%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:45:23 [INFO] response: https://duckduckgo.com/?q=Thalapathi+Vijay+son+Jason 202
+2026-08-02 21:45:23 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Thalapathi+Vijay+son+Jason&l=in-en&vqd=4-266339695856595666444407865974235553958&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:45:23 [INFO] response: https://www.bing.com/images/async?q=Thalapathi+Vijay+son+Jason&async=1&first=1&count=35 200
+2026-08-02 21:46:33 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:46:35 [INFO] response: https://duckduckgo.com/?q=%22Ragini+Sahu+Moon+Mission%22+official+news+photo 202
+2026-08-02 21:46:36 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Ragini+Sahu+Moon+Mission%22+official+news+photo&l=in-en&vqd=4-132865885856381466360026569197969734005&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:46:36 [INFO] response: https://www.bing.com/images/async?q=%22Ragini+Sahu+Moon+Mission%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:46:37 [INFO] response: https://www.bing.com/images/async?q=%22Ragini+Sahu+Moon+Mission%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:46:37 [INFO] response: https://duckduckgo.com/?q=%22Ragini+Sahu+Moon+Mission%22+latest+event 202
+2026-08-02 21:46:37 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Ragini+Sahu+Moon+Mission%22+latest+event&l=in-en&vqd=4-29417899878879287117060597684510897244&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:46:38 [INFO] response: https://www.bing.com/images/async?q=%22Ragini+Sahu+Moon+Mission%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:46:39 [INFO] response: https://www.bing.com/images/async?q=Ragini+Sahu+Moon+Mission&async=1&first=1&count=35 200
+2026-08-02 21:47:21 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-02 21:47:21 [ERROR] Groq API Error on model llama-3.3-70b-versatile: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kymhw5yqfn7afxgq4h7v3t1t` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99300, Requested 2615. Please try again in 27m34.56s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-08-02 21:47:23 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:47:26 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:47:26 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0%22+India+news 202
+2026-08-02 21:47:26 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0%22+India+news&l=in-en&vqd=4-310040849524054705943981664178546438091&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:47:27 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:47:28 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:47:28 [INFO] response: https://duckduckgo.com/?q=%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0 202
+2026-08-02 21:47:28 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0&l=in-en&vqd=4-98958203004541263371002795599561396501&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:47:28 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%9A%E0%A4%BE%E0%A4%82%E0%A4%A6%2C+%E0%A4%AC%E0%A4%95+%E0%A4%AE%E0%A5%82%E0%A4%A8%2C+%E0%A4%A8%E0%A4%BE%E0%A4%B8%E0%A4%BE+%E0%A4%8F%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A5%89%E0%A4%9F%2C+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A4%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%B0&async=1&first=1&count=35 200
+2026-08-02 21:54:53 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:54:56 [INFO] response: https://duckduckgo.com/?q=%22RBI+Bank+Holidays%22+official+news+photo 202
+2026-08-02 21:54:56 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22RBI+Bank+Holidays%22+official+news+photo&l=in-en&vqd=4-201409063775936122503805201620081040447&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:54:57 [INFO] response: https://www.bing.com/images/async?q=%22RBI+Bank+Holidays%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:54:58 [INFO] response: https://duckduckgo.com/?q=%22RBI+Bank+Holidays%22+India+news 202
+2026-08-02 21:54:58 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22RBI+Bank+Holidays%22+India+news&l=in-en&vqd=4-156773824208273447541889735330486329426&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:54:58 [INFO] response: https://www.bing.com/images/async?q=%22RBI+Bank+Holidays%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:54:59 [INFO] response: https://duckduckgo.com/?q=%22RBI+Bank+Holidays%22+latest+event 202
+2026-08-02 21:54:59 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22RBI+Bank+Holidays%22+latest+event&l=in-en&vqd=4-268226160804139459149764751155020476446&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:55:00 [INFO] response: https://www.bing.com/images/async?q=%22RBI+Bank+Holidays%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:55:00 [INFO] response: https://www.bing.com/images/async?q=RBI+Bank+Holidays&async=1&first=1&count=35 200
+2026-08-02 21:55:59 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-02 21:55:59 [ERROR] Groq API Error on model llama-3.3-70b-versatile: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kymhw5yqfn7afxgq4h7v3t1t` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98701, Requested 2603. Please try again in 18m46.656s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-08-02 21:56:00 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:56:04 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95+%E0%A4%AC%E0%A4%82%E0%A4%A6%E0%A5%80%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:56:04 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95+%E0%A4%AC%E0%A4%82%E0%A4%A6%E0%A5%80%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:56:05 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95+%E0%A4%AC%E0%A4%82%E0%A4%A6%E0%A5%80%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:56:06 [INFO] response: https://duckduckgo.com/?q=%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95+%E0%A4%AC%E0%A4%82%E0%A4%A6%E0%A5%80 202
+2026-08-02 21:56:06 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95+%E0%A4%AC%E0%A4%82%E0%A4%A6%E0%A5%80&l=in-en&vqd=4-63527048262962370571434370061276594656&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:56:06 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95+%E0%A4%AC%E0%A4%82%E0%A4%A6%E0%A5%80&async=1&first=1&count=35 200
+2026-08-02 21:56:48 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:56:51 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:56:51 [INFO] response: https://duckduckgo.com/?q=%22Thalapathy+Vijay+Son%22+India+news 202
+2026-08-02 21:56:52 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Thalapathy+Vijay+Son%22+India+news&l=in-en&vqd=4-209846762370412936396439742759875656536&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 200
+2026-08-02 21:56:53 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:56:53 [INFO] response: https://www.bing.com/images/async?q=Thalapathy+Vijay+Son&async=1&first=1&count=35 200
+2026-08-02 21:57:53 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 21:57:56 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-02 21:57:57 [INFO] response: https://duckduckgo.com/?q=%22Thalapathy+Vijay+Son%22+India+news 202
+2026-08-02 21:57:57 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Thalapathy+Vijay+Son%22+India+news&l=in-en&vqd=4-209846762370412936396439742759875656536&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:57:58 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+India+news&async=1&first=1&count=35 200
+2026-08-02 21:57:58 [INFO] response: https://duckduckgo.com/?q=%22Thalapathy+Vijay+Son%22+latest+event 202
+2026-08-02 21:57:58 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Thalapathy+Vijay+Son%22+latest+event&l=in-en&vqd=4-140553808299669659142722082953945175182&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-02 21:57:59 [INFO] response: https://www.bing.com/images/async?q=%22Thalapathy+Vijay+Son%22+latest+event&async=1&first=1&count=35 200
+2026-08-02 21:57:59 [INFO] response: https://www.bing.com/images/async?q=Thalapathy+Vijay+Son&async=1&first=1&count=35 200
