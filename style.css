@@ -1052,13 +1052,7 @@ html, body {
         padding-left: 0;
     }
 }
-/* 1. Hero Slider Adjustment (Image Badi, Red Box Chota) */
-.abp-hero-container {
-    display: grid !important;
-    /* Image ko 65% space aur Red box ko 35% space de rahe hain */
-    grid-template-columns: 2fr 1fr !important; 
-    gap: 0 !important;
-}
+
 
 .abp-hero-image-box {
     width: 100% !important;
