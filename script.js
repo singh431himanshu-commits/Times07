@@ -4,7 +4,7 @@
 // ==========================================================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getDatabase, ref, get, query, limitToLast } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA0c_Bz7HdU6YoL62L1cGfsA89Hg7609Ww",
@@ -46,7 +46,9 @@ function initTheme() {
 initTheme();
 
 // 🚀 FIREBASE LISTENER (अब यह Article Page को भी कॉल करेगा)
-onValue(newsRef, (snapshot) => {
+         const newsQuery = query(newsRef, limitToLast(50));
+
+         get(newsQuery).then((snapshot) => {
     const data = snapshot.val();
     let firebaseArticles = [];
     if (data) {
