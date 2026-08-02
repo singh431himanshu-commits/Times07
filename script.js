@@ -423,7 +423,10 @@ document.querySelector('link[rel="canonical"]')?.setAttribute(
             rawContent = rawContent.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
         }
         if(document.getElementById('page-content')) document.getElementById('page-content').innerHTML = rawContent;
-        if(document.getElementById('views-count')) document.getElementById('views-count').innerText = news.views || 1840;
+        if(document.getElementById('views-count')) {
+    document.getElementById('views-count').innerText = 
+    (news.views || 0).toLocaleString("en-IN");
+}
 
         // 🚀 Article के नीचे Related News
         renderArticleSuggestions(newsIndex, news.category, savedNews);
