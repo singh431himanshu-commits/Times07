@@ -377,6 +377,10 @@ document.querySelector('meta[name="description"]')?.setAttribute(
   "content",
   (news.summary || news.description || "").substring(0, 160)
 );
+document.querySelector('meta[name="keywords"]')?.setAttribute(
+  "content",
+  `${news.category || ""}, ${news.title || ""}, Times07 News, Breaking News`
+);
 
 document.querySelector('link[rel="canonical"]')?.setAttribute(
   "href",
