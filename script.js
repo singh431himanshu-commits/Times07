@@ -359,6 +359,19 @@ document.querySelector('meta[property="og:url"]')?.setAttribute(
   "content",
   window.location.href
 );
+const publishedDate = news.timestamp
+  ? new Date(news.timestamp * 1000).toISOString()
+  : new Date().toISOString();
+
+document.querySelector('meta[property="article:published_time"]')?.setAttribute(
+  "content",
+  publishedDate
+);
+
+document.querySelector('meta[property="article:modified_time"]')?.setAttribute(
+  "content",
+  new Date().toISOString()
+);
 
 document.querySelector('meta[name="description"]')?.setAttribute(
   "content",
