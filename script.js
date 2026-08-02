@@ -21,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const newsRef = ref(db, 'articles');
 
-window.sampleNews = [];
+window.sampleNews = JSON.parse(localStorage.getItem('times07_news')) || [];
 let currentSlideIndex = 0;
 let featuredArticles = [];
 let autoSlideInterval = null;
