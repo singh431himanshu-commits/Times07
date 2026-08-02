@@ -288,6 +288,7 @@ news.insta_watermarked_img ||
 window.location.origin + "/logo.png"
   ],
   "url": window.location.href,
+  "isAccessibleForFree": true,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": window.location.href
