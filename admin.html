@@ -342,7 +342,16 @@
                 let html = '';
                 drafts.forEach(draft => {
                     const titlesHTML = (draft.title_options || []).map((t, i) => `<label class="radio-label"><input type="radio" name="t_${id}_${draft.id}" value="${t}" ${i===0?'checked':''}><span class="tick">✔️</span><span class="text">${t}</span></label>`).join('');
-                    const imgsHTML = (draft.image_options || []).map((img, i) => `<label class="img-card"><input type="radio" name="img_${id}_${draft.id}" value="${img}" ${i===0?'checked':''}><img src="${img}"></label>`).join('');
+                  const imgsHTML = (draft.image_options || []).map((img, i) => {
+    let showImg = img;
+    if (img.startsWith('/')) {
+        showImg = 'https://times07news.in' + img;
+    }
+    return `<label class="img-card">
+        <input type="radio" name="img_${id}_${draft.id}" value="${showImg}" ${i===0?'checked':''}>
+        <img src="${showImg}">
+    </label>`;
+}).join('');
                     
                     let catOptions = `<optgroup label="Main Categories">` + categories.map(c => `<option value="${c}" ${c===botData.cat ? 'selected':''}>${c}</option>`).join('') + `</optgroup><optgroup class="dynamic-hashtags-group" label="Trending Hashtags">${liveHashtags.map(t => `<option value="${t}">${t}</option>`).join('')}</optgroup>`;
 
