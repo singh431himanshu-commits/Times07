@@ -252,6 +252,16 @@ function renderABPHeroBanner(newsList) {
         window.selectHeroSlide(currentAbpIndex);
     }, 3500);
 }
+function createSlug(text) {
+    return (text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .trim();
+}
 
 // ==========================================================
 // DYNAMIC ARTICLE PAGE & AUTOMATIC RELATED SUGGESTIONS (RESTORED)
@@ -334,6 +344,12 @@ document.querySelector('meta[name="description"]')?.setAttribute(
 document.querySelector('link[rel="canonical"]')?.setAttribute(
   "href",
   window.location.href
+);
+const articleSlug = news.slug || createSlug(news.title);
+window.history.replaceState(
+    {},
+    "",
+    `${window.location.pathname}?id=${newsIndex}&slug=${articleSlug}`
 );
         document.title = news.title + " | Times07 News";
         
