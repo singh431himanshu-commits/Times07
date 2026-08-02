@@ -174,11 +174,12 @@ def apply_watermark_to_image(img_url, output_filename):
             rgb_image.save(
                 save_path,
                 "JPEG",
-                quality=92,
-                optimize=True
+                quality=75,
+                optimize=True,
+                progressive=True
 )
 
-            return f"/{save_path}"
+            return f"https://times07news.in/{save_path}"
 
         except Exception as e:
             print(f"Image Error: {e}")
