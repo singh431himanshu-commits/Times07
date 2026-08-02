@@ -320,8 +320,8 @@
     </script>
 
     <script type="module">
-        import { initializeApp, getApp, getApps } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-       
+import { initializeApp, getApp, getApps } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
         const firebaseConfig = {
             apiKey: "AIzaSyA0c_Bz7HdU6YoL62L1cGfsA89Hg7609Ww",
             authDomain: "times07news.firebaseapp.com",
@@ -331,8 +331,6 @@
             appId: "1:527951679601:web:d33bfb58aaae9665c68bd0",
             databaseURL: "https://times07news-default-rtdb.firebaseio.com"
         };
-
-        import { getApps, getApp, initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db = getDatabase(app);
