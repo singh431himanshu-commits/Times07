@@ -273,21 +273,6 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
   "content",
   news.image || news.img || ""
 );
-document.getElementById("news-schema").textContent = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": news.title,
-  "image": [news.image],
-  "datePublished": news.date,
-  "author": {
-    "@type": "Organization",
-    "name": "Times07 News"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Times07 News"
-  }
-});
 
 // News Schema
 document.getElementById("news-schema").textContent = JSON.stringify({
@@ -295,7 +280,9 @@ document.getElementById("news-schema").textContent = JSON.stringify({
   "@type": "NewsArticle",
   "headline": news.title,
   "image": [news.image || news.img || ""],
-  "datePublished": news.date,
+  "description": news.summary,
+"mainEntityOfPage": window.location.href,
+
   "author": {
     "@type": "Organization",
     "name": "Times07 News"
@@ -312,7 +299,7 @@ document.getElementById("news-schema").textContent = JSON.stringify({
         if(document.getElementById('page-img')) document.getElementById('page-img').src = news.image || news.insta_watermarked_img || news.img1 || 'logo.png';
         
         let rawContent = news.content || news.summary || news.desc || news.description || "खबर की विस्तृत जानकारी के लिए टाइम्स07 पर बने रहें।";
-        if (rawContent) {
+         if (rawContent) {
             rawContent = rawContent.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
         }
         if(document.getElementById('page-content')) document.getElementById('page-content').innerHTML = rawContent;
