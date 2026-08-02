@@ -343,6 +343,10 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
   "content",
   news.image || news.img || news.img1 || ""
 );
+document.querySelector('meta[name="twitter:image"]')?.setAttribute(
+  "content",
+  news.image || news.img || news.img1 || ""
+);
 
 document.querySelector('meta[property="og:url"]')?.setAttribute(
   "content",
