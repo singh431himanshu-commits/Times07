@@ -314,7 +314,9 @@ window.location.origin + "/logo.png"
     "@type": "WebPage",
     "@id": window.location.href
   },
-  "datePublished": news.datePublished || news.date || "2026-08-02T10:00:00+05:30",
+  "datePublished": news.timestamp
+    ? new Date(news.timestamp * 1000).toISOString()
+    : new Date().toISOString(),
   "dateModified": new Date().toISOString(),
   "author": {
     "@type": "Organization",
@@ -349,7 +351,7 @@ document.querySelector('meta[property="og:url"]')?.setAttribute(
 
 document.querySelector('meta[name="description"]')?.setAttribute(
   "content",
-  news.summary || news.description || ""
+  (news.summary || news.description || "").substring(0, 160)
 );
 
 document.querySelector('link[rel="canonical"]')?.setAttribute(
