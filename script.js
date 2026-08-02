@@ -281,14 +281,18 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
   "headline": news.title,
   "description": news.summary || news.description || "",
   "image": [
-    news.image || news.img || news.img1 || window.location.origin + "/logo.png"
+    news.image ||
+news.img ||
+news.img1 ||
+news.insta_watermarked_img ||
+window.location.origin + "/logo.png"
   ],
   "url": window.location.href,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": window.location.href
   },
-  "datePublished": news.date || new Date().toISOString(),
+  "datePublished": news.datePublished || news.date || new Date().toISOString(),
   "dateModified": new Date().toISOString(),
   "author": {
     "@type": "Organization",
@@ -303,6 +307,33 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
     }
   }
 });
+
+document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
+
+document.querySelector('meta[property="og:description"]')?.setAttribute(
+  "content",
+  news.summary || news.description || ""
+);
+
+document.querySelector('meta[property="og:image"]')?.setAttribute(
+  "content",
+  news.image || news.img || news.img1 || ""
+);
+
+document.querySelector('meta[property="og:url"]')?.setAttribute(
+  "content",
+  window.location.href
+);
+
+document.querySelector('meta[name="description"]')?.setAttribute(
+  "content",
+  news.summary || news.description || ""
+);
+
+document.querySelector('link[rel="canonical"]')?.setAttribute(
+  "href",
+  window.location.href
+);
         document.title = news.title + " | Times07 News";
         
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
