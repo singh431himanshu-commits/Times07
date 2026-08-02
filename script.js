@@ -280,6 +280,10 @@ function populateArticlePage() {
 
     if (!isNaN(newsIndex) && savedNews[newsIndex]) {
         const news = savedNews[newsIndex];
+        document.querySelector('link[rel="canonical"]')?.setAttribute(
+    "href",
+    window.location.href
+);
         // Open Graph
 document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
 document.querySelector('meta[property="og:description"]')?.setAttribute("content", (news.summary || news.desc || "").substring(0, 160));
