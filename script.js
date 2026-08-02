@@ -302,12 +302,17 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
   "headline": news.title,
   "description": news.summary || news.description || "",
   "image": [
-    news.image ||
-news.img ||
-news.img1 ||
-news.insta_watermarked_img ||
-window.location.origin + "/logo.png"
-  ],
+    {
+        "@type": "ImageObject",
+        "url": news.image ||
+        news.img ||
+        news.img1 ||
+        news.insta_watermarked_img ||
+        window.location.origin + "/logo.png",
+        "width": "1200",
+        "height": "675"
+    }
+],
   "url": window.location.href,
   "isAccessibleForFree": true,
   "mainEntityOfPage": {
@@ -411,7 +416,12 @@ document.querySelector('link[rel="canonical"]')?.setAttribute(
     ? new Date(news.timestamp * 1000).toLocaleDateString("hi-IN")
     : "आज";
 }
-        if(document.getElementById('page-img')) document.getElementById('page-img').src = news.image || news.insta_watermarked_img || news.img1 || 'logo.png';
+        if(document.getElementById('page-img')) {
+    const articleImg = document.getElementById('page-img');
+    articleImg.src = news.image || news.insta_watermarked_img || news.img1 || 'logo.png';
+    articleImg.loading = "eager";
+    articleImg.decoding = "async";
+}
         if(document.getElementById('page-img')) {
     document.getElementById('page-img').alt = news.title;
 }        if(!news.description){
