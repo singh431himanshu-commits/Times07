@@ -175,7 +175,7 @@ function renderRightSidebar(allNews) {
             const item = sidebarNews[(currentSidebarIndex + i) % sidebarNews.length];
             html += `
                 <div class="blinking-news-card" style="display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px dashed #e2e8f0; align-items: center; animation: fadeAndPop 0.8s ease-in-out;">
-                    <img src="${item.data.img1 || 'logo.png'}" onerror="this.src='logo.png'" style="width: 70px; height: 50px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
+                    <img loading="lazy" src="${item.data.img1 || 'logo.png'}" onerror="this.src='logo.png'" style="width: 70px; height: 50px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
                     <a href="article.html?id=${item.index}" style="text-decoration:none; color:inherit;">
                         <h4 style="font-size: 12px; font-weight: 600; color: #1e293b; margin: 0; line-height: 1.3;">${item.data.title}</h4>
                     </a>
@@ -234,6 +234,7 @@ function renderABPHeroBanner(newsList) {
         const selectedNews = topFive[index];
 
         if (mainImg) {
+            mainImg.loading = "eager";
             mainImg.src = selectedNews.data.img1 || selectedNews.data.image || "logo.png";
             mainImg.onclick = () => window.location.href = `article.html?id=${selectedNews.index}`;
         }
