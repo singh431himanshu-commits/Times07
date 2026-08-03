@@ -315,7 +315,7 @@ if (slug) {
         const news = savedNews[finalIndex];
         document.querySelector('link[rel="canonical"]')?.setAttribute(
     "href",
-     canonicalUrl
+     window.location.href
 );
         // Open Graph
 document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
