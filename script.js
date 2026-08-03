@@ -311,8 +311,8 @@ if (slug) {
     }
 }
 
-    if (!isNaN(newsIndex) && savedNews[newsIndex]) {
-        const news = savedNews[newsIndex];
+    if (finalIndex !== -1 && savedNews[finalIndex]) {
+        const news = savedNews[finalIndex];
         document.querySelector('link[rel="canonical"]')?.setAttribute(
     "href",
     window.location.href
