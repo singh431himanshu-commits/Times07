@@ -363,6 +363,11 @@ document.querySelector('meta[name="twitter:image"]')?.setAttribute(
   news.image || news.img || news.img1 || ""
 );
 
+document.querySelector('meta[property="og:image:alt"]')?.setAttribute(
+  "content",
+  news.title
+);
+
 document.querySelector('meta[property="og:image:width"]')?.setAttribute(
   "content",
   "1200"
@@ -420,6 +425,8 @@ document.querySelector('link[rel="canonical"]')?.setAttribute(
   window.location.href
 );
         document.title = `${news.title} - Times07 News | Breaking News`;
+        document.getElementById("meta-title").textContent =
+`${news.title} | Times07 News`;
         
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
         if(document.getElementById('page-cat')) document.getElementById('page-cat').innerText = news.category || "मुख्य समाचार";
