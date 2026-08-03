@@ -120,6 +120,20 @@ def generate_sitemap():
     except Exception as e:
         print("Sitemap Error:", e)
 
+def ping_google():
+    try:
+        sitemap_url = "https://times07news.in/sitemap.xml"
+
+        requests.get(
+            f"https://www.google.com/ping?sitemap={sitemap_url}",
+            timeout=10
+        )
+
+        print("✅ Google Ping Sent")
+
+    except Exception as e:
+        print("Google Ping Error:", e)
+
 def fetch_google_trends():
     trends = []
     try:
@@ -523,6 +537,7 @@ def run_bot():
             save_to_drafts(draft)
             generated_count += 1
             update_bot_stats("published")
+            generate_sitemap()
         else:
             update_bot_stats("skipped")
 

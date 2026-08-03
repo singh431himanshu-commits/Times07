@@ -417,7 +417,7 @@ document.querySelector('meta[property="og:url"]')?.setAttribute(
   window.location.href
 );
 const publishedDate = news.timestamp
-  ? new Date(news.timestamp * 1000).toISOString()
+  ? new Date(news.timestamp).toISOString()
   : new Date().toISOString();
 
 document.querySelector('meta[property="article:published_time"]')?.setAttribute(
