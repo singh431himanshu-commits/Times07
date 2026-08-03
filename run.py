@@ -77,6 +77,48 @@ def get_db_data():
                     if "title" in val: pub_titles.add(normalize_text(val["title"].replace(" | Times07News", "")))
     except: pass
     return pub_links, pub_titles
+def generate_sitemap():
+    try:
+        res = requests.get(FIREBASE_URL, timeout=10)
+
+        urls = [{
+            "loc": "https://times07news.in/",
+            "lastmod": datetime.utcnow().strftime("%Y-%m-%d")
+        }]
+
+        if res.status_code == 200 and isinstance(res.json(), dict):
+            for item in res.json().values():
+                if not isinstance(item, dict):
+                    continue
+
+                link = item.get("link")
+                if link:
+                    urls.append({
+                        "loc": link,
+                        "lastmod": datetime.utcnow().strftime("%Y-%m-%d")
+                    })
+
+        xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+        xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+        for u in urls:
+            xml += f"""  <url>
+    <loc>{u['loc']}</loc>
+    <lastmod>{u['lastmod']}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+"""
+
+        xml += "</urlset>"
+
+        with open("sitemap.xml", "w", encoding="utf-8") as f:
+            f.write(xml)
+
+        print("✅ sitemap.xml updated")
+
+    except Exception as e:
+        print("Sitemap Error:", e)
 
 def fetch_google_trends():
     trends = []
@@ -485,6 +527,7 @@ def run_bot():
             update_bot_stats("skipped")
 
         time.sleep(3)
+        generate_sitemap()
 
 if __name__ == "__main__":
     print("🚀 Times07 Master Draft Bot Active...")
