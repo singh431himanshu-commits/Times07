@@ -331,6 +331,15 @@
             if(v && !liveHashtags.includes(v)) { liveHashtags.push(v.startsWith('#')?v:'#'+v); document.getElementById('new-hashtag-input').value=''; renderHashtags(); }
         }
 
+        function createSlug(text) {
+             return (text || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+        }
+
         async function loadDrafts(id) {
             const botData = botsConfig[id];
             const container = document.getElementById(`drafts_${id}`);
@@ -516,15 +525,32 @@
         finalImage = finalImage.replace('http://localhost:5500', 'https://times07news.in');
     }
     
-    push(articlesRef, { 
-        title: titleRadio.value, 
-        img1: finalImage, 
-        desc: document.getElementById(`desc_${type}_${id}`).value, 
-        placement: document.getElementById(`placement_${type}_${id}`).value, 
-        category: document.getElementById(`category_${type}_${id}`).value, 
-        views: Math.floor(Math.random() * 2000) + 500, 
-        timestamp: Date.now() 
-    }).then(() => { 
+    const title = titleRadio.value;
+const content = document.getElementById(`desc_${type}_${id}`).value;
+const time = Date.now();
+
+push(articlesRef, {
+    title: title,
+
+    desc: content,
+    summary: content.substring(0, 180),
+
+    img1: finalImage,
+    image: finalImage,
+
+    slug: createSlug(title),
+
+    link: `https://times07news.in/news.html?slug=${createSlug(title)}`,
+
+    placement: document.getElementById(`placement_${type}_${id}`).value,
+    category: document.getElementById(`category_${type}_${id}`).value,
+
+    featured: "no",
+
+    views: Math.floor(Math.random() * 2000) + 500,
+
+    timestamp: time
+}).then(() => { 
         alert('✅ खबर वेबसाइट पर लाइव हो गई है!'); 
         document.getElementById(`draft-card-${type}-${id}`).remove(); 
         if(window.loadAdminNewsTable) window.loadAdminNewsTable();
@@ -535,15 +561,31 @@
             let img = document.getElementById('manual_img_val').value || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800'; 
             if(!title) return alert("पहले खबर का शीर्षक दर्ज करें!");
             
-            push(articlesRef, { 
-                title: title, 
-                img1: img, 
-                desc: document.getElementById('manual_desc').value, 
-                placement: document.getElementById('manual_placement').value, 
-                category: document.getElementById('manual_category').value, 
-                views: Math.floor(Math.random() * 2000) + 500, 
-                timestamp: Date.now() 
-            }).then(() => { 
+           const content = document.getElementById('manual_desc').value;
+const time = Date.now();
+
+push(articlesRef, {
+    title: title,
+
+    desc: content,
+    summary: content.substring(0, 180),
+
+    img1: img,
+    image: img,
+
+    slug: createSlug(title),
+
+    link: `https://times07news.in/news.html?slug=${createSlug(title)}`,
+
+    placement: document.getElementById('manual_placement').value,
+    category: document.getElementById('manual_category').value,
+
+    featured: "no",
+
+    views: Math.floor(Math.random() * 2000) + 500,
+
+    timestamp: time
+}) .then(() => { 
                 alert('✅ मैनुअल खबर पब्लिश हो गई!'); 
                 document.getElementById('manual_title').value = ''; 
                 document.getElementById('manual_desc').value = ''; 
