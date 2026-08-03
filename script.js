@@ -110,10 +110,10 @@ function renderNews() {
         card.className = 'news-card';
         card.innerHTML = `
             <div class="card-img">
-                <a href="article.html?id=${index}"><img src="${news.insta_watermarked_img || news.image || news.img1 || 'logo.png'}" loading="lazy"></a>
+                <a href="article.html?slug=${news.slug}"><img src="${news.insta_watermarked_img || news.image || news.img1 || 'logo.png'}" loading="lazy"></a>
             </div>
             <div class="card-content">
-                <a href="article.html?id=${index}" style="text-decoration:none;"><h3>${news.title}</h3></a>
+                <a href="article.html?slug=${news.slug}" style="text-decoration:none;"><h3>${news.title}</h3></a>
             </div>
         `;
         return card;
@@ -128,7 +128,7 @@ function renderNews() {
         
         let html = `
         <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; padding: 10px; border-radius: 5px; background: #fff; width: 100%;">
-            <a href="article.html?id=${items[0].index}" style="text-decoration:none; display: block;">
+            <a href="article.html?slug=${items[0].slug}" style="text-decoration:none; display: block;">
                 <img src="${items[0].data.img1 || items[0].data.image || 'logo.png'}" style="width:100%; height:350px; object-fit:cover; border-radius:5px;">
                 <h3 style="margin-top: 15px; font-size: 24px; font-weight: 800; color: #111; line-height: 1.3;">${items[0].data.title}</h3>
             </a>
@@ -138,7 +138,7 @@ function renderNews() {
         items.slice(1, 13).forEach(item => {
             html += `
             <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 12px;">
-                <a href="article.html?id=${item.index}" style="text-decoration:none; color:#111;">
+                <a href="article.html?slug=${item.slug}" style="text-decoration:none; color:#111;">
                     <div style="color: #c00000; font-size: 12px; font-weight: 800; margin-bottom: 8px;">
                         <i class="fa-solid fa-bolt"></i> ${item.data.category || 'न्यूज़'}
                     </div>
@@ -200,7 +200,7 @@ function renderRightSidebar(allNews) {
             html += `
                 <div class="blinking-news-card" style="display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px dashed #e2e8f0; align-items: center; animation: fadeAndPop 0.8s ease-in-out;">
                     <img loading="lazy" src="${item.data.img1 || 'logo.png'}" onerror="this.src='logo.png'" style="width: 70px; height: 50px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
-                    <a href="article.html?id=${item.index}" style="text-decoration:none; color:inherit;">
+                    <a href="article.html?slug=${item.slug}" style="text-decoration:none; color:inherit;">
                         <h4 style="font-size: 12px; font-weight: 600; color: #1e293b; margin: 0; line-height: 1.3;">${item.data.title}</h4>
                     </a>
                 </div>
@@ -260,11 +260,12 @@ function renderABPHeroBanner(newsList) {
         if (mainImg) {
             mainImg.loading = "eager";
             mainImg.src = selectedNews.data.img1 || selectedNews.data.image || "logo.png";
-            mainImg.onclick = () => window.location.href = `article.html?id=${selectedNews.index}`;
+            mainImg.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug}`;
+
         }
         if (mainTitle) {
             mainTitle.innerText = selectedNews.data.title;
-            mainTitle.onclick = () => window.location.href = `article.html?id=${selectedNews.index}`;
+            mainTitle.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug}`;
         }
 
         topFive.forEach((_, i) => {
@@ -667,7 +668,7 @@ window.executeAestheticSearch = function() {
         if (searchResults.length === 0) gridBox.innerHTML = `<p style="padding:20px;">No results found.</p>`;
         else searchResults.forEach(news => {
             const index = window.sampleNews.indexOf(news);
-            gridBox.innerHTML += `<article class="news-card"><div class="card-img"><a href="article.html?id=${index}"><img src="${news.img1||'logo.png'}"></a></div><div class="card-content"><a href="article.html?id=${index}" style="text-decoration:none;"><span style="font-size:10px; background:#c00000; color:#fff; padding:2px 6px; border-radius:3px; font-weight:bold;">${news.category||'GLOBAL'}</span><h3 style="margin-top:5px;">${news.title}</h3></a></div></article>`;
+            gridBox.innerHTML += `<article class="news-card"><div class="card-img"><a href="article.html?slug=${news.slug}"><img src="${news.img1||'logo.png'}"></a></div><div class="card-content"><a href="article.html?slug=${news.slug}" style="text-decoration:none;"><span style="font-size:10px; background:#c00000; color:#fff; padding:2px 6px; border-radius:3px; font-weight:bold;">${news.category||'GLOBAL'}</span><h3 style="margin-top:5px;">${news.title}</h3></a></div></article>`;
         });
         window.scrollTo(0,0);
     }
