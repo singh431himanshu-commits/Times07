@@ -121,10 +121,34 @@ function renderNews() {
 
     const populateGrid = (gridId, items) => {
         const grid = document.getElementById(gridId);
-        if (grid) {
-            grid.innerHTML = "";
-            items.forEach((item) => grid.appendChild(createCard(item.data, item.index)));
-        }
+        if (!grid || items.length === 0) return;
+        
+        grid.className = ""; // पुरानी ग्रिड CSS क्लास को हटा दिया
+        grid.style.display = "block"; // नया लेआउट सेट
+        
+        let html = `
+        <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; padding: 10px; border-radius: 5px; background: #fff; width: 100%;">
+            <a href="article.html?id=${items[0].index}" style="text-decoration:none; display: block;">
+                <img src="${items[0].data.img1 || items[0].data.image || 'logo.png'}" style="width:100%; height:350px; object-fit:cover; border-radius:5px;">
+                <h3 style="margin-top: 15px; font-size: 24px; font-weight: 800; color: #111; line-height: 1.3;">${items[0].data.title}</h3>
+            </a>
+        </div>`;
+
+        html += '<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">';
+        items.slice(1, 13).forEach(item => {
+            html += `
+            <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 12px;">
+                <a href="article.html?id=${item.index}" style="text-decoration:none; color:#111;">
+                    <div style="color: #c00000; font-size: 12px; font-weight: 800; margin-bottom: 8px;">
+                        <i class="fa-solid fa-bolt"></i> ${item.data.category || 'न्यूज़'}
+                    </div>
+                    <h4 style="font-size: 15px; font-weight: 600; line-height: 1.4; margin: 0;">${item.data.title}</h4>
+                </a>
+            </div>`;
+        });
+        html += '</div>';
+        
+        grid.innerHTML = html;
     };
 
     // 🔴 STRICT: Sidebar और Hero Banner वाली खबरों को मेन फ़ीड से बाहर निकाल दिया
