@@ -545,7 +545,7 @@ function renderArticleSuggestions(currentIndex, currentCategory, allNews) {
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; margin-bottom: 35px;">
                 ${newsList.map(item => `
                     <div style="background: var(--bg-card, #fefefe); border: 1px solid var(--border-color, #eee); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); transition: transform 0.2s ease;">
-                        <a href="article.html?id=${item.originalIndex}" style="text-decoration:none; color:inherit;">
+                        <a href="article.html?slug=${item.slug}" style="text-decoration:none; color:inherit;">
                             <img src="${item.img1 || item.image || 'logo.png'}" style="width:100%; height:120px; object-fit:cover;" loading="lazy">
                             <div style="padding: 10px;">
                                 <span style="font-size:10px; background:#e74c3c; color:#fff; padding:2px 6px; border-radius:3px; font-weight:bold; text-transform:uppercase;">${item.category || 'समाचार'}</span>
@@ -577,7 +577,7 @@ function renderMostReadWidget() {
     [...(window.sampleNews || [])].sort((a, b) => (b.views || 0) - (a.views || 0)).slice(0, 5).forEach((news, idx) => {
         const item = document.createElement('div');
         item.style.cssText = "border-bottom:1px solid var(--border-color); padding-bottom:8px; margin-bottom:8px;";
-        item.innerHTML = `<a href="article.html?id=${idx}" style="font-size:13px; font-weight:700; color:var(--heading-color); text-decoration:none;">• ${(news.title || '').substring(0, 50)}...</a>`;
+        item.innerHTML = `<a href="article.html?slug=${item.slug}" style="font-size:13px; font-weight:700; color:var(--heading-color); text-decoration:none;">• ${(news.title || '').substring(0, 50)}...</a>`;
         box.appendChild(item);
     });
 }
@@ -595,7 +595,7 @@ function renderEditorsChoice() {
             </div>
             <div class="card-content" style="padding:10px;">
                 <h4 style="font-size:13px; font-weight:700; line-height:1.3;">${(news.title || '').substring(0, 45)}...</h4>
-                <a href="article.html?id=${idx}" style="font-size:11px; color:var(--abp-red); font-weight:800; text-decoration:none; margin-top:6px; display:inline-block;">विशेष कवरेज &rarr;</a>
+                <a href="article.html?slug=${item.slug}" style="font-size:11px; color:var(--abp-red); font-weight:800; text-decoration:none; margin-top:6px; display:inline-block;">विशेष कवरेज &rarr;</a>
             </div>
         `;
         box.appendChild(item);
