@@ -110,10 +110,10 @@ function renderNews() {
         card.className = 'news-card';
         card.innerHTML = `
             <div class="card-img">
-                <a href="article.html?slug=${news.slug}"><img src="${news.insta_watermarked_img || news.image || news.img1 || 'logo.png'}" loading="lazy"></a>
+                <a href="article.html?slug=${news.slug || createSlug(news.title)}"><img src="${news.insta_watermarked_img || news.image || news.img1 || 'logo.png'}" loading="lazy"></a>
             </div>
             <div class="card-content">
-                <a href="article.html?slug=${news.slug}" style="text-decoration:none;"><h3>${news.title}</h3></a>
+                <a href="article.html?slug=${news.slug || createSlug(news.title)}" style="text-decoration:none;"><h3>${news.title}</h3></a>
             </div>
         `;
         return card;
@@ -128,7 +128,7 @@ function renderNews() {
         
         let html = `
         <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; padding: 10px; border-radius: 5px; background: #fff; width: 100%;">
-            <a href="article.html?slug=${items[0].slug}" style="text-decoration:none; display: block;">
+            <a href="article.html?slug=${items[0].data.slug || createSlug(items[0].data.title)}" style="text-decoration:none; display: block;">
                 <img src="${items[0].data.img1 || items[0].data.image || 'logo.png'}" style="width:100%; height:350px; object-fit:cover; border-radius:5px;">
                 <h3 style="margin-top: 15px; font-size: 24px; font-weight: 800; color: #111; line-height: 1.3;">${items[0].data.title}</h3>
             </a>
@@ -260,12 +260,12 @@ function renderABPHeroBanner(newsList) {
         if (mainImg) {
             mainImg.loading = "eager";
             mainImg.src = selectedNews.data.img1 || selectedNews.data.image || "logo.png";
-            mainImg.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug}`;
+            mainImg.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug || createSlug(selectedNews.data.title)}`;
 
         }
         if (mainTitle) {
             mainTitle.innerText = selectedNews.data.title;
-            mainTitle.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug}`;
+            mainTitle.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug || createSlug(selectedNews.data.title)}`;
         }
 
         topFive.forEach((_, i) => {
@@ -307,7 +307,7 @@ function populateArticlePage() {
   
 
 if (slug) {
-    finalIndex = savedNews.findIndex(item => item.slug === slug);
+    finalIndex = savedNews.findIndex(item => (item.slug || createSlug(item.title)) === slug);
 }
 
     if (finalIndex !== -1 && savedNews[finalIndex]) {
@@ -545,7 +545,7 @@ function renderArticleSuggestions(currentIndex, currentCategory, allNews) {
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; margin-bottom: 35px;">
                 ${newsList.map(item => `
                     <div style="background: var(--bg-card, #fefefe); border: 1px solid var(--border-color, #eee); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); transition: transform 0.2s ease;">
-                        <a href="article.html?slug=${item.slug}" style="text-decoration:none; color:inherit;">
+                        <a href="article.html?slug=${item.data ? (item.data.slug || createSlug(item.data.title)) : (item.slug || createSlug(item.title))}" style="text-decoration:none; color:inherit;">
                             <img src="${item.img1 || item.image || 'logo.png'}" style="width:100%; height:120px; object-fit:cover;" loading="lazy">
                             <div style="padding: 10px;">
                                 <span style="font-size:10px; background:#e74c3c; color:#fff; padding:2px 6px; border-radius:3px; font-weight:bold; text-transform:uppercase;">${item.category || 'समाचार'}</span>
@@ -668,7 +668,7 @@ window.executeAestheticSearch = function() {
         if (searchResults.length === 0) gridBox.innerHTML = `<p style="padding:20px;">No results found.</p>`;
         else searchResults.forEach(news => {
             const index = window.sampleNews.indexOf(news);
-            gridBox.innerHTML += `<article class="news-card"><div class="card-img"><a href="article.html?slug=${news.slug}"><img src="${news.img1||'logo.png'}"></a></div><div class="card-content"><a href="article.html?slug=${news.slug}" style="text-decoration:none;"><span style="font-size:10px; background:#c00000; color:#fff; padding:2px 6px; border-radius:3px; font-weight:bold;">${news.category||'GLOBAL'}</span><h3 style="margin-top:5px;">${news.title}</h3></a></div></article>`;
+            gridBox.innerHTML += `<article class="news-card"><div class="card-img"><a href="article.html?slug=${news.slug || createSlug(news.title)}"><img src="${news.img1||'logo.png'}"></a></div><div class="card-content"><a href="article.html?slug=${news.slug || createSlug(news.title)}" style="text-decoration:none;"><span style="font-size:10px; background:#c00000; color:#fff; padding:2px 6px; border-radius:3px; font-weight:bold;">${news.category||'GLOBAL'}</span><h3 style="margin-top:5px;">${news.title}</h3></a></div></article>`;
         });
         window.scrollTo(0,0);
     }
