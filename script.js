@@ -405,6 +405,10 @@ document.querySelector('meta[name="keywords"]')?.setAttribute(
   "content",
   `${news.category || ""}, ${news.title || ""}, Times07 News, Breaking News`
 );
+document.querySelector('meta[name="news_keywords"]')?.setAttribute(
+  "content",
+  `${news.category || ""}, ${news.title || ""}`
+);
 document.querySelector('meta[property="article:section"]')?.setAttribute(
   "content",
   news.category || "News"
