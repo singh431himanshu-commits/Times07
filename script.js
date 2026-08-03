@@ -286,13 +286,11 @@ function renderABPHeroBanner(newsList) {
 }
 function createSlug(text) {
     return (text || "")
+        .replace(/ \| Times07 News/ig, "") // फालतू ब्रांड नेम हटाएगा
         .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^\w\s-]/g, "")
+        .replace(/[^\p{L}\p{N}\s-]/gu, "") // हिंदी और इंग्लिश दोनों सपोर्ट करेगा
         .replace(/\s+/g, "-")
         .replace(/-+/g, "-")
-        .trim()
         .replace(/^-+|-+$/g, "");
 }
 
