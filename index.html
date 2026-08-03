@@ -130,7 +130,8 @@
             grid-template-areas: 
                 "left hero hero"
                 "left center right" !important;
-            gap: 20px !important;
+            column-gap: 20px !important; /* इससे दाएं-बाएं का गैप बना रहेगा */
+            row-gap: 5px !important;     /* इससे ऊपर-नीचे का गैप खत्म हो जाएगा */
             align-items: start !important;
             max-width: 1350px !important;
             margin: 15px auto !important;
@@ -234,6 +235,22 @@
             .abp-hero-container { grid-template-columns: 1fr !important; height: auto !important; }
             .right-sidebar { position: static !important; max-height: none !important; border-left: none !important; }
         }
+    .portal-container.abp-layout-grid { 
+    row-gap: 0px !important; 
+}
+.hero-spanning-wrapper { 
+    margin-bottom: 0px !important; 
+    padding-bottom: 0px !important; 
+}
+.center-content, .right-sidebar { 
+    margin-top: 0px !important; 
+    padding-top: 0px !important; 
+}
+.news-section:first-child h2 {
+    margin-top: 0px !important;
+}
+    
+    
     </style>
 </head>
 <body>
