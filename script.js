@@ -315,7 +315,7 @@ if (slug) {
         const news = savedNews[finalIndex];
         document.querySelector('link[rel="canonical"]')?.setAttribute(
     "href",
-    window.location.href
+     canonicalUrl
 );
         // Open Graph
 document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
@@ -353,7 +353,7 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
     "@id": window.location.href
   },
   "datePublished": news.timestamp
-    ? new Date(news.timestamp * 1000).toISOString()
+    ? new Date(news.timestamp).toISOString()
     : new Date().toISOString(),
   "dateModified": new Date().toISOString(),
   "author": {
@@ -455,6 +455,7 @@ document.querySelector('link[rel="canonical"]')?.setAttribute(
   window.location.href
 );
 const articleSlug = news.slug || createSlug(news.title);
+const canonicalUrl = `https://times07news.in/article.html?id=${finalIndex}&slug=${articleSlug}`;
 window.history.replaceState(
     {},
     "",
