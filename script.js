@@ -299,16 +299,13 @@ function createSlug(text) {
 // ==========================================================
 function populateArticlePage() {
     const urlParams = new URLSearchParams(window.location.search);
-    const finalIndex = parseInt(urlParams.get('id'), 10);
+    let finalIndex = parseInt(urlParams.get('id'), 10);
     const slug = urlParams.get("slug");
     const savedNews = JSON.parse(localStorage.getItem('times07_news')) || window.sampleNews || [];
   
 
 if (slug) {
-    const slugIndex = savedNews.findIndex(item => item.slug === slug);
-    if (slugIndex !== -1) {
-        finalIndex = slugIndex;
-    }
+    finalIndex = savedNews.findIndex(item => item.slug === slug);
 }
 
     if (finalIndex !== -1 && savedNews[finalIndex]) {
@@ -459,7 +456,7 @@ const canonicalUrl = `https://times07news.in/article.html?id=${finalIndex}&slug=
 window.history.replaceState(
     {},
     "",
-    `${window.location.pathname}?id=${finalIndex}&slug=${articleSlug}`
+    `${window.location.pathname}?slug=${articleSlug}`
 );
 
 document.querySelector('link[rel="canonical"]')?.setAttribute(
