@@ -300,7 +300,16 @@ function createSlug(text) {
 function populateArticlePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const newsIndex = parseInt(urlParams.get('id'), 10);
+    const slug = urlParams.get("slug");
     const savedNews = JSON.parse(localStorage.getItem('times07_news')) || window.sampleNews || [];
+    let finalIndex = newsIndex;
+
+if (slug) {
+    const slugIndex = savedNews.findIndex(item => item.slug === slug);
+    if (slugIndex !== -1) {
+        finalIndex = slugIndex;
+    }
+}
 
     if (!isNaN(newsIndex) && savedNews[newsIndex]) {
         const news = savedNews[newsIndex];
