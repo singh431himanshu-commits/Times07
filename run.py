@@ -382,6 +382,9 @@ def search_hd_images(query, count=5):
 # ==========================================
 # 🔄 AI DRAFT GENERATOR (For Admin Panel)
 # ==========================================
+# ==========================================
+# 🔄 AI DRAFT GENERATOR (For Admin Panel)
+# ==========================================
 def generate_trending_draft(raw_title, raw_text=""):
     prompt = f"""
     आप Times07 News के सबसे बड़े जर्नलिस्ट हैं।
@@ -407,8 +410,9 @@ def generate_trending_draft(raw_title, raw_text=""):
       "visual_summary_points": ["पॉइंट 1", "पॉइंट 2", "पॉइंट 3"],
       "content_html": "<h3>हेडिंग 1</h3><p>विस्तृत पैराग्राफ...</p><h3>हेडिंग 2</h3><p>विस्तृत पैराग्राफ...</p>",
       "category": "मुख्य समाचार",
-      "default_tags": ["#TrendingNews", "#LatestUpdate", "#Times07"]
-      "image_keyword": "2-5 words related to the main person, place or event"
+      "default_tags": ["#TrendingNews", "#LatestUpdate", "#Times07"],
+      "image_keyword": "2-5 words related to the main person, place or event",
+      "english_slug": "3-4 english words only separated by hyphen for url"
     }}
     """
 
@@ -432,8 +436,6 @@ def generate_trending_draft(raw_title, raw_text=""):
 
                 # Smart Image Search
                 search_keyword = raw_title
-
-                # Remove extra words
                 search_keyword = re.sub(r"\|.*", "", search_keyword)
                 search_keyword = re.sub(r"\b20\d{2}\b", "", search_keyword)
 
@@ -449,21 +451,16 @@ def generate_trending_draft(raw_title, raw_text=""):
                     search_keyword = search_keyword.replace(word, "")
 
                 search_keyword = " ".join(search_keyword.split())
-
                 print("🔍 Image Search:", search_keyword)
 
                 image_query = data.get("image_keyword", search_keyword)
-
                 print("🖼️ AI Image Keyword:", image_query)
 
-                data["image_options"] = search_hd_images(
-                    image_query,
-                    count=5
-                )
-                
-                
+                data["image_options"] = search_hd_images(image_query, count=5)
                 
                 data["created_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                # ✅ नया इंग्लिश URL जनरेट करने वाला कोड
+                data["slug"] = data.get("english_slug", "").lower().replace(" ", "-")
                 data["bot_type"] = "trending"
                 data["id"] = int(datetime.now().timestamp() * 1000)
                 return data
@@ -471,7 +468,6 @@ def generate_trending_draft(raw_title, raw_text=""):
                 error_logger.error(f"Groq API Error on model {model}: {e}")
                 continue
     return None
-
 def save_to_drafts(draft_data):
     drafts_file = "drafts_trending.json"
     drafts = []
