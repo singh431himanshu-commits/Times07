@@ -447,12 +447,9 @@ document.querySelector('meta[property="article:tag"]')?.setAttribute(
   "content",
   news.category || news.title
 );
-document.querySelector('link[rel="canonical"]')?.setAttribute(
-  "href",
-  window.location.href
-);
+
 const articleSlug = news.slug || createSlug(news.title);
-const canonicalUrl = `https://times07news.in/article.html?id=${finalIndex}&slug=${articleSlug}`;
+const canonicalUrl = `https://times07news.in/article.html?slug=${articleSlug}`;
 window.history.replaceState(
     {},
     "",
@@ -461,7 +458,7 @@ window.history.replaceState(
 
 document.querySelector('link[rel="canonical"]')?.setAttribute(
   "href",
-  window.location.href
+  canonicalUrl
 );
         document.title = `${news.title} - Times07 News | Breaking News`;
         document.getElementById("meta-title").textContent =
