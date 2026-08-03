@@ -357,10 +357,22 @@ document.querySelector('meta[property="og:image"]')?.setAttribute(
   "content",
   news.image || news.img || news.img1 || ""
 );
+
 document.querySelector('meta[name="twitter:image"]')?.setAttribute(
   "content",
   news.image || news.img || news.img1 || ""
 );
+
+document.querySelector('meta[property="og:image:width"]')?.setAttribute(
+  "content",
+  "1200"
+);
+
+document.querySelector('meta[property="og:image:height"]')?.setAttribute(
+  "content",
+  "675"
+);
+
 
 document.querySelector('meta[property="og:url"]')?.setAttribute(
   "content",
