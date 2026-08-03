@@ -91,8 +91,10 @@ def generate_sitemap():
                 if not isinstance(item, dict):
                     continue
 
-                link = item.get("link")
-                if link:
+                slug = item.get("slug")
+                if slug:
+                    # ✅ नया SEO फ्रेंडली URL
+                    link = f"https://times07news.in/article.html?slug={slug}"
                     urls.append({
                         "loc": link,
                         "lastmod": datetime.utcnow().strftime("%Y-%m-%d")

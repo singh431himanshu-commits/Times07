@@ -92,7 +92,7 @@
                 const card = document.createElement('div');
                 card.className = 'grid-card-item';
                 card.innerHTML = `
-                    <a href="article.html?id=${index}" style="text-decoration:none;">
+                    <a href="article.html?slug=${news.slug}" style="text-decoration:none;">
                         <img src="${news.img1 || news.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500'}" loading="lazy">
                         <div class="grid-card-body">
                             <span class="cat-badge-sm">${news.category || selectedCat}</span>
