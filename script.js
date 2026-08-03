@@ -291,7 +291,8 @@ function createSlug(text) {
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "-")
         .replace(/-+/g, "-")
-        .trim();
+        .trim()
+        .replace(/^-+|-+$/g, "");
 }
 
 // ==========================================================

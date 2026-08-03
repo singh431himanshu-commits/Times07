@@ -1,6 +1,39 @@
 [
     {
         "title_options": [
+            "Shimla Zila Parishad Election: चुनाव पर सस्पेंस | Times07 News",
+            "बचत भवन में चुनाव की अनिश्चितता | Times07 News",
+            "Shimla Zila Parishad Election: सदस्यों की अनुपस्थिति | Times07 News",
+            "चुनाव के नतीजों पर संशय | Times07 News",
+            "Shimla Zila Parishad Election: ताज़ा अपडेट | Times07 News"
+        ],
+        "one_line_teaser": "शिमला ज़िला परिषद चुनाव में सस्पेंस, सदस्यों की अनुपस्थिति ने बढ़ाई अनिश्चितता",
+        "visual_summary_points": [
+            "शिमला ज़िला परिषद चुनाव के लिए बचत भवन में मतदान केंद्र स्थापित",
+            "सदस्यों की अनुपस्थिति ने चुनाव पर सस्पेंस बढ़ा दिया",
+            "तय समय के 20 मिनट बाद भी सदस्य नहीं पहुंचे"
+        ],
+        "content_html": "<h3>शिमला ज़िला परिषद चुनाव: अनिश्चितता का माहौल</h3><p>शिमला ज़िला परिषद चुनाव के लिए बचत भवन में मतदान केंद्र स्थापित किया गया था, लेकिन सदस्यों की अनुपस्थिति ने चुनाव पर सस्पेंस बढ़ा दिया। तय समय के 20 मिनट बाद भी सदस्य नहीं पहुंचे, जिससे चुनाव के नतीजों पर संशय की स्थिति बन गई।</p><h3>चुनाव की प्रक्रिया</h3><p>चुनाव की प्रक्रिया में सदस्यों की उपस्थिति अनिवार्य है, लेकिन उनकी अनुपस्थिति ने चुनाव आयोजन को प्रभावित किया। अधिकारियों ने सदस्यों को तुरंत उपस्थित होने के लिए कहा, लेकिन सदस्यों की अनुपस्थिति ने चुनाव को अनिश्चित बना दिया।</p>",
+        "category": "मुख्य समाचार",
+        "default_tags": [
+            "#TrendingNews",
+            "#LatestUpdate",
+            "#Times07"
+        ],
+        "image_keyword": "Shimla Zila Parishad Election",
+        "image_options": [
+            "https://times07news.in/static/watermarked/trend_1785758594_2.jpg",
+            "https://times07news.in/static/watermarked/trend_1785758597_7.jpg",
+            "https://times07news.in/static/watermarked/trend_1785758603_13.jpg",
+            "https://times07news.in/static/watermarked/trend_1785758604_14.jpg",
+            "https://times07news.in/static/watermarked/trend_1785758606_17.jpg"
+        ],
+        "created_at": "2026-08-03 17:33:28",
+        "bot_type": "trending",
+        "id": 1785758608527
+    },
+    {
+        "title_options": [
             "चलती बस में घुसा 100 फीट का पाइप, दो लोगों की मौत | Times07 News",
             "हत्या या हादसा? चलती बस में घुसा 100 फीट का पाइप, दो लोगों की मौत | Times07 News",
             "बस हादसा: चलती बस में घुसा 100 फीट का पाइप, दो लोगों की मौत | Times07 News",
