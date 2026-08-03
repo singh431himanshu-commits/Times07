@@ -413,6 +413,10 @@ document.querySelector('meta[property="article:section"]')?.setAttribute(
   "content",
   news.category || "News"
 );
+document.querySelector('meta[property="article:tag"]')?.setAttribute(
+  "content",
+  news.category || news.title
+);
 document.querySelector('link[rel="canonical"]')?.setAttribute(
   "href",
   window.location.href
