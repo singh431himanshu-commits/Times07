@@ -538,6 +538,7 @@ def run_bot():
             generated_count += 1
             update_bot_stats("published")
             generate_sitemap()
+            ping_google()
         else:
             update_bot_stats("skipped")
 
