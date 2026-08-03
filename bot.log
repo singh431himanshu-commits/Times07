@@ -1062,3 +1062,225 @@
 2026-08-03 07:59:46 [INFO] response: https://duckduckgo.com/?q=%E0%A4%95%E0%A5%8B%E0%A4%B2%E0%A5%8D%E0%A4%B2%E0%A4%AE+%E0%A4%B2%E0%A5%89%E0%A4%9F%E0%A4%B0%E0%A5%80+%E0%A4%B5%E0%A4%BF%E0%A4%9C%E0%A5%87%E0%A4%A4%E0%A4%BE 202
 2026-08-03 07:59:46 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%95%E0%A5%8B%E0%A4%B2%E0%A5%8D%E0%A4%B2%E0%A4%AE+%E0%A4%B2%E0%A5%89%E0%A4%9F%E0%A4%B0%E0%A5%80+%E0%A4%B5%E0%A4%BF%E0%A4%9C%E0%A5%87%E0%A4%A4%E0%A4%BE&l=in-en&vqd=4-241327152408453185217541778628644693846&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
 2026-08-03 07:59:47 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%95%E0%A5%8B%E0%A4%B2%E0%A5%8D%E0%A4%B2%E0%A4%AE+%E0%A4%B2%E0%A5%89%E0%A4%9F%E0%A4%B0%E0%A5%80+%E0%A4%B5%E0%A4%BF%E0%A4%9C%E0%A5%87%E0%A4%A4%E0%A4%BE&async=1&first=1&count=35 200
+2026-08-03 08:28:20 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:28:20 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:28:23 [INFO] response: https://duckduckgo.com/?q=%22Lord+Rama%22+official+news+photo 202
+2026-08-03 08:28:23 [INFO] response: https://duckduckgo.com/?q=%22Lord+Rama%22+official+news+photo 202
+2026-08-03 08:28:27 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Lord+Rama%22+official+news+photo&l=in-en&vqd=4-273993252475067006892882030871748747142&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:28:27 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Lord+Rama%22+official+news+photo&l=in-en&vqd=4-273993252475067006892882030871748747142&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:28:28 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:28:29 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:28:29 [INFO] response: https://duckduckgo.com/?q=%22Lord+Rama%22+India+news 202
+2026-08-03 08:28:29 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:28:30 [INFO] response: https://duckduckgo.com/?q=%22Lord+Rama%22+latest+event 202
+2026-08-03 08:28:30 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Lord+Rama%22+India+news&l=in-en&vqd=4-291341724713376312789338456507256103965&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:28:30 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Lord+Rama%22+latest+event&l=in-en&vqd=4-92135108038202090027173828998093611341&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:28:31 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:28:31 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:28:32 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:28:32 [INFO] response: https://www.bing.com/images/async?q=Lord+Rama&async=1&first=1&count=35 200
+2026-08-03 08:28:33 [INFO] response: https://duckduckgo.com/?q=Lord+Rama 202
+2026-08-03 08:28:33 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Lord+Rama&l=in-en&vqd=4-47145078725220749019208349131103345812&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:28:34 [INFO] response: https://www.bing.com/images/async?q=Lord+Rama&async=1&first=1&count=35 200
+2026-08-03 08:29:41 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:29:44 [INFO] response: https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:29:47 [INFO] response: https://duckduckgo.com/?q=%22Ranbir+Kapoor+Ramayana%22+India+news 202
+2026-08-03 08:29:48 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Ranbir+Kapoor+Ramayana%22+India+news&l=in-en&vqd=4-163734359707154971211326823990391106499&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:29:49 [INFO] response: https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:29:50 [INFO] response: https://duckduckgo.com/?q=%22Ranbir+Kapoor+Ramayana%22+latest+event 202
+2026-08-03 08:29:51 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Ranbir+Kapoor+Ramayana%22+latest+event&l=in-en&vqd=4-313111966029379994678113078788245099319&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:29:54 [INFO] response: https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:29:56 [INFO] response: https://www.bing.com/images/async?q=Ranbir+Kapoor+Ramayana&async=1&first=1&count=35 200
+2026-08-03 08:30:33 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:30:40 [INFO] Error in engine bing: TimeoutException(TimeoutError('error sending request for url (https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+official+news+photo&async=1&first=1&count=35) > operation timed out'))
+2026-08-03 08:30:45 [INFO] response: https://duckduckgo.com/?q=%22Ranbir+Kapoor+Ramayana%22+official+news+photo 202
+2026-08-03 08:30:45 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Ranbir+Kapoor+Ramayana%22+official+news+photo&l=in-en&vqd=4-84442516136492886138287052351211483409&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:30:46 [INFO] response: https://duckduckgo.com/?q=%22Ranbir+Kapoor+Ramayana%22+India+news 202
+2026-08-03 08:30:46 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Ranbir+Kapoor+Ramayana%22+India+news&l=in-en&vqd=4-163754113506462643657906538015348333011&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:30:47 [INFO] response: https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:30:49 [INFO] response: https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:30:50 [INFO] response: https://www.bing.com/images/async?q=Ranbir+Kapoor+Ramayana&async=1&first=1&count=35 200
+2026-08-03 08:32:43 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:32:49 [INFO] response: https://duckduckgo.com/?q=%22Lord+Rama%22+official+news+photo 202
+2026-08-03 08:32:50 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Lord+Rama%22+official+news+photo&l=in-en&vqd=4-274147356955560083779485516024406404502&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:32:51 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:32:52 [INFO] response: https://duckduckgo.com/?q=%22Lord+Rama%22+India+news 202
+2026-08-03 08:32:52 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Lord+Rama%22+India+news&l=in-en&vqd=4-291358316992096838554071723363623015949&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:32:53 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:32:54 [INFO] response: https://duckduckgo.com/?q=%22Lord+Rama%22+latest+event 202
+2026-08-03 08:32:54 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Lord+Rama%22+latest+event&l=in-en&vqd=4-92128902888534742107185629150512403293&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:32:55 [INFO] response: https://www.bing.com/images/async?q=%22Lord+Rama%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:33:02 [INFO] response: https://www.bing.com/images/async?q=Lord+Rama&async=1&first=1&count=35 200
+2026-08-03 08:33:04 [INFO] Error in engine bing: DDGSException("DecodeError: DecodeError('Body collection error: error decoding response body')")
+2026-08-03 08:33:05 [INFO] response: https://duckduckgo.com/?q=Lord+Rama 202
+2026-08-03 08:33:07 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Lord+Rama&l=in-en&vqd=4-47064231772917108765858100976820874884&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:33:23 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:33:30 [INFO] Error in engine duckduckgo: TimeoutException(TimeoutError('error sending request for url (https://duckduckgo.com/?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+official+news+photo) > operation timed out'))
+2026-08-03 08:33:38 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:33:39 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:33:41 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87&async=1&first=1&count=35 200
+2026-08-03 08:33:58 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:34:05 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:34:05 [INFO] Error in engine bing: DDGSException("DecodeError: DecodeError('Body collection error: error decoding response body')")
+2026-08-03 08:34:15 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:34:15 [INFO] Error in engine bing: DDGSException("DecodeError: DecodeError('Body collection error: error decoding response body')")
+2026-08-03 08:34:25 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:34:25 [INFO] Error in engine bing: DDGSException("DecodeError: DecodeError('Body collection error: error decoding response body')")
+2026-08-03 08:34:35 [INFO] Error in engine duckduckgo: TimeoutException(TimeoutError('error sending request for url (https://duckduckgo.com/?q=%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87) > operation timed out'))
+2026-08-03 08:34:37 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87&async=1&first=1&count=35 200
+2026-08-03 08:34:55 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:34:59 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:35:00 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:35:01 [INFO] response: https://duckduckgo.com/?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+latest+event 202
+2026-08-03 08:35:01 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Rinku+Singh+Priya+Saroj+Wedding%22+latest+event&l=in-en&vqd=4-93065067435719986981484131208638254716&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:35:02 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:35:04 [INFO] response: https://www.bing.com/images/async?q=Rinku+Singh+Priya+Saroj+Wedding&async=1&first=1&count=35 200
+2026-08-03 08:35:22 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:35:29 [INFO] Error in engine bing: TimeoutException(TimeoutError('error sending request for url (https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+official+news+photo&async=1&first=1&count=35) > operation timed out'))
+2026-08-03 08:35:34 [INFO] response: https://duckduckgo.com/?q=%22Ranbir+Kapoor+Ramayana%22+official+news+photo 202
+2026-08-03 08:35:37 [INFO] response: https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:35:39 [INFO] response: https://www.bing.com/images/async?q=%22Ranbir+Kapoor+Ramayana%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:35:44 [INFO] response: https://duckduckgo.com/?q=Ranbir+Kapoor+Ramayana 202
+2026-08-03 08:35:45 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Ranbir+Kapoor+Ramayana&l=in-en&vqd=4-243753545037769939721477225566253218642&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:35:45 [INFO] response: https://www.bing.com/images/async?q=Ranbir+Kapoor+Ramayana&async=1&first=1&count=35 200
+2026-08-03 08:36:04 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:36:11 [INFO] Error in engine bing: TimeoutException(TimeoutError('error sending request for url (https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+official+news+photo&async=1&first=1&count=35) > operation timed out'))
+2026-08-03 08:36:15 [INFO] response: https://duckduckgo.com/?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+official+news+photo 202
+2026-08-03 08:36:15 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Rinku+Singh+Priya+Saroj+Wedding%22+official+news+photo&l=in-en&vqd=4-67431791518962613030629308014216700878&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:36:18 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:36:21 [INFO] response: https://duckduckgo.com/?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+latest+event 202
+2026-08-03 08:36:22 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Rinku+Singh+Priya+Saroj+Wedding%22+latest+event&l=in-en&vqd=4-93065067435719986981484131208638254716&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:36:23 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:36:30 [INFO] response: https://www.bing.com/images/async?q=Rinku+Singh+Priya+Saroj+Wedding&async=1&first=1&count=35 200
+2026-08-03 08:42:26 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:42:29 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:42:32 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:42:35 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+latest+event 202
+2026-08-03 08:42:37 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+latest+event&l=in-en&vqd=4-29579615867602668740185886944079131996&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:42:38 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:42:46 [INFO] response: https://duckduckgo.com/?q=%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87 202
+2026-08-03 08:42:46 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87&l=in-en&vqd=4-6829599596977776238818161607762344627&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:42:46 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%86%E0%A4%AF%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BF%E0%A4%95+%E0%A4%B2%E0%A4%BE%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A5%87&async=1&first=1&count=35 200
+2026-08-03 08:43:46 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 08:43:53 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 08:43:53 [INFO] Error in engine bing: DDGSException("DecodeError: DecodeError('Body collection error: error decoding response body')")
+2026-08-03 08:43:54 [INFO] response: https://duckduckgo.com/?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+official+news+photo 202
+2026-08-03 08:43:54 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Rinku+Singh+Priya+Saroj+Wedding%22+official+news+photo&l=in-en&vqd=4-67431791518962613030629308014216700878&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:43:57 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+India+news&async=1&first=1&count=35 200
+2026-08-03 08:43:58 [INFO] response: https://www.bing.com/images/async?q=%22Rinku+Singh+Priya+Saroj+Wedding%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 08:44:00 [INFO] response: https://duckduckgo.com/?q=Rinku+Singh+Priya+Saroj+Wedding 202
+2026-08-03 08:44:00 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Rinku+Singh+Priya+Saroj+Wedding&l=in-en&vqd=4-84865782843669663382916761453963578380&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 08:44:01 [INFO] response: https://www.bing.com/images/async?q=Rinku+Singh+Priya+Saroj+Wedding&async=1&first=1&count=35 200
+2026-08-03 09:14:09 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:14:12 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:14:12 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:14:13 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:14:15 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:14:15 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:14:16 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:14:16 [INFO] response: https://www.bing.com/images/async?q=Samsung+Galaxy+F70+Pro+5G&async=1&first=1&count=35 200
+2026-08-03 09:14:17 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:14:18 [INFO] response: https://duckduckgo.com/?q=Samsung+Galaxy+F70+Pro+5G 202
+2026-08-03 09:14:18 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Samsung+Galaxy+F70+Pro+5G&l=in-en&vqd=4-338487939791539242879237800837457444637&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:14:18 [INFO] response: https://www.bing.com/images/async?q=Samsung+Galaxy+F70+Pro+5G&async=1&first=1&count=35 200
+2026-08-03 09:15:38 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:15:41 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+official+news+photo 202
+2026-08-03 09:15:42 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+official+news+photo&l=in-en&vqd=4-181458816333019308880804922627860906975&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 200
+2026-08-03 09:15:43 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+India+news 202
+2026-08-03 09:15:45 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+India+news&l=in-en&vqd=4-147631432140320789183417589963230426936&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 200
+2026-08-03 09:15:46 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:15:50 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A&async=1&first=1&count=35 200
+2026-08-03 09:16:07 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:16:10 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:16:12 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+India+news 202
+2026-08-03 09:16:13 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+India+news&l=in-en&vqd=4-147631432140320789183417589963230426936&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:16:14 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:16:16 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:16:22 [INFO] response: https://duckduckgo.com/?q=%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A 202
+2026-08-03 09:16:25 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A&l=in-en&vqd=4-225746025659120861953047674914739318543&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:16:26 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A&async=1&first=1&count=35 200
+2026-08-03 09:17:05 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:17:08 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:17:08 [INFO] response: https://duckduckgo.com/?q=%22Datia+Election+Result%22+official+news+photo 202
+2026-08-03 09:17:08 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Datia+Election+Result%22+official+news+photo&l=in-en&vqd=4-209536070310151638905210455583223833697&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:17:09 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:17:10 [INFO] response: https://duckduckgo.com/?q=%22Samsung+Galaxy+F70+Pro+5G%22+official+news+photo 202
+2026-08-03 09:17:10 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:17:11 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Samsung+Galaxy+F70+Pro+5G%22+official+news+photo&l=in-en&vqd=4-156879874643086954636515579914091109156&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:17:12 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:17:13 [INFO] response: https://duckduckgo.com/?q=%22Samsung+Galaxy+F70+Pro+5G%22+India+news 202
+2026-08-03 09:17:13 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Samsung+Galaxy+F70+Pro+5G%22+India+news&l=in-en&vqd=4-111125458694530142080817345202760142530&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:17:13 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:17:13 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:17:14 [INFO] response: https://duckduckgo.com/?q=Datia+Election+Result 202
+2026-08-03 09:17:14 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Datia+Election+Result&l=in-en&vqd=4-103080333391637020907363715717774811840&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:17:14 [INFO] response: https://www.bing.com/images/async?q=%22Samsung+Galaxy+F70+Pro+5G%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:17:14 [INFO] response: https://duckduckgo.com/?q=Samsung+Galaxy+F70+Pro+5G 202
+2026-08-03 09:17:14 [INFO] response: https://www.bing.com/images/async?q=Datia+Election+Result&async=1&first=1&count=35 200
+2026-08-03 09:17:14 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Samsung+Galaxy+F70+Pro+5G&l=in-en&vqd=4-338487939791539242879237800837457444637&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:17:15 [INFO] response: https://www.bing.com/images/async?q=Samsung+Galaxy+F70+Pro+5G&async=1&first=1&count=35 200
+2026-08-03 09:18:08 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:18:10 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+official+news+photo 202
+2026-08-03 09:18:10 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+official+news+photo&l=in-en&vqd=4-181458816333019308880804922627860906975&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:18:11 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:18:12 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:18:13 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:18:13 [INFO] response: https://duckduckgo.com/?q=%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A 202
+2026-08-03 09:18:13 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A&l=in-en&vqd=4-225746025659120861953047674914739318543&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:18:14 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%B8%E0%A5%88%E0%A4%AE%E0%A4%B8%E0%A4%82%E0%A4%97+%E0%A4%AB%E0%A5%8B%E0%A4%A8+%E0%A4%B2%E0%A5%89%E0%A4%A8%E0%A5%8D%E0%A4%9A&async=1&first=1&count=35 200
+2026-08-03 09:18:26 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:18:29 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:18:31 [INFO] response: https://duckduckgo.com/?q=%22Datia+Election+Result%22+India+news 202
+2026-08-03 09:18:32 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Datia+Election+Result%22+India+news&l=in-en&vqd=4-108526976267023970472332966755714447966&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:18:33 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:18:34 [INFO] response: https://duckduckgo.com/?q=%22Datia+Election+Result%22+latest+event 202
+2026-08-03 09:18:35 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Datia+Election+Result%22+latest+event&l=in-en&vqd=4-84982343842538938232513715694945475667&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:18:42 [INFO] response: https://duckduckgo.com/?q=Datia+Election+Result 202
+2026-08-03 09:18:42 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Datia+Election+Result&l=in-en&vqd=4-103080333391637020907363715717774811840&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:18:43 [INFO] response: https://www.bing.com/images/async?q=Datia+Election+Result&async=1&first=1&count=35 200
+2026-08-03 09:19:32 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:19:36 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:19:39 [INFO] response: https://duckduckgo.com/?q=%22Datia+Election+Result%22+India+news 202
+2026-08-03 09:19:43 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Datia+Election+Result%22+India+news&l=in-en&vqd=4-108526976267023970472332966755714447966&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:19:44 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:19:45 [INFO] response: https://duckduckgo.com/?q=%22Datia+Election+Result%22+latest+event 202
+2026-08-03 09:19:45 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Datia+Election+Result%22+latest+event&l=in-en&vqd=4-84982343842538938232513715694945475667&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:19:46 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Result%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:19:46 [INFO] response: https://duckduckgo.com/?q=Datia+Election+Result 202
+2026-08-03 09:19:46 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Datia+Election+Result&l=in-en&vqd=4-103080333391637020907363715717774811840&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:19:47 [INFO] response: https://www.bing.com/images/async?q=Datia+Election+Result&async=1&first=1&count=35 200
+2026-08-03 09:20:11 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-03 09:20:11 [ERROR] Groq API Error on model llama-3.3-70b-versatile: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kymhw5yqfn7afxgq4h7v3t1t` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98471, Requested 2605. Please try again in 15m29.664s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-08-03 09:20:13 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:20:16 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026%22+official+news+photo 202
+2026-08-03 09:20:16 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026%22+official+news+photo&l=in-en&vqd=4-247404935760490259048283008608003580544&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:20:16 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:20:18 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:20:18 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026%22+India+news 202
+2026-08-03 09:20:19 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026%22+India+news&l=in-en&vqd=4-236959681495728976935217363181583093860&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:20:20 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:20:20 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Counting%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:20:21 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:20:22 [INFO] response: https://duckduckgo.com/?q=%22Datia+Election+Counting%22+India+news 202
+2026-08-03 09:20:22 [INFO] response: https://duckduckgo.com/?q=%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026 202
+2026-08-03 09:20:22 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Datia+Election+Counting%22+India+news&l=in-en&vqd=4-239239454200417148751499674426246278018&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:20:22 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026&l=in-en&vqd=4-57153373218638357621050488161736631197&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:20:23 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Counting%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:20:23 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5+2026&async=1&first=1&count=35 200
+2026-08-03 09:20:24 [INFO] response: https://duckduckgo.com/?q=%22Datia+Election+Counting%22+latest+event 202
+2026-08-03 09:20:24 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Datia+Election+Counting%22+latest+event&l=in-en&vqd=4-89446606231146280344429744622741844329&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:20:25 [INFO] response: https://www.bing.com/images/async?q=%22Datia+Election+Counting%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:20:26 [INFO] response: https://duckduckgo.com/?q=Datia+Election+Counting 202
+2026-08-03 09:20:26 [INFO] response: https://duckduckgo.com/i.js?o=json&q=Datia+Election+Counting&l=in-en&vqd=4-325252685847142195202635586621175115150&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:20:27 [INFO] response: https://www.bing.com/images/async?q=Datia+Election+Counting&async=1&first=1&count=35 200
+2026-08-03 09:21:18 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-03 09:21:18 [ERROR] Groq API Error on model llama-3.3-70b-versatile: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kymhw5yqfn7afxgq4h7v3t1t` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99680, Requested 1208. Please try again in 12m47.232s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-08-03 09:21:20 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-03 09:21:22 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%22+official+news+photo 202
+2026-08-03 09:21:22 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%22+official+news+photo&l=in-en&vqd=4-112354004247121956724783373329472112955&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:21:24 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%22+official+news+photo&async=1&first=1&count=35 200
+2026-08-03 09:21:24 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%22+India+news 202
+2026-08-03 09:21:24 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%22+India+news&l=in-en&vqd=4-280049189113890624741795811989611695416&p=1&ct=AT&f=%2Csize%3ALarge%2C%2Ctype%3Aphoto%2Clayout%3AWide%2C 403
+2026-08-03 09:21:25 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%22+India+news&async=1&first=1&count=35 200
+2026-08-03 09:21:26 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%22+latest+event&async=1&first=1&count=35 200
+2026-08-03 09:21:27 [INFO] response: https://www.bing.com/images/async?q=%E0%A4%A6%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A4%BE+%E0%A4%89%E0%A4%AA%E0%A4%9A%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B5%2C+%E0%A4%86%E0%A4%B6%E0%A5%81%E0%A4%A4%E0%A5%8B%E0%A4%B7+%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%80%2C+%E0%A4%98%E0%A4%A8%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%AE+%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9&async=1&first=1&count=35 200
