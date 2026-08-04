@@ -932,7 +932,12 @@ html, body {
         overflow: hidden;
     }
 
-       /* Home और Article दोनों के लिए Full Width Fix */
+    /* गैप हटाना और टेक्स्ट सेट करना */
+    .main-wrapper, .article-container { margin-top: 0 !important; padding-top: 8px !important; }
+    h1, .article-title { font-size: 20px !important; font-weight: 900 !important; line-height: 1.4 !important; }
+    .article-content p, .article-body p { font-size: 16px !important; line-height: 1.6 !important; }
+
+    /* Home और Article दोनों के लिए Full Width Fix */
     body, html, .main-wrapper, .portal-container, .abp-layout-grid, .center-content, .right-sidebar, .article-container {
         padding-left: 0 !important;
         padding-right: 0 !important;
@@ -942,7 +947,14 @@ html, body {
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
-
+ }
+    /* Category Navigation Bar (Horizontal Scrollable Menu) */
+    nav, .nav-links, .menu-bar, .category-bar {
+        display: flex !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+    }
+}
     /* Category Navigation Bar (Horizontal Scrollable Menu) */
     nav, .nav-links, .menu-bar, .category-bar {
         display: flex !important;
