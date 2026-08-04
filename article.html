@@ -154,6 +154,38 @@
 
     <div id="google_translate_element" style="display:none;"></div>
     <div id="scroll-progress"></div>
+    <!-- MOBILE HEADER (Advanced & Overlay) -->
+<div id="mobile-header-advanced" class="d-md-none">
+    <div class="mobile-top-bar">
+        <div id="mobile-time-text"></div>
+        <div class="mobile-top-icons">
+            <button onclick="window.toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+            <button onclick="window.openAuthModal()"><i class="fa-solid fa-circle-user"></i></button>
+        </div>
+    </div>
+    <div class="mobile-main-bar">
+        <img src="logo.png" alt="Times07" class="mobile-logo-img">
+        
+        <!-- Center Space - 3D Text -->
+        <div class="mobile-center-text">
+            <div class="text-3d">Times07News</div>
+            <div class="text-hindi">हर खबर सही वक्त पर</div>
+        </div>
+
+        <div class="mobile-main-icons">
+            <button onclick="window.triggerAISearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button id="hamburger-btn" onclick="toggleMobileMenu(event)">☰</button>
+        </div>
+    </div>
+    
+    <!-- Floating Dropdown Menu -->
+    <div id="mobile-nav-dropdown" style="display:none;">
+        <a href="#" onclick="window.filterCategory('न्यूज़')">न्यूज़</a>
+        <a href="#" onclick="window.filterCategory('राज्य')">राज्य</a>
+        <a href="#" onclick="window.filterCategory('मनोरंजन')">मनोरंजन</a>
+        <a href="#" onclick="window.filterCategory('खेल')">खेल</a>
+    </div>
+</div>
 
     <!-- LEVEL 1: GLOBAL TOP HEADER BAR -->
     <div class="top-global-bar">
