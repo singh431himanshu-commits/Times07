@@ -932,6 +932,17 @@ html, body {
         overflow: hidden;
     }
 
+       /* Home और Article दोनों के लिए Full Width Fix */
+    body, html, .main-wrapper, .portal-container, .abp-layout-grid, .center-content, .right-sidebar, .article-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
     /* Category Navigation Bar (Horizontal Scrollable Menu) */
     nav, .nav-links, .menu-bar, .category-bar {
         display: flex !important;
