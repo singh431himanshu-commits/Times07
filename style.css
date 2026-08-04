@@ -954,7 +954,7 @@ html, body {
         overflow-x: auto !important;
         white-space: nowrap !important;
     }
-}
+
     /* Category Navigation Bar (Horizontal Scrollable Menu) */
     nav, .nav-links, .menu-bar, .category-bar {
         display: flex !important;
@@ -997,7 +997,7 @@ html, body {
         gap: 8px !important;
         align-items: center;
     }
-}
+
 /* ==========================================================
    ABP LIVE STYLE 3-COLUMN FIX (Dono Side Locked Rahegi)
    ========================================================== */
@@ -1367,9 +1367,8 @@ body.dark .article-share-box span, body.dark-mode .article-share-box span, [data
     .mobile-main-icons button { font-size: 22px; }
     
     .mobile-center-text { text-align: center; flex-grow: 1; padding: 0 5px; }
-    .text-3d { font-size: 17px; font-weight: 900; background: linear-gradient(45deg, #c00000, #ff4500, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 1px 2px 2px rgba(0,0,0,0.15); text-transform: uppercase; line-height: 1.1; }
+    .text-3d { font-size: 17px; font-weight: 900; background: linear-gradient(45deg, #c00000, #ff4500, #f59e0b); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 1px 2px 2px rgba(0,0,0,0.15); text-transform: uppercase; line-height: 1.1; }
     .text-hindi { font-size: 9px; color: #334155; font-weight: bold; margin-top: 1px; }
-    
     /* Overlay Dropdown Menu (बिना पेज खिसकाए) */
     #mobile-nav-dropdown { position: absolute; top: 100%; left: 0; width: 100%; background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border-bottom: 3px solid #c00000; }
     #mobile-nav-dropdown a { display: block; padding: 12px 20px; color: #1e293b; text-decoration: none; border-bottom: 1px solid #e2e8f0; font-weight: 700; font-size: 15px; }
@@ -1382,4 +1381,10 @@ body.dark .article-share-box span, body.dark-mode .article-share-box span, [data
 
 @media screen and (min-width: 769px) {
     #mobile-header-advanced { display: none !important; }
+}
+@media (min-width: 768px) {
+    .logo-box img { 
+        max-width: 100px !important; 
+        height: auto !important; 
+    }
 }
