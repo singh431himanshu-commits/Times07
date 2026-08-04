@@ -234,7 +234,7 @@ def run_bot():
     # 2. उसके बाद बाकी Trusted RSS Sources पर शिफ्ट हो जाएगा
     for src in TRUSTED_RSS_SOURCES:
         try:
-            for entry in feedparser.parse(src["url"]).entries[:2]:
+            for entry in feedparser.parse(src["url"]).entries[:10]:
                 candidates.append({"entry": entry, "source_name": src["source"]})
         except: pass
 if __name__ == "__main__":
