@@ -480,7 +480,7 @@ document.querySelector('link[rel="canonical"]')?.setAttribute(
         if(document.getElementById('page-img')) {
     document.getElementById('page-img').alt = news.title;
 }        if(!news.description){
-    news.description = news.summary || news.content?.substring(0,160) || "";
+    news.description = news.summary || news.content || "";
 }
         
         let rawContent = news.content || news.summary || news.desc || news.description || "खबर की विस्तृत जानकारी के लिए टाइम्स07 पर बने रहें।";
