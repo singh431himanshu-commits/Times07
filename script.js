@@ -483,7 +483,7 @@ document.querySelector('link[rel="canonical"]')?.setAttribute(
     news.description = news.summary || news.content || "";
 }
         
-        let rawContent = news.content || news.summary || news.desc || news.description || "खबर की विस्तृत जानकारी के लिए टाइम्स07 पर बने रहें।";
+         let rawContent = news.content_html || news.content || news.desc || news.article || news.body || news.summary || news.description || "खबर की विस्तृत जानकारी के लिए टाइम्स07 पर बने रहें।";
          if (rawContent) {
             rawContent = rawContent.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
         }
