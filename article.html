@@ -498,5 +498,33 @@ const db = getDatabase(app);
             }
         }
     </script>
+    <script>
+// मेनू खोलने/बंद करने और बाहर क्लिक करने पर हटाने के लिए
+function toggleMobileMenu(event) {
+    event.stopPropagation();
+    var menu = document.getElementById("mobile-nav-dropdown");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function() {
+    var menu = document.getElementById("mobile-nav-dropdown");
+    if (menu && menu.style.display === "block") {
+        menu.style.display = "none";
+    }
+});
+
+document.getElementById("mobile-nav-dropdown")?.addEventListener("click", function(event) {
+    event.stopPropagation();
+});
+
+// टाइमर
+setInterval(() => {
+    let clock = document.getElementById('mobile-time-text');
+    if(clock) {
+        let d = new Date();
+        clock.innerText = d.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'}) + " | " + d.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false}) + " IST";
+    }
+}, 1000);
+</script>
 </body>
 </html>
