@@ -330,15 +330,18 @@
             let v = document.getElementById('new-hashtag-input').value.trim();
             if(v && !liveHashtags.includes(v)) { liveHashtags.push(v.startsWith('#')?v:'#'+v); document.getElementById('new-hashtag-input').value=''; renderHashtags(); }
         }
-
         function createSlug(text) {
-             return (text || "")
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-");
-        }
+            if (!text) return 'news-' + Date.now();
+            const clean = text
+                .toLowerCase()
+                .trim()
+                .replace(/[^\w\s\u0900-\u097F-]/g, '') // \u0900-\u097F हिंदी अक्षरों को सुरक्षित रखता है
+                .replace(/[\s_]+/g, '-')               // स्पेस की जगह हाइफन (-)
+                .replace(/-+/g, '-')                   // लगातार कई हाइफन को एक बनाएगा
+                .replace(/^-+|-+$/g, '');              // शुरुआत और अंत के हाइफन हटाएगा
+
+            return clean || ('news-' + Date.now());
+    }
 
         async function loadDrafts(id) {
             const botData = botsConfig[id];

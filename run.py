@@ -74,11 +74,18 @@ def normalize_text(text):
     return re.sub(r'\W+', '', text.lower())
 
 def clean_slug(slug_text):
-    """SEO-Friendly Clean URL Slug Builder"""
-    slug = slug_text.lower().replace(" ", "-")
-    slug = re.sub(r'[^a-z0-9\-]', '', slug)
+    """SEO-Friendly Clean URL Slug Builder (Hindi + English Both Supported)"""
+    if not slug_text:
+        return f"news-{int(time.time())}"
+    
+    slug = slug_text.lower().strip()
+    # \u0900-\u097F हिंदी (देवनागरी) अक्षरों को सुरक्षित रखेगा
+    slug = re.sub(r'[^\w\s\u0900-\u097F-]', '', slug)
+    slug = re.sub(r'[\s_]+', '-', slug)
     slug = re.sub(r'-+', '-', slug)
-    return slug.strip('-')
+    cleaned = slug.strip('-')
+    
+    return cleaned if cleaned else f"news-{int(time.time())}"
 
 def run_git_command(commands, commit_msg):
     """सुरक्षित Git Commands रन करने का फ़ंक्शन"""
