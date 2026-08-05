@@ -105,52 +105,6 @@ function renderNews() {
     const allArticles = window.sampleNews || [];
     const indexedNews = allArticles.map((data, index) => ({ data, index }));
 
-    const createCard = (news, index) => {
-        const card = document.createElement('article');
-        card.className = 'news-card';
-        card.innerHTML = `
-            <div class="card-img">
-                <a href="article.html?slug=${news.slug || createSlug(news.title)}"><img src="${news.insta_watermarked_img || news.image || news.img1 || 'logo.png'}" loading="lazy"></a>
-            </div>
-            <div class="card-content">
-                <a href="article.html?slug=${news.slug || createSlug(news.title)}" style="text-decoration:none;"><h3>${news.title}</h3></a>
-            </div>
-        `;
-        return card;
-    };
-
-    const populateGrid = (gridId, items) => {
-        const grid = document.getElementById(gridId);
-        if (!grid || items.length === 0) return;
-        
-        grid.className = ""; // पुरानी ग्रिड CSS क्लास को हटा दिया
-        grid.style.display = "block"; // नया लेआउट सेट
-        
-        let html = `
-        <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; padding: 10px; border-radius: 5px; background: #fff; width: 100%;">
-            <a href="article.html?slug=${items[0].data.slug || createSlug(items[0].data.title)}" style="text-decoration:none; display: block;">
-                <img src="${items[0].data.img1 || items[0].data.image || 'logo.png'}" style="width:100%; height:350px; object-fit:cover; border-radius:5px;">
-                <h3 style="margin-top: 15px; font-size: 24px; font-weight: 800; color: #111; line-height: 1.3;">${items[0].data.title}</h3>
-            </a>
-        </div>`;
-
-        html += '<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">';
-        items.slice(1, 13).forEach(item => {
-            html += `
-            <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 12px;">
-                <a href="article.html?slug=${item.slug}" style="text-decoration:none; color:#111;">
-                    <div style="color: #c00000; font-size: 12px; font-weight: 800; margin-bottom: 8px;">
-                        <i class="fa-solid fa-bolt"></i> ${item.data.category || 'न्यूज़'}
-                    </div>
-                    <h4 style="font-size: 15px; font-weight: 600; line-height: 1.4; margin: 0;">${item.data.title}</h4>
-                </a>
-            </div>`;
-        });
-        html += '</div>';
-        
-        grid.innerHTML = html;
-    };
-
     // 🔴 STRICT: Sidebar और Hero Banner वाली खबरों को मेन फ़ीड से बाहर निकाल दिया
     const mainFeedNews = indexedNews.filter(x => x.data.placement !== 'sidebar-sticky' && x.data.placement !== 'hero-main');
 
@@ -160,17 +114,101 @@ function renderNews() {
     const sportsItems = mainFeedNews.filter(x => x.data.placement === 'sports-news-grid' || (x.data.category || '').includes('खेल') || (x.data.category || '').toLowerCase().includes('sports'));
     const techItems = mainFeedNews.filter(x => x.data.placement === 'tech-news-grid' || (x.data.category || '').includes('टेक') || (x.data.category || '').includes('बिजनेस'));
 
-    populateGrid('latest-news-grid', latestItems.slice(0, 6));
-    populateGrid('intl-news-grid', intlItems.length ? intlItems.slice(0, 6) : latestItems.slice(0, 6));
-    populateGrid('entertainment-news-grid', entItems.length ? entItems.slice(0, 6) : latestItems.slice(0, 6));
-    populateGrid('sports-news-grid', sportsItems.length ? sportsItems.slice(0, 6) : latestItems.slice(0, 6));
-    populateGrid('tech-news-grid', techItems.length ? techItems.slice(0, 6) : latestItems.slice(0, 6));
+    populateGrid('latest-news-grid', latestItems.slice(0, 13), 'मुख्य समाचार');
+    populateGrid('intl-news-grid', intlItems.length ? intlItems.slice(0, 13) : latestItems.slice(0, 13), 'विदेश');
+    populateGrid('entertainment-news-grid', entItems.length ? entItems.slice(0, 13) : latestItems.slice(0, 13), 'मनोरंजन');
+    populateGrid('sports-news-grid', sportsItems.length ? sportsItems.slice(0, 13) : latestItems.slice(0, 13), 'खेल');
+    populateGrid('tech-news-grid', techItems.length ? techItems.slice(0, 13) : latestItems.slice(0, 13), 'टेक & AI');
 }
-
 window.filterCategory = function(categoryName) {
     window.location.href = `category.html?cat=${encodeURIComponent(categoryName)}`;
 };
 
+const populateGrid = (gridId, items, categoryName) => {
+    const grid = document.getElementById(gridId);
+    if (!grid || items.length === 0) return;
+    
+    const validItems = items.filter(item => item && item.data && item.data.title);
+    if (validItems.length === 0) return;
+
+    grid.className = "";
+    grid.style.display = "block";
+    
+    // 1. सबसे पहली बड़ी खबर (लंबाई छोटी कर दी गई है - 200px)
+    let html = `
+    <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 5px; background: #fff; overflow:hidden;">
+        <a href="article.html?slug=${validItems[0].data.slug || createSlug(validItems[0].data.title)}" style="text-decoration:none; display: block;">
+            <img src="${validItems[0].data.img1 || validItems[0].data.image || 'logo.png'}" style="width:100%; height:120px; object-fit:cover;">
+            <h3 style="padding: 12px; margin: 0; font-size: 22px; font-weight: 800; color: #111; line-height: 1.3;">${validItems[0].data.title}</h3>
+        </a>
+    </div>`;
+
+    // 2. 2-कॉलम ग्रिड (लेफ्ट में छोटी फोटो, राइट में 2-लाइन टाइटल)
+    html += `<div id="${gridId}-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">`;
+    
+    validItems.slice(1, 13).forEach((item, index) => {
+        // शुरुआत में सिर्फ 6 खबरें (3 लाइन) दिखेंगी, बाकी छिप जाएंगी
+        const isHidden = index >= 6 ? `style="display:none;" class="hidden-news"` : `style="display:flex; gap:10px;"`;
+        
+        html += `
+        <div ${isHidden} style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+            <a href="article.html?slug=${item.data.slug || createSlug(item.data.title)}" style="text-decoration:none; display:flex; gap:10px; width:100%;">
+                <!-- छोटी फोटो -->
+                <img src="${item.data.img1 || item.data.image || 'logo.png'}" style="width:100px; height:75px; object-fit:cover; border-radius:4px; flex-shrink:0;">
+                
+                <!-- 2 लाइन का टाइटल -->
+                <div style="flex-grow:1;">
+                    <div style="color: #c00000; font-size: 11px; font-weight: 800; margin-bottom: 4px;">
+                        <i class="fa-solid fa-bolt"></i> ${item.data.category || 'न्यूज़'}
+                    </div>
+                    <h4 style="font-size: 14px; font-weight: 700; line-height: 1.3; margin: 0; color: #111; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.data.title}</h4>
+                </div>
+            </a>
+        </div>`;
+    });
+    html += '</div>';
+    
+    // 3. See More बटन (लेफ्ट साइड में छोटा सा, बिना नया पेज खोले)
+    if (validItems.length > 7) {
+        html += `
+        <div style="text-align: left; margin-top: 12px; margin-bottom: 25px;">
+            <button onclick="window.toggleMoreNews('${gridId}', this)" style="background: transparent; color: #c00000; border: none; font-weight: 800; font-size: 14px; cursor: pointer; padding: 0;">
+                See More <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>`;
+    }
+    
+    grid.innerHTML = html;
+};
+
+// ==========================================================
+// See More बटन का एक्शन (ख़बरें वहीं नीचे खोलने के लिए)
+// इसे populateGrid के ठीक नीचे पेस्ट कर देना
+// ==========================================================
+window.toggleMoreNews = function(gridId, btn) {
+    const grid = document.getElementById(gridId + '-list');
+    if(!grid) return;
+    
+    const hiddenItems = grid.querySelectorAll('.hidden-news');
+    let isExpanded = false;
+    
+    hiddenItems.forEach(item => {
+        if (item.style.display === 'none') {
+            item.style.display = 'flex';
+            item.style.gap = '10px';
+            isExpanded = true;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    // बटन का टेक्स्ट बदलना
+    if (isExpanded) {
+        btn.innerHTML = 'See Less <i class="fa-solid fa-chevron-up"></i>';
+    } else {
+        btn.innerHTML = 'See More <i class="fa-solid fa-chevron-down"></i>';
+    }
+};
 // ==========================================================
 // 2. RIGHT STICKY SIDEBAR ENGINE
 // ==========================================================
