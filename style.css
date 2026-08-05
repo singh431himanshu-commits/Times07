@@ -613,7 +613,8 @@ button, input, select, textarea {
 
 .hybrid-news-grid .news-card:first-child .card-img {
     width: 45% !important;
-    height: 100% !important;
+    max-height: 250px !important;
+    object-fit: cover !important;
 }
 
 .hybrid-news-grid .news-card:first-child .card-content {
