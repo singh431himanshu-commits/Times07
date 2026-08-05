@@ -1388,3 +1388,5 @@ body.dark .article-share-box span, body.dark-mode .article-share-box span, [data
         height: auto !important; 
     }
 }
+
+img { width: 100%; height: auto; display: block; }
