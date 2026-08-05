@@ -331,7 +331,6 @@ def run_bot():
                 candidates.append({"title": entry.title, "link": entry.link, "source": src["source"]})
         except Exception: pass
 
-    # 3. 20 खबरें जनरेट करना (Drafts Only)
     processed_count = 0
     print(f"📋 Found {len(candidates)} candidates. Target: Up to {MAX_ARTICLES_PER_RUN} fresh drafts.\n")
 
@@ -358,16 +357,16 @@ def run_bot():
             pub_titles.add(norm_title)
             pub_links.add(link)
             processed_count += 1
-            
-            # 📌 केवल नए ड्राफ्ट को GitHub डैशबोर्ड पर पुश करेगा
-            push_drafts_to_github()
             time.sleep(2)
         else:
+            print("❌ AI Draft Generation Failed! (Check Groq API Keys or Limits)")
             update_bot_stats("failed")
 
-    # 4. डैशबोर्ड से Publish की गई खबरों का Sync + Sitemap + Ping
-    check_and_process_dashboard_publications()
+    # सभी ड्राफ्ट बन जाने के बाद एक ही बार GitHub पर पुश करें
+    if processed_count > 0:
+        push_drafts_to_github()
 
+    check_and_process_dashboard_publications()
 if __name__ == "__main__":
     print("🚀 Times07 Master Draft Bot Active...")
     while True:
