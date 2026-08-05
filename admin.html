@@ -64,6 +64,8 @@
         <div class="nav-item" onclick="switchBotTab('world', this)"><i class="fa-solid fa-globe"></i> World News Bot</div>
         <div class="nav-item" onclick="switchBotTab('finance', this)"><i class="fa-solid fa-chart-line"></i> Finance Bot</div>
         <div class="nav-item" onclick="switchBotTab('trending', this)"><i class="fa-solid fa-fire"></i> Trending Bot</div>
+        <!-- 🎬 NEW NETFLIX BOT TAB -->
+        <div class="nav-item" onclick="switchBotTab('netflix', this)"><i class="fa-solid fa-tv"></i> Netflix / OTT Bot</div>
         <div style="height: 1px; background: #333; margin: 10px 0;"></div>
         <div class="nav-item" onclick="switchBotTab('manual', this)"><i class="fa-solid fa-pen"></i> Manual Publish</div>
         <div class="nav-item" onclick="switchBotTab('poll', this)"><i class="fa-solid fa-poll"></i> Live Poll Manager</div>
@@ -136,6 +138,22 @@
                 <button class="btn" style="width: auto; margin: 0; padding: 10px 15px;" onclick="loadDrafts('trending')"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
             </div>
             <div id="drafts_trending"><div class="card"><p>🔄 drafts_trending.json से डेटा लोड हो रहा है...</p></div></div>
+        </div>
+
+        <!-- 🍿 NEW: Netflix & Entertainment Bot Tab -->
+        <div id="bot-netflix" class="tab-content">
+            <div class="card">
+                <h4 style="color: #e50914; margin-bottom: 15px;"><i class="fa-solid fa-tv"></i> Netflix & OTT Bot Command</h4>
+                <div style="display: flex; gap: 15px;">
+                    <input type="text" id="cmd_netflix" class="custom-input" placeholder="Series or Movie Name (e.g. Stranger Things)...">
+                    <button class="btn" style="width: auto; background: #e50914; color: #fff; margin-top:0;" onclick="triggerBot('netflix', 'bot_netflix.py')">Generate</button>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px;">
+                <h2>Netflix & OTT AI Drafts</h2>
+                <button class="btn" style="width: auto; margin: 0; padding: 10px 15px;" onclick="loadDrafts('netflix')"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
+            </div>
+            <div id="drafts_netflix"><div class="card"><p>🔄 drafts_netflix.json से डेटा लोड हो रहा है...</p></div></div>
         </div>
 
         <!-- Manual Publish -->
@@ -271,7 +289,8 @@
             bollywood: { file: 'drafts.json', cat: 'बॉलीवुड' },
             world: { file: 'drafts_world.json', cat: 'World News' },
             finance: { file: 'drafts_finance.json', cat: 'Business' },
-            trending: { file: 'drafts_trending.json', cat: 'ताज़ा ख़बरें' }
+            trending: { file: 'drafts_trending.json', cat: 'ताज़ा ख़बरें' },
+            netflix: { file: 'drafts_netflix.json', cat: 'मनोरंजन' } // 🎬 Added Netflix Mapping
         };
 
         const placementsHTML = `
@@ -330,18 +349,19 @@
             let v = document.getElementById('new-hashtag-input').value.trim();
             if(v && !liveHashtags.includes(v)) { liveHashtags.push(v.startsWith('#')?v:'#'+v); document.getElementById('new-hashtag-input').value=''; renderHashtags(); }
         }
+        
         function createSlug(text) {
             if (!text) return 'news-' + Date.now();
             const clean = text
                 .toLowerCase()
                 .trim()
-                .replace(/[^\w\s\u0900-\u097F-]/g, '') // \u0900-\u097F हिंदी अक्षरों को सुरक्षित रखता है
-                .replace(/[\s_]+/g, '-')               // स्पेस की जगह हाइफन (-)
-                .replace(/-+/g, '-')                   // लगातार कई हाइफन को एक बनाएगा
-                .replace(/^-+|-+$/g, '');              // शुरुआत और अंत के हाइफन हटाएगा
+                .replace(/[^\w\s\u0900-\u097F-]/g, '')
+                .replace(/[\s_]+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-+|-+$/g, '');
 
             return clean || ('news-' + Date.now());
-    }
+        }
 
         async function loadDrafts(id) {
             const botData = botsConfig[id];
@@ -354,13 +374,13 @@
                 let html = '';
                 drafts.forEach(draft => {
                     const titlesHTML = (draft.title_options || []).map((t, i) => `<label class="radio-label"><input type="radio" name="t_${id}_${draft.id}" value="${t}" ${i===0?'checked':''}><span class="tick">✔️</span><span class="text">${t}</span></label>`).join('');
-                  const imgsHTML = (draft.image_options || []).map((img, i) => {
-   let showImg = img.replace("https://times07news.in", "http://127.0.0.1:5500");
-    return `<label class="img-card">
-        <input type="radio" name="img_${id}_${draft.id}" value="${showImg}" ${i===0?'checked':''}>
-        <img src="${showImg}">
-    </label>`;
-}).join('');
+                    const imgsHTML = (draft.image_options || []).map((img, i) => {
+                        let showImg = img.replace("https://times07news.in", "http://127.0.0.1:5500");
+                        return `<label class="img-card">
+                            <input type="radio" name="img_${id}_${draft.id}" value="${showImg}" ${i===0?'checked':''}>
+                            <img src="${showImg}">
+                        </label>`;
+                    }).join('');
                     
                     let catOptions = `<optgroup label="Main Categories">` + categories.map(c => `<option value="${c}" ${c===botData.cat ? 'selected':''}>${c}</option>`).join('') + `</optgroup><optgroup class="dynamic-hashtags-group" label="Trending Hashtags">${liveHashtags.map(t => `<option value="${t}">${t}</option>`).join('')}</optgroup>`;
 
@@ -397,12 +417,10 @@
                     </div>`;
                 });
                 container.innerHTML = html;
-            } catch(e) { container.innerHTML = `<div class="card"><p style="color:#ff5252;">⚠️ फाइल नहीं मिली!</p></div>`; }
+            } catch(e) { container.innerHTML = `<div class="card"><p style="color:#ff5252;">⚠️ फ़ाइल नहीं मिली (${botData.file})!</p></div>`; }
         }
 
-        // ==========================
         // INSTA LOGIC
-        // ==========================
         function createInstaCaption(titleText, fullContent) {
             let cleanText = fullContent.replace(/<[^>]*>?/gm, ''); 
             let sentences = cleanText.split('।').filter(s => s.trim().length > 10);
@@ -475,7 +493,6 @@
         function copyInstaCaption() { document.getElementById('insta-caption-text').select(); document.execCommand('copy'); alert("कैप्शन कॉपी हो गया!"); }
         function downloadInstaImage() { const link = document.createElement('a'); link.download = 'Times07_Insta_Post.png'; link.href = document.getElementById('instaCanvas').toDataURL("image/png"); link.click(); }
 
-        // Bulk Delete Checkbox Toggle Helper
         function toggleAllCheckboxes(source) {
             const checkboxes = document.querySelectorAll('.news-checkbox');
             checkboxes.forEach(cb => cb.checked = source.checked);
@@ -484,7 +501,7 @@
         loadDrafts('bollywood');
     </script>
 
-    <!-- FIREBASE DB CONNECTION (News, Polls, Read, Delete) -->
+    <!-- FIREBASE DB CONNECTION -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase, ref, push, set, onValue, get, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
@@ -495,100 +512,80 @@
         const articlesRef = ref(db, 'articles');
         const pollRef = ref(db, 'live_poll');
 
-        // ==============================
         // PUBLISH LOGIC
-        // ==============================
- // ==============================
-   window.publishDraft = function(type, id) {
-    const titleRadio = document.querySelector(`input[name="t_${type}_${id}"]:checked`);
-    if(!titleRadio) return alert("कृपया टाइटल चुनें!");
-    
-    let img = document.getElementById(`local_img_${type}_${id}`).value;
-    
-    if (!img) { 
-        const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`); 
-        if(imgRadio) {
-            const parentLabel = imgRadio.closest('.img-card');
-            if(parentLabel) {
-                const imgTag = parentLabel.querySelector('img');
-                // 🚀 फिक्स 1: .src की जगह .getAttribute('src') इस्तेमाल करें ताकि लोकल IP न जुड़े!
-                if(imgTag) img = imgTag.getAttribute('src'); 
-            } else {
-                img = imgRadio.value; 
+        window.publishDraft = function(type, id) {
+            const titleRadio = document.querySelector(`input[name="t_${type}_${id}"]:checked`);
+            if(!titleRadio) return alert("कृपया टाइटल चुनें!");
+            
+            let img = document.getElementById(`local_img_${type}_${id}`).value;
+            
+            if (!img) { 
+                const imgRadio = document.querySelector(`input[name="img_${type}_${id}"]:checked`); 
+                if(imgRadio) {
+                    const parentLabel = imgRadio.closest('.img-card');
+                    if(parentLabel) {
+                        const imgTag = parentLabel.querySelector('img');
+                        if(imgTag) img = imgTag.getAttribute('src'); 
+                    } else {
+                        img = imgRadio.value; 
+                    }
+                } 
             }
-        } 
-    }
-    
-    let finalImage = (img && !img.includes('logo.png')) ? img : 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800';
-    
-    // 🚀 ब्रह्मास्त्र 2: अगर किसी भी वजह से लोकल IP आ भी जाए, तो पब्लिश होने से पहले ही उसे लाइव डोमेन में बदल दे!
-    if (finalImage.includes('127.0.0.1:5500')) {
-        finalImage = finalImage.replace('http://127.0.0.1:5500', 'https://times07news.in');
-    } else if (finalImage.includes('localhost:5500')) {
-        finalImage = finalImage.replace('http://localhost:5500', 'https://times07news.in');
-    }
-    
-    const title = titleRadio.value;
-const content = document.getElementById(`desc_${type}_${id}`).value;
-const time = Date.now();
+            
+            let finalImage = (img && !img.includes('logo.png')) ? img : 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800';
+            
+            if (finalImage.includes('127.0.0.1:5500')) {
+                finalImage = finalImage.replace('http://127.0.0.1:5500', 'https://times07news.in');
+            } else if (finalImage.includes('localhost:5500')) {
+                finalImage = finalImage.replace('http://localhost:5500', 'https://times07news.in');
+            }
+            
+            const title = titleRadio.value;
+            const content = document.getElementById(`desc_${type}_${id}`).value;
+            const time = Date.now();
 
-push(articlesRef, {
-    title: title,
+            push(articlesRef, {
+                title: title,
+                desc: content,
+                summary: content.substring(0, 180),
+                img1: finalImage,
+                image: finalImage,
+                slug: createSlug(title),
+                link: `https://times07news.in/article.html?slug=${createSlug(title)}`,
+                placement: document.getElementById(`placement_${type}_${id}`).value,
+                category: document.getElementById(`category_${type}_${id}`).value,
+                featured: "no",
+                views: Math.floor(Math.random() * 2000) + 500,
+                timestamp: time
+            }).then(() => { 
+                alert('✅ खबर वेबसाइट पर लाइव हो गई है!'); 
+                document.getElementById(`draft-card-${type}-${id}`).remove(); 
+                if(window.loadAdminNewsTable) window.loadAdminNewsTable();
+            }).catch(err => alert("Error: " + err));
+        };
 
-    desc: content,
-    summary: content.substring(0, 180),
-
-    img1: finalImage,
-    image: finalImage,
-
-    slug: createSlug(title),
-
-    link: `https://times07news.in/article.html?slug=${createSlug(title)}`,
-
-    placement: document.getElementById(`placement_${type}_${id}`).value,
-    category: document.getElementById(`category_${type}_${id}`).value,
-
-    featured: "no",
-
-    views: Math.floor(Math.random() * 2000) + 500,
-
-    timestamp: time
-}).then(() => { 
-        alert('✅ खबर वेबसाइट पर लाइव हो गई है!'); 
-        document.getElementById(`draft-card-${type}-${id}`).remove(); 
-        if(window.loadAdminNewsTable) window.loadAdminNewsTable();
-    }).catch(err => alert("Error: " + err));
-};
         document.getElementById('btn-publish-manual').addEventListener('click', () => {
             const title = document.getElementById('manual_title').value;
             let img = document.getElementById('manual_img_val').value || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800'; 
             if(!title) return alert("पहले खबर का शीर्षक दर्ज करें!");
             
-           const content = document.getElementById('manual_desc').value;
-const time = Date.now();
+            const content = document.getElementById('manual_desc').value;
+            const time = Date.now();
 
-push(articlesRef, {
-    title: title,
-
-    desc: content,
-    summary: content.substring(0, 180),
-
-    img1: img,
-    image: img,
-
-    slug: createSlug(title),
-
-    link: `https://times07news.in/article.html?slug=${createSlug(title)}`,
-
-    placement: document.getElementById('manual_placement').value,
-    category: document.getElementById('manual_category').value,
-
-    featured: "no",
-
-    views: Math.floor(Math.random() * 2000) + 500,
-
-    timestamp: time
-}) .then(() => { 
+            push(articlesRef, {
+                title: title,
+                desc: content,
+                summary: content.substring(0, 180),
+                img1: img,
+                image: img,
+                slug: createSlug(title),
+                link: `https://times07news.in/article.html?slug=${createSlug(title)}`,
+                placement: document.getElementById('manual_placement').value,
+                category: document.getElementById('manual_category').value,
+                featured: "no",
+                views: Math.floor(Math.random() * 2000) + 500,
+                timestamp: time
+            }).then(() => { 
                 alert('✅ मैनुअल खबर पब्लिश हो गई!'); 
                 document.getElementById('manual_title').value = ''; 
                 document.getElementById('manual_desc').value = ''; 
@@ -596,9 +593,7 @@ push(articlesRef, {
             }).catch(err => alert("Error: " + err));
         });
 
-        // ==============================
         // POLL LOGIC
-        // ==============================
         window.publishPoll = function() {
             const q = document.getElementById('poll_q').value; 
             const o1 = document.getElementById('poll_opt1').value; 
@@ -622,9 +617,7 @@ push(articlesRef, {
             }
         });
 
-        // ==============================
-        // MANAGE NEWS LOGIC (Advanced Read & Delete)
-        // ==============================
+        // MANAGE NEWS LOGIC
         window.loadAdminNewsTable = async function() {
             const table = document.getElementById('articles-list-table');
             table.innerHTML = '<tr><td colspan="5" style="text-align:center;">डेटा लोड हो रहा है...</td></tr>';
@@ -637,16 +630,13 @@ push(articlesRef, {
                         articles.push({ id: key, ...data[key] });
                     }
                     
-                    // Sort descending (newest first)
                     articles.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
-                    // Date Filter Logic
                     const filterDate = document.getElementById('news-date-filter').value;
                     if (filterDate) {
                         articles = articles.filter(a => {
                             if (!a.timestamp) return false;
                             const d = new Date(a.timestamp);
-                            // Format to YYYY-MM-DD
                             const aDate = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
                             return aDate === filterDate;
                         });
@@ -702,7 +692,6 @@ push(articlesRef, {
             }
         };
 
-        // Load initially if visible
         if(document.getElementById('bot-manage').classList.contains('active')) {
             window.loadAdminNewsTable();
         }
