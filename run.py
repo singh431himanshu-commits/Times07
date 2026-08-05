@@ -8,13 +8,14 @@ import time
 import re
 import random
 import urllib.parse
+import subprocess
 from datetime import datetime
 from bs4 import BeautifulSoup
 from newspaper import Article
 from ddgs import DDGS
 from openai import OpenAI
 
-# 🌐 Windows Terminal UTF-8 Encoding Fix (हिंदी टेक्स्ट सही दिखाने के लिए)
+# 🌐 Windows Terminal UTF-8 Encoding Fix
 if hasattr(sys.stdout, 'reconfigure'):
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -28,7 +29,7 @@ import config
 GROQ_KEYS = config.GROQ_KEYS
 
 CHECK_INTERVAL_MINUTES = 30
-MAX_ARTICLES_PER_RUN = 20  # 🎯 एक बार में 20 खबरें
+MAX_ARTICLES_PER_RUN = 20
 
 logging.basicConfig(
     filename='bot.log', level=logging.INFO,
@@ -72,6 +73,22 @@ def update_bot_stats(stat_type):
 def normalize_text(text):
     return re.sub(r'\W+', '', text.lower())
 
+def clean_slug(slug_text):
+    """SEO-Friendly Clean URL Slug Builder"""
+    slug = slug_text.lower().replace(" ", "-")
+    slug = re.sub(r'[^a-z0-9\-]', '', slug)
+    slug = re.sub(r'-+', '-', slug)
+    return slug.strip('-')
+
+def run_git_command(commands, commit_msg):
+    """सुरक्षित Git Commands रन करने का फ़ंक्शन"""
+    try:
+        for cmd in commands:
+            subprocess.run(cmd, shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print(f"🚀 [Git Success] {commit_msg}")
+    except Exception as e:
+        print(f"⚠️ [Git Warning] Sync failed: {e}")
+
 def get_db_data():
     pub_links, pub_titles = set(), set()
     try:
@@ -93,35 +110,22 @@ def get_db_data():
         
     return pub_links, pub_titles
 
-def generate_sitemap():
-    """Firebase और drafts_trending.json दोनों से Slugs उठाकर sitemap.xml बनाता है"""
+def generate_sitemap_for_published_only():
+    """केवल पब्लिश हुई खबरों के लिए Sitemap.xml बनाता है"""
     try:
         urls = [{"loc": "https://times07news.in/", "lastmod": datetime.utcnow().strftime("%Y-%m-%d")}]
-        all_slugs = set()
+        published_slugs = set()
 
-        # 1. Firebase डेटाबेस से
-        try:
-            res = requests.get(FIREBASE_URL, timeout=10)
-            if res.status_code == 200 and isinstance(res.json(), dict):
-                for item in res.json().values():
-                    if isinstance(item, dict) and item.get("slug"):
-                        all_slugs.add(item.get("slug"))
-        except Exception as e:
-            print("Firebase Sitemap Error:", e)
+        res = requests.get(FIREBASE_URL, timeout=10)
+        if res.status_code == 200 and isinstance(res.json(), dict):
+            for item in res.json().values():
+                if isinstance(item, dict) and item.get("slug"):
+                    published_slugs.add(clean_slug(item.get("slug")))
 
-        # 2. लोकल ड्राफ्ट्स फ़ाइल से (ज़रूरी फिक्स!)
-        if os.path.exists("drafts_trending.json"):
-            try:
-                with open("drafts_trending.json", "r", encoding="utf-8") as f:
-                    for item in json.load(f):
-                        if isinstance(item, dict) and item.get("slug"):
-                            all_slugs.add(item.get("slug"))
-            except Exception as e:
-                print("Drafts Sitemap Error:", e)
-
-        for slug in all_slugs:
-            link = f"https://times07news.in/article.html?slug={slug}"
-            urls.append({"loc": link, "lastmod": datetime.utcnow().strftime("%Y-%m-%d")})
+        for slug in published_slugs:
+            if slug:
+                link = f"https://times07news.in/article.html?slug={slug}"
+                urls.append({"loc": link, "lastmod": datetime.utcnow().strftime("%Y-%m-%d")})
 
         xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         for u in urls:
@@ -130,19 +134,42 @@ def generate_sitemap():
 
         with open("sitemap.xml", "w", encoding="utf-8") as f:
             f.write(xml)
-        print("✅ sitemap.xml updated with all latest articles!")
+        print(f"🗺️ [Sitemap Updated] Included {len(published_slugs)} published articles.")
+        return len(published_slugs)
     except Exception as e:
-        print("Sitemap Generation Error:", e)
+        print("❌ Sitemap Generation Error:", e)
+        return 0
 
 def ping_search_engines():
-    """गूगल और बिंग इंडेक्सिंग ट्रिगर"""
+    """सर्च इंजन पिंग भेजता है और स्टेटस कोड दिखाता है"""
     sitemap_url = "https://times07news.in/sitemap.xml"
-    # Bing/Yahoo Ping (Bing अभी भी sitemap ping सपोर्ट करता है)
     try:
-        requests.get(f"https://www.bing.com/ping?sitemap={sitemap_url}", timeout=10)
-        print("✅ Bing Sitemap Ping Sent Successfully")
+        res = requests.get(f"https://www.bing.com/ping?sitemap={sitemap_url}", timeout=10)
+        if res.status_code == 200:
+            print("✅ [Ping Success] Bing pinged successfully (HTTP 200)!")
+        else:
+            print(f"⚠️ [Ping Notice] Bing ping response code: {res.status_code}")
     except Exception as e:
-        print("Bing Ping Error:", e)
+        print(f"❌ [Ping Failed] Could not connect: {e}")
+
+def push_drafts_to_github():
+    """केवल ड्राफ्ट्स को GitHub पर भेजता है"""
+    run_git_command(
+        ['git add drafts_trending.json', 'git commit -m "Updated Drafts for Dashboard"', 'git push origin main'],
+        "New Draft synced to GitHub Dashboard."
+    )
+
+def check_and_process_dashboard_publications():
+    """पब्लिश हुई खबरों की जांच कर Sitemap और Ping पुश करता है"""
+    print("\n🔎 Syncing Published Articles with Sitemap & Search Engines...")
+    published_count = generate_sitemap_for_published_only()
+
+    if published_count > 0:
+        run_git_command(
+            ['git add sitemap.xml', 'git commit -m "Auto Update Sitemap for Published Articles"', 'git push origin main'],
+            "Published Sitemap synced to live site!"
+        )
+        ping_search_engines()
 
 def fetch_google_trends():
     trends = []
@@ -184,7 +211,6 @@ def search_hd_images(query, count=5):
     return images[:count]
 
 def generate_trending_draft(raw_title, raw_text=""):
-    # 🎯 800 - 1000 शब्दों के विस्तृत आर्टिकल का प्रोम्प्ट
     prompt = f"""
     आप Times07 News के सबसे वरिष्ठ और अनुभवी मुख्य पत्रकार (Chief Editor) हैं।
     विषय: {raw_title}
@@ -192,7 +218,7 @@ def generate_trending_draft(raw_title, raw_text=""):
 
     सख्त निर्देश:
     1. खबर पूरी तरह से तथ्यात्मक (Factual) और पेशेवर न्यूज़ चैनल की भाषा में होनी चाहिए।
-    2. खबर को विस्तृत रूप से 800 से 1000 शब्दों (Long-form detailed news article) में लिखें ताकि पाठक को विषय की पूरी जानकारी मिले।
+    2. खबर को विस्तृत रूप से 800 से 1000 शब्दों में लिखें ताकि पाठक को विषय की पूरी जानकारी मिले।
     3. इसमें निम्नलिखित अनुभाग (H3 हेडिंग्स और <p> पैराग्राफ्स) अनिवार्य रूप से शामिल करें:
        - <h3>मुख्य समाचार और ताज़ा अपडेट</h3> (विस्तृत 2 पैराग्राफ)
        - <h3>मामले की पूरी पृष्ठभूमि और कारण</h3> (विस्तृत 2 पैराग्राफ)
@@ -230,14 +256,18 @@ def generate_trending_draft(raw_title, raw_text=""):
                     model=model, 
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.4, 
-                    max_tokens=6000, # लंबी खबर के लिए टोकन बढ़ा दिए गए हैं
+                    max_tokens=6000,
                     response_format={"type": "json_object"}
                 )
                 data = json.loads(response.choices[0].message.content.strip())
                 search_keyword = data.get("image_keyword") or re.sub(r"\|.*|\b20\d{2}\b", "", raw_title)
                 data["image_options"] = search_hd_images(search_keyword, count=5)
                 data["created_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                data["slug"] = data.get("english_slug", "").lower().replace(" ", "-")
+                
+                # SEO Clean English Slug
+                raw_slug = data.get("english_slug", "news-update")
+                data["slug"] = clean_slug(raw_slug)
+                
                 data["bot_type"] = "trending"
                 data["id"] = int(datetime.now().timestamp() * 1000)
                 return data
@@ -248,7 +278,6 @@ def generate_trending_draft(raw_title, raw_text=""):
     return None
 
 def extract_full_text(link):
-    """वेबसाइट से अधिक से अधिक टेक्स्ट निकालने का सुरक्षित तरीका"""
     try:
         article = Article(link)
         article.download()
@@ -277,7 +306,7 @@ def run_bot():
     pub_links, pub_titles = get_db_data()
     candidates = []
 
-    # 1. Google Trends (शीर्ष 5 टॉपिक्स)
+    # 1. Google Trends
     for topic in fetch_google_trends()[:5]:
         try:
             encoded_topic = urllib.parse.quote(topic)
@@ -287,7 +316,7 @@ def run_bot():
         except Exception as e:
             logging.error(f"Google Trends Parse Error: {e}")
 
-    # 2. Trusted RSS Sources
+    # 2. RSS Sources
     for src in TRUSTED_RSS_SOURCES:
         try:
             feed = feedparser.parse(src["url"])
@@ -295,13 +324,13 @@ def run_bot():
                 candidates.append({"title": entry.title, "link": entry.link, "source": src["source"]})
         except Exception: pass
 
-    # 3. 20 खबरें जनरेट करना
+    # 3. 20 खबरें जनरेट करना (Drafts Only)
     processed_count = 0
-    print(f"📋 Found {len(candidates)} total candidates. Target: Process up to {MAX_ARTICLES_PER_RUN} fresh articles.\n")
+    print(f"📋 Found {len(candidates)} candidates. Target: Up to {MAX_ARTICLES_PER_RUN} fresh drafts.\n")
 
     for item in candidates:
         if processed_count >= MAX_ARTICLES_PER_RUN:
-            print(f"🎯 Target of {MAX_ARTICLES_PER_RUN} articles reached for this run!")
+            print(f"🎯 Target of {MAX_ARTICLES_PER_RUN} drafts reached!")
             break
 
         title = item["title"]
@@ -312,7 +341,7 @@ def run_bot():
             update_bot_stats("duplicate")
             continue
 
-        print(f"⚙️ Processing [{processed_count + 1}/{MAX_ARTICLES_PER_RUN}]: {title[:65]}...")
+        print(f"\n⚙️ Processing Draft [{processed_count + 1}/{MAX_ARTICLES_PER_RUN}]: {title[:65]}...")
         full_text = extract_full_text(link)
         
         draft = generate_trending_draft(title, full_text)
@@ -322,14 +351,15 @@ def run_bot():
             pub_titles.add(norm_title)
             pub_links.add(link)
             processed_count += 1
+            
+            # 📌 केवल नए ड्राफ्ट को GitHub डैशबोर्ड पर पुश करेगा
+            push_drafts_to_github()
             time.sleep(2)
         else:
             update_bot_stats("failed")
 
-    # 4. 20 खबरें पूरी होने के बाद साइटमैप अपडेट और सर्च इंजन पिंग
-    if processed_count > 0:
-        generate_sitemap()
-        ping_search_engines()
+    # 4. डैशबोर्ड से Publish की गई खबरों का Sync + Sitemap + Ping
+    check_and_process_dashboard_publications()
 
 if __name__ == "__main__":
     print("🚀 Times07 Master Draft Bot Active...")
@@ -338,15 +368,6 @@ if __name__ == "__main__":
             run_bot()
         except Exception as e:
             error_logger.error(f"Main loop crash: {e}")
-        
-        # Git Commit & Push
-        try:
-            os.system('git add -A')
-            os.system('git commit -m "Auto Post Update with Sitemap"')
-            os.system('git push origin main')
-            print("🚀 Git Push Successful!")
-        except Exception as e:
-            print(f"Git Push Error: {e}")
 
         print(f"\n⏰ Waiting {CHECK_INTERVAL_MINUTES} minutes...")
         time.sleep(CHECK_INTERVAL_MINUTES * 60)

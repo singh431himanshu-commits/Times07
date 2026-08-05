@@ -249,8 +249,27 @@
 .news-section:first-child h2 {
     margin-top: 0px !important;
 }
-    
-    
+
+   /* बड़ी हीरो फोटो की हाइट लॉक करने का कोड */
+.abp-hero-image-box {
+    width: 100% !important;
+    height: 340px !important;
+    overflow: hidden !important;
+}
+
+.abp-hero-image-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* फोटो खिंचेगी/फैलेगी नहीं */
+}
+
+/* मोबाइल स्क्रीन के लिए */
+@media screen and (max-width: 1024px) {
+    .abp-hero-image-box,
+    .abp-hero-image-box img {
+        height: 240px !important; /* मोबाइल में केवल 240px ऊँचाई रखेगा */
+    }
+}
     </style>
 </head>
 <body>
