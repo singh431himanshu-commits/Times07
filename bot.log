@@ -2823,3 +2823,17 @@
 2026-08-06 11:51:36 [ERROR] Groq API Error on model llama-3.3-70b-versatile: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kymhw5yqfn7afxgq4h7v3t1t` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99329, Requested 8418. Please try again in 1h51m33.407999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
 2026-08-06 11:51:41 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 413 Payload Too Large"
 2026-08-06 11:51:41 [ERROR] Groq API Error on model llama-3.1-8b-instant: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.1-8b-instant` in organization `org_01kymhw5yqfn7afxgq4h7v3t1t` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 8418, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-08-06 13:05:10 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-06 13:05:14 [INFO] response: https://www.bing.com/images/async?q=%22Atiq+Ahmed+Arrest%22+news+hd+photo&async=1&first=1&count=35 200
+2026-08-06 13:05:31 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-06 13:05:33 [INFO] response: https://duckduckgo.com/?q=%22Martha+Reeves%22+news+hd+photo 202
+2026-08-06 13:05:33 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Martha+Reeves%22+news+hd+photo&l=in-en&vqd=4-108053182988968497535158250559085493609&p=1&ct=AT 403
+2026-08-06 13:05:34 [INFO] response: https://www.bing.com/images/async?q=%22Martha+Reeves%22+news+hd+photo&async=1&first=1&count=35 200
+2026-08-06 13:06:01 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-06 13:06:04 [INFO] response: https://www.bing.com/images/async?q=%22Gurugram+City%22+news+hd+photo&async=1&first=1&count=35 200
+2026-08-06 13:06:22 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-06 13:06:27 [INFO] response: https://www.bing.com/images/async?q=%22MHADA+Lottery%22+news+hd+photo&async=1&first=1&count=35 200
+2026-08-06 13:06:46 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-06 13:06:47 [INFO] response: https://duckduckgo.com/?q=%22anthropic+principle%22+news+hd+photo 202
+2026-08-06 13:06:48 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22anthropic+principle%22+news+hd+photo&l=in-en&vqd=4-22072271097442193131264268917339317633&p=1&ct=AT 403
+2026-08-06 13:06:49 [INFO] response: https://www.bing.com/images/async?q=%22anthropic+principle%22+news+hd+photo&async=1&first=1&count=35 200
