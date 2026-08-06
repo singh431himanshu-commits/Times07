@@ -165,10 +165,11 @@
             <div class="card">
                 <span class="section-title">News Title</span>
                 <input type="text" id="manual_title" class="custom-input" placeholder="यहाँ खबर का शीर्षक लिखें...">
-                <span class="section-title">Upload Cover Image</span>
-                <input type="file" id="manual_img_file" class="custom-input" accept="image/*" onchange="uploadLocalImage(this, 'manual_img_val', 'preview_img_manual')">
-                <input type="hidden" id="manual_img_val">
-                <img id="preview_img_manual" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'">
+               <span class="section-title">Upload Cover Image / Image URL</span>
+<input type="file" id="manual_img_file" class="custom-input" accept="image/*" onchange="uploadLocalImage(this, 'manual_img_val', 'preview_img_manual')">
+<input type="url" class="custom-input" placeholder="या डायरेक्ट फोटो का URL लिंक यहाँ पेस्ट करें..." style="margin-top:8px;" oninput="if(this.value){ document.getElementById('manual_img_val').value=this.value; document.getElementById('preview_img_manual').src=this.value; document.getElementById('preview_img_manual').style.display='block'; }">
+<input type="hidden" id="manual_img_val">
+<img id="preview_img_manual" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'"> display: none;" onload="this.style.display='block'">
                 <span class="section-title">News Summary / Details</span>
                 <textarea id="manual_desc" rows="6" placeholder="पूरी खबर यहाँ टाइप करें..."></textarea>
                 <div class="placement-row">
