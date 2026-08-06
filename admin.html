@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <script src="https://unpkg.com/transliteration@2.3.5/dist/browser/bundle.umd.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Times07 - Master Admin Panel (PRO Edition)</title>
@@ -354,19 +355,19 @@
             if(v && !liveHashtags.includes(v)) { liveHashtags.push(v.startsWith('#')?v:'#'+v); document.getElementById('new-hashtag-input').value=''; renderHashtags(); }
         }
         
-        function createSlug(text) {
-            if (!text) return 'news-' + Date.now();
-            const clean = text
-                .toLowerCase()
-                .trim()
-                .replace(/[^\w\s\u0900-\u097F-]/g, '')
-                .replace(/[\s_]+/g, '-')
-                .replace(/-+/g, '-')
-                .replace(/^-+|-+$/g, '');
+       function createSlug(text) {
+    if (!text) return 'news-' + Date.now();
+    const roman = (window.transliterate ? window.transliterate(text) : text);
+    const clean = roman
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/[\s_]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
 
-            return clean || ('news-' + Date.now());
-        }
-
+    return clean || ('news-' + Date.now());
+}
         async function loadDrafts(id) {
             const botData = botsConfig[id];
             const container = document.getElementById(`drafts_${id}`);
