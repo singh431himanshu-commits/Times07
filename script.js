@@ -101,24 +101,26 @@ function updateDynamicCategories(articles) {
 // ==========================================================
 // 1. MAIN FEED ENGINE (STRICT PLACEMENT)
 // ==========================================================
+// 🔴 1. STRICT CATEGORY ROUTER (NO MIXING FALLBACKS)
 function renderNews() {
     const allArticles = window.sampleNews || [];
     const indexedNews = allArticles.map((data, index) => ({ data, index }));
 
-    // 🔴 STRICT: Sidebar और Hero Banner वाली खबरों को मेन फ़ीड से बाहर निकाल दिया
+    // Hero aur Sidebar wali dedicated news ko main feed se alag karein
     const mainFeedNews = indexedNews.filter(x => x.data.placement !== 'sidebar-sticky' && x.data.placement !== 'hero-main');
 
     const latestItems = mainFeedNews.filter(x => x.data.placement === 'latest-news-grid' || x.data.placement === 'latest-news' || !x.data.placement);
-    const intlItems = mainFeedNews.filter(x => x.data.placement === 'intl-news-grid' || (x.data.category || '').toLowerCase().includes('world') || (x.data.category || '').includes('विदेश') || (x.data.title || '').includes('विदेश'));
+    const intlItems = mainFeedNews.filter(x => x.data.placement === 'intl-news-grid' || (x.data.category || '').toLowerCase().includes('world') || (x.data.category || '').includes('विदेश'));
     const entItems = mainFeedNews.filter(x => x.data.placement === 'entertainment-news-grid' || (x.data.category || '').includes('मनोरंजन') || (x.data.category || '').includes('बॉलीवुड'));
     const sportsItems = mainFeedNews.filter(x => x.data.placement === 'sports-news-grid' || (x.data.category || '').includes('खेल') || (x.data.category || '').toLowerCase().includes('sports'));
     const techItems = mainFeedNews.filter(x => x.data.placement === 'tech-news-grid' || (x.data.category || '').includes('टेक') || (x.data.category || '').includes('बिजनेस'));
 
+    // Fallbacks hata diye gaye hain — jis category ki news hai sirf wahin dikhegi
     populateGrid('latest-news-grid', latestItems.slice(0, 13), 'मुख्य समाचार');
-    populateGrid('intl-news-grid', intlItems.length ? intlItems.slice(0, 13) : latestItems.slice(0, 13), 'विदेश');
-    populateGrid('entertainment-news-grid', entItems.length ? entItems.slice(0, 13) : latestItems.slice(0, 13), 'मनोरंजन');
-    populateGrid('sports-news-grid', sportsItems.length ? sportsItems.slice(0, 13) : latestItems.slice(0, 13), 'खेल');
-    populateGrid('tech-news-grid', techItems.length ? techItems.slice(0, 13) : latestItems.slice(0, 13), 'टेक & AI');
+    populateGrid('intl-news-grid', intlItems.slice(0, 13), 'विदेश');
+    populateGrid('entertainment-news-grid', entItems.slice(0, 13), 'मनोरंजन');
+    populateGrid('sports-news-grid', sportsItems.slice(0, 13), 'खेल');
+    populateGrid('tech-news-grid', techItems.slice(0, 13), 'टेक & AI');
 }
 window.filterCategory = function(categoryName) {
     window.location.href = `category.html?cat=${encodeURIComponent(categoryName)}`;
@@ -271,18 +273,18 @@ function renderRightSidebar(allNews) {
 let abpSlideInterval = null;
 let currentAbpIndex = 0;
 
+// 🔴 2. STRICT RED BOX ROUTER (NO DUPLICATION)
 function renderABPHeroBanner(newsList) {
     if (!newsList || newsList.length === 0) return;
 
     let indexedNews = newsList.map((data, index) => ({ data, index }));
 
-    // सिर्फ "hero-main" वाली खबरें
+    // Sirf wahi khabar Red Box mein aayegi jiske placement === 'hero-main' ho
     let heroArticles = indexedNews.filter(x => x.data.placement === 'hero-main');
     
-    // अगर 5 से कम हैं, तो बाकियों से भरें (लेकिन Sidebar वाली कभी नहीं!)
-    if (heroArticles.length < 5) {
-        const otherNews = indexedNews.filter(x => x.data.placement !== 'sidebar-sticky' && x.data.placement !== 'hero-main');
-        heroArticles = [...heroArticles, ...otherNews];
+    // Agar kisi news ka placement explicit 'hero-main' nahi hai, tabhi pehli 5 news lega
+    if (heroArticles.length === 0) {
+        heroArticles = indexedNews.slice(0, 5);
     }
 
     const topFive = heroArticles.slice(0, 5);
@@ -293,24 +295,28 @@ function renderABPHeroBanner(newsList) {
     const sideList = document.getElementById('abp-side-headlines');
 
     if (sideList) {
-        sideList.innerHTML = topFive.map((item, index) => `
-            <li id="bullet-${index}" onclick="window.selectHeroSlide(${index})">${item.data.title}</li>
-        `).join('');
+        sideList.innerHTML = topFive.map((item, index) => {
+            const newsTitle = item.data?.title || item.title || "मुख्य समाचार";
+            return `<li id="bullet-${index}" onclick="window.selectHeroSlide(${index})">${newsTitle}</li>`;
+        }).join('');
     }
 
     window.selectHeroSlide = function(index) {
         currentAbpIndex = index;
         const selectedNews = topFive[index];
+        if (!selectedNews) return;
+
+        const newsTitle = selectedNews.data?.title || selectedNews.title || "";
+        const newsImg = selectedNews.data?.img1 || selectedNews.data?.image || "logo.png";
+        const newsSlug = selectedNews.data?.slug || createSlug(newsTitle);
 
         if (mainImg) {
-            mainImg.loading = "eager";
-            mainImg.src = selectedNews.data.img1 || selectedNews.data.image || "logo.png";
-            mainImg.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug || createSlug(selectedNews.data.title)}`;
-
+            mainImg.src = newsImg;
+            mainImg.onclick = () => window.location.href = `article.html?slug=${newsSlug}`;
         }
         if (mainTitle) {
-            mainTitle.innerText = selectedNews.data.title;
-            mainTitle.onclick = () => window.location.href = `article.html?slug=${selectedNews.data.slug || createSlug(selectedNews.data.title)}`;
+            mainTitle.innerText = newsTitle;
+            mainTitle.onclick = () => window.location.href = `article.html?slug=${newsSlug}`;
         }
 
         topFive.forEach((_, i) => {
@@ -322,12 +328,6 @@ function renderABPHeroBanner(newsList) {
     };
 
     window.selectHeroSlide(0);
-
-    if (abpSlideInterval) clearInterval(abpSlideInterval);
-    abpSlideInterval = setInterval(() => {
-        currentAbpIndex = (currentAbpIndex + 1) % topFive.length;
-        window.selectHeroSlide(currentAbpIndex);
-    }, 3500);
 }
 function createSlug(text) {
     return (text || "")
