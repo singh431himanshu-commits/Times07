@@ -462,50 +462,60 @@ button, input, select, textarea {
 
 /* --------------------------------------------------------------------------
    8. HERO SECTION & ABP RED BANNER
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   HERO BANNER FIX (Small Image + Right Side Title)
+   ========================================================================== */
+
+/* 1. कंटेनर को सीमित साइज और फ्लेक्स लेआउट दें */
 .abp-hero-container {
-    display: flex;
-    background-color: #cc0000;
-    color: #ffffff;
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 25px;
-    height: 380px;
-    width: 100%;
-    box-shadow: var(--shadow-md);
+    display: flex !important;
+    align-items: center !important;
+    background-color: #c00000 !important; /* Times07 Crimson Red */
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    gap: 20px !important;
+    height: 230px !important; /* इमेज को नीचे दबने से रोकने के लिए फिक्स हाइट */
+    box-sizing: border-box !important;
+    margin-bottom: 20px !important;
+    overflow: hidden !important;
 }
 
+/* 2. इमेज बॉक्स: बॉटम से ऊपर और लेफ्ट से थोड़ा राइट खिसकाने के लिए */
 .abp-hero-image-box {
-    flex: 2.5;
-    overflow: hidden;
+    flex: 0 0 40% !important; /* कुल चौड़ाई का 40% हिस्सा इमेज को */
+    height: 100% !important;
+    margin-left: 10px !important; /* लेफ्ट से थोड़ा राइट खिसकाने के लिए */
+    border-radius: 6px !important;
+    overflow: hidden !important;
 }
 
 .abp-hero-image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-    cursor: pointer;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* इमेज बिना पिचके परफेक्ट फिट होगी */
+    border-radius: 6px !important;
 }
 
-.abp-hero-image-box img:hover {
-    transform: scale(1.03);
-}
-
+/* 3. टाइटल बॉक्स: इमेज के ठीक सामने (राइट साइड) */
 .abp-hero-title-box {
-    flex: 2.5;
-    padding: 30px 25px;
-    display: flex;
-    align-items: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    flex: 1 !important; /* बाकी बचा 60% हिस्सा टाइटल के लिए */
+    padding: 0 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    height: 100% !important;
 }
 
 .abp-hero-title-box h2 {
-    font-size: 26px;
-    font-weight: 800;
-    line-height: 1.4;
-    color: #ffffff;
-    cursor: pointer;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* टाइटल ज्यादा बड़ा हो तो 4 लाइन में सेट होगा */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .abp-hero-list-box {
@@ -850,14 +860,7 @@ body.dark-mode .auth-divider span { background: #1e293b !important; }
 @media (max-width: 600px) {
     .top-stories-grid, .hybrid-news-grid { grid-template-columns: 1fr !important; }
 }
-/* ==========================================
-   MOBILE RESPONSIVE FIX (Times07 Mobile Engine)
-   ========================================== */
 
-/* 1. Prevent Horizontal Overflow */
-* {
-    box-sizing: border-box !important;
-}
 
 html, body {
     width: 100% !important;
@@ -1154,101 +1157,9 @@ img.loaded, img[src]:not([src=""]):not([src="logo.png"]) {
     animation: none !important;
     filter: none !important;
 }
-/* =========================================
-   📱 MOBILE VIEW FIXES (Responsive Design)
-   ========================================= */
-@media screen and (max-width: 768px) {
-    /* 1. Top Bar को सेट करें */
-    .global-bar-container {
-        flex-direction: column;
-        gap: 5px;
-        padding: 5px;
-    }
 
-    /* 2. Header में लोगो और बटन को आमने-सामने करें */
-    .header-container {
-        display: flex;
-        flex-wrap: wrap; /* मेन्यू को नीचे धकेलने के लिए */
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 5px;
-    }
 
-    /* 3. लोगो को मोबाइल के हिसाब से छोटा करें */
-    .logo-box img {
-        height: 30px !important; 
-    }
 
-    /* 4. मेन्यू (Navigation) को स्वाइप करने वाला (Scrollable) बनाएं */
-    .primary-nav {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start !important;
-        overflow-x: auto !important; /* दाएँ-बाएँ स्वाइप ऑन */
-        white-space: nowrap;
-        margin-top: 10px;
-        padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch; /* स्मूथ मोबाइल स्क्रॉल */
-    }
-
-    /* स्क्रॉलबार की पट्टी को छुपा दें ताकि ऐप जैसा लगे */
-    .primary-nav::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* 5. डार्क मोड और सर्च बटन के साइज़ को एडजस्ट करें */
-    .header-actions {
-        display: flex;
-        gap: 5px;
-    }
-    .icon-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-    }
-}
-
-/* =========================================
-   📱 FINAL CLEAN MOBILE VIEW (Light & Dark)
-   ========================================= */
-@media screen and (max-width: 768px) {
-    .top-global-bar, .trending-hashtags-bar { display: none !important; }
-    
-    .header-container {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 8px 10px !important;
-        flex-wrap: nowrap !important;
-    }
-    .logo-box img { height: 40px !important; max-width: 140px !important; object-fit: contain !important; }
-    
-    .header-actions {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 6px !important;
-        align-items: center !important;
-        position: static !important;
-        margin: 0 !important;
-    }
-    .icon-btn {
-        width: 32px !important; height: 32px !important; font-size: 14px !important;
-        display: flex !important; align-items: center !important; justify-content: center !important;
-    }
-    
-    .primary-nav {
-        width: 100% !important; display: flex !important; justify-content: flex-start !important;
-        overflow-x: auto !important; white-space: nowrap !important; padding: 6px 10px !important; margin: 0 !important;
-    }
-    .primary-nav::-webkit-scrollbar { display: none !important; }
-
-    /* Dark Mode Absolute Fix */
-    body.dark .primary-nav, body.dark-mode .primary-nav, [data-theme="dark"] .primary-nav { background: #1e1e1e !important; }
-    
-    body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark p, body.dark span, body.dark a, body.dark li, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode p, body.dark-mode span, body.dark-mode a, body.dark-mode li, [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4, [data-theme="dark"] p, [data-theme="dark"] span, [data-theme="dark"] a, [data-theme="dark"] li {
-        color: #ffffff !important;
-    }
-}
 /* =========================================
    ARTICLE SHARE BUTTONS
    ========================================= */
