@@ -46,7 +46,8 @@ function initTheme() {
 initTheme();
 
 // 🚀 FIREBASE LISTENER (अब यह Article Page को भी कॉल करेगा)
-         const newsQuery = query(newsRef, limitToLast(20));
+        // 🔴 NEW CODE: Ab purani khabren gayab nahi hongi
+const newsQuery = query(newsRef, limitToLast(100));
 
          get(newsQuery).then((snapshot) => {
     const data = snapshot.val();
