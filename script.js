@@ -134,29 +134,36 @@ const populateGrid = (gridId, items, categoryName) => {
     grid.className = "";
     grid.style.display = "block";
     
-    // 1. सबसे पहली बड़ी खबर (लंबाई छोटी कर दी गई है - 200px)
+    // 1. मुख्य बड़ी खबर (Left Image + Right Title Layout)
     let html = `
-    <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 5px; background: #fff; overflow:hidden;">
-        <a href="article.html?slug=${validItems[0].data.slug || createSlug(validItems[0].data.title)}" style="text-decoration:none; display: block;">
-            <img src="${validItems[0].data.img1 || validItems[0].data.image || 'logo.png'}" style="width:100%; height:120px; object-fit:cover;">
-            <h3 style="padding: 12px; margin: 0; font-size: 22px; font-weight: 800; color: #111; line-height: 1.3;">${validItems[0].data.title}</h3>
+    <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 6px; background: #fff; overflow:hidden;">
+        <a href="article.html?slug=${validItems[0].data.slug || createSlug(validItems[0].data.title)}" style="text-decoration:none; display: flex; align-items: center; gap: 15px;">
+            <!-- Left Image (Aadha Space) -->
+            <div style="width: 45%; height: 180px; flex-shrink: 0; overflow: hidden;">
+                <img src="${validItems[0].data.img1 || validItems[0].data.image || 'logo.png'}" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <!-- Right Title Content -->
+            <div style="padding: 15px 15px 15px 0; flex-grow: 1;">
+                <span style="color: #c00000; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; display: inline-block;">
+                    <i class="fa-solid fa-bolt"></i> ${validItems[0].data.category || categoryName || 'मुख्य समाचार'}
+                </span>
+                <h3 style="margin: 0; font-size: 18px; font-weight: 800; color: #111; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
+                    ${validItems[0].data.title}
+                </h3>
+            </div>
         </a>
     </div>`;
 
-    // 2. 2-कॉलम ग्रिड (लेफ्ट में छोटी फोटो, राइट में 2-लाइन टाइटल)
+    // 2. 2-कॉलम ग्रिड (छोटे समाचार नीचे)
     html += `<div id="${gridId}-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">`;
     
     validItems.slice(1, 13).forEach((item, index) => {
-        // शुरुआत में सिर्फ 6 खबरें (3 लाइन) दिखेंगी, बाकी छिप जाएंगी
         const isHidden = index >= 6 ? `style="display:none;" class="hidden-news"` : `style="display:flex; gap:10px;"`;
         
         html += `
         <div ${isHidden} style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
             <a href="article.html?slug=${item.data.slug || createSlug(item.data.title)}" style="text-decoration:none; display:flex; gap:10px; width:100%;">
-                <!-- छोटी फोटो -->
                 <img src="${item.data.img1 || item.data.image || 'logo.png'}" style="width:100px; height:75px; object-fit:cover; border-radius:4px; flex-shrink:0;">
-                
-                <!-- 2 लाइन का टाइटल -->
                 <div style="flex-grow:1;">
                     <div style="color: #c00000; font-size: 11px; font-weight: 800; margin-bottom: 4px;">
                         <i class="fa-solid fa-bolt"></i> ${item.data.category || 'न्यूज़'}
@@ -168,7 +175,7 @@ const populateGrid = (gridId, items, categoryName) => {
     });
     html += '</div>';
     
-    // 3. See More बटन (लेफ्ट साइड में छोटा सा, बिना नया पेज खोले)
+    // See More Button
     if (validItems.length > 7) {
         html += `
         <div style="text-align: left; margin-top: 12px; margin-bottom: 25px;">

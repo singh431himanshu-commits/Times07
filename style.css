@@ -930,10 +930,9 @@ html, body {
         grid-template-columns: 1fr !important; /* Force Single Column on Mobile */
     }
 
-    img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-    }
+   img, video, iframe {
+    max-width: 100% !important;
+}
 
     /* Sidebar / Widgets Adjustment */
     .sidebar, #sidebar, .right-widgets {
@@ -1248,3 +1247,202 @@ body.dark .article-share-box span, body.dark-mode .article-share-box span, [data
 }
 
 img { width: 100%; height: auto; display: block; }
+/* ==========================================================
+   CLEAN & UNIFIED HERO BANNER ENGINE (MERGED FROM INDEX.HTML)
+   ========================================================== */
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#loader img {
+    width: 120px;
+    animation: pulse 1s infinite;
+}
+
+#loader h2 {
+    margin-top: 15px;
+    color: #c00000;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.1); }
+}
+
+html, body, .main-wrapper, #main-content {
+    overflow: visible !important;
+}
+
+/* Strict 3-Column ABP Grid Layout */
+.portal-container.abp-layout-grid {
+    display: grid !important;
+    grid-template-columns: 220px 1fr 300px !important; 
+    grid-template-areas: 
+        "left hero hero"
+        "left center right" !important;
+    column-gap: 20px !important;
+    row-gap: 0px !important;
+    align-items: start !important;
+    max-width: 1350px !important;
+    margin: 15px auto !important;
+    padding: 0 10px !important;
+}
+
+.left-sidebar {
+    grid-area: left;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 80px !important;
+    max-height: calc(100vh - 90px) !important;
+    overflow-y: auto !important;
+    background: #ffffff !important;
+    padding-right: 10px !important;
+    border-right: 1px solid #e2e8f0 !important;
+}
+
+.hero-spanning-wrapper {
+    grid-area: hero;
+    margin-bottom: 15px !important;
+    padding-bottom: 0px !important;
+}
+
+.center-content {
+    grid-area: center;
+    min-width: 0 !important;
+    width: 100% !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}
+
+.right-sidebar {
+    grid-area: right;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 80px !important;
+    max-height: calc(100vh - 90px) !important;
+    overflow-y: auto !important;
+    background: #ffffff !important;
+    padding-left: 5px !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}
+
+/* Fixed Hero Banner Proportions (360px Image | Middle Title | 260px List) */
+.abp-hero-container {
+    display: grid !important;
+    grid-template-columns: 360px 1fr 260px !important; 
+    background: #da251d !important;
+    height: 260px !important;
+    gap: 0 !important;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.abp-hero-image-box { 
+    width: 100% !important; 
+    height: 260px !important; 
+    overflow: hidden !important; 
+}
+
+.abp-hero-image-box img { 
+    width: 100% !important; 
+    height: 100% !important; 
+    object-fit: cover !important; 
+    object-position: center !important;
+    cursor: pointer; 
+}
+
+.abp-hero-title-box { 
+    padding: 15px 20px !important; 
+    display: flex !important; 
+    align-items: center !important; 
+    height: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.abp-hero-title-box h2 { 
+    color: #fff !important; 
+    font-size: 19px !important; 
+    line-height: 1.4 !important; 
+    margin: 0 !important; 
+    font-weight: 700 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.abp-hero-list-box {
+    background: #b91d16 !important;
+    padding: 10px 12px !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+.abp-hero-list-box ul { list-style: none !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
+
+.abp-hero-list-box li {
+    color: #fff !important; 
+    font-size: 11px !important; 
+    font-weight: 500 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+    padding: 6px 0 !important; 
+    line-height: 1.3 !important; 
+    cursor: pointer; 
+    transition: color 0.2s ease;
+}
+
+.abp-hero-list-box li:last-child { border-bottom: none !important; }
+.abp-hero-list-box li:hover { color: #facc15 !important; }
+
+.blinking-news-card {
+    display: flex !important; 
+    gap: 10px !important; 
+    padding: 10px 0 !important;
+    border-bottom: 1px dashed #e2e8f0 !important;
+    animation: fadeAndPop 0.8s ease-in-out;
+    align-items: center !important;
+}
+
+.blinking-news-card img { width: 70px !important; height: 50px !important; object-fit: cover !important; border-radius: 4px !important; flex-shrink: 0 !important; }
+.blinking-news-card h4 { font-size: 12px !important; font-weight: 600 !important; color: #1e293b !important; margin: 0 !important; line-height: 1.3 !important; }
+
+@keyframes fadeAndPop {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.news-section:first-child h2 { margin-top: 0px !important; }
+
+/* Responsive View */
+@media screen and (max-width: 1024px) {
+    .portal-container.abp-layout-grid {
+        grid-template-columns: 1fr !important;
+        grid-template-areas: 
+            "hero"
+            "center"
+            "right" !important;
+    }
+    .left-sidebar { display: none !important; }
+    .abp-hero-container { grid-template-columns: 1fr !important; height: auto !important; }
+    .abp-hero-image-box, .abp-hero-image-box img { height: 220px !important; }
+    .right-sidebar { position: static !important; max-height: none !important; border-left: none !important; }
+}
+/* 🔴 MAIN FEED BIG FEATURED IMAGE HEIGHT FIX */
+.center-content div[id$="-grid"] > div:first-child img {
+    height: 220px !important;
+    object-fit: cover !important;
+    width: 100% !important;
+}
