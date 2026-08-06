@@ -317,15 +317,18 @@ let abpSlideInterval = null;
 let currentAbpIndex = 0;
 
 // 🔴 2. STRICT RED BOX ROUTER (NO DUPLICATION)
+// ==========================================================
+// 3. RED BOX (HERO BANNER) AUTO SLIDE ENGINE (FIXED)
+// ==========================================================
+let abpSlideInterval = null;
+let currentAbpIndex = 0;
+
 function renderABPHeroBanner(newsList) {
     if (!newsList || newsList.length === 0) return;
 
     let indexedNews = newsList.map((data, index) => ({ data, index }));
 
-    // Sirf wahi khabar Red Box mein aayegi jiske placement === 'hero-main' ho
     let heroArticles = indexedNews.filter(x => x.data.placement === 'hero-main');
-    
-    // Agar kisi news ka placement explicit 'hero-main' nahi hai, tabhi pehli 5 news lega
     if (heroArticles.length === 0) {
         heroArticles = indexedNews.slice(0, 5);
     }
@@ -337,13 +340,15 @@ function renderABPHeroBanner(newsList) {
     const mainTitle = document.getElementById('abp-main-title');
     const sideList = document.getElementById('abp-side-headlines');
 
+    // 1. रिप्लेस स्केलेटन लिस्ट विथ रियल डेटा
     if (sideList) {
         sideList.innerHTML = topFive.map((item, index) => {
             const newsTitle = item.data?.title || item.title || "मुख्य समाचार";
-            return `<li id="bullet-${index}" onclick="window.selectHeroSlide(${index})">${newsTitle}</li>`;
+            return `<li id="bullet-${index}" onclick="window.selectHeroSlide(${index})" style="color: #fff; font-size: 11px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.15); cursor: pointer;">${newsTitle}</li>`;
         }).join('');
     }
 
+    // 2. स्लाइड बदलने का फ़ंक्शन
     window.selectHeroSlide = function(index) {
         currentAbpIndex = index;
         const selectedNews = topFive[index];
@@ -355,22 +360,39 @@ function renderABPHeroBanner(newsList) {
 
         if (mainImg) {
             mainImg.src = newsImg;
+            mainImg.classList.remove('skeleton-img');
+            mainImg.style.background = 'none';
             mainImg.onclick = () => window.location.href = `article.html?slug=${newsSlug}`;
         }
+
         if (mainTitle) {
-            mainTitle.innerText = newsTitle;
-            mainTitle.onclick = () => window.location.href = `article.html?slug=${newsSlug}`;
+            mainTitle.innerHTML = `<a href="article.html?slug=${newsSlug}" style="color:#fff; text-decoration:none;">${newsTitle}</a>`;
         }
 
         topFive.forEach((_, i) => {
             const el = document.getElementById(`bullet-${i}`);
-            if (el) el.classList.remove('active-bullet');
+            if (el) {
+                el.style.color = '#ffffff';
+                el.style.fontWeight = '500';
+            }
         });
+
         const activeEl = document.getElementById(`bullet-${index}`);
-        if (activeEl) activeEl.classList.add('active-bullet');
+        if (activeEl) {
+            activeEl.style.color = '#fde047'; // पीला रंग हाइलाइट के लिए
+            activeEl.style.fontWeight = '800';
+        }
     };
 
+    // पहला स्लाइड दिखाएं
     window.selectHeroSlide(0);
+
+    // ⏱️ हर 2 सेकंड में ऑटो-स्लाइड
+    if (abpSlideInterval) clearInterval(abpSlideInterval);
+    abpSlideInterval = setInterval(() => {
+        currentAbpIndex = (currentAbpIndex + 1) % topFive.length;
+        window.selectHeroSlide(currentAbpIndex);
+    }, 2000);
 }
 function createSlug(text) {
     return (text || "")
