@@ -1446,70 +1446,81 @@ html, body, .main-wrapper, #main-content {
     object-fit: cover !important;
     width: 100% !important;
 }
+/* 📱 MOBILE VIEW ONLY (EXACT AAJ TAK STYLE) */
 @media screen and (max-width: 600px) {
-    /* 1. Saare grids ko hata kar single vertical list banayein */
-    [id$="-news-grid"], .news-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        grid-template-columns: none !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    /* 2. Har news card ki width 100% aur niche line */
-    [id$="-news-grid"] > div, 
-    [id$="-news-grid"] > a {
+    /* Main Feed & Container Width Fix */
+    #center-main-feed, .center-content, [id$="-news-grid"] {
         display: block !important;
         width: 100% !important;
-        grid-column: auto !important;
-        border: none !important;
-        border-bottom: 1px solid #dcdcdc !important;
-        border-radius: 0 !important;
-        padding-bottom: 12px !important;
-        margin-bottom: 0 !important;
-        background: transparent !important;
+        padding: 0 10px !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
     }
 
-    /* 3. Image Left aur Title Right (Aamne-Samne) */
-    [id$="-news-grid"] > div > a,
-    [id$="-news-grid"] > a {
+    /* 1. SARI NEWS EK JAISI (FIRST NEWS KA SPECIAL STYLE KHATM) */
+    [id$="-news-grid"] > div {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 12px 0 !important;
+        border: none !important;
+        border-bottom: 1px solid #e0e0e0 !important; /* News ke beech ki line */
+        box-sizing: border-box !important;
+    }
+
+    /* 2. LAYOUT: IMAGE LEFT, TITLE RIGHT (AAMNE-SAMNE) */
+    [id$="-news-grid"] > div > a {
         display: flex !important;
         flex-direction: row !important;
         align-items: flex-start !important;
         gap: 12px !important;
         width: 100% !important;
+        text-decoration: none !important;
     }
 
-    /* 4. Image Fix (Kategi nahi, fix size rahegi) */
+    /* 3. IMAGE SIZE (FIXED, NO CROP) */
     [id$="-news-grid"] img {
-        width: 120px !important;
-        min-width: 120px !important;
-        height: 80px !important;
-        max-height: 80px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 75px !important;
         object-fit: cover !important;
         border-radius: 4px !important;
         flex-shrink: 0 !important;
+        display: block !important;
     }
 
-    /* 5. Title pura dikhega, truncation ya hiding nahi hogi */
-    [id$="-news-grid"] h4,
-    [id$="-news-grid"] h3 {
+    /* 4. FULL TITLE SHOW */
+    [id$="-news-grid"] h4, [id$="-news-grid"] h3 {
         font-size: 14px !important;
         font-weight: 600 !important;
-        line-height: 1.4 !important;
-        color: #111 !important;
+        line-height: 1.35 !important;
+        color: #111111 !important;
         margin: 0 !important;
+        padding: 0 !important;
         display: block !important;
-        overflow: visible !important;
         white-space: normal !important;
-        -webkit-line-clamp: unset !important;
     }
 
-    /* 6. See More button center mein */
+    /* 5. TOP 10 NEWS SHOW (SHOW FIRST 10 ITEMS) */
+    [id$="-news-grid"] > div:nth-child(-n+10) {
+        display: block !important;
+    }
+
+    /* 6. HIDE 11TH NEWS ONWARDS */
+    [id$="-news-grid"] > div:nth-child(n+11):not(.see-more-container):not(:last-child) {
+        display: none !important;
+    }
+
+    /* 7. SEE MORE BUTTON AFTER 10TH NEWS */
     .see-more-container, 
+    [id$="-news-grid"] > div.see-more-container,
     [id$="-news-grid"] > div:last-child {
+        display: block !important;
         text-align: center !important;
         width: 100% !important;
+        padding: 15px 0 !important;
         border: none !important;
     }
 }
