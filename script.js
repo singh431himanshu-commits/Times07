@@ -123,10 +123,52 @@ function renderNews() {
     populateGrid('sports-news-grid', sportsItems.slice(0, 13), 'खेल');
     populateGrid('tech-news-grid', techItems.slice(0, 13), 'टेक & AI');
 }
+// 🔴 CATEGORY FILTER DIRECT ON HOMEPAGE (NO CATEGORY.HTML REDIRECT)
 window.filterCategory = function(categoryName) {
-    window.location.href = `category.html?cat=${encodeURIComponent(categoryName)}`;
-};
+    const allArticles = window.sampleNews || [];
+    const filteredArticles = allArticles.filter(a => 
+        (a.category || '').toLowerCase().includes(categoryName.toLowerCase()) || 
+        (a.title || '').toLowerCase().includes(categoryName.toLowerCase())
+    );
 
+    const centerFeed = document.getElementById('center-main-feed');
+    if (centerFeed) {
+        // Filter hone par hero banner hide ho jayega
+        const heroWrapper = document.querySelector('.hero-spanning-wrapper');
+        if (heroWrapper) heroWrapper.style.display = 'none';
+
+        centerFeed.innerHTML = `
+            <div style="margin-bottom:20px; border-bottom:3px solid #c00000; padding-bottom:8px;">
+                <h2 style="font-size:22px; font-weight:800; color:#111;">
+                    <i class="fa-solid fa-layer-group" style="color:#c00000;"></i> ${categoryName} (${filteredArticles.length})
+                </h2>
+            </div>
+            <div id="category-results-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;"></div>
+        `;
+
+        const gridBox = document.getElementById('category-results-grid');
+        if (filteredArticles.length === 0) {
+            gridBox.innerHTML = `<p style="padding:20px; color:#666;">इस कैटेगरी में अभी कोई खबर उपलब्ध नहीं है।</p>`;
+        } else {
+            filteredArticles.forEach(news => {
+                gridBox.innerHTML += `
+                    <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+                        <a href="article.html?slug=${news.slug || createSlug(news.title)}" style="text-decoration:none; display:flex; gap:10px; width:100%;">
+                            <img src="${news.img1 || news.image || 'logo.png'}" style="width:100px; height:75px; object-fit:cover; border-radius:4px; flex-shrink:0;">
+                            <div style="flex-grow:1;">
+                                <div style="color: #c00000; font-size: 11px; font-weight: 800; margin-bottom: 4px;">${news.category || categoryName}</div>
+                                <h4 style="font-size: 14px; font-weight: 700; line-height: 1.3; margin: 0; color: #111; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${news.title}</h4>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            });
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        window.location.href = `index.html`;
+    }
+};
 const populateGrid = (gridId, items, categoryName) => {
     const grid = document.getElementById(gridId);
     if (!grid || items.length === 0) return;
