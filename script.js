@@ -310,11 +310,7 @@ function renderRightSidebar(allNews) {
     }
 }
 
-// ==========================================================
-// 3. RED BOX (HERO BANNER) STRICT ENGINE
-// ==========================================================
-let abpSlideInterval = null;
-let currentAbpIndex = 0;
+
 
 // 🔴 2. STRICT RED BOX ROUTER (NO DUPLICATION)
 // ==========================================================
