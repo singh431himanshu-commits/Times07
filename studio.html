@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times07 - Pro Banner Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0f172a; --panel: #1e293b; --accent: #c00000; --text: #ffffff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+        header { background: var(--panel); padding: 15px 30px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
+        .studio-container { display: flex; flex: 1; padding: 20px; gap: 20px; height: calc(100vh - 70px); }
+        .controls-panel { width: 420px; background: var(--panel); border-radius: 12px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; border: 1px solid #334155; }
+        .preview-panel { flex: 1; background: #020617; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: auto; border: 1px solid #334155; }
+        .field-group { display: flex; flex-direction: column; gap: 6px; }
+        label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; }
+        input, select, textarea { width: 100%; background: #0f172a; border: 1px solid #334155; color: #fff; padding: 10px; border-radius: 6px; outline: none; font-size: 13px; }
+        .btn-download { background: linear-gradient(135deg, #c00000, #dc2626); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; font-size: 15px; }
+        .btn-download:hover { opacity: 0.9; transform: translateY(-2px); }
+        canvas { max-width: 100%; max-height: 80vh; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-radius: 8px; }
+        .adj-box { background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; border: 1px dashed #475569; display: flex; flex-direction: column; gap: 8px; }
+        .adj-label { font-size: 11px; color: #cbd5e1; display: flex; justify-content: space-between; margin-bottom: -5px;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-size: 20px; font-weight: 800; color: #fff;"><i class="fa-solid fa-wand-magic-sparkles" style="color: #fde047;"></i> Times07 Banner Studio PRO</div>
+        <a href="admin.html" style="color: #94a3b8; text-decoration: none; font-weight: 700; font-size: 14px;"><i class="fa-solid fa-arrow-left"></i> Admin Panel पर लौटें</a>
+    </header>
+
+    <div class="studio-container">
+        <!-- Controls -->
+        <div class="controls-panel">
+            <div class="field-group">
+                <label>1. प्लेटफॉर्म साइज (Platform Preset)</label>
+                <select id="platformSelect" onchange="changePlatform()">
+                    <option value="web">🌐 Website Banner (1200x675 - 16:9)</option>
+                    <option value="insta">📸 Instagram Post (1080x1080 - 1:1)</option>
+                    <option value="fb">📘 Facebook Cover (1200x630)</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label>2. फोटो अपलोड करें</label>
+                <input type="file" id="imgUpload" accept="image/*" onchange="handleImage(this)">
+            </div>
+
+            <!-- 🛠️ IMAGE ADJUSTMENT TOOLS -->
+            <div class="adj-box">
+                <label style="color: #00d2d3;"><i class="fa-solid fa-crop-simple"></i> फोटो एडजस्टमेंट</label>
+                
+                <div class="adj-label"><span>ज़ूम (Zoom In/Out)</span></div>
+                <input type="range" id="imgZoom" min="0.5" max="3" step="0.05" value="1" oninput="draw()">
+                
+                <div class="adj-label"><span>दाएं/बाएं खिसकाएं (X-Offset)</span></div>
+                <input type="range" id="imgOffsetX" min="-800" max="800" value="0" oninput="draw()">
+                
+                <div class="adj-label"><span>ऊपर/नीचे खिसकाएं (Y-Offset)</span></div>
+                <input type="range" id="imgOffsetY" min="-800" max="800" value="0" oninput="draw()">
+            </div>
+
+            <div class="field-group">
+                <label>3. हेडलाइन / टाइटल</label>
+                <textarea id="titleInput" rows="3" placeholder="यहाँ खबर दर्ज करें..." oninput="draw()"></textarea>
+            </div>
+
+            <div class="field-group">
+                <label>4. डिज़ाइन स्टाइल</label>
+                <select id="styleSelect" onchange="draw()">
+                    <option value="red-bar">1. Classic Crimson Red Strip (Bottom Center)</option>
+                    <option value="dark-gradient">2. Dark Gradient Overlay</option>
+                    <option value="yellow-wave">3. Red Box with Yellow Wave Accent</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label>5. टेक्स्ट एलाइनमेंट (Alignment)</label>
+                <select id="alignSelect" onchange="draw()">
+                    <option value="center" selected>बीच में (Center)</option>
+                    <option value="left">बाईं तरफ (Left)</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label>6. फ़ॉन्ट रंग (Text Color)</label>
+                <select id="colorSelect" onchange="draw()">
+                    <option value="#ffffff">सफेद (White)</option>
+                    <option value="#fde047">पीला (Yellow)</option>
+                    <option value="#00d2d3">सायन (Cyan)</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label>7. टेक्स्ट पोजीशन ऊपर/नीचे (Y-Offset)</label>
+                <input type="range" id="yPos" min="-200" max="200" value="0" oninput="draw()">
+            </div>
+
+            <div class="field-group">
+                <label>8. फ़ॉन्ट साइज (Font Size)</label>
+                <input type="range" id="fontSize" min="28" max="80" value="48" oninput="draw()">
+            </div>
+
+            <button class="btn-download" onclick="downloadBanner()"><i class="fa-solid fa-download"></i> HD बैनर डाउनलोड करें</button>
+        </div>
+
+        <!-- Canvas Live Preview -->
+        <div class="preview-panel">
+            <canvas id="mainCanvas" width="1200" height="675"></canvas>
+        </div>
+    </div>
+
+    <script>
+        let currentImg = null;
+        let cW = 1200, cH = 675;
+
+        function changePlatform() {
+            const p = document.getElementById('platformSelect').value;
+            if(p === 'insta') { cW = 1080; cH = 1080; }
+            else if(p === 'fb') { cW = 1200; cH = 630; }
+            else { cW = 1200; cH = 675; }
+
+            const canvas = document.getElementById('mainCanvas');
+            canvas.width = cW;
+            canvas.height = cH;
+            
+            // Reset adjustments on platform change
+            document.getElementById('imgZoom').value = 1;
+            document.getElementById('imgOffsetX').value = 0;
+            document.getElementById('imgOffsetY').value = 0;
+            
+            draw();
+        }
+
+        function handleImage(input) {
+            if(input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.onload = () => { 
+                        currentImg = img; 
+                        document.getElementById('imgZoom').value = 1;
+                        document.getElementById('imgOffsetX').value = 0;
+                        document.getElementById('imgOffsetY').value = 0;
+                        draw(); 
+                    };
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function draw() {
+            const canvas = document.getElementById('mainCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, cW, cH);
+
+            // 1. फोटो रेंडर विथ ज़ूम & पैन कंट्रोल्स
+            if(currentImg) {
+                let zoom = parseFloat(document.getElementById('imgZoom').value);
+                let offsetX = parseInt(document.getElementById('imgOffsetX').value, 10);
+                let offsetY = parseInt(document.getElementById('imgOffsetY').value, 10);
+
+                let baseScale = Math.max(cW / currentImg.width, cH / currentImg.height);
+                let finalScale = baseScale * zoom;
+                
+                let finalW = currentImg.width * finalScale;
+                let finalH = currentImg.height * finalScale;
+
+                let x = (cW / 2) - (finalW / 2) + offsetX;
+                let y = (cH / 2) - (finalH / 2) + offsetY;
+
+                ctx.drawImage(currentImg, x, y, finalW, finalH);
+            } else {
+                ctx.fillStyle = "#1e293b";
+                ctx.fillRect(0, 0, cW, cH);
+                ctx.fillStyle = "#64748b";
+                ctx.font = "bold 30px 'Plus Jakarta Sans'";
+                ctx.textAlign = "center";
+                ctx.fillText("📷 इमेज अपलोड करें", cW / 2, cH / 2);
+            }
+
+            // 2. स्टाइल ओवरले
+            const style = document.getElementById('styleSelect').value;
+            if(style === 'red-bar') {
+                ctx.fillStyle = "rgba(192, 0, 0, 0.92)";
+                ctx.fillRect(50, cH - 200, cW - 100, 150);
+            } else if(style === 'dark-gradient') {
+                let grad = ctx.createLinearGradient(0, cH * 0.3, 0, cH);
+                grad.addColorStop(0, "transparent");
+                grad.addColorStop(1, "rgba(2, 6, 23, 0.95)");
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, cW, cH);
+            } else if(style === 'yellow-wave') {
+                ctx.fillStyle = "rgba(192, 0, 0, 0.92)";
+                ctx.fillRect(50, cH - 200, cW - 100, 150);
+                ctx.fillStyle = "#fde047";
+                ctx.fillRect(50, cH - 200, cW - 100, 8);
+            }
+
+            // 3. वाटरमार्क/लोगो (Top Right - Clean & Transparent)
+            const logo = new Image();
+            logo.src = 'logo.png';
+            logo.onload = () => {
+                let lW = cW * 0.13;
+                let lH = lW * (logo.height / logo.width);
+                ctx.drawImage(logo, cW - lW - 25, 25, lW, lH);
+            };
+
+            // 4. टेक्स्ट रेंडरिंग (सेंटर सपोर्ट के साथ)
+            const title = document.getElementById('titleInput').value || "यहाँ खबर का मुख्य टाइटल दिखाई देगा...";
+            const fontColor = document.getElementById('colorSelect').value;
+            const align = document.getElementById('alignSelect').value;
+            const fontSize = parseInt(document.getElementById('fontSize').value, 10);
+            const yPos = parseInt(document.getElementById('yPos').value, 10);
+
+            ctx.fillStyle = fontColor;
+            ctx.font = `800 ${fontSize}px 'Mukta', sans-serif`;
+            ctx.textAlign = align;
+            ctx.strokeStyle = "#000000";
+            ctx.lineWidth = 6;
+            ctx.shadowColor = "rgba(0,0,0,0.8)";
+            ctx.shadowBlur = 10;
+
+            let startX = align === 'center' ? cW / 2 : 80;
+            let startY = (cH - 130) + yPos;
+
+            wrapText(ctx, title, startX, startY, cW - 160, fontSize + 12, align);
+        }
+
+        function wrapText(ctx, text, x, y, maxWidth, lineHeight, align) {
+            let words = text.split(' '), line = '', lines = [];
+            for(let n = 0; n < words.length; n++) {
+                let testLine = line + words[n] + ' ', testWidth = ctx.measureText(testLine).width;
+                if (testWidth > maxWidth && n > 0) { lines.push(line); line = words[n] + ' '; } else { line = testLine; }
+            }
+            lines.push(line);
+            for (let k = 0; k < lines.length; k++) {
+                ctx.strokeText(lines[k], x, y + (k * lineHeight));
+                ctx.fillText(lines[k], x, y + (k * lineHeight));
+            }
+        }
+
+        function downloadBanner() {
+            const canvas = document.getElementById('mainCanvas');
+            const p = document.getElementById('platformSelect').value;
+            const link = document.createElement('a');
+            link.download = `Times07_${p.toUpperCase()}_Banner.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+
+        draw();
+    </script>
+</body>
+</html>
