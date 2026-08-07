@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Times07 - Pro Banner Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Mukta:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #0f172a; --panel: #1e293b; --accent: #c00000; --text: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -17,11 +17,15 @@
         .field-group { display: flex; flex-direction: column; gap: 6px; }
         label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; }
         input, select, textarea { width: 100%; background: #0f172a; border: 1px solid #334155; color: #fff; padding: 10px; border-radius: 6px; outline: none; font-size: 13px; }
-        .btn-download { background: linear-gradient(135deg, #c00000, #dc2626); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; font-size: 15px; }
-        .btn-download:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        .btn-download { background: linear-gradient(135deg, #c00000, #dc2626); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; }
+        .btn-url { background: linear-gradient(135deg, #059669, #10b981); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; }
+        .btn-download:hover, .btn-url:hover { opacity: 0.9; transform: translateY(-2px); }
         canvas { max-width: 100%; max-height: 80vh; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-radius: 8px; }
         .adj-box { background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; border: 1px dashed #475569; display: flex; flex-direction: column; gap: 8px; }
         .adj-label { font-size: 11px; color: #cbd5e1; display: flex; justify-content: space-between; margin-bottom: -5px;}
+        .url-output-box { display: none; background: #020617; border: 1px solid #10b981; padding: 10px; border-radius: 6px; margin-top: 5px; }
+        .url-output-box input { font-size: 11px; color: #34d399; }
     </style>
 </head>
 <body>
@@ -68,16 +72,30 @@
             </div>
 
             <div class="field-group">
-                <label>4. डिज़ाइन स्टाइल</label>
-                <select id="styleSelect" onchange="draw()">
-                    <option value="red-bar">1. Classic Crimson Red Strip (Bottom Center)</option>
-                    <option value="dark-gradient">2. Dark Gradient Overlay</option>
-                    <option value="yellow-wave">3. Red Box with Yellow Wave Accent</option>
+                <label>4. फ़ॉन्ट स्टाइल (Font Style)</label>
+                <select id="fontFamilySelect" onchange="draw()">
+                    <option value="'Mukta', sans-serif" selected>Mukta (Bold Hindi Standard)</option>
+                    <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans (Modern Clean)</option>
+                    <option value="'Merriweather', serif">Merriweather (Classic Editorial)</option>
                 </select>
             </div>
 
             <div class="field-group">
-                <label>5. टेक्स्ट एलाइनमेंट (Alignment)</label>
+                <label>5. डिज़ाइन स्टाइल</label>
+                <select id="styleSelect" onchange="draw()">
+                    <option value="red-bar">1. Custom Bottom Strip</option>
+                    <option value="dark-gradient">2. Dark Gradient Overlay</option>
+                    <option value="yellow-wave">3. Custom Box with Yellow Wave Accent</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label>6. बैकग्राउंड स्ट्रिप का रंग (Accent BG Color)</label>
+                <input type="color" id="bgAccentColor" value="#c00000" oninput="draw()">
+            </div>
+
+            <div class="field-group">
+                <label>7. टेक्स्ट एलाइनमेंट (Alignment)</label>
                 <select id="alignSelect" onchange="draw()">
                     <option value="center" selected>बीच में (Center)</option>
                     <option value="left">बाईं तरफ (Left)</option>
@@ -85,25 +103,30 @@
             </div>
 
             <div class="field-group">
-                <label>6. फ़ॉन्ट रंग (Text Color)</label>
-                <select id="colorSelect" onchange="draw()">
-                    <option value="#ffffff">सफेद (White)</option>
-                    <option value="#fde047">पीला (Yellow)</option>
-                    <option value="#00d2d3">सायन (Cyan)</option>
-                </select>
+                <label>8. फ़ॉन्ट रंग (Text Color)</label>
+                <input type="color" id="colorSelect" value="#ffffff" oninput="draw()">
             </div>
 
             <div class="field-group">
-                <label>7. टेक्स्ट पोजीशन ऊपर/नीचे (Y-Offset)</label>
+                <label>9. टेक्स्ट पोजीशन ऊपर/नीचे (Y-Offset)</label>
                 <input type="range" id="yPos" min="-200" max="200" value="0" oninput="draw()">
             </div>
 
             <div class="field-group">
-                <label>8. फ़ॉन्ट साइज (Font Size)</label>
+                <label>10. फ़ॉन्ट साइज (Font Size)</label>
                 <input type="range" id="fontSize" min="28" max="80" value="48" oninput="draw()">
             </div>
 
-            <button class="btn-download" onclick="downloadBanner()"><i class="fa-solid fa-download"></i> HD बैनर डाउनलोड करें</button>
+            <div class="btn-group">
+                <button class="btn-download" onclick="downloadBanner()"><i class="fa-solid fa-download"></i> Insta/FB के लिए HD डाउनलोड करें</button>
+                <button class="btn-url" onclick="generateImageURL()"><i class="fa-solid fa-link"></i> डायरेक्ट Image URL बनाएं</button>
+            </div>
+
+            <div id="urlBox" class="url-output-box">
+                <label style="color: #34d399; font-size: 11px;">जनरेट किया गया URL:</label>
+                <input type="text" id="generatedUrlInput" readonly onclick="this.select()">
+                <button onclick="copyGeneratedURL()" style="margin-top: 5px; background: #10b981; border: none; color: #fff; padding: 5px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: bold; width: 100%;">लिंक कॉपी करें</button>
+            </div>
         </div>
 
         <!-- Canvas Live Preview -->
@@ -126,7 +149,6 @@
             canvas.width = cW;
             canvas.height = cH;
             
-            // Reset adjustments on platform change
             document.getElementById('imgZoom').value = 1;
             document.getElementById('imgOffsetX').value = 0;
             document.getElementById('imgOffsetY').value = 0;
@@ -182,25 +204,27 @@
                 ctx.fillText("📷 इमेज अपलोड करें", cW / 2, cH / 2);
             }
 
-            // 2. स्टाइल ओवरले
+            // 2. स्टाइल व बैकग्राउंड रंग ओवरले
             const style = document.getElementById('styleSelect').value;
+            const bgAccent = document.getElementById('bgAccentColor').value;
+
             if(style === 'red-bar') {
-                ctx.fillStyle = "rgba(192, 0, 0, 0.92)";
+                ctx.fillStyle = bgAccent;
                 ctx.fillRect(50, cH - 200, cW - 100, 150);
             } else if(style === 'dark-gradient') {
                 let grad = ctx.createLinearGradient(0, cH * 0.3, 0, cH);
                 grad.addColorStop(0, "transparent");
-                grad.addColorStop(1, "rgba(2, 6, 23, 0.95)");
+                grad.addColorStop(1, bgAccent);
                 ctx.fillStyle = grad;
                 ctx.fillRect(0, 0, cW, cH);
             } else if(style === 'yellow-wave') {
-                ctx.fillStyle = "rgba(192, 0, 0, 0.92)";
+                ctx.fillStyle = bgAccent;
                 ctx.fillRect(50, cH - 200, cW - 100, 150);
                 ctx.fillStyle = "#fde047";
                 ctx.fillRect(50, cH - 200, cW - 100, 8);
             }
 
-            // 3. वाटरमार्क/लोगो (Top Right - Clean & Transparent)
+            // 3. वॉटरमार्क / लोगो
             const logo = new Image();
             logo.src = 'logo.png';
             logo.onload = () => {
@@ -209,15 +233,16 @@
                 ctx.drawImage(logo, cW - lW - 25, 25, lW, lH);
             };
 
-            // 4. टेक्स्ट रेंडरिंग (सेंटर सपोर्ट के साथ)
+            // 4. टेक्स्ट और फ़ॉन्ट रेंडरिंग
             const title = document.getElementById('titleInput').value || "यहाँ खबर का मुख्य टाइटल दिखाई देगा...";
             const fontColor = document.getElementById('colorSelect').value;
             const align = document.getElementById('alignSelect').value;
             const fontSize = parseInt(document.getElementById('fontSize').value, 10);
             const yPos = parseInt(document.getElementById('yPos').value, 10);
+            const fontFamily = document.getElementById('fontFamilySelect').value;
 
             ctx.fillStyle = fontColor;
-            ctx.font = `800 ${fontSize}px 'Mukta', sans-serif`;
+            ctx.font = `800 ${fontSize}px ${fontFamily}`;
             ctx.textAlign = align;
             ctx.strokeStyle = "#000000";
             ctx.lineWidth = 6;
@@ -250,6 +275,58 @@
             link.download = `Times07_${p.toUpperCase()}_Banner.jpg`;
             link.href = canvas.toDataURL('image/jpeg', 0.9);
             link.click();
+        }
+
+       function generateImageURL() {
+            const btn = document.querySelector('.btn-url');
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> URL बन रहा है...`;
+            btn.disabled = true;
+
+            const canvas = document.getElementById('mainCanvas');
+
+            // 1. कैनवस को हल्की बायनरी फाइल (Blob) में बदलें
+            canvas.toBlob(function(blob) {
+                if(!blob) {
+                    alert("❌ इमेज बनाने में समस्या आई।");
+                    btn.innerHTML = `<i class="fa-solid fa-link"></i> डायरेक्ट Image URL बनाएं`;
+                    btn.disabled = false;
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append("image", blob, "times07_banner.jpg");
+
+                // 2. ImgBB आपकी पर्सनल API Key के साथ
+                fetch("https://api.imgbb.com/1/upload?key=2df03545c158146f60f2d3ed0dbe24b3", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    btn.innerHTML = `<i class="fa-solid fa-link"></i> डायरेक्ट Image URL बनाएं`;
+                    btn.disabled = false;
+
+                    if (data && data.data && data.data.url) {
+                        document.getElementById('generatedUrlInput').value = data.data.url;
+                        document.getElementById('urlBox').style.display = 'block';
+                        alert("✅ छोटा इमेज URL सफलतापूर्वक बन गया!");
+                    } else {
+                        alert("❌ इमेज अपलोड नहीं हो सकी, कृपया पुनः प्रयास करें।");
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    btn.innerHTML = `<i class="fa-solid fa-link"></i> डायरेक्ट Image URL बनाएं`;
+                    btn.disabled = false;
+                    alert("❌ नेटवर्क एरर! कृपया इंटरनेट जांचें।");
+                });
+            }, 'image/jpeg', 0.85);
+        }
+        function copyGeneratedURL() {
+            const input = document.getElementById('generatedUrlInput');
+            input.select();
+            navigator.clipboard.writeText(input.value);
+            alert("✅ इमेज URL कॉपी हो गया है!");
         }
 
         draw();
