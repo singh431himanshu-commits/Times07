@@ -46,7 +46,7 @@ function initTheme() {
 initTheme();
 
 // 🚀 FIREBASE LISTENER (FIXED: window.sampleNews Update)
-const newsQuery = query(newsRef, limitToLast(100));
+const newsQuery = query(newsRef, limitToLast(15));
 
 get(newsQuery).then((snapshot) => {
     const data = snapshot.val();
