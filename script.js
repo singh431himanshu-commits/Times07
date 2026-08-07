@@ -45,31 +45,38 @@ function initTheme() {
 }
 initTheme();
 
-// 🚀 FIREBASE LISTENER (अब यह Article Page को भी कॉल करेगा)
-        // 🔴 NEW CODE: Ab purani khabren gayab nahi hongi
+// 🚀 FIREBASE LISTENER (FIXED: window.sampleNews Update)
 const newsQuery = query(newsRef, limitToLast(100));
 
-         get(newsQuery).then((snapshot) => {
+get(newsQuery).then((snapshot) => {
     const data = snapshot.val();
     let firebaseArticles = [];
     if (data) {
         Object.keys(data).forEach(key => {
-            firebaseArticles.push({ id: key, ...data[key] });
+            const article = data[key];
+            // इमेज के सभी संभावित नाम चेक करके एक स्टैंडर्ड 'image' फ़ील्ड सेट करें
+            const imgUrl = article.img1 || article.image || article.img || article.imageUrl || article.insta_watermarked_img || 'logo.png';
+            firebaseArticles.push({ id: key, ...article, image: imgUrl, img1: imgUrl });
         });
         firebaseArticles.reverse(); // Latest First
     }
+
+    // 🔴 सबसे मुख्य फिक्स: global sampleNews को फ़ायरबेस डेटा से अपडेट करें
+    window.sampleNews = firebaseArticles;
   
     updateDynamicCategories(window.sampleNews);
     renderNews(); // मेन ग्रिड के लिए
     renderABPHeroBanner(window.sampleNews); // रेड बॉक्स के लिए
-    renderRightSidebar(window.sampleNews); // 🚀 नए राइट साइडबार के लिए
+    renderRightSidebar(window.sampleNews); // राइट साइडबार के लिए
     renderMostReadWidget();
+    
     const loader = document.getElementById("loader");
-if(loader){
-    loader.style.display = "none";
-}
+    if (loader) {
+        loader.style.display = "none";
+    }
+    
     renderEditorsChoice();
-    populateArticlePage(); // 🚀 यह लाइन छूट गई थी! इसी वजह से लोडिंग अटका था।
+    populateArticlePage(); // आर्टिकल पेज रेंडर
 });
 
 function updateDynamicCategories(articles) {
