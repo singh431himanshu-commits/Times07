@@ -396,15 +396,22 @@ function renderABPHeroBanner(newsList) {
     }, 2000);
 }
 function createSlug(text) {
-    return (text || "")
-        .replace(/ \| Times07 News/ig, "") // फालतू ब्रांड नेम हटाएगा
+    if (!text) return "news-" + Date.now();
+    let cleanText = text.replace(/ \| Times07 News/ig, "");
+
+    // हिंदी को रोमन इंग्लिश में बदलेगा (Transliteration)
+    if (window.transliterate) {
+        try { cleanText = window.transliterate(cleanText); } catch(e){}
+    }
+
+    return cleanText
         .toLowerCase()
-        .replace(/[^\p{L}\p{N}\s-]/gu, "") // हिंदी और इंग्लिश दोनों सपोर्ट करेगा
+        .replace(/[^a-z0-9\s-]/g, "") // सिर्फ शुद्ध English Letters और Numbers रखेगा
+        .trim()
         .replace(/\s+/g, "-")
         .replace(/-+/g, "-")
         .replace(/^-+|-+$/g, "");
 }
-
 // ==========================================================
 // DYNAMIC ARTICLE PAGE & AUTOMATIC RELATED SUGGESTIONS (RESTORED)
 // ==========================================================
@@ -412,199 +419,73 @@ function populateArticlePage() {
     const urlParams = new URLSearchParams(window.location.search);
     let finalIndex = parseInt(urlParams.get('id'), 10);
     const slug = urlParams.get("slug");
-    const savedNews = JSON.parse(localStorage.getItem('times07_news')) || window.sampleNews || [];
-  
+    const savedNews = window.sampleNews || JSON.parse(localStorage.getItem('times07_news')) || [];
 
-if (slug) {
-    finalIndex = savedNews.findIndex(item => (item.slug || createSlug(item.title)) === slug);
-}
+    if (slug) {
+        finalIndex = savedNews.findIndex(item => (item.slug || createSlug(item.title)) === slug);
+    }
 
     if (finalIndex !== -1 && savedNews[finalIndex]) {
         const news = savedNews[finalIndex];
-        document.querySelector('link[rel="canonical"]')?.setAttribute(
-    "href",
-     window.location.href
-);
-        // Open Graph
-document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
-document.querySelector('meta[property="og:description"]')?.setAttribute("content", (news.summary || news.desc || "").substring(0, 160));
-document.querySelector('meta[property="og:url"]')?.setAttribute("content", window.location.href);
+        const articleSlug = news.slug || createSlug(news.title);
+        const fullCanonicalUrl = `https://times07news.in/article.html?slug=${articleSlug}`;
 
-// Agar image field ka naam alag hai to mujhe bata dena
-document.querySelector('meta[property="og:image"]')?.setAttribute(
-  "content",
-  news.image || news.img || ""
-);
+        // 1. DYNAMIC CANONICAL FOR GOOGLE INDEXING
+        let canonicalEl = document.getElementById("canonical-url") || document.querySelector('link[rel="canonical"]');
+        if (canonicalEl) {
+            canonicalEl.setAttribute("href", fullCanonicalUrl);
+        }
 
-// News Schema
-    document.getElementById("news-schema").textContent = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": news.title,
-  "description": news.summary || news.description || "",
-  "image": [
-    {
-        "@type": "ImageObject",
-        "url": news.image ||
-        news.img ||
-        news.img1 ||
-        news.insta_watermarked_img ||
-        window.location.origin + "/logo.png",
-        "width": "1200",
-        "height": "675"
-    }
-],
-  "url": window.location.href,
-  "isAccessibleForFree": true,
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": window.location.href
-  },
-  "datePublished": news.timestamp
-    ? new Date(news.timestamp).toISOString()
-    : new Date().toISOString(),
-  "dateModified": new Date().toISOString(),
-  "author": {
-    "@type": "Organization",
-    "name": "Times07 News"
-  },
- "publisher": {
-  "@type": "Organization",
-  "name": "Times07 News",
-  "logo": {
-    "@type": "ImageObject",
-    "url": window.location.origin + "/logo.png"
-  }
-},
-"inLanguage": "hi-IN"
-});
+        // 2. META TAGS
+        document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
+        document.querySelector('meta[property="og:description"]')?.setAttribute("content", (news.summary || news.desc || "").substring(0, 160));
+        document.querySelector('meta[property="og:url"]')?.setAttribute("content", fullCanonicalUrl);
+        document.querySelector('meta[property="og:image"]')?.setAttribute("content", news.image || news.img1 || "");
 
+        // 3. SCHEMA.ORG FOR GOOGLE NEWS
+        const schemaContainer = document.getElementById("news-schema");
+        if (schemaContainer) {
+            schemaContainer.textContent = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "NewsArticle",
+                "headline": news.title,
+                "description": (news.summary || news.desc || "").substring(0, 160),
+                "image": [news.image || news.img1 || "https://times07news.in/logo.png"],
+                "url": fullCanonicalUrl,
+                "mainEntityOfPage": { "@type": "WebPage", "@id": fullCanonicalUrl },
+                "datePublished": news.timestamp ? new Date(news.timestamp).toISOString() : new Date().toISOString(),
+                "dateModified": new Date().toISOString(),
+                "author": { "@type": "Organization", "name": "Times07 News" },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Times07 News",
+                    "logo": { "@type": "ImageObject", "url": "https://times07news.in/logo.png" }
+                },
+                "inLanguage": "hi-IN"
+            });
+        }
 
-document.querySelector('meta[property="og:title"]')?.setAttribute("content", news.title);
-document.querySelector('meta[name="twitter:title"]')?.setAttribute(
-  "content",
-  news.title
-);
+        document.title = `${news.title} - Times07 News`;
+        if(document.getElementById("meta-title")) document.getElementById("meta-title").textContent = `${news.title} | Times07 News`;
 
-document.querySelector('meta[property="og:description"]')?.setAttribute(
-  "content",
-  news.summary || news.description || ""
-);
-document.querySelector('meta[name="twitter:description"]')?.setAttribute(
-  "content",
-  (news.summary || news.description || "").substring(0, 160)
-);
-document.querySelector('meta[property="og:image"]')?.setAttribute(
-  "content",
-  news.image || news.img || news.img1 || ""
-);
-
-document.querySelector('meta[name="twitter:image"]')?.setAttribute(
-  "content",
-  news.image || news.img || news.img1 || ""
-);
-
-document.querySelector('meta[property="og:image:alt"]')?.setAttribute(
-  "content",
-  news.title
-);
-
-document.querySelector('meta[property="og:image:width"]')?.setAttribute(
-  "content",
-  "1200"
-);
-
-document.querySelector('meta[property="og:image:height"]')?.setAttribute(
-  "content",
-  "675"
-);
-
-
-document.querySelector('meta[property="og:url"]')?.setAttribute(
-  "content",
-  window.location.href
-);
-const publishedDate = news.timestamp
-  ? new Date(news.timestamp).toISOString()
-  : new Date().toISOString();
-
-document.querySelector('meta[property="article:published_time"]')?.setAttribute(
-  "content",
-  publishedDate
-);
-
-document.querySelector('meta[property="article:modified_time"]')?.setAttribute(
-  "content",
-  new Date().toISOString()
-);
-
-document.querySelector('meta[name="description"]')?.setAttribute(
-  "content",
-  (news.summary || news.description || "").substring(0, 160)
-);
-document.querySelector('meta[name="keywords"]')?.setAttribute(
-  "content",
-  `${news.category || ""}, ${news.title || ""}, Times07 News, Breaking News`
-);
-document.querySelector('meta[name="news_keywords"]')?.setAttribute(
-  "content",
-  `${news.category || ""}, ${news.title || ""}`
-);
-document.querySelector('meta[property="article:section"]')?.setAttribute(
-  "content",
-  news.category || "News"
-);
-document.querySelector('meta[property="article:tag"]')?.setAttribute(
-  "content",
-  news.category || news.title
-);
-
-const articleSlug = news.slug || createSlug(news.title);
-const canonicalUrl = `https://times07news.in/article.html?slug=${articleSlug}`;
-window.history.replaceState(
-    {},
-    "",
-    `${window.location.pathname}?slug=${articleSlug}`
-);
-
-document.querySelector('link[rel="canonical"]')?.setAttribute(
-  "href",
-  canonicalUrl
-);
-        document.title = `${news.title} - Times07 News | Breaking News`;
-        document.getElementById("meta-title").textContent =
-`${news.title} | Times07 News`;
-        
         if(document.getElementById('page-title')) document.getElementById('page-title').innerText = news.title;
         if(document.getElementById('page-cat')) document.getElementById('page-cat').innerText = news.category || "मुख्य समाचार";
         if(document.getElementById('page-time')) {
-    document.getElementById('page-time').innerText = news.timestamp
-    ? new Date(news.timestamp * 1000).toLocaleDateString("hi-IN")
-    : "आज";
-}
+            document.getElementById('page-time').innerText = news.timestamp ? new Date(news.timestamp).toLocaleDateString("hi-IN") : "आज";
+        }
         if(document.getElementById('page-img')) {
-    const articleImg = document.getElementById('page-img');
-    articleImg.src = news.image || news.insta_watermarked_img || news.img1 || 'logo.png';
-    articleImg.loading = "eager";
-    articleImg.decoding = "async";
-}
-        if(document.getElementById('page-img')) {
-    document.getElementById('page-img').alt = news.title;
-}        if(!news.description){
-    news.description = news.summary || news.content || "";
-}
-        
-         let rawContent = news.content_html || news.content || news.desc || news.article || news.body || news.summary || news.description || "खबर की विस्तृत जानकारी के लिए टाइम्स07 पर बने रहें।";
-         if (rawContent) {
+            const articleImg = document.getElementById('page-img');
+            articleImg.src = news.image || news.img1 || 'logo.png';
+            articleImg.alt = news.title;
+        }
+
+        let rawContent = news.content_html || news.content || news.desc || news.summary || "खबर की विस्तृत जानकारी के लिए टाइम्स07 पर बने रहें।";
+        if (rawContent) {
             rawContent = rawContent.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
         }
         if(document.getElementById('page-content')) document.getElementById('page-content').innerHTML = rawContent;
-        if(document.getElementById('views-count')) {
-    document.getElementById('views-count').innerText = 
-    (news.views || 0).toLocaleString("en-IN");
-}
+        if(document.getElementById('views-count')) document.getElementById('views-count').innerText = (news.views || 0).toLocaleString("en-IN");
 
-        // 🚀 Article के नीचे Related News
         renderArticleSuggestions(finalIndex, news.category, savedNews);
     }
 }
