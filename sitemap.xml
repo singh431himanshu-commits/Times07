@@ -2186,11 +2186,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://times07news.in/article.html?slug=the-apartment-job-रिलीज़-ओटीटी-पर-सस्पेंस-और-डार्क-मर्डर-मिस्ट्री-का-बड़ा-धमाका</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://times07news.in/article.html?slug=एशिया-का-पहला-6g-ai-नेटवर्क-भारत-में-शुरू-100x-फ़ास्ट-इंटरनेट-स्पीड-देख-दुनिया-हैरान</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2266,17 +2261,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://times07news.in/article.html?slug=नई-ott-रिलीज-आदर्श-बाल-विद्यालय-से-मुसाफिर-कैफे-तक-times07-news</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://times07news.in/article.html?slug=bwf-world-championships-2026</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://times07news.in/article.html?slug=indian-cricket-stars-honored</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2357,6 +2342,11 @@
   </url>
   <url>
     <loc>https://times07news.in/article.html?slug=august-15-declared-india-day-in</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=sushant-singh-rajput-biography-in-hindi</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
