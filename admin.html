@@ -39,14 +39,17 @@
         .btn:hover { background: #e0e0e0; transform: translateY(-2px); }
         .btn-danger { background: #ff5252; color: #fff; }
         .btn-danger:hover { background: #ff7675; }
+        .btn-warning { background: #f1c40f; color: #000; }
+        .btn-warning:hover { background: #f39c12; }
         .btn-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
         .table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .table th, .table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13px; }
         .hashtag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .hashtag-chip { background: #333; color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; display: flex; align-items: center; gap: 8px; border: 1px solid #444; }
         .hashtag-chip .remove { cursor: pointer; color: #ff5252; font-weight: bold; }
-        .insta-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
-        .insta-modal-content { background: var(--surface); padding: 30px; border-radius: 12px; width: 900px; display: flex; gap: 30px; position: relative; border: 1px solid var(--border); }
+        .insta-modal, .edit-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+        .insta-modal-content, .edit-modal-content { background: var(--surface); padding: 30px; border-radius: 12px; width: 900px; display: flex; gap: 30px; position: relative; border: 1px solid var(--border); max-height: 90vh; overflow-y: auto; }
+        .edit-modal-content { flex-direction: column; width: 700px; }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #ff5252; }
         .canvas-container, .caption-container { flex: 1; display: flex; flex-direction: column; align-items: center; }
         #instaCanvas { max-width: 100%; border-radius: 8px; }
@@ -65,7 +68,6 @@
         <div class="nav-item" onclick="switchBotTab('trending', this)"><i class="fa-solid fa-fire"></i> Trending Bot</div>
         <div class="nav-item" onclick="switchBotTab('netflix', this)"><i class="fa-solid fa-tv"></i> Netflix / OTT Bot</div>
         
-        <!-- 🎨 STUDIO LINK (Opens Standalone Studio in New Tab) -->
         <a href="studio.html" target="_blank" class="nav-item" style="color: #facc15; text-decoration: none;">
             <i class="fa-solid fa-wand-magic-sparkles"></i> HD Banner Studio
         </a>
@@ -170,7 +172,7 @@
 <input type="file" id="manual_img_file" class="custom-input" accept="image/*" onchange="uploadLocalImage(this, 'manual_img_val', 'preview_img_manual')">
 <input type="url" class="custom-input" placeholder="या डायरेक्ट फोटो का URL लिंक यहाँ पेस्ट करें..." style="margin-top:8px;" oninput="if(this.value){ document.getElementById('manual_img_val').value=this.value; document.getElementById('preview_img_manual').src=this.value; document.getElementById('preview_img_manual').style.display='block'; }">
 <input type="hidden" id="manual_img_val">
-<img id="preview_img_manual" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'"> display: none;" onload="this.style.display='block'">
+<img id="preview_img_manual" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'">
                 <span class="section-title">News Summary / Details</span>
                 <textarea id="manual_desc" rows="6" placeholder="पूरी खबर यहाँ टाइप करें..."></textarea>
                 <div class="placement-row">
@@ -262,7 +264,7 @@
                             <th style="width: 120px;">Date</th>
                             <th>Title (शीर्षक)</th>
                             <th>Category / Placement</th>
-                            <th style="width: 80px;">Action</th>
+                            <th style="width: 130px;">Action</th>
                         </tr>
                     </thead>
                     <tbody id="articles-list-table"><tr><td colspan="5" style="text-align:center;">डेटा लोड हो रहा है...</td></tr></tbody>
@@ -270,6 +272,47 @@
             </div>
         </div>
     </main>
+
+    <!-- 🛠️ EDIT ARTICLE MODAL -->
+    <div id="edit-modal" class="edit-modal">
+        <div class="edit-modal-content">
+            <span class="close-modal" onclick="document.getElementById('edit-modal').style.display='none'"><i class="fa-solid fa-xmark"></i></span>
+            <h3 style="color: #00d2d3;"><i class="fa-solid fa-pen-to-square"></i> Edit Article & Convert Image to Light URL</h3>
+            <input type="hidden" id="edit_article_id">
+            
+            <span class="section-title">1. Title</span>
+            <input type="text" id="edit_title" class="custom-input">
+
+            <span class="section-title">2. Image Convertor (Upload new photo or Convert Existing)</span>
+            <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px dashed #00d2d3;">
+                <span style="font-size:11px; color:#aaa;">1. नई फोटो चुनें (Auto Convert):</span>
+                <input type="file" id="edit_img_file" class="custom-input" accept="image/*" onchange="uploadAndConvertImage(this)">
+                
+                <div style="margin-top: 10px; font-size: 11px; color: #aaa;">2. इमेज URL या Base64 डेटा:</div>
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <input type="text" id="edit_img_url" class="custom-input" placeholder="https://i.ibb.co/...">
+                    <button id="btn_convert_base64" class="btn btn-warning" style="margin:0; width: auto; font-size: 11px; padding: 0 12px; white-space: nowrap;" onclick="convertCurrentBase64ToUrl()">Convert Base64 to URL ⚡</button>
+                </div>
+                <img id="edit_img_preview" style="margin-top: 10px; max-height: 120px; border-radius: 6px; display: none;">
+            </div>
+
+            <span class="section-title">3. Content / HTML</span>
+            <textarea id="edit_desc" rows="6" class="custom-input"></textarea>
+
+            <div class="placement-row">
+                <div class="placement-col">
+                    <span class="section-title">Placement</span>
+                    <select id="edit_placement" class="custom-input placement-options-list"></select>
+                </div>
+                <div class="placement-col">
+                    <span class="section-title">Category</span>
+                    <select id="edit_category" class="custom-input category-options-list"></select>
+                </div>
+            </div>
+
+            <button class="btn btn-warning" style="margin-top: 20px;" onclick="window.saveEditedArticle()"><i class="fa-solid fa-floppy-disk"></i> Save & Replace Heavy Image</button>
+        </div>
+    </div>
 
     <!-- INSTA MODAL -->
     <div id="insta-modal" class="insta-modal">
@@ -350,37 +393,99 @@
             }
         }
 
+        // 📸 ImgBB Auto URL Generator for File Input
+        function uploadAndConvertImage(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const formData = new FormData();
+                formData.append("image", file);
+
+                const preview = document.getElementById('edit_img_preview');
+                const urlInput = document.getElementById('edit_img_url');
+
+                urlInput.value = "⏳ ImgBB पर फ़ोटो अपलोड हो रही है...";
+
+                fetch("https://api.imgbb.com/1/upload?key=2df03545c158146f60f2d3ed0dbe24b3", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.data && data.data.url) {
+                        urlInput.value = data.data.url;
+                        preview.src = data.data.url;
+                        preview.style.display = 'block';
+                        document.getElementById('btn_convert_base64').style.display = 'none';
+                        alert("✅ इमेज का छोटा URL बन गया है!");
+                    } else {
+                        alert("❌ अपलोड एरर, कृपया दोबारा ट्राई करें।");
+                    }
+                })
+                .catch(err => alert("❌ नेटवर्क एरर!"));
+            }
+        }
+
+        // ⚡ 1-Click Convert Existing Base64 Image to ImgBB URL
+        function convertCurrentBase64ToUrl() {
+            const urlInput = document.getElementById('edit_img_url');
+            const base64Data = urlInput.value;
+
+            if(!base64Data || !base64Data.startsWith('data:image')) {
+                return alert("यहाँ कोई Base64 इमेज नहीं है!");
+            }
+
+            const btn = document.getElementById('btn_convert_base64');
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Converting...`;
+            btn.disabled = true;
+
+            const formData = new FormData();
+            formData.append("image", base64Data.split(',')[1]);
+
+            fetch("https://api.imgbb.com/1/upload?key=2df03545c158146f60f2d3ed0dbe24b3", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                btn.innerHTML = `Convert Base64 to URL ⚡`;
+                btn.disabled = false;
+
+                if (data && data.data && data.data.url) {
+                    urlInput.value = data.data.url;
+                    btn.style.display = 'none';
+                    
+                    const preview = document.getElementById('edit_img_preview');
+                    preview.src = data.data.url;
+                    preview.style.display = 'block';
+                    
+                    alert("✅ पुरानी भारी फोटो सफलता से छोटे URL में बदल गई है! अब Save बटन दबाएं।");
+                } else {
+                    alert("❌ कंवर्ट करने में एरर आया, पुनः प्रयास करें।");
+                }
+            })
+            .catch(err => {
+                btn.innerHTML = `Convert Base64 to URL ⚡`;
+                btn.disabled = false;
+                alert("❌ नेटवर्क एरर!");
+            });
+        }
+
         function addNewHashtag() {
             let v = document.getElementById('new-hashtag-input').value.trim();
             if(v && !liveHashtags.includes(v)) { liveHashtags.push(v.startsWith('#')?v:'#'+v); document.getElementById('new-hashtag-input').value=''; renderHashtags(); }
         }
         
-    function createSlug(text) {
-    if (!text) return 'news-' + Date.now();
-    
-    // अगर ट्रांसलिट्रेशन उपलब्ध है तो रोमन अंग्रेजी में बदलें
-    let roman = text;
-    if (window.transliterate) {
-        try {
-            roman = window.transliterate(text);
-        } catch(e) {
-            roman = text;
+        function createSlug(text) {
+            if (!text) return 'news-' + Date.now();
+            let roman = text;
+            if (window.transliterate) {
+                try { roman = window.transliterate(text); } catch(e) { roman = text; }
+            }
+            const shortText = roman.split(' ').slice(0, 6).join(' ');
+            const clean = shortText.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/[\s_]+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, '');
+            return clean || ('news-' + Date.now());
         }
-    }
-    
-    // सिर्फ शुरुआती 5-6 मुख्य शब्द लें ताकि URL बहुत लंबा न बने
-    const shortText = roman.split(' ').slice(0, 6).join(' ');
 
-    const clean = shortText
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .replace(/[\s_]+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-+|-+$/g, '');
-
-    return clean || ('news-' + Date.now());
-}
         async function loadDrafts(id) {
             const botData = botsConfig[id];
             const container = document.getElementById(`drafts_${id}`);
@@ -410,7 +515,6 @@
                         <span class="section-title">1. Select Title</span><div class="radio-group">${titlesHTML}</div>
                         <span class="section-title" style="margin-top:20px;">2. Select Image (Bot Options)</span><div class="img-grid">${imgsHTML}</div>
                         
-                        <!-- 🖼️ CUSTOM IMAGE OPTIONS (PC UPLOAD & DIRECT LINK) -->
                         <div style="margin-top:15px; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px dashed #555; display: flex; flex-direction: column; gap: 10px;">
                             <span style="font-size:12px; color:#00d2d3; font-weight: bold;">🖼️ या अपनी पसंद की इमेज लगाएँ (Custom Image Options):</span>
                             
@@ -536,13 +640,15 @@
     <!-- FIREBASE DB CONNECTION -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase, ref, push, set, onValue, get, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getDatabase, ref, push, set, onValue, get, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
         const firebaseConfig = { apiKey: "AIzaSyA0c_Bz7HdU6YoL62L1cGfsA89Hg7609Ww", authDomain: "times07news.firebaseapp.com", projectId: "times07news", storageBucket: "times07news.firebasestorage.app", messagingSenderId: "527951679601", appId: "1:527951679601:web:d33bfb58aaae9665c68bd0", databaseURL: "https://times07news-default-rtdb.firebaseio.com" };
 
         const db = getDatabase(initializeApp(firebaseConfig));
         const articlesRef = ref(db, 'articles');
         const pollRef = ref(db, 'live_poll');
+
+        let rawArticlesData = {};
 
         // PUBLISH LOGIC
         window.publishDraft = function(type, id) {
@@ -649,17 +755,17 @@
             }
         });
 
-        // MANAGE NEWS LOGIC
+        // MANAGE NEWS & EDIT LOGIC
         window.loadAdminNewsTable = async function() {
             const table = document.getElementById('articles-list-table');
             table.innerHTML = '<tr><td colspan="5" style="text-align:center;">डेटा लोड हो रहा है...</td></tr>';
             try {
                 const snapshot = await get(articlesRef);
                 if (snapshot.exists()) {
-                    let data = snapshot.val();
+                    rawArticlesData = snapshot.val();
                     let articles = [];
-                    for (let key in data) {
-                        articles.push({ id: key, ...data[key] });
+                    for (let key in rawArticlesData) {
+                        articles.push({ id: key, ...rawArticlesData[key] });
                     }
                     
                     articles.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
@@ -688,7 +794,8 @@
                                 <td style="color: #00d2d3;">${dateStr}</td>
                                 <td><strong style="color: #fff;">${a.title}</strong></td>
                                 <td><span class="hashtag-chip" style="display:inline-block; margin:0; font-size: 11px;">${a.category || a.placement || 'N/A'}</span></td>
-                                <td>
+                                <td style="display: flex; gap: 5px;">
+                                    <button class="btn btn-warning" style="margin: 0; padding: 6px 12px; font-size: 12px; width: auto;" onclick="window.openEditModal('${a.id}')" title="Edit"><i class="fa-solid fa-pen"></i> Edit</button>
                                     <button class="btn btn-danger" style="margin: 0; padding: 6px 12px; font-size: 12px; width: auto;" onclick="window.deleteSingleNews('${a.id}')" title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -703,6 +810,65 @@
             }
         };
 
+        window.openEditModal = function(id) {
+            const article = rawArticlesData[id];
+            if (!article) return alert("खबर डेटा नहीं मिला!");
+
+            document.getElementById('edit_article_id').value = id;
+            document.getElementById('edit_title').value = article.title || '';
+            document.getElementById('edit_desc').value = article.desc || '';
+            
+            const imgUrl = article.img1 || article.image || '';
+            const urlInput = document.getElementById('edit_img_url');
+            urlInput.value = imgUrl;
+
+            const btnConvert = document.getElementById('btn_convert_base64');
+            const preview = document.getElementById('edit_img_preview');
+
+            if(imgUrl && imgUrl.startsWith('data:image')) {
+                btnConvert.style.display = 'inline-flex';
+                preview.style.display = 'none';
+            } else {
+                btnConvert.style.display = 'none';
+                if(imgUrl) {
+                    preview.src = imgUrl;
+                    preview.style.display = 'block';
+                }
+            }
+
+            document.getElementById('edit_placement').value = article.placement || 'latest-news-grid';
+            document.getElementById('edit_category').value = article.category || 'ताज़ा ख़बरें';
+
+            document.getElementById('edit-modal').style.display = 'flex';
+        };
+
+        window.saveEditedArticle = async function() {
+            const id = document.getElementById('edit_article_id').value;
+            const newTitle = document.getElementById('edit_title').value;
+            const newImg = document.getElementById('edit_img_url').value;
+            const newDesc = document.getElementById('edit_desc').value;
+
+            if (!newTitle || !newImg) return alert("शीर्षक और इमेज URL अनिवार्य हैं!");
+
+            try {
+                await update(ref(db, 'articles/' + id), {
+                    title: newTitle,
+                    img1: newImg,
+                    image: newImg,
+                    desc: newDesc,
+                    summary: newDesc.substring(0, 180),
+                    placement: document.getElementById('edit_placement').value,
+                    category: document.getElementById('edit_category').value
+                });
+
+                alert("✅ खबर और इमेज URL सफलतापूर्वक अपडेट हो गए!");
+                document.getElementById('edit-modal').style.display = 'none';
+                window.loadAdminNewsTable();
+            } catch(e) {
+                alert("❌ अपडेट में एरर आया: " + e.message);
+            }
+        };
+
         window.deleteSingleNews = async function(id) {
             if(confirm("क्या आप सच में इस खबर को डिलीट करना चाहते हैं?")) {
                 await remove(ref(db, 'articles/' + id));
@@ -714,7 +880,7 @@
             const checkboxes = document.querySelectorAll('.news-checkbox:checked');
             if(checkboxes.length === 0) return alert("पहले डिलीट करने के लिए कम से कम एक खबर सिलेक्ट करें!");
             
-            if(confirm(`क्या आप सच में ${checkboxes.length} खबरों को एक साथ डिलीट करना चाहते हैं? (इसे वापस नहीं लाया जा सकेगा)`)) {
+            if(confirm(`क्या आप सच में ${checkboxes.length} खबरों को एक साथ डिलीट करना चाहते हैं?`)) {
                 for(let box of checkboxes) {
                     await remove(ref(db, 'articles/' + box.value));
                 }
