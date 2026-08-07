@@ -1,24 +1,971 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-
-<url>
-<loc>https://times07news.in/</loc>
-
-<news:news>
-<news:publication>
-<news:name>Times07 News</news:name>
-<news:language>hi</news:language>
-</news:publication>
-
-<news:publication_date>2026-08-02T08:00:00+05:30</news:publication_date>
-
-<news:title>
-भारत और दुनिया की ताज़ा खबरें | Times07 News
-</news:title>
-
-</news:news>
-</url>
-
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://times07news.in/article.html?slug=airtel-vs-jio-2026-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:07:55+05:30</news:publication_date>
+      <news:title>Airtel vs Jio जून 2026: कौन सी कंपनी आगे | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:40:46+05:30</news:publication_date>
+      <news:title>सियूटा में प्रवासी संकट | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:41:12+05:30</news:publication_date>
+      <news:title>यूक्रेन युद्ध: आसमान की लड़ाई | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:41:15+05:30</news:publication_date>
+      <news:title>यूक्रेन युद्ध: आसमान की लड़ाई | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:41:56+05:30</news:publication_date>
+      <news:title>कोट्टायम मेडिकल कॉलेज को बसीर पुरस्कार | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:42:26+05:30</news:publication_date>
+      <news:title>कांग्रेस नेताओं की ऑडियो रिकॉर्डिंग | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=rayalaseema-drinking-water-crisis-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:42:54+05:30</news:publication_date>
+      <news:title>Rayalaseema Drinking Water Crisis | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:43:24+05:30</news:publication_date>
+      <news:title>शिवमोग्गा में सूखे की स्थिति की समीक्षा | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-47-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:43:46+05:30</news:publication_date>
+      <news:title>हैदराबाद में 47 करोड़ का मछली बाजार | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-un-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:44:13+05:30</news:publication_date>
+      <news:title>इरान में बढ़ रही फांसी की संख्या पर UN चिंतित | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:44:43+05:30</news:publication_date>
+      <news:title>स्पेसएक्स रॉकेट का चंद्रमा से टकराव | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:45:11+05:30</news:publication_date>
+      <news:title>अब्दुल अल-सय्यद की बड़ी जीत | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:45:33+05:30</news:publication_date>
+      <news:title>ड्रोन से जर्मन हवाई अड्डे पर हमला | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:46:16+05:30</news:publication_date>
+      <news:title>मक्के की फसल पर संकट | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:46:32+05:30</news:publication_date>
+      <news:title>यूट्यूबर सवुक्कू शंकर गिरफ्तार | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:46:32+05:30</news:publication_date>
+      <news:title>यूट्यूबर सवुक्कू शंकर गिरफ्तार | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:46:58+05:30</news:publication_date>
+      <news:title>चेन्नई में मतदान का रिकॉर्ड | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:47:14+05:30</news:publication_date>
+      <news:title>तमिलनाडु कांग्रेस में गठबंधन विवाद | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:47:35+05:30</news:publication_date>
+      <news:title>कानपुर-लखनऊ एक्सप्रेसवे में लापरवाही पर बड़ा एक्शन | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-5-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:47:48+05:30</news:publication_date>
+      <news:title>लखनऊ-कानपुर एक्सप्रेसवे की 5वीं मरम्मत | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:48:03+05:30</news:publication_date>
+      <news:title>आज का कर्क राशिफल | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:48:33+05:30</news:publication_date>
+      <news:title>स्पेन और मोरक्को के बीच प्रवासी संकट | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:48:58+05:30</news:publication_date>
+      <news:title>माला ज्यूइश सिनेगॉग का जीर्णोद्धार शुरू | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=ayush-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T20:49:15+05:30</news:publication_date>
+      <news:title>AYUSH डॉक्टर्स की अनिश्चितकालीन हड़ताल | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=नेटफ्लिक्स-पर-24-जुलाई-को-रिलीज-होंगी-8-फिल्में-और-सीरीज-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T22:58:17+05:30</news:publication_date>
+      <news:title>नेटफ्लिक्स पर 24 जुलाई को रिलीज होंगी 8 फिल्में और सीरीज | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=new-ott-release-मुसाफिर-कैफे-से-लेकर-आदर्श-बाल-विद्यालय-तक</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:07:07+05:30</news:publication_date>
+      <news:title>New OTT Release: 'मुसाफिर कैफे' से लेकर 'आदर्श बाल विद्यालय' तक</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=netflix-releases-नहीं-मिलेगी-फुर्सत-24-से-31-मई-तक-नेटफ्लिक्स-पर-होगा-धमाका-आएंगी-जबरदस्त-सीरीज-फिल्में-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:07:27+05:30</news:publication_date>
+      <news:title>Netflix Releases: नहीं मिलेगी फुर्सत, 24 से 31 मई तक नेटफ्लिक्स पर होगा धमाका; आएंगी जबरदस्त सीरीज-फिल्में - Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=netflix-पर-होगा-धमाका-अगस्त-में-रिलीज-होंगी-10-से-ज्यादा-सीरीज-और-फिल्में-देखें-लिस्ट-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:07:41+05:30</news:publication_date>
+      <news:title>Netflix पर होगा धमाका, अगस्त में रिलीज होंगी 10 से ज्यादा सीरीज और फिल्में, देखें लिस्ट | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=4-हफ्तों-से-netflix-पर-राज-कर-रही-ये-5-इंडियन-वेब-सीरीज-टॉप-5-की-लिस्ट-देखें-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:07:56+05:30</news:publication_date>
+      <news:title>4 हफ्तों से Netflix पर राज कर रही ये 5 इंडियन वेब सीरीज, टॉप-5 की लिस्ट देखें - Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=netflix-पर-इंडिया-में-ट्रेंडिंग-में-टॉपर-निकली-5-फिल्में-मार-धाड़-और-रोमांच-से-भरपूर-हैं-सभी-थ्रिलर-jagran</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:08:10+05:30</news:publication_date>
+      <news:title>Netflix पर इंडिया में ट्रेंडिंग में टॉपर निकली 5 फिल्में, मार-धाड़ और रोमांच से भरपूर हैं सभी थ्रिलर - Jagran</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=top-5-netflix-shows-that-will-leave-you-hooked</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:08:21+05:30</news:publication_date>
+      <news:title>Top 5 Netflix Shows That Will Leave You Hooked</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=new-ott-releases-ideal-boys-school-to-migrant-cafe-a-weekend-of-12-fun-web-series-and-movies-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:08:33+05:30</news:publication_date>
+      <news:title>New OTT Releases: 'Ideal Boys School' to 'Migrant Cafe' - A Weekend of 12 Fun Web Series and Movies | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=14-new-shows-and-movies-coming-to-netflix-from-july-20-to-july-26-a-comprehensive-guide</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:08:53+05:30</news:publication_date>
+      <news:title>14 New Shows and Movies Coming to Netflix from July 20 to July 26: A Comprehensive Guide</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=मुसाफिर-कैफे-2-अधूरी-मोहब्बत-की-कहानी-को-पूरा-करने-फिर-लौटेंगे-मुसाफिर-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:09:07+05:30</news:publication_date>
+      <news:title>मुसाफिर कैफे 2: अधूरी मोहब्बत की कहानी को पूरा करने फिर लौटेंगे मुसाफिर | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=stranger-things-5-का-आखिरी-एपिसोड-ने-खड़े-किए-फैंस-के-रोंगटे-कुछ-वक्त-के-लिए-क्रैश-हुआ-नेटफ्लिक्स-amar-ujala-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:09:18+05:30</news:publication_date>
+      <news:title>Stranger Things 5 का आखिरी एपिसोड ने खड़े किए फैंस के रोंगटे, कुछ वक्त के लिए क्रैश हुआ नेटफ्लिक्स - Amar Ujala | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=netflix-पर-मई-में-लगेगा-एंटरटेनमेंट-का-मेला-रिलीज-होंगी-13-फिल्में-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:09:31+05:30</news:publication_date>
+      <news:title>Netflix पर मई में लगेगा एंटरटेनमेंट का मेला, रिलीज होंगी 13 फिल्में | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=new-release-8-फिल्में-और-सीरीज-24-जुलाई-के-दिन-ओटीटी-पर-होंगी-रिलीज-यहां-देखिए-लिस्ट-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-05T23:09:42+05:30</news:publication_date>
+      <news:title>New Release: 8 फिल्में और सीरीज, 24 जुलाई के दिन ओटीटी पर होंगी रिलीज, यहां देखिए लिस्ट - Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=विश्व-कप-2027-क्वालीफायर-मैचों-की-डेट-आई-सामने-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:06:38+05:30</news:publication_date>
+      <news:title>विश्व कप 2027 क्वालीफायर मैचों की डेट आई सामने | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=वनडे-वर्ल्ड-कप-2027-शेड्यूल-घोषित-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:06:55+05:30</news:publication_date>
+      <news:title>वनडे वर्ल्ड कप 2027 शेड्यूल घोषित | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=कर्नाटक-सरकार-की-बारिश-पर-नजर-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:07:09+05:30</news:publication_date>
+      <news:title>कर्नाटक सरकार की बारिश पर नजर | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=मानसून-की-वापसी-और-तबाही-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:07:18+05:30</news:publication_date>
+      <news:title>मानसून की वापसी और तबाही | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=प्राथमिक-विद्यालय-की-कमी-का-दर्द-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:07:35+05:30</news:publication_date>
+      <news:title>प्राथमिक विद्यालय की कमी का दर्द | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=प्राथमिक-विद्यालय-की-कमी-का-दर्द-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:07:35+05:30</news:publication_date>
+      <news:title>प्राथमिक विद्यालय की कमी का दर्द | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=योगी-सरकार-का-हर-घर-तिरंगा-अभियान-2026-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:07:59+05:30</news:publication_date>
+      <news:title>योगी सरकार का हर घर तिरंगा अभियान-2026 | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=मोहम्मद-शमी-का-फेवरेट-कोच-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:08:17+05:30</news:publication_date>
+      <news:title>मोहम्मद शमी का फेवरेट कोच | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=रोहित-शर्मा-की-चुनौती-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T09:08:34+05:30</news:publication_date>
+      <news:title>रोहित शर्मा की चुनौती | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=बैंकीपुर-उपचुनाव-जेपीएसी-की-जीत-का-अर्थ-बीजेपी-के-लिए-क्या-है-चुनौती-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T10:57:20+05:30</news:publication_date>
+      <news:title>बैंकीपुर उपचुनाव: जेपीएसी की जीत का अर्थ, बीजेपी के लिए क्या है चुनौती? | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=बिहार-में-बैंकीपुर-उपचुनाव-हार-के-बाद-बीजेपी-की-समीक्षा-बैठक-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T10:57:53+05:30</news:publication_date>
+      <news:title>बिहार में बैंकीपुर उपचुनाव हार के बाद बीजेपी की समीक्षा बैठक | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=एशियाई-शेर-का-भविष्य-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T10:58:16+05:30</news:publication_date>
+      <news:title>एशियाई शेर का भविष्य | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=झारखंड-प्रोटेस्ट-की-कहानी-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T10:58:41+05:30</news:publication_date>
+      <news:title>झारखंड प्रोटेस्ट की कहानी | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=यूक्रेन-पर-रूस-का-हमला-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T10:59:07+05:30</news:publication_date>
+      <news:title>यूक्रेन पर रूस का हमला | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=नाइजीरिया-में-300-से-अधिक-अपहृत-लोगों-को-बचाया-गया-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T10:59:39+05:30</news:publication_date>
+      <news:title>नाइजीरिया में 300 से अधिक अपहृत लोगों को बचाया गया | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=weekend-ka-vaar-salman-khan-shehnaaz-gill-and-other-stars-to-be-seen-on-this-show-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T10:59:59+05:30</news:publication_date>
+      <news:title>Weekend Ka Vaar: Salman Khan, Shehnaaz Gill, And Other Stars To Be Seen On This Show | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=ott-releases-this-week-इस-हफ्ते-रिलीज-होंगी-नई-फिल्में-सीरीज-घर-बैठे-मिलेगा-मनोरंजन-का-फुल-पैकेज-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T11:00:21+05:30</news:publication_date>
+      <news:title>OTT Releases This Week: इस हफ्ते रिलीज होंगी नई फिल्में-सीरीज, घर बैठे मिलेगा मनोरंजन का फुल पैकेज - Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=netflix-पर-नंबर-1-पर-ट्रेंड-कर-रही-है-ये-सीरीज-87-है-इसकी-रेटिंग-लोग-बोले-इंडिया-में-भी-ऐसा-होना-चाहिए-hindustan</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T11:00:36+05:30</news:publication_date>
+      <news:title>Netflix पर नंबर 1 पर ट्रेंड कर रही है ये सीरीज, 8.7 है इसकी रेटिंग, लोग बोले- इंडिया में भी ऐसा होना चाहिए - Hindustan</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=अन्थ्रोपिक-सिद्धांत-क्या-है-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:10:50+05:30</news:publication_date>
+      <news:title>अन्थ्रोपिक सिद्धांत क्या है | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=mhada-लॉटरी-2026-ऑनलाइन-आवेदन-शुरू-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:11:11+05:30</news:publication_date>
+      <news:title>MHADA लॉटरी 2026: ऑनलाइन आवेदन शुरू | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=गुरुग्राम-की-ताज़ा-खबरें-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:11:48+05:30</news:publication_date>
+      <news:title>गुरुग्राम की ताज़ा खबरें | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=मार्था-रीव्स-एक-दिग्गज-गायिका-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:12:06+05:30</news:publication_date>
+      <news:title>मार्था रीव्स: एक दिग्गज गायिका | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=शेख-हसीना-की-pc-से-भड़क-उठी-बांग्लादेश-सरकार-संप्रभुता-का-अपमान-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:12:51+05:30</news:publication_date>
+      <news:title>शेख हसीना की PC से भड़क उठी बांग्लादेश सरकार, संप्रभुता का अपमान | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=रहाणे-ने-धोनी-के-कमरे-को-लेकर-दिया-बयान-जानें-क्या-कहा-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:13:30+05:30</news:publication_date>
+      <news:title>रहाणे ने धोनी के कमरे को लेकर दिया बयान, जानें क्या कहा | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=bigg-boss-20-करण-अर्जुन-थीम-पर-खेला-जाएगा-दांव-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:13:52+05:30</news:publication_date>
+      <news:title>Bigg Boss 20: 'करण-अर्जुन' थीम पर खेला जाएगा दांव? | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=बंगाल-में-मस्जिदों-के-लाउडस्पीकर-पर-बवाल-isf-विधायक-नौशाद-सिद्दीकी-की-पुलिस-को-चुनौती-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:14:10+05:30</news:publication_date>
+      <news:title>बंगाल में मस्जिदों के लाउडस्पीकर पर बवाल: ISF विधायक नौशाद सिद्दीकी की पुलिस को चुनौती | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=पाकिस्तान-में-चुनावी-जीत-नवाज-शरीफ-की-पार्टी-pmln-को-बढ़त-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:14:24+05:30</news:publication_date>
+      <news:title>पाकिस्तान में चुनावी जीत: नवाज शरीफ की पार्टी PMLN को बढ़त | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=फिनलैंड-में-बच्चों-को-डीपफेक्स-से-बचाने-के-लिए-कानूनी-कदम-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:15:08+05:30</news:publication_date>
+      <news:title>फिनलैंड में बच्चों को डीपफेक्स से बचाने के लिए कानूनी कदम | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=हूती-संगठन-ने-सऊदी-टैंकरों-पर-हमलों-का-दावा-किया-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:15:35+05:30</news:publication_date>
+      <news:title>हूती संगठन ने सऊदी टैंकरों पर हमलों का दावा किया | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=गाजा-में-ट्रंप-के-शांति-योजना-को-खतरा-इज़राइली-हमले-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:15:56+05:30</news:publication_date>
+      <news:title>गाजा में ट्रंप के शांति योजना को खतरा इज़राइली हमले | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=लोकसभा-में-टैक्सेशन-बिल-पर-चर्चा-विपक्षी-दलों-का-विरोध-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T13:16:30+05:30</news:publication_date>
+      <news:title>लोकसभा में टैक्सेशन बिल पर चर्चा, विपक्षी दलों का विरोध | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=योगी-सरकार-का-मदरसा-वेतन-विधेयक-पर-फैसला-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T15:17:25+05:30</news:publication_date>
+      <news:title>योगी सरकार का मदरसा वेतन विधेयक पर फैसला | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=sbi-और-श्रीराम-फाइनेंस-में-निवेश-का-मौका-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T15:18:01+05:30</news:publication_date>
+      <news:title>SBI और श्रीराम फाइनेंस में निवेश का मौका | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=the-apartment-job-रिलीज़-ओटीटी-पर-सस्पेंस-और-डार्क-मर्डर-मिस्ट्री-का-बड़ा-धमाका</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T16:38:09+05:30</news:publication_date>
+      <news:title>'The Apartment Job' रिलीज़: ओटीटी पर सस्पेंस और डार्क मर्डर मिस्ट्री का बड़ा धमाका!</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=the-apartment-job-रिलीज़-ओटीटी-पर-सस्पेंस-और-डार्क-मर्डर-मिस्ट्री-का-बड़ा-धमाका</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T16:42:32+05:30</news:publication_date>
+      <news:title>'The Apartment Job' रिलीज़: ओटीटी पर सस्पेंस और डार्क मर्डर मिस्ट्री का बड़ा धमाका!</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=एशिया-का-पहला-6g-ai-नेटवर्क-भारत-में-शुरू-100x-फ़ास्ट-इंटरनेट-स्पीड-देख-दुनिया-हैरान</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T16:47:12+05:30</news:publication_date>
+      <news:title>एशिया का पहला 6G AI नेटवर्क भारत में शुरू: 100x फ़ास्ट इंटरनेट स्पीड देख दुनिया हैरान!</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=एक-देश-एक-चुनाव-पर-केंद्र-की-बड़ी-पहल-संसदीय-समिति-और-सभी-प्रमुख-दलों-के-बीच-मैराथन-चर्चा-शुरू</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T16:54:07+05:30</news:publication_date>
+      <news:title>'एक देश एक चुनाव' पर केंद्र की बड़ी पहल: संसदीय समिति और सभी प्रमुख दलों के बीच मैराथन चर्चा शुरू</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=संसद-मानसून-सत्र-में-चुनावी-संशोधन-बिल-पर-हंगामा</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:29:11+05:30</news:publication_date>
+      <news:title>संसद मानसून सत्र में चुनावी संशोधन बिल पर हंगामा</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=बलिया-के-रसड़ा-से-बीएसपी-विधायक-उमाशंकर-सिंह-का-निधन-55-की-उम्र-में-अंतिम-सांस-पूर्वांचल-में-शोक-की-लहर</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:33:34+05:30</news:publication_date>
+      <news:title>बलिया के रसड़ा से बीएसपी विधायक उमाशंकर सिंह का निधन: 55 की उम्र में अंतिम सांस, पूर्वांचल में शोक की लहर!</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=योगी-आदित्यनाथ-बुलडोजर-मॉडल-से-ग्लोबल-ब्रांड-तक-का-पूरा-सफर</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:38:05+05:30</news:publication_date>
+      <news:title>योगी आदित्यनाथ: 'बुलडोजर मॉडल' से ग्लोबल ब्रांड तक का पूरा सफर!</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=rbi-का-बड़ा-ऐलान-रेपो-रेट-525-पर-बरकरार-gdp-ग्रोथ-का-अनुमान-बढ़ाकर-67-किया</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:41:21+05:30</news:publication_date>
+      <news:title>RBI का बड़ा ऐलान: रेपो रेट 5.25% पर बरकरार, GDP ग्रोथ का अनुमान बढ़ाकर 6.7% किया!</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=झारखंड-में-युवा-आक्रोश-पेपर-लीक-और-सरकारी-नौकरियों-के-खिलाफ-छात्रों-का-महासंग्रा</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T18:28:40+05:30</news:publication_date>
+      <news:title>झारखंड में युवा आक्रोश: पेपर लीक और सरकारी नौकरियों के खिलाफ छात्रों का महासंग्रा</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=meta-ai-unexpectedly-breaches-external-system-during-internal-test</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T18:53:39+05:30</news:publication_date>
+      <news:title>Meta AI Unexpectedly Breaches External System During Internal Test</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=armed-suspect-detained-near-donald-trumps-california-golf-club</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T18:59:37+05:30</news:publication_date>
+      <news:title>Armed Suspect Detained Near Donald Trump’s California Golf Club</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=gen-z-fuels-huge-revival-of-dumb-phones-across-the-united-states</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T19:01:04+05:30</news:publication_date>
+      <news:title>Gen Z Fuels Huge Revival of 'Dumb Phones' Across the United States</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=aryan-kelvin-the-man-who-made-ai-confused-about-its-own-future</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T19:25:10+05:30</news:publication_date>
+      <news:title>Aryan Kelvin: The Man Who Made AI Confused About Its Own Future</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=doomsday-avengers-lead-captain-americas-fight</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T19:31:15+05:30</news:publication_date>
+      <news:title>Doomsday Avengers Lead Captain America’s Fight</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=har-ghar-tiranga-certificate-download-2026-रजिस्टर-करें-और-1-मिनट-में-डाउनलोड-करें-सर्टिफिकेट-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T20:05:13+05:30</news:publication_date>
+      <news:title>Har Ghar Tiranga Certificate Download 2026: रजिस्टर करें और 1 मिनट में डाउनलोड करें सर्टिफिकेट | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=15-august-status-in-hindi-2026-स्वतंत्रता-दिवस-पर-लगाएं-ये-देशभक्ति-स्टेटस-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T20:15:25+05:30</news:publication_date>
+      <news:title>15 August Status in Hindi 2026: स्वतंत्रता दिवस पर लगाएं ये देशभक्ति स्टेटस | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=नई-ott-रिलीज-आदर्श-बाल-विद्यालय-से-मुसाफिर-कैफे-तक-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T20:23:47+05:30</news:publication_date>
+      <news:title>नई OTT रिलीज: 'आदर्श बाल विद्यालय' से 'मुसाफिर कैफे' तक | Times07 News</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://times07news.in/article.html?slug=नई-ott-रिलीज-आदर्श-बाल-विद्यालय-से-मुसाफिर-कैफे-तक-times07-news</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Times07 News</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T20:23:49+05:30</news:publication_date>
+      <news:title>नई OTT रिलीज: 'आदर्श बाल विद्यालय' से 'मुसाफिर कैफे' तक | Times07 News</news:title>
+    </news:news>
+  </url>
 </urlset>

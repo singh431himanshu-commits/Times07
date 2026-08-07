@@ -355,10 +355,23 @@
             if(v && !liveHashtags.includes(v)) { liveHashtags.push(v.startsWith('#')?v:'#'+v); document.getElementById('new-hashtag-input').value=''; renderHashtags(); }
         }
         
-       function createSlug(text) {
+    function createSlug(text) {
     if (!text) return 'news-' + Date.now();
-    const roman = (window.transliterate ? window.transliterate(text) : text);
-    const clean = roman
+    
+    // अगर ट्रांसलिट्रेशन उपलब्ध है तो रोमन अंग्रेजी में बदलें
+    let roman = text;
+    if (window.transliterate) {
+        try {
+            roman = window.transliterate(text);
+        } catch(e) {
+            roman = text;
+        }
+    }
+    
+    // सिर्फ शुरुआती 5-6 मुख्य शब्द लें ताकि URL बहुत लंबा न बने
+    const shortText = roman.split(' ').slice(0, 6).join(' ');
+
+    const clean = shortText
         .toLowerCase()
         .trim()
         .replace(/[^a-z0-9\s-]/g, '')
