@@ -58,9 +58,7 @@ const newsQuery = query(newsRef, limitToLast(100));
         });
         firebaseArticles.reverse(); // Latest First
     }
-    window.sampleNews = firebaseArticles;
-    localStorage.setItem('times07_news', JSON.stringify(window.sampleNews));
-    
+  
     updateDynamicCategories(window.sampleNews);
     renderNews(); // मेन ग्रिड के लिए
     renderABPHeroBanner(window.sampleNews); // रेड बॉक्स के लिए
