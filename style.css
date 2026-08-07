@@ -1524,3 +1524,66 @@ html, body, .main-wrapper, #main-content {
         border: none !important;
     }
 }
+/* ==========================================
+   MOBILE VIEW PERFECT LAYOUT FIX
+   ========================================== */
+@media screen and (max-width: 600px) {
+    /* 1. News Card Text Cutting Fix */
+    [id$="-news-grid"] > div > a {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    [id$="-news-grid"] img {
+        width: 100px !important;
+        min-width: 100px !important;
+        height: 70px !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+        flex-shrink: 0 !important;
+    }
+
+    [id$="-news-grid"] h4, [id$="-news-grid"] h3 {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        flex-grow: 1 !important;
+    }
+
+    /* 2. Mega Footer Mobile Clean Grid */
+    .footer-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+        padding: 0 10px !important;
+    }
+
+    .footer-col.brand-col {
+        grid-column: span 2 !important;
+        text-align: center !important;
+    }
+
+    .footer-col h4 {
+        font-size: 14px !important;
+        margin-bottom: 8px !important;
+        color: #fde047 !important;
+    }
+
+    .footer-col a {
+        font-size: 12px !important;
+        margin-bottom: 5px !important;
+    }
+
+    /* 3. Header & Spacing Adjustments */
+    .mobile-main-bar {
+        padding: 6px 10px !important;
+    }
+
+    .text-3d {
+        font-size: 15px !important;
+    }
+}
