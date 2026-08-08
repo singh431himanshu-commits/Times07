@@ -58,6 +58,13 @@
         .stat-bar { background: #444; height: 10px; border-radius: 5px; margin-top: 5px; overflow: hidden; }
         .stat-fill { background: #00d2d3; height: 100%; width: 0%; transition: width 0.5s; }
         input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; accent-color: #ff5252; }
+        
+        /* ⚡ URL Link Box Styles */
+        .article-url-box { display: flex; align-items: center; gap: 8px; margin-top: 6px; background: #111; padding: 4px 8px; border-radius: 4px; border: 1px solid #333; max-width: 100%; }
+        .article-url-text { color: #00d2d3; font-size: 11px; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; font-family: monospace; }
+        .article-url-text:hover { text-decoration: underline; color: #facc15; }
+        .btn-copy-link { background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 2px 8px; border-radius: 4px; font-size: 10px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .btn-copy-link:hover { background: #00d2d3; color: #000; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -169,11 +176,11 @@
             <div class="card">
                 <span class="section-title">News Title</span>
                 <input type="text" id="manual_title" class="custom-input" placeholder="यहाँ खबर का शीर्षक लिखें...">
-               <span class="section-title">Upload Cover Image / Image URL</span>
-<input type="file" id="manual_img_file" class="custom-input" accept="image/*" onchange="uploadLocalImage(this, 'manual_img_val', 'preview_img_manual')">
-<input type="url" class="custom-input" placeholder="या डायरेक्ट फोटो का URL लिंक यहाँ पेस्ट करें..." style="margin-top:8px;" oninput="if(this.value){ document.getElementById('manual_img_val').value=this.value; document.getElementById('preview_img_manual').src=this.value; document.getElementById('preview_img_manual').style.display='block'; }">
-<input type="hidden" id="manual_img_val">
-<img id="preview_img_manual" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'">
+                <span class="section-title">Upload Cover Image / Image URL</span>
+                <input type="file" id="manual_img_file" class="custom-input" accept="image/*" onchange="uploadLocalImage(this, 'manual_img_val', 'preview_img_manual')">
+                <input type="url" class="custom-input" placeholder="या डायरेक्ट फोटो का URL लिंक यहाँ पेस्ट करें..." style="margin-top:8px;" oninput="if(this.value){ document.getElementById('manual_img_val').value=this.value; document.getElementById('preview_img_manual').src=this.value; document.getElementById('preview_img_manual').style.display='block'; }">
+                <input type="hidden" id="manual_img_val">
+                <img id="preview_img_manual" style="margin-top: 10px; max-height: 100px; border-radius: 6px; display: none;" onload="this.style.display='block'">
                 <span class="section-title">News Summary / Details</span>
                 <textarea id="manual_desc" class="custom-input" placeholder="पूरी खबर यहाँ टाइप करें..."></textarea>
                 <div class="placement-row">
@@ -262,9 +269,9 @@
                     <thead>
                         <tr>
                             <th style="width: 40px; text-align: center;"><input type="checkbox" id="selectAllNews" onclick="toggleAllCheckboxes(this)" title="Select All"></th>
-                            <th style="width: 120px;">Date</th>
-                            <th>Title (शीर्षक)</th>
-                            <th>Category / Placement</th>
+                            <th style="width: 100px;">Date</th>
+                            <th>Title & Live URL (शीर्षक व लिंक)</th>
+                            <th style="width: 140px;">Category</th>
                             <th style="width: 130px;">Action</th>
                         </tr>
                     </thead>
@@ -506,6 +513,23 @@
             return clean || ('news-' + Date.now());
         }
 
+        // 📋 Fast Link Copy Helper Function
+        window.copyArticleLink = function(urlText, btnElement) {
+            navigator.clipboard.writeText(urlText).then(() => {
+                const oldText = btnElement.innerHTML;
+                btnElement.innerHTML = `<i class="fa-solid fa-check" style="color:#00d2d3;"></i> Copied!`;
+                btnElement.style.background = "#00d2d3";
+                btnElement.style.color = "#000";
+                setTimeout(() => {
+                    btnElement.innerHTML = oldText;
+                    btnElement.style.background = "#2a2a2a";
+                    btnElement.style.color = "#fff";
+                }, 2000);
+            }).catch(err => {
+                alert("लिंक कॉपी करने के लिए लिंक पर क्लिक करके मैन्युअली कॉपी करें!");
+            });
+        };
+
         async function loadDrafts(id) {
             const botData = botsConfig[id];
             const container = document.getElementById(`drafts_${id}`);
@@ -701,6 +725,8 @@
             const title = titleRadio.value;
             const content = document.getElementById(`desc_${type}_${id}`).value;
             const time = Date.now();
+            const articleSlug = createSlug(title);
+            const liveLink = `https://times07news.in/article.html?slug=${articleSlug}`;
 
             push(articlesRef, {
                 title: title,
@@ -708,8 +734,8 @@
                 summary: content.substring(0, 180),
                 img1: finalImage,
                 image: finalImage,
-                slug: createSlug(title),
-                link: `https://times07news.in/article.html?slug=${createSlug(title)}`,
+                slug: articleSlug,
+                link: liveLink,
                 placement: document.getElementById(`placement_${type}_${id}`).value,
                 category: document.getElementById(`category_${type}_${id}`).value,
                 featured: "no",
@@ -729,6 +755,8 @@
             
             const content = document.getElementById('manual_desc').value;
             const time = Date.now();
+            const articleSlug = createSlug(title);
+            const liveLink = `https://times07news.in/article.html?slug=${articleSlug}`;
 
             push(articlesRef, {
                 title: title,
@@ -736,8 +764,8 @@
                 summary: content.substring(0, 180),
                 img1: img,
                 image: img,
-                slug: createSlug(title),
-                link: `https://times07news.in/article.html?slug=${createSlug(title)}`,
+                slug: articleSlug,
+                link: liveLink,
                 placement: document.getElementById('manual_placement').value,
                 category: document.getElementById('manual_category').value,
                 featured: "no",
@@ -775,12 +803,11 @@
             }
         });
 
-        // MANAGE NEWS & FAST REALTIME TABLE LOGIC
+        // MANAGE NEWS & FAST REALTIME TABLE LOGIC (WITH DIRECT URL & COPY BUTTON)
         window.loadAdminNewsTable = function() {
             const table = document.getElementById('articles-list-table');
             table.innerHTML = '<tr><td colspan="5" style="text-align:center;">⚡ तेज़ डेटा लोड हो रहा है...</td></tr>';
             
-            // Fast Realtime listener (Limits to last 50 articles for ultra fast load)
             const recentQuery = query(articlesRef, limitToLast(50));
             onValue(recentQuery, (snapshot) => {
                 if (snapshot.exists()) {
@@ -810,11 +837,22 @@
                     let html = '';
                     articles.forEach(a => {
                         const dateStr = a.timestamp ? new Date(a.timestamp).toLocaleDateString('en-IN') : 'N/A';
+                        const articleSlug = a.slug || createSlug(a.title);
+                        const articleUrl = a.link || `https://times07news.in/article.html?slug=${articleSlug}`;
+
                         html += `
                             <tr style="border-bottom: 1px solid #333;">
                                 <td style="text-align: center;"><input type="checkbox" class="news-checkbox" value="${a.id}"></td>
-                                <td style="color: #00d2d3;">${dateStr}</td>
-                                <td><strong style="color: #fff;">${a.title}</strong></td>
+                                <td style="color: #00d2d3; font-weight: bold;">${dateStr}</td>
+                                <td>
+                                    <strong style="color: #fff; font-size: 14px; line-height: 1.3; display: block;">${a.title}</strong>
+                                    <!-- 🔗 LIVE URL LINK BOX -->
+                                    <div class="article-url-box">
+                                        <i class="fa-solid fa-link" style="color: #00d2d3; font-size: 11px;"></i>
+                                        <a href="${articleUrl}" target="_blank" class="article-url-text" title="Click to Open Article">${articleUrl}</a>
+                                        <button class="btn-copy-link" onclick="window.copyArticleLink('${articleUrl}', this)"><i class="fa-regular fa-copy"></i> Copy Link</button>
+                                    </div>
+                                </td>
                                 <td><span class="hashtag-chip" style="display:inline-block; margin:0; font-size: 11px;">${a.category || a.placement || 'N/A'}</span></td>
                                 <td style="display: flex; gap: 5px;">
                                     <button class="btn btn-warning" style="margin: 0; padding: 6px 12px; font-size: 12px; width: auto;" onclick="window.openEditModal('${a.id}')" title="Edit"><i class="fa-solid fa-pen"></i> Edit</button>
@@ -872,6 +910,9 @@
 
             if (!newTitle || !newImg) return alert("शीर्षक और इमेज URL अनिवार्य हैं!");
 
+            const newSlug = createSlug(newTitle);
+            const newLink = `https://times07news.in/article.html?slug=${newSlug}`;
+
             try {
                 await update(ref(db, 'articles/' + id), {
                     title: newTitle,
@@ -879,6 +920,8 @@
                     image: newImg,
                     desc: newDesc,
                     summary: newDesc.substring(0, 180),
+                    slug: newSlug,
+                    link: newLink,
                     placement: document.getElementById('edit_placement').value,
                     category: document.getElementById('edit_category').value
                 });
