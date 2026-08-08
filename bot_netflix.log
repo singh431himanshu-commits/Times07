@@ -234,3 +234,88 @@
 2026-08-06 20:21:37 [INFO] response: https://duckduckgo.com/?q=%22Adarsh+Bal+Vidyalaya+Netflix%22+netflix+series+hd+image 202
 2026-08-06 20:21:38 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Adarsh+Bal+Vidyalaya+Netflix%22+netflix+series+hd+image&l=in-en&vqd=4-329974935399333936767440399076250399799&p=1&ct=AT 403
 2026-08-06 20:21:39 [INFO] response: https://www.bing.com/images/async?q=%22Adarsh+Bal+Vidyalaya+Netflix%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:16:41 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:16:44 [INFO] response: https://www.bing.com/images/async?q=%22stranger+things+4%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:16:45 [INFO] response: https://duckduckgo.com/?q=%22stranger+things+4%22+netflix+series+hd+image 202
+2026-08-08 11:16:45 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22stranger+things+4%22+netflix+series+hd+image&l=in-en&vqd=4-84441391914926866498138605928431152403&p=1&ct=AT 403
+2026-08-08 11:16:45 [INFO] response: https://www.bing.com/images/async?q=%22stranger+things+4%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:17:05 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:17:07 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%AE%E0%A5%8B%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95%3A+%E0%A4%A6+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%AB+%E0%A4%8F%E0%A4%82%E0%A4%A1+%E0%A4%B0%E0%A5%80%E0%A4%9C%E0%A4%A8+%E0%A4%91%E0%A4%AB+%E0%A4%8F%E0%A4%B2%E0%A5%8D%E0%A4%B5%E0%A4%BF%E0%A4%B8+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%E0%A5%8D%E0%A4%B2%E0%A5%80%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:17:07 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%AE%E0%A5%8B%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95%3A+%E0%A4%A6+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%AB+%E0%A4%8F%E0%A4%82%E0%A4%A1+%E0%A4%B0%E0%A5%80%E0%A4%9C%E0%A4%A8+%E0%A4%91%E0%A4%AB+%E0%A4%8F%E0%A4%B2%E0%A5%8D%E0%A4%B5%E0%A4%BF%E0%A4%B8+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%E0%A5%8D%E0%A4%B2%E0%A5%80%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-220228286250873281072226801792844284524&p=1&ct=AT 403
+2026-08-08 11:17:08 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%AE%E0%A5%8B%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95%3A+%E0%A4%A6+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%AB+%E0%A4%8F%E0%A4%82%E0%A4%A1+%E0%A4%B0%E0%A5%80%E0%A4%9C%E0%A4%A8+%E0%A4%91%E0%A4%AB+%E0%A4%8F%E0%A4%B2%E0%A5%8D%E0%A4%B5%E0%A4%BF%E0%A4%B8+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%E0%A5%8D%E0%A4%B2%E0%A5%80%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:17:09 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%AE%E0%A5%8B%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95%3A+%E0%A4%A6+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%AB+%E0%A4%8F%E0%A4%82%E0%A4%A1+%E0%A4%B0%E0%A5%80%E0%A4%9C%E0%A4%A8+%E0%A4%91%E0%A4%AB+%E0%A4%8F%E0%A4%B2%E0%A5%8D%E0%A4%B5%E0%A4%BF%E0%A4%B8+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%E0%A5%8D%E0%A4%B2%E0%A5%80%22+netflix+series+hd+image 202
+2026-08-08 11:17:09 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%AE%E0%A5%8B%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95%3A+%E0%A4%A6+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%AB+%E0%A4%8F%E0%A4%82%E0%A4%A1+%E0%A4%B0%E0%A5%80%E0%A4%9C%E0%A4%A8+%E0%A4%91%E0%A4%AB+%E0%A4%8F%E0%A4%B2%E0%A5%8D%E0%A4%B5%E0%A4%BF%E0%A4%B8+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%E0%A5%8D%E0%A4%B2%E0%A5%80%22+netflix+series+hd+image&l=in-en&vqd=4-145028373811585088095780369694940112429&p=1&ct=AT 403
+2026-08-08 11:17:09 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%AE%E0%A5%8B%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95%3A+%E0%A4%A6+%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%AB+%E0%A4%8F%E0%A4%82%E0%A4%A1+%E0%A4%B0%E0%A5%80%E0%A4%9C%E0%A4%A8+%E0%A4%91%E0%A4%AB+%E0%A4%8F%E0%A4%B2%E0%A5%8D%E0%A4%B5%E0%A4%BF%E0%A4%B8+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%B8%E0%A5%8D%E0%A4%B2%E0%A5%80%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:17:24 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:17:27 [INFO] response: https://duckduckgo.com/?q=%22All+of+Us+Are+Dead+2%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:17:27 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22All+of+Us+Are+Dead+2%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-189275288584379849960413624453719174188&p=1&ct=AT 403
+2026-08-08 11:17:28 [INFO] response: https://www.bing.com/images/async?q=%22All+of+Us+Are+Dead+2%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:17:30 [INFO] response: https://duckduckgo.com/?q=%22All+of+Us+Are+Dead+2%22+netflix+series+hd+image 202
+2026-08-08 11:17:31 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22All+of+Us+Are+Dead+2%22+netflix+series+hd+image&l=in-en&vqd=4-246384099376416628841424122584042774650&p=1&ct=AT 403
+2026-08-08 11:17:32 [INFO] response: https://www.bing.com/images/async?q=%22All+of+Us+Are+Dead+2%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:17:54 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:17:55 [INFO] response: https://duckduckgo.com/?q=%22The+Sandman+Netflix%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:17:55 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22The+Sandman+Netflix%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-198552153824224871084140302094268283511&p=1&ct=AT 403
+2026-08-08 11:17:57 [INFO] response: https://www.bing.com/images/async?q=%22The+Sandman+Netflix%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:17:57 [INFO] response: https://duckduckgo.com/?q=%22The+Sandman+Netflix%22+netflix+series+hd+image 202
+2026-08-08 11:17:58 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22The+Sandman+Netflix%22+netflix+series+hd+image&l=in-en&vqd=4-113106580741186744430133700598887641665&p=1&ct=AT 403
+2026-08-08 11:17:59 [INFO] response: https://www.bing.com/images/async?q=%22The+Sandman+Netflix%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:18:16 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:18:18 [INFO] response: https://www.bing.com/images/async?q=%22Operation+White+Sea+Netflix%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:18:18 [INFO] response: https://duckduckgo.com/?q=%22Operation+White+Sea+Netflix%22+netflix+series+hd+image 202
+2026-08-08 11:18:19 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Operation+White+Sea+Netflix%22+netflix+series+hd+image&l=in-en&vqd=4-217604078124255689957567831220912119870&p=1&ct=AT 403
+2026-08-08 11:18:19 [INFO] response: https://www.bing.com/images/async?q=%22Operation+White+Sea+Netflix%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:18:40 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:18:43 [INFO] response: https://duckduckgo.com/?q=%22musafir+cafe+season+2%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:18:43 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22musafir+cafe+season+2%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-50109798881642701890968115081941393323&p=1&ct=AT 403
+2026-08-08 11:18:45 [INFO] response: https://www.bing.com/images/async?q=%22musafir+cafe+season+2%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:18:46 [INFO] response: https://duckduckgo.com/?q=%22musafir+cafe+season+2%22+netflix+series+hd+image 202
+2026-08-08 11:18:47 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22musafir+cafe+season+2%22+netflix+series+hd+image&l=in-en&vqd=4-334008692271328561510372259011307080627&p=1&ct=AT 403
+2026-08-08 11:18:48 [INFO] response: https://www.bing.com/images/async?q=%22musafir+cafe+season+2%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:19:11 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:19:13 [INFO] response: https://www.bing.com/images/async?q=%22Squid+Game+Netflix%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:19:14 [INFO] response: https://duckduckgo.com/?q=%22Squid+Game+Netflix%22+netflix+series+hd+image 202
+2026-08-08 11:19:14 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Squid+Game+Netflix%22+netflix+series+hd+image&l=in-en&vqd=4-60481577291601696813999118766088488261&p=1&ct=AT 403
+2026-08-08 11:19:15 [INFO] response: https://www.bing.com/images/async?q=%22Squid+Game+Netflix%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:19:36 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:19:38 [INFO] response: https://duckduckgo.com/?q=%22Khiladi%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:19:38 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Khiladi%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-198754491750203848097573072287583672835&p=1&ct=AT 403
+2026-08-08 11:19:40 [INFO] response: https://www.bing.com/images/async?q=%22Khiladi%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:19:40 [INFO] response: https://duckduckgo.com/?q=%22Khiladi%22+netflix+series+hd+image 202
+2026-08-08 11:19:40 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22Khiladi%22+netflix+series+hd+image&l=in-en&vqd=4-26824573293564165759449295531148959641&p=1&ct=AT 403
+2026-08-08 11:19:41 [INFO] response: https://www.bing.com/images/async?q=%22Khiladi%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:19:59 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:20:01 [INFO] response: https://duckduckgo.com/?q=%22stranger+things+4%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:20:01 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22stranger+things+4%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-36853554234235214019204979499433859556&p=1&ct=AT 403
+2026-08-08 11:20:02 [INFO] response: https://www.bing.com/images/async?q=%22stranger+things+4%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:20:03 [INFO] response: https://duckduckgo.com/?q=%22stranger+things+4%22+netflix+series+hd+image 202
+2026-08-08 11:20:03 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22stranger+things+4%22+netflix+series+hd+image&l=in-en&vqd=4-84441391914926866498138605928431152403&p=1&ct=AT 403
+2026-08-08 11:20:04 [INFO] response: https://www.bing.com/images/async?q=%22stranger+things+4%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:20:21 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:20:23 [INFO] response: https://www.bing.com/images/async?q=%22Aadharsh+Bal+Vidyalaya%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:20:24 [INFO] response: https://www.bing.com/images/async?q=%22Aadharsh+Bal+Vidyalaya%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:20:40 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:20:42 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%AE%E0%A5%81%E0%A4%B8%E0%A4%BE%E0%A4%AB%E0%A4%BF%E0%A4%B0+%E0%A4%95%E0%A5%88%E0%A4%AB%E0%A5%87%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:20:42 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%AE%E0%A5%81%E0%A4%B8%E0%A4%BE%E0%A4%AB%E0%A4%BF%E0%A4%B0+%E0%A4%95%E0%A5%88%E0%A4%AB%E0%A5%87%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-41338862438203593027843938947542438539&p=1&ct=AT 403
+2026-08-08 11:20:43 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%AE%E0%A5%81%E0%A4%B8%E0%A4%BE%E0%A4%AB%E0%A4%BF%E0%A4%B0+%E0%A4%95%E0%A5%88%E0%A4%AB%E0%A5%87%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:20:43 [INFO] response: https://duckduckgo.com/?q=%22%E0%A4%AE%E0%A5%81%E0%A4%B8%E0%A4%BE%E0%A4%AB%E0%A4%BF%E0%A4%B0+%E0%A4%95%E0%A5%88%E0%A4%AB%E0%A5%87%22+netflix+series+hd+image 202
+2026-08-08 11:20:43 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22%E0%A4%AE%E0%A5%81%E0%A4%B8%E0%A4%BE%E0%A4%AB%E0%A4%BF%E0%A4%B0+%E0%A4%95%E0%A5%88%E0%A4%AB%E0%A5%87%22+netflix+series+hd+image&l=in-en&vqd=4-186102201766484218774884908611336686050&p=1&ct=AT 403
+2026-08-08 11:20:44 [INFO] response: https://www.bing.com/images/async?q=%22%E0%A4%AE%E0%A5%81%E0%A4%B8%E0%A4%BE%E0%A4%AB%E0%A4%BF%E0%A4%B0+%E0%A4%95%E0%A5%88%E0%A4%AB%E0%A5%87%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:21:02 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:21:04 [INFO] response: https://www.bing.com/images/async?q=%22Dhurandhar+2%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:21:05 [INFO] response: https://www.bing.com/images/async?q=%22Dhurandhar+2%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:21:21 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:21:22 [INFO] response: https://duckduckgo.com/?q=%22gadar+2+netflix%22+netflix+poster+hd+wallpaper 202
+2026-08-08 11:21:23 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22gadar+2+netflix%22+netflix+poster+hd+wallpaper&l=in-en&vqd=4-61083445302711802032909201491818398106&p=1&ct=AT 403
+2026-08-08 11:21:23 [INFO] response: https://www.bing.com/images/async?q=%22gadar+2+netflix%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:21:24 [INFO] response: https://duckduckgo.com/?q=%22gadar+2+netflix%22+netflix+series+hd+image 202
+2026-08-08 11:21:24 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22gadar+2+netflix%22+netflix+series+hd+image&l=in-en&vqd=4-48294103055453465995940226892788983922&p=1&ct=AT 403
+2026-08-08 11:21:24 [INFO] response: https://www.bing.com/images/async?q=%22gadar+2+netflix%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:21:45 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:21:49 [INFO] response: https://www.bing.com/images/async?q=%22stranger+things+netflix%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:21:51 [INFO] response: https://duckduckgo.com/?q=%22stranger+things+netflix%22+netflix+series+hd+image 202
+2026-08-08 11:21:51 [INFO] response: https://duckduckgo.com/i.js?o=json&q=%22stranger+things+netflix%22+netflix+series+hd+image&l=in-en&vqd=4-174715459105756524120290997834176168601&p=1&ct=AT 403
+2026-08-08 11:21:52 [INFO] response: https://www.bing.com/images/async?q=%22stranger+things+netflix%22+netflix+series+hd+image&async=1&first=1&count=35 200
+2026-08-08 11:22:13 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-08 11:22:16 [INFO] response: https://www.bing.com/images/async?q=%22monica+o+my+love%22+netflix+poster+hd+wallpaper&async=1&first=1&count=35 200
+2026-08-08 11:22:17 [INFO] response: https://www.bing.com/images/async?q=%22monica+o+my+love%22+netflix+series+hd+image&async=1&first=1&count=35 200
